@@ -140,5 +140,25 @@
     left: 0px;
 
 }
+#goldBonus
+{
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    margin: auto;
+    right: 5px;
+    bottom: 5px;
 
+}
+
+#bonusChest
+{
+    width: 35px;
+    height: 35px;
+    position: absolute;
+    margin: auto;
+    right: 5px;
+    bottom: 5px;
+
+}
 

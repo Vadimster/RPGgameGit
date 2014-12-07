@@ -14,10 +14,7 @@ $(document).ready(function() {  // plays background music once page loaded
 // Player starting attributes -------------------------------------------------------------------------------------------
 
 
-var playerPosition = 1;
-
-
-var playerHealth = 100;
+var playerHealth = 5;
 var playerGold = 1000;
 var playerExperience = 0;
 var playerAttack = 0;
@@ -119,6 +116,7 @@ function gameOver() { // this is what happens when character dies.
 	$("#dayOrNightIcon").attr("src", "img/statusicons/day.png");
 	$("#dayOrNightCounter").html("day");
 
+	Map.init(); // PROBLEM: for some reason if game restarts alerts giving info about divs are duplicated.
 
 };
 
@@ -285,84 +283,10 @@ var spiritExpBonus = 20;
 var dragonExpBonus = 40;
 
 
-/*
-
-
-function getPosition(e) {
-
-    //this section is from http://www.quirksmode.org/js/events_properties.html
-    var targ;
-    if (!e)
-        e = window.event;
-    if (e.target)
-        targ = e.target;
-    else if (e.srcElement)
-        targ = e.srcElement;
-    if (targ.nodeType == 3) // defeat Safari bug
-        targ = targ.parentNode;
-
-    // jQuery normalizes the pageX and pageY
-    // pageX,Y are the mouse positions relative to the document
-    // offset() returns the position of the element relative to the document
-    var x = e.pageX - $(targ).offset().left;
-    var y = e.pageY - $(targ).offset().top;
-
-    return {"x": x, "y": y};
-};
-
-// now just make sure you use this with jQuery
-// obviously you can use other events other than click
-$('canvas').click(function(event) {
-    // jQuery would normalize the event
-    position = getPosition(event);
-    //now you can use the x and y positions
-    alert("X: " + position.x + " Y: " + position.y);
-});
-
-
-
-
-var canvasPosition = {
-    x: canvas.offset().left,
-    y: canvas.offset().top
-};
-
-console.log(canvasPosition.x);
-
-
-canvas.onclick = function() {
-	alert("it works!");
-
-};
-
-
-
-
-
-canvas.on('click', function(e) {
-
-    // use pageX and pageY to get the mouse position
-    // relative to the browser window
-
-    var mouse = {
-        x: e.pageX - canvasPosition.x,
-        y: e.pageY - canvasPosition.y
-    }
-    alert("it works!");
-
-    // now you have local coordinates,
-    // which consider a (0,0) origin at the
-    // top-left of canvas element
-});
-
-*/
-
-
-
-
 function randomEvent() {
 	turnCounter();
 	dayOrNight();
+	//alert("You are entering " + terrainType + ". This tile bonus: ";
 	var eventRollResult = Math.floor((Math.random() * 10) + 1);
 		console.log ("roll result " + eventRollResult);
 	if (eventRollResult === 1) { 
