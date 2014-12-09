@@ -18,7 +18,7 @@ function Tile(rnd, px, py, nid) {
 
     this.Draw = function() {
         var div = $("<div class='tile'></div>");
-        div.attr('id',tileID).data('type',type).data('x',x).data('y',y);
+        div.attr('id',tileID).data('type',type).data('x',x).data('y',y).attr('hasBonus', false);
         div.get(0).tile = self;
         div.css({top:height*y, left:width*x});
         div.css({"background":"url('"+img+"')"});
@@ -31,7 +31,7 @@ function Tile(rnd, px, py, nid) {
             var bonus = bonusArray[Math.floor(Math.random()*bonusArray.length)];
                 if (bonus > 0 && tileID != 1) {
                 $('#' + tileID).append('<img id="goldBonus" src="img/maptiles/goldcoins.png" title = "Gold" />');
-                $('#' + tileID).attr('bonus', "gold");
+                $('#' + tileID).attr('hasBonus', true).attr('bonus', "gold");
 
                 }
         }
@@ -39,21 +39,21 @@ function Tile(rnd, px, py, nid) {
             var bonus = bonusArray[Math.floor(Math.random()*bonusArray.length)];
                 if (bonus > 0 && tileID != 1) {
                 $('#' + tileID).append('<img id="bonusChest" src="img/maptiles/chest.png" title = "Chest" />');
-                $('#' + tileID).attr('bonus', "chest");
+                $('#' + tileID).attr('hasBonus', true).attr('bonus', "chest");
                 }
         }
         else if (type === "mountains") {
             var bonus = bonusArray[Math.floor(Math.random()*bonusArray.length)];
                 if (bonus > 0 && tileID != 1) {
                 $('#' + tileID).append('<img id="bonusChest" src="img/maptiles/artefact.png" title = "Artefact"/>');
-                $('#' + tileID).attr('bonus', "artefact");
+                $('#' + tileID).attr('hasBonus', true).attr('bonus', "artefact");
                 }
         }
          else if (type === "forest") {
             var bonus = bonusArray[Math.floor(Math.random()*bonusArray.length)];
                 if (bonus > 0 && tileID != 1) {
                 $('#' + tileID).append('<img id="bonusChest" src="img/maptiles/books.png" title = "Experience"/>');
-                $('#' + tileID).attr('bonus', "experience");
+                $('#' + tileID).attr('hasBonus', true).attr('bonus', "experience");
                 }
         }       
     };
@@ -65,9 +65,15 @@ function Tile(rnd, px, py, nid) {
     };
 
     
-    //this.TerrainType = function() { //sets type of clicked tile for further check in RandomEvent(). Terrain type has impact on encounter.
-    //    terrainType = type;
-    //};
+    this.TerrainType = function() { //sets type of clicked tile as a global variable for further check in RandomEvent(). Terrain type has impact on encounter.
+    terrainType = type;
+    };
+    
+    this.TerrainBonus = function() { //sets bonus of clicked tile as a global variabe for further check in RandomEvent().
+    terrainHasBonus = $('#' + tileID).attr('hasBonus');
+    terrainBonus = $('#' + tileID).attr('bonus');
+    };
+
     
 
 
@@ -78,8 +84,6 @@ function Tile(rnd, px, py, nid) {
             playerPosition = tileID; // tileID needed to calculate
             playerX = x; //player recieved new X coordinate
             playerY = y; //player recieved new Y coordinate
-            alert("you are entering " + type + ". This tile bonus is: " + $('#' + tileID).attr('bonus'));
-            //set targetCellBonus = the value of the div attr to use globally.
             randomEvent();
         }
         else if (playerPosition === tileID + 1 && playerY === $('#'+tileID).data('y')) {
@@ -87,7 +91,7 @@ function Tile(rnd, px, py, nid) {
             playerPosition = tileID;
             playerX = x;
             playerY = y;
-            alert("you are entering " + type + ". This tile bonus is: " + $('#' + tileID).attr('bonus'));
+            //alert("you are entering " + type + ". This tile bonus is: " + $('#' + tileID).attr('bonus'));
             randomEvent();
 
         }
@@ -96,7 +100,7 @@ function Tile(rnd, px, py, nid) {
             playerPosition = tileID;
             playerX = x;
             playerY = y;
-            alert("you are entering " + type + ". This tile bonus is: " + $('#' + tileID).attr('bonus'));
+            //alert("you are entering " + type + ". This tile bonus is: " + $('#' + tileID).attr('bonus'));
             randomEvent();
 
 
@@ -106,7 +110,7 @@ function Tile(rnd, px, py, nid) {
             playerPosition = tileID;
             playerX = x;
             playerY = y;
-            alert("you are entering " + type + ". This tile bonus is: " + $('#' + tileID).attr('bonus'));
+            //alert("you are entering " + type + ". This tile bonus is: " + $('#' + tileID).attr('bonus'));
             randomEvent();
         }
 
@@ -155,8 +159,10 @@ var Map = new function() {
         $('#map-content').children().first().append('<img id="player" src="img/maptiles/player.png" />'); //adds player to the first tile in the map
         $('#map-content').on('click','div.tile', function(e){
              //var tile = tiles[$(this).data('y')][$(this).data('x')];
-             //this.tile.TerrainType();
+             this.tile.TerrainType();
+             this.tile.TerrainBonus();
              this.tile.Move();
+             //to remove bonus I probably need to write the clicked tileID as a global var to use the ID in the jquery for detaching the element "bonus".
 
 
         });

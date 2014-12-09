@@ -286,7 +286,7 @@ var dragonExpBonus = 40;
 function randomEvent() {
 	turnCounter();
 	dayOrNight();
-	//alert("You are entering " + terrainType + ". This tile bonus: ";
+	alert("You are entering " + terrainType + ". This tile bonus: " + terrainHasBonus);
 	var eventRollResult = Math.floor((Math.random() * 10) + 1);
 		console.log ("roll result " + eventRollResult);
 	if (eventRollResult === 1) { 
