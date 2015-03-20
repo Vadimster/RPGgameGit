@@ -75,7 +75,11 @@ function Tile(rnd, px, py, nid) {
     };
 
     
-
+    this.setTerrain = function(hasBonus, bonus) {
+        terrainType = type;
+        terrainHasBonus = hasBonus;
+        terrainBonus = bonus;
+    }
 
     this.Move = function(){ // moves player to clicked tile, if possible 
         var playerX = $('#'+tileID).data('y');
@@ -117,7 +121,7 @@ function Tile(rnd, px, py, nid) {
     };
 }
 
-var Map = new function() {
+var Map = new function() {  //WHY IS "NEW" USED HERE??
     maxHorz = 20;
     maxVert = 10;
 
@@ -127,15 +131,15 @@ var Map = new function() {
         var tileID = 1; // sets the very first tile as #1.
         $('#map-content div').remove(); //clears map field (it might have existed from previous game) - required when a new game started (see GameOver();)
 
-        for(var i=0; i<maxVert; i++) {
-            tiles[i] = [];
-            for(var j=0; j<maxHorz; j++) {
-                tiles[i][j] = new Tile(Math.random()*6|0, j, i, tileID++);
+        for(var i=0; i<maxVert; i++) { //turns tiles[] into a 2D array. Stats with 1st row (maxVert)... 
+            tiles[i] = []; //creates a sub array in the first row
+            for(var j=0; j<maxHorz; j++) { // adds columns afterwards (maxHor)
+                tiles[i][j] = new Tile(Math.random()*6|0, j, i, tileID++); //[i] & [j] are 2D coordinates in array. For the relevant position a new Tile element is produced and placed
             }
         }  
 
-        Render();
-        Setup();
+        Render(); //draws every tile from the array  and drawn bonus on the tile (through tiles' own methods)
+        Setup(); //setups other elements on the page (could be possibly done through Player ansd Dragon own methods??)
     };
 
     this.GetMap = function() {
@@ -159,6 +163,7 @@ var Map = new function() {
         $('#map-content').children().first().append('<img id="player" src="img/maptiles/player.png" />'); //adds player to the first tile in the map
         $('#map-content').on('click','div.tile', function(e){
              //var tile = tiles[$(this).data('y')][$(this).data('x')];
+             this.tile.setTerrain($(this).data('hasBonus'),$(this).data('bonus'));
              this.tile.TerrainType();
              this.tile.TerrainBonus();
              this.tile.Move();

@@ -14,8 +14,8 @@ $(document).ready(function() {  // plays background music once page loaded
 // Player starting attributes -------------------------------------------------------------------------------------------
 
 
-var playerHealth = 5;
-var playerGold = 1000;
+var playerHealth = 100;
+var playerGold = 0;
 var playerExperience = 0;
 var playerAttack = 0;
 var playerDefense = 0;
@@ -24,26 +24,26 @@ var playerArrows = 0;
 var playerHealingPotions = 0;
 var bored = 0; // used for slightly different event description if nothing happens 2 turns in a row. Reset to 0 by subsequent meaningful event.
 var day = 1;
-var turn = 0;
+var turn = 1;
 var playerLevel = 0;
 var maxAttackValue = 10;
 var maxDefenseValue = 10;
 var maxLuckValue = 5;
 
-var hasSword = 0;
+var hasSword = 1;
 var hasAxe = 0;
 var hasWeapon = 0; //need to keep this for WEAPON checks to ensure player cannot have 2 weapons at same time.
 
 var hasArmor = 0; //need to keep this for WEAPON checks to ensure player cannot have 2 armors at same time.
 var hasLeatherArmor = 0;
-var hasMetalArmor = 0;
+var hasMetalArmor = 1;
 
 var hasShield = 0; //need to keep this for WEAPON checks to ensure player cannot have 2 shield at same time.
 var hasWoodenShield = 0;
 var hasMetalShield = 0;
 
 var hasHelmet = 0; //need to keep this for WEAPON checks to ensure player cannot have 2 helmets at same time.
-var hasMetalHelmet = 0;
+var hasMetalHelmet = 1;
 var hasImprovedMetalHelmet = 0;
 
 var hasBow = 0; //need to keep this for WEAPON checks to ensure player cannot have 2 shield at same time.
@@ -860,6 +860,160 @@ function addHealthFromChest(){
 	
 	}
 };
+
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+	var player = {
+		id: "player",
+		image: null,
+		alive: true,
+		
+		gold: 100,
+		
+		health: 100,
+		maxHealth: 100,
+		
+		attack: 0,
+		maxAttack: 10,
+		
+		defense: 0,
+		maxDefense: 10,
+		
+		luck: 0,
+		maxLuck: 5
+	};
+
+
+
+	var gold = {
+
+		id: "gold",
+		counterID: "goldCounter", //displays gold in the game interface
+		image: null,
+		
+		increase: function (amount) {
+		 	alert("player gold before transaction: " + player.gold);
+			player.gold += amount;
+			alert("player gold after transaction: " + player.gold);
+				if (amount > 1) {
+					$("#coinsfound").get(0).play();
+					} else {
+						$("#onecoinfound").get(0).play();
+				}
+			$('#goldCounter').html(player.gold);
+		},
+
+		decrease: function (amount){
+		 	alert("player gold before transaction: " + player.gold);
+			player.gold -= amount;
+			alert("player gold after transaction: " + player.gold);
+			$("#sell").get(0).play();
+			$('#goldCounter').html(player.gold);
+		}
+
+	};
+
+
+	var sword = {
+		objectName: "sword", //also divID for jQuery
+		type: "weapon",
+		equipped: false,
+		price: 50,
+		attack: 2,
+		defense: 0,
+		trade: function(){ 
+			if (this.equipped) {
+				if (confirm("You already have the " + this.objectName + ". Do you want to sell it for " + this.sellPrice + " gold?")){
+				  	tradeItem(this, "sell");
+				}
+				  	} else { // INTRODUCE CHECK IF ALREaDY HAS A WEAPON => CANNOT BUY
+				  		alert("Not equipped, will attempt to buy now");
+				  		tradeItem(this, "buy");
+					}
+		}
+		//may be develop a stats update method for this object instead of using the playerStatsUpdateItem function?
+	};
+	sword.sellPrice = sword.price/2;
+
+
+	//------------------------
+
+	var tradeItem = function(item, action){ //whole object is passed into the function as well as instructions on what to do with this object
+		if (action === "buy") {
+			if (player.gold >= item.price) {
+				playerStatsUpdateItem(item, "buy");
+				gold.decrease(item.price);
+				} else {
+					alert("Insufficient funds");
+			}
+		} 
+		else if (action === "sell") {
+			alert("player wants to sell, will sell now");
+			playerStatsUpdateItem(item, "sell");
+			gold.increase(item.sellPrice);
+		}
+	};
+
+
+
+ var playerStatsUpdateItem = function(item, action){ // function handles items
+	if (action === "buy"){
+		if (item.attack > 0) {
+			var tempBonusValue = player.attack + item.attack;
+			if (tempBonusValue > player.maxAttack) {
+				alert("This item will give you attack bonus of +" + item.attack + " while your max attack bonus can be" + player.maxAttack);
+				} else {
+				player.attack += tempBonusValue;
+				item.equipped = true;
+				alert("Player attack is now: " + player.attack);
+				$('#attackCounter').html(player.attack);
+				var tempBonusValue = 0;
+				alert("tempBonusValue is now: " + tempBonusValue);
+				$("#" + item.objectName + "Icon").attr("src", "img/inventory/" + item.objectName + "_equipped.png");
+				alert("Weapon now equipped: " + item.equipped);
+				}
+		}
+		else if (item.defense > 0){
+			alert("item defence is > 0");
+		}
+	} else if (action === "sell") {
+		alert("selling item...");
+		if (item.attack > 0) {
+			player.attack -= item.attack;
+			$('#attackCounter').html(player.attack);
+			item.equipped = false;
+			$("#" + item.objectName + "Icon").attr("src", "img/inventory/" + item.objectName + ".png");
+			alert("Weapon now equipped: " + item.equipped);
+		}
+	}
+ };
+
+
+ var removeGoldNew = function(amount) {
+ 	alert("player gold before transaction: " + player.gold);
+	player.gold -= amount;
+	alert("player gold after transaction: " + player.gold);
+	$("#sell").get(0).play();
+	$('#goldCounter').html(player.gold);
+ };
+
+
+
+ var addGoldNew = function(amount) {
+ 	alert("player gold before transaction: " + player.gold);
+	player.gold += amount;
+	alert("player gold after transaction: " + player.gold);
+		if (amount > 1) {
+			$("#coinsfound").get(0).play();
+			} else {
+				$("#onecoinfound").get(0).play();
+		}
+	$('#goldCounter').html(player.gold);
+ };
+
+
+//-----------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
 function exploreMetalHelmet() {
