@@ -1,0 +1,139 @@
+
+
+.bonus {
+
+    width: 35px;
+    height: 35px;
+    position: absolute;
+    margin: auto;
+    right: 5px;
+    bottom: 5px;
+}
+
+
+.tile {
+    position: absolute; 
+    width: 60px; 
+    height: 60px;
+}
+
+
+#inventory {
+    display: none;
+
+
+}
+
+#map-content {
+    margin: 0 auto;
+    position: relative;
+    top: 15px;
+    border: 1px solid black;
+    width: 1215px;
+    height: 500px;
+    text-align: center;
+    overflow: auto;
+    overflow-y: scroll;
+
+}
+
+
+#status {
+     position: absolute;
+     top: 5px;
+     right: 10px;  
+}
+
+
+#turnCounter {
+    width: 35px;
+    font-size: 25px;
+    color: grey;
+}
+
+
+
+#dividerItemsTable {
+
+	width: 70px;
+	
+}
+
+#helmetIcon {
+
+	width: 70px;
+	
+}
+
+
+
+#version {
+     position: fixed;
+     bottom: 10px;
+     right: 10px;
+     font-size: 9;
+     color: grey; 
+}
+
+
+
+#inventory {
+     position: absolute;
+     bottom: 10px;
+     left: 5px;
+     font-family: Tahoma;
+     font-size: 10px;
+     color: #FFD700;
+     text-align: center;
+     
+}
+
+
+#stats {
+     top: 5px;
+     left: 5px;
+     font-family: Tahoma;
+     font-size: 15px;
+     text-align: center;
+     
+}
+
+#arrowsCounter {
+     font-family: Tahoma;
+     font-size: 18px;
+     color: #FFD700;
+     
+}
+
+#healingPotionsCounter {
+     font-family: Tahoma;
+     font-size: 18px;
+     text-decoration: underline;
+}
+
+#healingPotionsCounter:hover{
+     color: #A52A2A;
+}
+
+
+
+#player {
+    width: 60px;
+    height: 60px;
+    position: absolute;
+    margin: auto;
+    left: 0px;
+
+}
+
+#dragon {
+
+    width: 60px;
+    height: 60px;
+    position: absolute;
+    margin: auto;
+    left: 0px;
+
+}
+
+
