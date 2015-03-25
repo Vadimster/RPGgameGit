@@ -137,3 +137,110 @@
 }
 
 
+/* FOR QJUERY UI DIALOGIES */
+
+#eventIntro { 
+ display: none;
+}
+
+#dialog { 
+ display: none;
+}
+
+#dialog-background {
+  position: absolute;
+  background-image: url(img/messages/encounter_dialogue_background_400x500.png);
+  background-repeat: no-repeat;
+  width: 400px;
+  height: 500px;
+  margin-left: -20px;
+  margin-top: -10px; 
+
+}
+
+#dialog-header {
+  margin-top: 20px;
+  text-align: center;
+  font-size: 30px;
+  font-family: Cursive;
+  color: black;
+  font-weight: bold;
+  padding: 20px;
+ }
+
+#dialog-image { /* image of a mob */
+  width: 200px;
+  height: 150px;
+  margin: auto;
+  background-image:url(mob image);
+  background-size: 200px 150px;
+    background-repeat: no-repeat;
+}
+
+#dialog-event-intro {
+  margin-top: 10px;
+  margin-left: 25px;
+  text-align: left;
+  font-size: 15px;
+  font-family: cursive;
+  font-style: Italic;
+  color: black;
+  padding: 20px;
+ }
+
+#dialog-player-options {
+  margin: auto;
+  margin-top: 0px;
+  margin-left: 25px;
+  text-align: left;
+  font-size: 15px;
+  font-family: cursive;
+  font-style: Italic;
+  color: black;
+  padding: 20px;
+ }
+
+
+
+.ui-widget-header {
+  border: none !important;
+  background: transparent !important;
+}
+
+.ui-corner-all { 
+  border: none !important;
+  
+}
+
+.ui-widget-content {
+  background: transparent !important;
+}
+
+.ui-dialog .ui-dialog-buttonpane { 
+    text-align: center !important;
+}
+
+.ui-dialog .ui-dialog-buttonpane .ui-dialog-buttonset { 
+    float: none !important;
+}
+
+.ui-dialog .ui-dialog-buttonpane button {
+   color: black;
+   font-size: 13px;
+   padding: 3px; /* change button size */
+   
+  /* text-indent: -9999em;  hides the text 
+    color: transparent;  also hides text 
+    background-image: url(/path/to/image.png); replaces default image 
+    background-repeat: no-repeat;
+ */
+  
+}
+
+#experience-loss-span {
+  color: red;  
+}
+
+
+/*.ui-dialog,.ui-dialog,.ui-widget, .ui-widget-content, .ui-corner-all, .foo, .ui-draggable, .ui-resizable {background: transparent !important }*/
+

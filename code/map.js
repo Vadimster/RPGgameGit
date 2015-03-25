@@ -1,4 +1,7 @@
 
+
+
+
 var Tile = function(TileCoordinateHor, TileCoordinateVert, tileNumericID){
 
     var self = this; //CRITICAL TO UNDERSTAND !!!
@@ -16,7 +19,7 @@ var Tile = function(TileCoordinateHor, TileCoordinateVert, tileNumericID){
 
 
 /* Taking care of bonuses on each tile - start */
-    var bonusArray = [1,1,0,0,0,0,0,0,0,0,0,0,0,0];
+    var bonusArray = [1,1,1,0,0,0,0,0,0,0,0,0,0,0];
     
     if(terrainType !== "grass"){ //grass tile cannot have a bonus on it
         var tileHasBonus = bonusArray[Math.floor(Math.random()*bonusArray.length)];
@@ -106,6 +109,19 @@ var Map = new function(){
 };
 
 
+$( document ).ready(function() {
+    //$("#backgroundMusic").get(0).play();
+    Map.initiate();
+    $('#healthCounter').html(player.health);
+    $('#goldCounter').html(player.gold);
+    $('#experienceCounter').html(player.experience);
+    $('#attackCounter').html(player.attack);
+    $('#defenseCounter').html(player.defense);
+    $('#luckCounter').html(player.luck);
+    $('#levelCounter').html(player.level);
+
+    //NEED TO HAVE AN INIT FUNCTION, WHICH CREATES MAP AND PUTS STARTING VALUES IN THE INTERFACE. THIS WILL BE USED FOR GAMEOVER TOO
+});
 
 
 
