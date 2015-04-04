@@ -178,7 +178,7 @@ function addExperience() {
             var eventResult = defineEvent(terrainType); //calls function to determine which event happens to player based on terrain type and day/night
             console.log("event is: " + eventResult);
             if (eventResult !== "nothing"){
-            	eventIntro(eventResult);
+            	eventIntro(eventResult, terrainType);
             }
 
             handleBonus(tileID, tileHasBonus, bonusType);
@@ -198,7 +198,7 @@ function addExperience() {
             var eventResult = defineEvent(terrainType); //calls function to determine which event happens to player based on terrain type and day/night
             console.log("event is: " + eventResult);
             if (eventResult !== "nothing"){
-            	eventIntro(eventResult);
+            	eventIntro(eventResult, terrainType);
             }
 
             handleBonus(tileID, tileHasBonus, bonusType);
@@ -218,7 +218,7 @@ function addExperience() {
             var eventResult = defineEvent(terrainType); //calls function to determine which event happens to player based on terrain type and day/night
             console.log("event is: " + eventResult);
             if (eventResult !== "nothing"){
-            	eventIntro(eventResult);
+            	eventIntro(eventResult, terrainType);
             }
 
 
