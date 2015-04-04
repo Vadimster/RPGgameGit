@@ -17,6 +17,10 @@
     height: 60px;
 }
 
+.no-close .ui-dialog-titlebar-close { /* hides close button in Jquery UI dialogues  */
+  display: none;
+}
+
 
 #inventory {
     display: none;
