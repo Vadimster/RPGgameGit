@@ -44,7 +44,8 @@ eventIntro = function(eventResult){ //event alert constructor
        		resizable: false,
        		modal: true,
       		width: 400,
-       		height: 620
+       		height: 620,
+       		closeOnEscape: false
        		//position: ["right", "center"]
        		}
        	); //creates the dialog
@@ -64,7 +65,8 @@ eventIntro = function(eventResult){ //event alert constructor
        		resizable: false,
        		modal: true,
       		width: 400,
-       		height: 620
+       		height: 620,
+       		closeOnEscape: false
        		//position: ["right", "center"]
        		}
        	); //creates the dialog
