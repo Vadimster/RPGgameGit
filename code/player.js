@@ -130,7 +130,7 @@ function addExperience() {
 	// METHOD: level up. Add level threshholds
 
 
-	canRetreat: false, //can retret before battle screen loads
+	canRetreat: true, //can retret before battle screen loads
 
 	visitedTiles: [],
     position: 1,
@@ -155,7 +155,7 @@ function addExperience() {
             var eventResult = defineEvent(terrainType); //calls function to determine which event happens to player based on terrain type and day/night
             console.log("event is: " + eventResult);
             if (eventResult !== "nothing"){ // POSSIBLY CALL DETAILED EVENT CONTSTURCTOR (how many enemies, player level, luck, etc.)
-            	eventIntro(eventResult);
+            	eventIntro(eventResult, terrainType);
             }
 
             //start resolving the event();

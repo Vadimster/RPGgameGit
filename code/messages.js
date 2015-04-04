@@ -7,7 +7,7 @@ url: "img/monsters/dragon.png"
 
 
 
-eventIntro = function(eventResult){ //event alert constructor
+eventIntro = function(eventResult, terrainType){ //event alert constructor
 
 	
 
@@ -20,7 +20,7 @@ eventIntro = function(eventResult){ //event alert constructor
 
 
 	$("#experience-loss-span").html(playerExperienceLoss);
-  	$("#dialog-header").text(createEventIntroHeader(eventResult)); //calling a function which will generate ebent title using the argument   
+  	$("#dialog-header").text(createEventIntroHeader(eventResult)); //calling a function which will generate event title using the argument   
   	$('#dialog-image').css("background-image", "url(" + enemy.url + ")");  // update image based on mob generated
   	$("#dialog-event-intro").text(createEventDescription(eventResult));  
 
@@ -33,11 +33,11 @@ eventIntro = function(eventResult){ //event alert constructor
       			{buttons: 
          			{'Fight!' : function(){
            				$(this).dialog('close'); 
-           				alert("You fight");  // action when OK pressed. Must also delete the div from DOM as it is not needed in the future (to be dynamically generated) possibly via .remove() method
+           				playerFights(terrainType);  // action when OK pressed. Must also delete the div from DOM as it is not needed in the future (to be dynamically generated) possibly via .remove() method
                			},
           			'Retreat...' :function(){
             			$(this).dialog('close'); 
-            			alert("You retreat");  // action when NOT OK pressed 
+            			playerRetreats();  // action when NOT OK pressed 
                			}
        				},
 	   		draggable: false,
@@ -59,7 +59,7 @@ eventIntro = function(eventResult){ //event alert constructor
       			{buttons: 
          			{'Fight!' : function(){
            				$(this).dialog('close'); 
-           				alert("You fight");  // action when OK pressed. Must also delete the div from DOM as it is not needed in the future (to be dynamically generated) possibly via .remove() method
+           				playerFights();  // action when OK pressed. Must also delete the div from DOM as it is not needed in the future (to be dynamically generated) possibly via .remove() method
                			}
        				},
 	   		draggable: false,
@@ -77,7 +77,7 @@ eventIntro = function(eventResult){ //event alert constructor
 
 
 
-createEventIntroHeader = function(eventResult){ //creates a title for the encounter introduction pop-up
+createEventIntroHeader = function(eventResult){ //creates event title
 	var robbersText = ["Attacked by robbers!","Robbers are after you!"];
 	var peasantsText = ["Attacked by peasants!", "Hungry peasants!"];
 	var animalsText = ["Attacked by animals!", "Wild animals!"];
@@ -115,7 +115,7 @@ createEventIntroHeader = function(eventResult){ //creates a title for the encoun
 
 }
 
-createEventDescription = function(eventResult){ //auxilary function - creates event description for the encounter introduction pop-up
+createEventDescription = function(eventResult){ //auxilary function - creates event description
 
 	var robbersText = ["It is not safe to walk around like that these days... Robbers have spotted you and are willing to check what it is that you are carrying in your bag.", "They appear out of nowhere! Dark shadows holding sparkling knives, they are ready to check out your pockets.", "Robbers -- what can be more terrifying to a stranger walking on his own in forests and meadows of Vadimaria! It is now time to show them that your sword is precise and deadly."];
 	var peasantsText = ["Hungry and greedy they run towards you waving their spades and pitchforks. Oh you poor kids, run! Run for your lives!", "A bunch of poor clowns, they should be easy to deal with. One  a few fall dead the rest will retreat.", "Albeit their weapons being numerous -- their hands are weak. Teach these worms a good lesson!"];
