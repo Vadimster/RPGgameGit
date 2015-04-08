@@ -59,7 +59,7 @@ eventIntro = function(eventResult, terrainType){ //event alert constructor
       			{buttons: 
          			{'Fight!' : function(){
            				$(this).dialog('close'); 
-           				playerFights();  // action when OK pressed. Must also delete the div from DOM as it is not needed in the future (to be dynamically generated) possibly via .remove() method
+           				playerFights(terrainType);  // action when OK pressed. Must also delete the div from DOM as it is not needed in the future (to be dynamically generated) possibly via .remove() method
                			}
        				},
 	   		draggable: false,

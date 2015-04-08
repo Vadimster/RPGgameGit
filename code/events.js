@@ -219,3 +219,74 @@ function defineEvent(terrainType){ // decides what player encounters on the targ
 	}
 
 }
+
+
+function resolveEvent(eventResult, terrainType){
+
+	if (eventResult === "monster" && terrainType === "swamp") {
+
+		if (turnManager.day) {
+			var swamp = []; //define who lives in biome at day - populate with objects
+				console.log("Constructing day swamp mob..."); //get a mob randomly, rewrite Enemy object with new stats (both predefined and dynamically generated)
+
+		} else {
+			var swamp = []; //define who lives in biome at night
+			console.log("Constructing night swamp mob...");
+			}
+
+	} else if (eventResult === "monster" && terrainType === "hills") {
+
+		if (turnManager.day) {
+			var hills = []; //define who lives in biome at day
+			console.log("Constructing day hills mob...");
+		} else {
+			var hills = []; //define who lives in biome at night
+			console.log("Constructing night hills mob...");
+			}
+
+	} else if (eventResult === "monster" && terrainType === "mountains") {
+
+		if (turnManager.day) {
+			var mountains = []; //define who lives in biome at day
+			console.log("Constructing day mountains mob...");
+		} else {
+			var mountains = []; //define who lives in biome at night
+			console.log("Constructing night mountains mob...");
+			}
+	
+	} else if (eventResult === "peasants") {
+		console.log("Constructing peasants...");
+		//contruct/update the enemy straight away and call combat screen passing the terraintype
+
+	} else if (eventResult === "robbers") {
+			console.log("Constructing robbers...");
+		//contruct/update the enemy straight away and call combat screen passing the terraintype
+
+	} else if (eventResult === "animals") {
+		if (turnManager.day) {
+			//define who lives in biome at day
+			var forest = [];
+			console.log("Constructing day animlas...");
+		} else {
+			var forest = []; //define who lives in biome at nigh
+			console.log("Constructing night animals...");
+		}
+		
+	} else if (eventResult === "chest") {
+			console.log("Constructing chest...");
+		//constructs a "Do you want to opena chest message - redirect to messages.js"
+
+	} else if (eventResult === "trap") {
+			console.log("Constructing trap...");
+		// calls function which resolves the trap and provides a message about the trap (if player is alive)
+
+	} else if (eventResult === "merchant") {
+		console.log("Constructing merchant...");
+
+	} else if (eventResult === "wizard") {
+		console.log("Constructing wizard...");
+
+
+	}
+
+}

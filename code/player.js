@@ -152,16 +152,23 @@ function addExperience() {
             	var tileVisited = true; 
             }
             console.log("tileIDs visited: " + player.visitedTiles);
-            var eventResult = defineEvent(terrainType); //calls function to determine which event happens to player based on terrain type and day/night
+            var eventResult = defineEvent(terrainType); //calls function to determine which generic event happens to player based on terrain type and day/night
             console.log("event is: " + eventResult);
-            if (eventResult !== "nothing"){ // POSSIBLY CALL DETAILED EVENT CONTSTURCTOR (how many enemies, player level, luck, etc.)
-            	eventIntro(eventResult, terrainType);
-            }
-
+            resolveEvent(eventResult, terrainType); //calls function to determine what happens further with the event
             //start resolving the event();
             //update stats();
-            handleBonus(tileID, tileHasBonus, bonusType);
-            turnManager.nextTurn();
+            
+            var bonusHandlingResult = handleBonus(tileID, tileHasBonus, bonusType);
+            if (bonusHandlingResult) {
+            	return true
+            } else {
+            	return false
+
+            } 
+
+
+
+            turnManager.nextTurn(); // if player alive 
             //endTurn();
 
         } else if (player.position === tileID + 1 && player.y === TileCoordinateVert){
@@ -177,11 +184,21 @@ function addExperience() {
             console.log("tileIDs visited: " + player.visitedTiles);
             var eventResult = defineEvent(terrainType); //calls function to determine which event happens to player based on terrain type and day/night
             console.log("event is: " + eventResult);
-            if (eventResult !== "nothing"){
+            resolveEvent(eventResult, terrainType);
+
+            /* if (eventResult !== "nothing"){
             	eventIntro(eventResult, terrainType);
             }
+            */
 
-            handleBonus(tileID, tileHasBonus, bonusType);
+    		var bonusHandlingResult = handleBonus(tileID, tileHasBonus, bonusType);
+            if (bonusHandlingResult) {
+            	return true
+            } else {
+            	return false
+
+            } 
+         
             turnManager.nextTurn();
 
         } else if (player.position === tileID - mapMaxWidth){
@@ -197,11 +214,17 @@ function addExperience() {
             console.log("tileIDs visited: " + player.visitedTiles);
             var eventResult = defineEvent(terrainType); //calls function to determine which event happens to player based on terrain type and day/night
             console.log("event is: " + eventResult);
-            if (eventResult !== "nothing"){
-            	eventIntro(eventResult, terrainType);
-            }
+            resolveEvent(eventResult, terrainType);
 
-            handleBonus(tileID, tileHasBonus, bonusType);
+            var bonusHandlingResult = handleBonus(tileID, tileHasBonus, bonusType);
+            if (bonusHandlingResult) {
+            	return true
+            } else {
+            	return false
+
+            } 
+
+
             turnManager.nextTurn();
 
         } else if (player.position === tileID + mapMaxWidth){
@@ -217,12 +240,16 @@ function addExperience() {
             console.log("tileIDs visited: " + player.visitedTiles);
             var eventResult = defineEvent(terrainType); //calls function to determine which event happens to player based on terrain type and day/night
             console.log("event is: " + eventResult);
-            if (eventResult !== "nothing"){
-            	eventIntro(eventResult, terrainType);
-            }
+            resolveEvent(eventResult, terrainType);
 
+           var bonusHandlingResult = handleBonus(tileID, tileHasBonus, bonusType);
+            if (bonusHandlingResult) {
+            	return true
+            } else {
+            	return false
 
-            handleBonus(tileID, tileHasBonus, bonusType);
+            } 
+
             turnManager.nextTurn();
         } 
     }
@@ -235,8 +262,9 @@ var handleBonus = function(tileID, tileHasBonus, bonusType){ //to be launched af
         $('#bonus'+tileID).remove();
         console.log(bonusType + " collected!");
         //update player stats
-    }else {
-    	return false;
+        return true // this returns true/false back to parent function player.move() That function in its turn will return true/false to Tile in order to update tile property.
+    } else {
+    	return false
     } 
 };
 

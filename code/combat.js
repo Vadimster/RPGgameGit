@@ -31,3 +31,13 @@ var playerRetreats = function(){
 
 
 };
+
+
+var testFunction = function(){
+  alert('Works!');
+
+};
+
+$("#combat-dialog-battlefield").click(function(event){
+    testFunction();
+});

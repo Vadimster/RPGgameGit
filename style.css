@@ -29,11 +29,11 @@
     position: relative;
     top: 15px;
     border: 1px solid black;
-    width: 1215px;
-    height: 500px;
+    width: 1200px;
+    height: 540px;
     text-align: center;
-    overflow: auto;
-    overflow-y: scroll;
+    /* overflow: auto; */
+    /* overflow-y: scroll; */
 
 }
 
@@ -165,6 +165,22 @@
   margin-left: -10px;
   margin-bottom: 0px;
 }
+
+#combat-dialog-eventslog {
+  width: 550px;
+  height: 100px;
+  border: yellow solid 1px;
+  margin: 0 auto;
+  overflow-y: scroll;
+}
+
+#combat-dialog-battlefield {
+  width: 200px;
+  height: 150px;
+  border: red solid 1px;
+  margin-top: 120px;
+}
+
 
 #dialog-background {
   position: absolute;

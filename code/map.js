@@ -68,7 +68,13 @@ var Tile = function(TileCoordinateHor, TileCoordinateVert, tileNumericID){
       
 
     this.initiateEvent = function(mapMaxWidth){  //TILE IS CLICKED
-       player.move(tileID, visitCount, terrainType, tileHasBonus, bonusType, x, y, mapMaxWidth); //Since I do not know how to return back to this Tile, I pass important info as arguments to an external function.
+       bonusCollected = player.move(tileID, visitCount, terrainType, tileHasBonus, bonusType, x, y, mapMaxWidth); //Since I do not know how to return back to this Tile, I pass important info as arguments to an external function.
+       
+       if (bonusCollected){ // result of bonus handling procedure. If bonus was collected, it is removed. 
+            tileHasBonus = false;
+
+       }
+
        visitCount++; // this will update the counted whether the move is possible or not => on EVERY click. Can I add moving logic here and possible save player coordinates by addressing player. object properties directly?
 
     };
@@ -77,7 +83,7 @@ var Tile = function(TileCoordinateHor, TileCoordinateVert, tileNumericID){
 var Map = new function(){
 
     var tileBox = [];
-    var mapMaxHeight = 8;
+    var mapMaxHeight = 9;
     var mapMaxWidth = 20;
     var firstTileID = 1; //ID of first tile on map, tileID to be used for div ID later on.
 
