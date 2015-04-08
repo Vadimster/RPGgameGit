@@ -1,7 +1,11 @@
 
 var playerFights = function(terrainType){
 	alert("Player fights in " + terrainType + "  Day: " + turnManager.day);
-	$('#combatPage')
+	
+  var combatDialogBackgroundURL = "img/combat/background/" + terrainType + ".jpg"; 
+  $('#combat-dialog-background').css("background-image", "url(" + combatDialogBackgroundURL + ")");
+
+  $('#combatPage')
   			.dialog(
       			{buttons: 
          			{'Close!' : function(){
@@ -12,8 +16,8 @@ var playerFights = function(terrainType){
 	   		draggable: false,
        		resizable: false,
        		modal: true,
-      		width: 1000,
-       		height: 650,
+      		width: 1020,
+       		height: 730,
        		closeOnEscape: false,
        		dialogClass: "no-close"
        		//position: ["right", "center"]

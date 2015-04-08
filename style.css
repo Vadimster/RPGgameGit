@@ -150,19 +150,20 @@
 
 #combatPage { 
  display: none;
- width: 900px;
+ width: 999px;
  height: 600px;
 }
 
 #combat-dialog-background {
   position: absolute;
+  background-repeat: no-repeat;
   /* background-image: url(img/messages/encounter_dialogue_background_400x500.png);
-  background-repeat: no-repeat; */
-  background-color: #F0F0F0;
-  width: 1000px;
-  height: 650px;
-  margin-left: -20px;
-  margin-top: -120px; 
+  background-repeat: no-repeat; 
+  background-color: #F0F0F0; */
+  width: 999px;
+  height: 600px; 
+  margin-left: -10px;
+  margin-bottom: 0px;
 }
 
 #dialog-background {
