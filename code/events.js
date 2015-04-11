@@ -221,37 +221,43 @@ function defineEvent(terrainType){ // decides what player encounters on the targ
 }
 
 
-function resolveEvent(eventResult, terrainType){
+function resolveEvent(eventResult, terrainType){ //prepares events based on what player encountered at defineEvent();
 
 	if (eventResult === "monster" && terrainType === "swamp") {
 
 		if (turnManager.day) {
-			var swamp = []; //define who lives in biome at day - populate with objects
-				console.log("Constructing day swamp mob..."); //get a mob randomly, rewrite Enemy object with new stats (both predefined and dynamically generated)
+			var swamp = [swampMonster, giantTode, swampBugs, mossMan, swampDemon, swampThing, swampSpirit]; //define who lives in biome at day - populate with objects
+			var enemy = swamp[Math.floor(Math.random()*swamp.length)];
+			console.log("Constructing day swamp mob... The mob is " + enemy.name); //get a mob randomly, rewrite Enemy object with new stats (both predefined and dynamically generated)
 
 		} else {
-			var swamp = []; //define who lives in biome at night
-			console.log("Constructing night swamp mob...");
+			var swamp = [swampMonster, zombie, swampBugs, mossMan, swampDemon, swampThing, swampSpirit]; //define who lives in biome at night
+			var enemy = swamp[Math.floor(Math.random()*swamp.length)];
+			console.log("Constructing night swamp mob... The mob is " + enemy.name);
 			}
 
 	} else if (eventResult === "monster" && terrainType === "hills") {
 
 		if (turnManager.day) {
-			var hills = []; //define who lives in biome at day
-			console.log("Constructing day hills mob...");
+			var hills = [dwarf, masterDwarf, goblin, ogre, dwarfConjuror, sceletons, giantSpider]; //define who lives in biome at day
+			var enemy = hills[Math.floor(Math.random()*hills.length)];
+			console.log("Constructing day hills mob... The mob is " + enemy.name);
 		} else {
-			var hills = []; //define who lives in biome at night
-			console.log("Constructing night hills mob...");
+			var hills = [dwarf, masterDwarf, goblin, ogre, dwarfConjuror, sceletons, giantSpider]; //define who lives in biome at night
+			var enemy = hills[Math.floor(Math.random()*hills.length)];
+			console.log("Constructing night hills mob... The mob is " + enemy.name);
 			}
 
 	} else if (eventResult === "monster" && terrainType === "mountains") {
 
 		if (turnManager.day) {
-			var mountains = []; //define who lives in biome at day
-			console.log("Constructing day mountains mob...");
+			var mountains = [unicorn, fireLizard, iceDemon, battleMage, orks]; //define who lives in biome at day
+			var enemy = mountains[Math.floor(Math.random()*mountains.length)];
+			console.log("Constructing day mountains mob... The mob is " + enemy.name);
 		} else {
-			var mountains = []; //define who lives in biome at night
-			console.log("Constructing night mountains mob...");
+			var mountains = [undeadWarriors, orks, necromancer, chimera, fireLizard]; //define who lives in biome at night
+			var enemy = mountains[Math.floor(Math.random()*mountains.length)];
+			console.log("Constructing night mountains mob... The mob is " + enemy.name);
 			}
 	
 	} else if (eventResult === "peasants") {
@@ -265,10 +271,12 @@ function resolveEvent(eventResult, terrainType){
 	} else if (eventResult === "animals") {
 		if (turnManager.day) {
 			//define who lives in biome at day
-			var forest = [];
+			var forest = [wolves, bear, crazySquirrels, snakes, wildBoar, treeFairy];
+			var enemy = forest[Math.floor(Math.random()*forest.length)];
 			console.log("Constructing day animlas...");
 		} else {
-			var forest = []; //define who lives in biome at nigh
+			var forest = [snakes, wolves, bear, wildBoar, giantSpider]; //define who lives in biome at nigh
+			var enemy = forest[Math.floor(Math.random()*forest.length)];
 			console.log("Constructing night animals...");
 		}
 		
@@ -278,15 +286,13 @@ function resolveEvent(eventResult, terrainType){
 
 	} else if (eventResult === "trap") {
 			console.log("Constructing trap...");
-		// calls function which resolves the trap and provides a message about the trap (if player is alive)
+		// check luck etc. to check if trap is avoided
+		// if unlucky call function which resolves the trap and provides a message about the trap (if player is alive)
 
 	} else if (eventResult === "merchant") {
 		console.log("Constructing merchant...");
 
 	} else if (eventResult === "wizard") {
 		console.log("Constructing wizard...");
-
-
 	}
-
 }

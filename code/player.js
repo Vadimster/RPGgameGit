@@ -141,6 +141,9 @@ function addExperience() {
         alert('Move check: \n\nplayer position: ' + player.position + '\nplayer Y coordinate: ' +player.y + '\nplayer X coordinate: ' + player.x + ' \n\n Tile info: \n\n TileID: ' + tileID + '\n Tile X coordinate: ' + TileCoordinateHor + '\n Tile Y coordinate: ' + TileCoordinateVert + '\n Terrain: ' + terrainType + '\n Tile has bonus: ' + tileHasBonus + '\n Bonus type: ' + bonusType + '\n Times visited: ' + visitCount);
 
         if (player.position === tileID - 1 && player.y === TileCoordinateVert){
+            
+            turnManager.nextTurn();
+
             $('#player').detach().appendTo($('#'+tileID));
             player.position = tileID;
             player.y = TileCoordinateVert;
@@ -155,10 +158,12 @@ function addExperience() {
             var eventResult = defineEvent(terrainType); //calls function to determine which generic event happens to player based on terrain type and day/night
             console.log("event is: " + eventResult);
             resolveEvent(eventResult, terrainType); //calls function to determine what happens further with the event
+            
             //start resolving the event();
             //update stats();
             
-            var bonusHandlingResult = handleBonus(tileID, tileHasBonus, bonusType);
+
+            var bonusHandlingResult = handleBonus(tileID, tileHasBonus, bonusType); //whether player collects bonus or not (after move, combat, etc.). Function returns response back to the tile in order to update bonus property.
             if (bonusHandlingResult) {
             	return true
             } else {
@@ -168,10 +173,13 @@ function addExperience() {
 
 
 
-            turnManager.nextTurn(); // if player alive 
+             // if player alive 
             //endTurn();
 
         } else if (player.position === tileID + 1 && player.y === TileCoordinateVert){
+            
+        	turnManager.nextTurn();
+
             $('#player').detach().appendTo($('#'+tileID));
             player.position = tileID;
             player.y = TileCoordinateVert;
@@ -191,7 +199,7 @@ function addExperience() {
             }
             */
 
-    		var bonusHandlingResult = handleBonus(tileID, tileHasBonus, bonusType);
+    		var bonusHandlingResult = handleBonus(tileID, tileHasBonus, bonusType); 
             if (bonusHandlingResult) {
             	return true
             } else {
@@ -199,9 +207,11 @@ function addExperience() {
 
             } 
          
-            turnManager.nextTurn();
 
         } else if (player.position === tileID - mapMaxWidth){
+           
+           turnManager.nextTurn();
+
             $('#player').detach().appendTo($('#'+tileID));
             player.position = tileID;
             player.y = TileCoordinateVert;
@@ -225,9 +235,11 @@ function addExperience() {
             } 
 
 
-            turnManager.nextTurn();
 
         } else if (player.position === tileID + mapMaxWidth){
+            
+			turnManager.nextTurn();
+
             $('#player').detach().appendTo($('#'+tileID));
             player.position = tileID;
             player.y = TileCoordinateVert;
@@ -249,8 +261,6 @@ function addExperience() {
             	return false
 
             } 
-
-            turnManager.nextTurn();
         } 
     }
 
