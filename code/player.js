@@ -278,6 +278,11 @@ var handleBonus = function(tileID, tileHasBonus, bonusType){ //to be launched af
         	console.log("gold to be added: " + amount);
         	gold.increase(amount);
 
+        } else if (bonusType === 'experience'){
+        	var baseAmount = 10;
+        	var amount = baseAmount * player.level;
+        	console.log("experience to be added: " + amount);
+        	experience.increase(amount);
         }
 
         //update player stats
@@ -313,6 +318,28 @@ var gold = {
 		$('#goldCounter').html(player.gold);
 	}
 };
+
+
+var experience = {
+	id: "experience",
+	counterID: "experienceCounter", //displays exp value in the game interface
+	image: null, //path to .png
+		
+	increase: function (amount) {
+	 	console.log("player experience before transaction: " + player.experience);
+		player.experience += amount;
+		console.log("player experience after transaction: " + player.experience);
+		$("#addExperience").get(0).play();//sound for experience gain
+		$('#experienceCounter').html(player.experience);
+	},
+
+	decrease: function (amount){
+	 	//just in case I need to decrease player exp value
+	}
+};
+
+
+
 
 var sword = {
 	objectName: "sword", //also divID for jQuery
