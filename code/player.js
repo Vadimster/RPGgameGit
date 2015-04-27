@@ -275,14 +275,14 @@ var handleBonus = function(tileID, tileHasBonus, bonusType){ //to be launched af
         if(bonusType === 'gold'){
         	var baseAmount = 10;
         	var amount = baseAmount * player.luck * player.level;
-        	console.log("gold to be added: " + amount);
         	gold.increase(amount);
+        	alert("You have collected " + amount + " gold!");
 
         } else if (bonusType === 'experience'){
         	var baseAmount = 10;
         	var amount = baseAmount * player.level;
-        	console.log("experience to be added: " + amount);
         	experience.increase(amount);
+        	alert("You have collected " + amount + " experience!");
         }
 
         //update player stats
