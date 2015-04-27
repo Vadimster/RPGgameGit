@@ -70,8 +70,8 @@ var player = {
 		minDefense: 0,
 		maxDefense: 10,
 		
-	luck: 0,
-		minLuck: 0,
+	luck: 2,
+		minLuck: 1,
 		maxLuck: 5,
 	
 	experience: 0,
@@ -126,14 +126,14 @@ function addExperience() {
 };	
 */
 
-	level: 1,
+	level: 3,
 	// METHOD: level up. Add level threshholds
 
 
 	canRetreat: true, //can retret before battle screen loads
 
 	visitedTiles: [],
-    position: 1,
+    position: 1, //starts on the first tile
     y: 0,
     x: 0,
 
@@ -271,6 +271,15 @@ var handleBonus = function(tileID, tileHasBonus, bonusType){ //to be launched af
     if(tileHasBonus){
         $('#bonus'+tileID).remove();
         console.log(bonusType + " collected!");
+
+        if(bonusType === 'gold'){
+        	var baseAmount = 10;
+        	var amount = baseAmount * player.luck * player.level;
+        	console.log("gold to be added: " + amount);
+        	gold.increase(amount);
+
+        }
+
         //update player stats
         return true // this returns true/false back to parent function player.move() That function in its turn will return true/false to Tile in order to update tile property.
     } else {
@@ -285,9 +294,9 @@ var gold = {
 	image: null, //path to .png
 		
 	increase: function (amount) {
-	 	alert("player gold before transaction: " + player.gold);
+	 	console.log("player gold before transaction: " + player.gold);
 		player.gold += amount;
-		alert("player gold after transaction: " + player.gold);
+		console.log("player gold after transaction: " + player.gold);
 			if (amount > 1) {
 				$("#coinsfound").get(0).play();
 				} else {

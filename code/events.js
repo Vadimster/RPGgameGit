@@ -270,24 +270,27 @@ function resolveEvent(eventResult, terrainType){ //prepares events based on what
 
 	} else if (eventResult === "animals") {
 		if (turnManager.day) {
-			//define who lives in biome at day
 			var forest = [wolves, bear, crazySquirrels, snakes, wildBoar, treeFairy];
 			var enemy = forest[Math.floor(Math.random()*forest.length)];
-			console.log("Constructing day animlas...");
+			console.log("Constructing day animlas... The mob is " + enemy.name);
 		} else {
 			var forest = [snakes, wolves, bear, wildBoar, giantSpider]; //define who lives in biome at nigh
 			var enemy = forest[Math.floor(Math.random()*forest.length)];
-			console.log("Constructing night animals...");
+			console.log("Constructing night animals... The mob is " + enemy.name);
 		}
 		
 	} else if (eventResult === "chest") {
 			console.log("Constructing chest...");
 		//constructs a "Do you want to opena chest message - redirect to messages.js"
 
-	} else if (eventResult === "trap") {
-			console.log("Constructing trap...");
-		// check luck etc. to check if trap is avoided
-		// if unlucky call function which resolves the trap and provides a message about the trap (if player is alive)
+	} else if (eventResult === "trap") { 		// check luck etc. to check if trap is avoided. Display a message that you have noticed a trap.
+			if (terrainType === "swamp") {
+				console.log("Constructing swamp trap...");
+			} else if (terrainType === "mountains") {
+				console.log("Constructing mountains trap...");
+			}
+
+		// if unlucky call function which resolves the trap using the terrainType argument and provides a message about the trap (if player is alive)
 
 	} else if (eventResult === "merchant") {
 		console.log("Constructing merchant...");
