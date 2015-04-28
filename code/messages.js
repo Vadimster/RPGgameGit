@@ -7,6 +7,33 @@ url: "img/monsters/dragon.png"
 
 
 
+getBonusCollectedMessage = function(bonusType, amount){
+        	$("#dialog-header").text("Wonderful discovery!"); //calling a function which will generate event title using the argument   
+		  	$('#dialog-image').css("background-image", "url('img/messages/" + bonusType + "bonus.png')");  // update image based on mob generated
+  			$("#dialog-event-intro").text("You are now " + amount + " gold coins richer. Spend them wisely!");  
+
+        	$('#eventIntro')//making a global div to be created dynamically instead of describing every dialogue in html
+    //.attr('title','This is a title')
+    //.text('test text') //places text in div
+    		.dialog(
+      			{buttons: 
+         			{'Nice!' : function(){
+           				$(this).dialog('close'); 
+               			}
+       				},
+	   		draggable: false,
+       		resizable: false,
+       		modal: true,
+      		width: 400,
+       		height: 620,
+       		closeOnEscape: false,
+       		dialogClass: "no-close"
+       		//position: ["right", "center"]
+       		}
+       	); //creates the dialog
+}
+
+
 eventIntro = function(eventResult, terrainType){ //event alert constructor
 
 	
