@@ -38,14 +38,6 @@ JS
 document.getElementById('c').onclick = createCounter();
 */
 
-
-
-/* KEY VARIABLES */
-
-
-var bored = 0; // used for slightly different event description if nothing happens 2 turns in a row. Reset to 0 by subsequent meaningful event.
-
-
 /* GAME OBJECTS */
 
 
@@ -53,8 +45,11 @@ var player = {
 	id: "player",
 	image: null, // specify path to .png which is used for div (player icon)
 	alive: true,
+	canRetreat: true, //can retret before battle screen loads
+	bored: false, // used for slightly different event description if nothing happens 2 turns in a row. Reset to 0 by subsequent meaningful event.
+
 		
-	gold: 0,
+	gold: 10,
 		minGold: 0,
 		maxGold: null,
 		
@@ -74,14 +69,17 @@ var player = {
 		minLuck: 1,
 		maxLuck: 5,
 	
-	experience: 0,
-	// METHOD: add experience. triggers level-up if threshold is reached
+	experience: 110,
+		minExperience: 0,
+		maxExperience: null,
+		expMult: 0.05, //multiplicator to calculate experience requirement for next level-up  
 
-	level: 0,
+	level: 1,
+		minLevel: 0,
+		maxLevel: null,
 	// METHOD: level up. Add level threshholds
 
 
-	canRetreat: true, //can retret before battle screen loads
 
 	visitedTiles: [],
     position: 1, //starts on the first tile
@@ -230,12 +228,12 @@ var handleBonus = function(tileID, tileHasBonus, bonusType){ //to be launched af
 
         } else if (bonusType === 'experience'){
         	var baseAmount = 10;
-        	var amount = baseAmount * player.level;
+        	var amount =  baseAmount * player.level;
+        	$("#addExperience").get(0).play();//sound for experience gain
         	experience.increase(amount);
-        	alert("You have collected " + amount + " experience!");
+        	//getBonusCollectedMessage(bonusType, amount);
         }
 
-        //update player stats
         return true // this returns true/false back to parent function player.move() That function in its turn will return true/false to Tile in order to update tile property.
     } else {
     	return false
@@ -265,7 +263,7 @@ var gold = {
 		player.gold -= amount;
 		alert("player gold after transaction: " + player.gold);
 		$("#sell").get(0).play();
-		$('#goldCounter').html(player.gold);
+		$('#goldCounter').html(player.gold); 
 	}
 };
 
@@ -275,13 +273,53 @@ var experience = {
 	counterID: "experienceCounter", //displays exp value in the game interface
 	image: null, //path to .png
 		
+    getPlayerNextLevel: function(){
+      var a = player.level+1;
+        return a;
+    },
+    
+    lvlUpThreshold: function(){ 
+        var b = Math.pow((player.level+1),2)/player.expMult; //defines experience requirement for next level-up
+        return b;
+    },
+
 	increase: function (amount) {
-	 	console.log("player experience before transaction: " + player.experience);
-		player.experience += amount;
-		console.log("player experience after transaction: " + player.experience);
-		$("#addExperience").get(0).play();//sound for experience gain
-		$('#experienceCounter').html(player.experience);
-	},
+        console.log('Player starting level for this test: ' + player.level);
+		console.log("for next level (" + experience.getPlayerNextLevel() + ") you need " + experience.lvlUpThreshold() + " experience.");
+
+        console.log('  Step 1 - player experience before update: ' + player.experience);
+        console.log('  Step 2 - amount of exp to add: ' + amount);
+        player.experience += amount;
+        console.log('  Step 3 - player experience after update: ' + player.experience);
+        
+        if (player.experience >= experience.lvlUpThreshold()){
+            player.experience -= experience.lvlUpThreshold()
+            console.log('level up!');
+            console.log('  Step 4 - exp cost adjusted for level up and is now ' + player.experience);
+            player.level++; //CALL PROPER LeVel UP METHOD HERE INSTEAD (webpage update + modal dialogue)
+            console.log('Player level is now: ' + player.level);
+          
+            console.log("for next level (" + experience.getPlayerNextLevel() + ") you need " + experience.lvlUpThreshold() + " experience. You have " + player.experience + ' experience.');
+             
+            if (player.experience >= experience.lvlUpThreshold()){
+                console.log('player experience after update is sufficient for next level up!');
+                
+                experience.increase(0);//recursion
+            
+            } else {
+                console.log('player experience after update is NOT sufficient for next level up.');
+                $('#experienceCounter').html(player.experience);
+                return;
+            }
+        
+        } else {
+            console.log('player experience carried over: ' + player.experience);
+            $('#experienceCounter').html(player.experience);
+            return;
+        }
+           
+        
+    },
 
 	decrease: function (amount){
 	 	//just in case I need to decrease player exp value
