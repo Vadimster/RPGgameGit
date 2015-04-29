@@ -54,7 +54,7 @@ var player = {
 	image: null, // specify path to .png which is used for div (player icon)
 	alive: true,
 		
-	gold: 100,
+	gold: 0,
 		minGold: 0,
 		maxGold: null,
 		
@@ -70,63 +70,14 @@ var player = {
 		minDefense: 0,
 		maxDefense: 10,
 		
-	luck: 2,
+	luck: 0,
 		minLuck: 1,
 		maxLuck: 5,
 	
 	experience: 0,
 	// METHOD: add experience. triggers level-up if threshold is reached
 
-
-/* OLD CODE
-function addExperience() { 
-		playerExperience = playerExperience + experienceToAdd;
-		updateExperience();
-		if (playerExperience >= level1Req && playerLevel < 1) { 
-		console.log("Welcome to LVL1!");
-		levelUpSkill();
-		console.log(playerLevel);
-		} else if (playerExperience >= level2Req && playerLevel < 2) {
-		console.log("Welcome to LVL2!");
-		levelUpGold();
-		console.log(playerLevel);
-		} else if (playerExperience >= level3Req && playerLevel < 3) {
-		console.log("Welcome to LVL3!");
-		levelUpSkill();
-		console.log(playerLevel);
-		} else if (playerExperience >= level4Req && playerLevel < 4) {
-		console.log("Welcome to LVL4!");
-		levelUpGold();
-		console.log(playerLevel);
-		} else if (playerExperience >= level5Req && playerLevel < 5) {
-		console.log("Welcome to LVL5!");
-		levelUpSkill();
-		console.log(playerLevel);
-		} else if (playerExperience >= level6Req && playerLevel < 6) {
-		console.log("Welcome to LVL6!");
-		levelUpGold();
-		console.log(playerLevel);
-		} else if (playerExperience >= level7Req && playerLevel < 7) {
-		console.log("Welcome to LVL7!");
-		levelUpSkill();
-		console.log(playerLevel);
-		} else if (playerExperience >= level8Req && playerLevel < 8) {
-		console.log("Welcome to LVL8!");
-		levelUpGold();
-		console.log(playerLevel);
-		} else if (playerExperience >= level9Req && playerLevel < 9) {
-		console.log("Welcome to LVL9!");
-		levelUpSkill();
-		console.log(playerLevel);
-		} else if (playerExperience >= level10Req && playerLevel < 10) {
-		console.log("Welcome to LVL10");
-		levelUpGold();
-		console.log(playerLevel);
-		}	
-};	
-*/
-
-	level: 3,
+	level: 0,
 	// METHOD: level up. Add level threshholds
 
 
@@ -273,8 +224,7 @@ var handleBonus = function(tileID, tileHasBonus, bonusType){ //to be launched af
         console.log(bonusType + " collected!");
 
         if(bonusType === 'gold'){
-        	var baseAmount = 10;
-        	var amount = baseAmount * player.luck * player.level;
+        	var amount = 10 + (15 * player.level) + (5 * player.luck); 
         	gold.increase(amount);
         	getBonusCollectedMessage(bonusType, amount);
 
