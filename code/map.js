@@ -1,5 +1,5 @@
 
-
+ 
 
 
 var Tile = function(TileCoordinateHor, TileCoordinateVert, tileNumericID){
@@ -110,7 +110,7 @@ var Map = new function(){
                 });
             });
         $('#map-content').children().last().append('<img id="dragon" src="img/maptiles/dragon.png" />'); //adds dragon to the last tile in the map
-        $('#map-content').children().first().append('<img id="player" src="img/maptiles/player.png" />'); //adds player to the first tile in the map
+        $('#map-content').children().first().append('<img id="player" src="'+player.image+'" />'); //adds player to the first tile in the map
     };       
 };
 
@@ -121,6 +121,7 @@ $( document ).ready(function() {
     $('#healthCounter').html(player.health);
     $('#goldCounter').html(player.gold);
     $('#experienceCounter').html(player.experience);
+    $('#experienceNextLevel').html(experience.lvlUpThreshold);                                             
     $('#attackCounter').html(player.attack);
     $('#defenseCounter').html(player.defense);
     $('#luckCounter').html(player.luck);
@@ -129,6 +130,7 @@ $( document ).ready(function() {
     //NEED TO HAVE AN INIT FUNCTION, WHICH CREATES MAP AND PUTS STARTING VALUES IN THE INTERFACE. THIS WILL BE USED FOR GAMEOVER TOO
 });
 
+   
 
 
 

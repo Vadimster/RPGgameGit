@@ -6,11 +6,154 @@ url: "img/monsters/dragon.png"
 };
 
 
+getLevelUpMessage = function(){
+        	console.log('getLevelUpMessage() launched');
+
+        	$("#dialog-header").text("Welcome to level " + player.level); //calling a function which will generate event title using the argument   
+		  	$('#dialog-image').css("background-image", "url('img/statsicons/level.png')");  // update image based on mob generated
+  			$("#dialog-event-intro").text("You can now improve your skills in one area. Which one shall it be?");  
+
+
+
+    		if (player.attack === player.maxAttack && player.defense < player.maxDefense){
+
+    			$("#dialog-player-options").text("Your attack skill seems to be maxed out at the moment and cannot be improved.");         
+
+				$('#eventIntro')//making a global div to be created dynamically instead of describing every dialogue in html
+	    		.dialog(
+	      			{buttons: 
+	         			{
+	         			 '+1 Defense' :function(){
+	            			$(this).dialog('close');
+	            			player.addDefense(1);
+	 
+	               		},
+	               		'Nothing' :function(){
+	            			$(this).dialog('close');
+	 
+	               		},
+	       			},
+		   		draggable: false,
+	       		resizable: false,
+	       		modal: true,
+	      		width: 400,
+	       		height: 620,
+	       		closeOnEscape: false,
+	       		dialogClass: "no-close"
+	       		//position: ["right", "center"]
+	       		}
+	       	); //creates the dialog
+
+	   	} else if (player.defense === player.maxDefense && player.attack < player.maxAttack){
+
+    			$("#dialog-player-options").text("Your defense skill seems to be maxed out at the moment and cannot be improved.");         
+
+				$('#eventIntro')//making a global div to be created dynamically instead of describing every dialogue in html
+	    		.dialog(
+	      			{buttons: 
+	         			{
+	         			 '+1 Attack' :function(){
+	            			$(this).dialog('close');
+	            			player.addAttack(1);
+	 
+	               		},
+	               		'Nothing' :function(){
+	            			$(this).dialog('close');
+	 
+	               		},
+	       			},
+		   		draggable: false,
+	       		resizable: false,
+	       		modal: true,
+	      		width: 400,
+	       		height: 620,
+	       		closeOnEscape: false,
+	       		dialogClass: "no-close"
+	       		//position: ["right", "center"]
+	       		}
+	       	); //creates the dialog
+
+	   	} else if (player.defense === player.maxDefense && player.attack === player.maxAttack){
+
+ 			$("#dialog-event-intro").text("Oh, you must be Vadim? How is testing going? Just to let you know you see this message because Attack and Defense skills appear to be at max, there is nothing to improve at the moment");  
+
+			$('#eventIntro')//making a global div to be created dynamically instead of describing every dialogue in html
+	    		.dialog(
+	      			{buttons: 
+	         			{
+	         			 'Yeah, I know I am cool' :function(){
+	            			$(this).dialog('close');
+	 
+	               		},
+	       			},
+		   		draggable: false,
+	       		resizable: false,
+	       		modal: true,
+	      		width: 400,
+	       		height: 620,
+	       		closeOnEscape: false,
+	       		dialogClass: "no-close"
+	       		//position: ["right", "center"]
+	       		}
+	       	); //creates the dialog
+	   	
+	   	} else {
+
+				$('#eventIntro')//making a global div to be created dynamically instead of describing every dialogue in html
+	    		.dialog(
+	      			{buttons: 
+	         			{
+	         			'+1 Attack' :function(){
+	            			$(this).dialog('close');
+	            			player.addAttack(1);
+	         			},   			 
+	         			 '+1 Defense' :function(){
+	            			$(this).dialog('close');
+	            			player.addDefense(1);	 
+	               		},
+	               		'Nothing' :function(){
+	            			$(this).dialog('close');
+	 
+	               		},
+	       			},
+		   		draggable: false,
+	       		resizable: false,
+	       		modal: true,
+	      		width: 400,
+	       		height: 620,
+	       		closeOnEscape: false,
+	       		dialogClass: "no-close"
+	       		//position: ["right", "center"]
+	       		}
+	       	); //creates the dialog
+
+
+
+	   	}
+
+			
+
+
+
+
+
+}
+
+
 
 getBonusCollectedMessage = function(bonusType, amount){
         	$("#dialog-header").text("Wonderful discovery!"); //calling a function which will generate event title using the argument   
 		  	$('#dialog-image').css("background-image", "url('img/messages/" + bonusType + "bonus.png')");  // update image based on mob generated
-  			$("#dialog-event-intro").text("You are now " + amount + " gold coins richer. Spend them wisely!");  
+  			
+		  	if (bonusType === 'gold'){
+  				$("#goldBonus").get(0).play();
+  				$("#dialog-event-intro").text("You are now " + amount + " gold coins richer. Spend them wisely!");  
+
+		  	} else if (bonusType === 'experience'){
+  				$("#addExperience").get(0).play();
+  				$("#dialog-event-intro").text("You have found a pile of old books. Truly, knowledge is power - you gain " + amount + " experience!");  
+		  	}
+
 
         	$('#eventIntro')//making a global div to be created dynamically instead of describing every dialogue in html
     //.attr('title','This is a title')
@@ -18,9 +161,15 @@ getBonusCollectedMessage = function(bonusType, amount){
     		.dialog(
       			{buttons: 
          			{'Nice!' : function(){
-           				$(this).dialog('close'); 
-               			}
-       				},
+           				$(this).dialog('close');
+           				if (bonusType === 'experience'){
+ 							experience.increase(amount);
+           				} else if (bonusType === 'gold'){
+        					gold.increase(amount);
+           				}				
+
+               		}
+       			},
 	   		draggable: false,
        		resizable: false,
        		modal: true,
