@@ -1,4 +1,44 @@
 
+/*
+
+var mod = { //tests work like this: threshold is created ADDING the modifiers (hence negative modifiers possible). Dice rolled to test against the threshold. Success if dice result is BELOW the threshold.
+
+    terrain: { //base values
+        grass: 2.5,
+        forest: 2.5,
+        swamp: 1.5,
+        hills: 2,
+        mountains: 2
+    },
+
+    time: { //modifier to be added
+    
+        day: 1,
+        night: 0
+    },
+    
+    player: {
+        
+        luck: 2
+
+    }
+
+};
+
+var results = [];
+
+for (i=0; i <100; i++ ) {
+    var roll = parseFloat((Math.random()*10).toFixed(2)); //player base roll will generate a number between 0 and 10 with 2 decimal points
+    var n = roll + parseFloat((mod.player.luck/2).toFixed(2)); // adding player related modifiers to base roll
+    var m = parseFloat(n.toFixed(2)) //final result after fixing JS decimal bug
+    results.push(m);
+}
+
+console.log(results.sort());
+
+*/
+
+
 var turnManager = {
 
 	turn: 1,

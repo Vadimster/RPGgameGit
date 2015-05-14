@@ -130,6 +130,20 @@ var player = {
             	var tileVisited = true; 
             }
             console.log("tileIDs visited: " + player.visitedTiles);
+
+            if (tileHasBonus) {
+                console.log('Tile has bonus. Will generate enemy');
+
+            } else {
+                console.log('Tile does not have bonus. Will generate event');
+
+
+            }
+
+
+            /*
+
+
             var eventResult = defineEvent(terrainType); //calls function to determine which generic event happens to player based on terrain type and day/night
             console.log("event is: " + eventResult);
             resolveEvent(eventResult, terrainType); //calls function to determine what happens further with the event
@@ -150,6 +164,8 @@ var player = {
 
              // if player alive 
             //endTurn();
+
+            */
 
         } else if (player.position === tileID + 1 && player.y === TileCoordinateVert){
             
@@ -269,9 +285,6 @@ var handleBonus = function(tileID, tileHasBonus, bonusType){ //to be launched af
 
 
 var gold = {
-	id: "gold",
-	counterID: "goldCounter", //displays amount in the game interface
-	image: null, //path to .png
 		
 	increase: function (amount) {
 	 	console.log("player gold before transaction: " + player.gold);
@@ -282,17 +295,34 @@ var gold = {
 				} else {
 					$("#onecoinfound").get(0).play();
 			}
-		$('#goldCounter').html(player.gold);
+		
+        var goldCoins = Math.round(parseInt((player.gold/1000)));
+        var a = player.gold % 1000;
+        var silverCoins = Math.round(parseInt((a/100)));
+        var copperCoins = a % 100 
+ 
+        $('#goldCoinCounter').html(goldCoins);
+        $('#silverCoinCounter').html(silverCoins);
+        $('#copperCoinCounter').html(copperCoins); 
 	},
 
 	decrease: function (amount){
-	 	alert("player gold before transaction: " + player.gold);
 		player.gold -= amount;
-		alert("player gold after transaction: " + player.gold);
 		$("#sell").get(0).play();
-		$('#goldCounter').html(player.gold); 
+
+        var goldCoins = Math.round(parseInt((player.gold/1000)));
+        var a = player.gold % 1000;
+        var silverCoins = Math.round(parseInt((a/100)));
+        var copperCoins = a % 100 
+ 
+        $('#goldCoinCounter').html(goldCoins);
+        $('#silverCoinCounter').html(silverCoins);
+        $('#copperCoinCounter').html(copperCoins); 
+
 	}
 };
+
+//gold.increase(7945); //FOR TESTING PURPOSES - gives gold straight away
 
 
 var experience = {
