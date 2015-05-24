@@ -1,9 +1,7 @@
 
-/*
+var mod = { //Modificators for various formulae
 
-var mod = { //tests work like this: threshold is created ADDING the modifiers (hence negative modifiers possible). Dice rolled to test against the threshold. Success if dice result is BELOW the threshold.
-
-    terrain: { //base values
+    terrain: { //base event values for calculaiton of favorable/nonfavorable outcome
         grass: 2.5,
         forest: 2.5,
         swamp: 1.5,
@@ -11,32 +9,24 @@ var mod = { //tests work like this: threshold is created ADDING the modifiers (h
         mountains: 2
     },
 
-    time: { //modifier to be added
+    time: {
     
         day: 1,
         night: 0
     },
     
-    player: {
-        
-        luck: 2
+    terrainNothing: { //base event for calculation of "nothing" outcome for non-favorable event. More dangerous tiles are likely to produce less chance of "nothing happens"
+        grass: 1.3,
+        forest: 1.2,
+        swamp: 1,
+        hills: 0.7,
+        mountains: 0.5
 
     }
 
 };
 
-var results = [];
 
-for (i=0; i <100; i++ ) {
-    var roll = parseFloat((Math.random()*10).toFixed(2)); //player base roll will generate a number between 0 and 10 with 2 decimal points
-    var n = roll + parseFloat((mod.player.luck/2).toFixed(2)); // adding player related modifiers to base roll
-    var m = parseFloat(n.toFixed(2)) //final result after fixing JS decimal bug
-    results.push(m);
-}
-
-console.log(results.sort());
-
-*/
 
 
 var turnManager = {
@@ -60,207 +50,137 @@ var turnManager = {
 };
 
 
-function defineEvent(terrainType){ // decides what player encounters on the target tile
-	var array = [1,2,3,4,5,6,7,8,9,10];
-	var random = array[Math.floor(Math.random()*array.length)];
+
+var createEvent = function(tileID, terrainType, tileHasBonus, bonusType){
+
+	if(turnManager.day){
+		var timeOfDay = 'day'; 
 	
-	if (terrainType === "grass"){
-		
-		if (turnManager.day) {
-			if (random < 5) { // 40%
-				var result = "peasants";
-				return result;
-			
-			} else if (random === 5){ // 10%
-				var result = "merchant";
-				return result;
-
-			} else if (random > 8){ // 20%
-				var result = "nothing";
-				return result;
-
-			} else if (random === 6 || 7 || 8){ //30%
-				var result = "chest";
-				return result;
-			}
-		} else { // if night
-			if (random < 6) { // 50%
-				var result = "robbers";
-				return result;
-			
-			} else if (random === 6){ // 10%
-				var result = "peasants";
-				return result;
-
-			} else if (random === 7){ // 10%
-				var result = "chest";
-				return result;
-
-			} else if (random > 7){ //30%
-				var result = "nothing";
-				return result;
-			}
-		}
-	
-	} else if (terrainType === 'forest'){
-
-		if (turnManager.day) {
-			if (random < 4) { // 30%
-				var result = "animals"; //
-				return result;
-			
-			} else if (random === 4){ // 10%
-				var result = "robbers";
-				return result;
-
-			} else if (random === 5 || 6 || 7){ // 30%
-				var result = "nothing";
-				return result;
-
-			} else if (random > 7){ //30%
-				var result = "chest";
-				return result;
-			}
-		
-		} else { // if night
-			if (random < 7) { // 60%
-				var result = "animals";
-				return result;
-			
-			} else if (random === 7){ // 10%
-				var result = "robbers";
-				return result;
-
-			} else if (random === 8){ // 10%
-				var result = "chest";
-				return result;
-
-			} else if (random > 8){ //20%
-				var result = "nothing";
-				return result;
-			}
-		}
-
-	} else if (terrainType === 'swamp'){
-
-		if (turnManager.day) {
-			if (random < 5) { // 40%
-				var result = "monster";
-				return result;
-			
-			} else if (random === 5 || 6){ // 20%
-				var result = "chest";
-				return result;
-
-			} else if (random === 7){ // 10%
-				var result = "trap";
-				return result;
-
-			} else if (random > 7){ //30%
-				var result = "nothing";
-				return result;
-			}
-		
-		} else { // if night
-			if (random < 7) { // 60%
-				var result = "monster";
-				return result;
-			
-			} else if (random === 7){ // 10%
-				var result = "nothing";
-				return result;
-
-			} else if (random === 8){ // 10%
-				var result = "chest";
-				return result;
-
-			} else if (random > 8){ //20%
-				var result = "trap";
-				return result;
-			}
-		}
-
-
-	} else if (terrainType === 'hills'){
-
-		if (turnManager.day) {
-			if (random < 6) { // 50%
-				var result = "monster";
-				return result;
-			
-			} else if (random === 6){ // 10%
-				var result = "wizard";
-				return result;
-
-			} else if (random === 7){ // 10%
-				var result = "nothing";
-				return result;
-
-			} else if (random > 7){ //30%
-				var result = "chest";
-				return result;
-			}
-		
-		} else { // if night
-			if (random < 8) { // 70%
-				var result = "monster";
-				return result;
-			
-			} else if (random === 8){ // 10%
-				var result = "nothing";
-				return result;
-
-			} else if (random === 9){ // 10%
-				var result = "chest";
-				return result;
-
-			} else if (random > 10){ //20%
-				var result = "wizard";
-				return result;
-			}
-		}
-
-
-	} else if (terrainType === 'mountains'){
-
-		if (turnManager.day) {
-			if (random < 7) { // 60%
-				var result = "monster";
-				return result;
-			
-			} else if (random === 7){ // 10%
-				var result = "wizard";
-				return result;
-
-			} else if (random === 8){ // 10%
-				var result = "nothing";
-				return result;
-
-			} else if (random > 8){ //20%
-				var result = "chest";
-				return result;
-			}
-		
-		} else { // if night
-			if (random < 9) { // 80%
-				var result = "monster";
-				return result;
-			
-			} else if (random === 9){ // 10%
-				var result = "trap";
-				return result;
-
-			} else if (random === 10){ // 10%
-				var result = "chest";
-				return result;
-			}
-		}	
-
+	} else {
+		var timeOfDay = 'night'; 
 	}
 
-}
+	if (tileHasBonus) {
+	    console.log('Tile has bonus. Will now create ' +timeOfDay+ ' enemy');
+	} else {
+	    console.log('Tile does not have bonus. Will now create ' +timeOfDay+' event');
+
+	    console.log('Detemining threshold for favorable event');
+
+			var favorableEventThreshold = parseFloat(
+				(mod.terrain[terrainType] + mod.time[timeOfDay] + player.luck/2 - player.level/10)//formula goes in these brackets
+				.toFixed(2));
+
+		    console.log('Threshold is: ' + favorableEventThreshold);
+		    console.log('Player rolls dice to see if threshld test is passed. If passed - favorable event happens');
+	    	var roll = parseFloat((Math.random()*10).toFixed(2)); //player base roll will generate a number between 0 and 10 with 2 decimal points
+    		console.log('player roll is: ' + roll);
+    		if (roll < favorableEventThreshold){
+    			console.log('event is favorable');
+    			//code below 1. checks if wizard is met, if not then checks if merchant is met if not then event is chest.
+    			var thresholdWizard = parseFloat(
+				(0.5 - player.level/5) //formula goes in these brackets
+				.toFixed(2));
+
+	    		var roll = parseFloat((Math.random()*10).toFixed(2)); //player base roll will generate a number between 0 and 10 with 2 decimal points
+	    		console.log('Threshold to meet the wizard is: ' + thresholdWizard + '. Player rolled: ' + roll);
+
+	    		if (roll >= thresholdWizard) {
+	    			console.log('It is a wizard! Will now run resolveWizard() to determine what player gets based on his stats'); 
+	    			wizard.defineOutcome();
+	    		} else {
+	    			console.log('It is NOT wizard. Will now check if player has sufficient money to take merchant test.');
+
+	    			if (player.gold >= 500) { //5 silver coins
+		    			
+		    			var thresholdMerchant = 9; 
+	    				var roll = parseFloat((Math.random()*10).toFixed(2)); //player base roll will generate a number between 0 and 10 with 2 decimal points
+
+	    				console.log('Threshold to meet merchant is ' + thresholdMerchant + '. Player rolled ' + roll);
+
+	    				if ( roll >= thresholdMerchant){
+	    					console.log('It is a merchant!');
+							//resolveMerchant();  opens the shop
+	    				} else {
+	    					console.log('Player failed the merchant test. Event is a chest!');
+	    					//exploreChest();
+	    				}
+
+	    			} else {
+	    				console.log('Player gold not sufficient to take merchant test. Event is a chest!');
+	    					//exploreChest();
+	    			}
+
+	    		}
+			    		
+    		} else {
+    			console.log('event is not favorable. Will now determine if encounter is a mob or nothing');
+    			
+				var nothingEventThreshold = parseFloat(
+					(mod.terrainNothing[terrainType] + mod.time[timeOfDay] - player.level/8)//formula goes in these brackets
+					.toFixed(2));
+		    	console.log('Threshold for "nothing" is: ' + nothingEventThreshold);
+	    		var roll = parseFloat((Math.random()*10).toFixed(2)); //player base roll will generate a number between 0 and 10 with 2 decimal points
+    			console.log('player roll for "nothing" is: ' + roll);
+	    		if (roll < nothingEventThreshold) {
+	    			console.log('nothing happens!');
+	    			experience.increase(1);
+
+	    		} else {
+	    			console.log('Will now generate mob');
+
+	    		}
+	   		}
+	}
+};
 
 
+
+
+// resolveMerchant()
+
+//merchant sells potions, spells book, mastercrafted armor and weapons
+//merchant buys stuff from player at better price
+//prices depend on player level. Things cost more but can sell for more too.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+
+//DEFINE MOBS!
 function resolveEvent(eventResult, terrainType){ //prepares events based on what player encountered at defineEvent();
 
 	if (eventResult === "monster" && terrainType === "swamp") {
@@ -339,3 +259,7 @@ function resolveEvent(eventResult, terrainType){ //prepares events based on what
 		console.log("Constructing wizard...");
 	}
 }
+
+
+
+*/
