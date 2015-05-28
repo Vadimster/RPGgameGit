@@ -78,14 +78,11 @@ var createEvent = function(tileID, terrainType, tileHasBonus, bonusType){
     		if (roll < favorableEventThreshold){
     			console.log('event is favorable');
     			//code below 1. checks if wizard is met, if not then checks if merchant is met if not then event is chest.
-    			var thresholdWizard = parseFloat(
-				(0.5 - player.level/5) //formula goes in these brackets
-				.toFixed(2));
 
 	    		var roll = parseFloat((Math.random()*10).toFixed(2)); //player base roll will generate a number between 0 and 10 with 2 decimal points
-	    		console.log('Threshold to meet the wizard is: ' + thresholdWizard + '. Player rolled: ' + roll);
+	    		console.log('Threshold to meet the wizard is: ' + wizard.chanceToMeet + '. Player rolled: ' + roll);
 
-	    		if (roll >= thresholdWizard) {
+	    		if (roll >= wizard.chanceToMeet) {
 	    			console.log('It is a wizard! Will now run resolveWizard() to determine what player gets based on his stats'); 
 	    			wizard.defineOutcome();
 	    		} else {
@@ -136,12 +133,6 @@ var createEvent = function(tileID, terrainType, tileHasBonus, bonusType){
 
 
 
-
-// resolveMerchant()
-
-//merchant sells potions, spells book, mastercrafted armor and weapons
-//merchant buys stuff from player at better price
-//prices depend on player level. Things cost more but can sell for more too.
 
 
 

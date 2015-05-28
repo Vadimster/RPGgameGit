@@ -27,7 +27,7 @@
 #map-content {
     margin: 0 auto;
     position: relative;
-    top: 15px;
+    top: 25px;
     border: 1px solid black;
     width: 1200px;
     height: 540px;
@@ -37,9 +37,286 @@
 
 }
 
+/* --------------------------------------------------------------------- */
+
+#statsContainer{
+  /* position: relative; */
+  height: 50px;
+}
+
+
+
+#statsLevel{
+  position: absolute;
+  left: 10px;  
+  height: 60px;
+  width: 60px;
+  background-color: none;
+  border: 1px dotted grey;   
+}
+    #statsLevelIcon{
+      width: 40px;
+      height: 30px;
+      background-image: url("img//statsIcons/level.png");
+      margin-left: 10px;
+      background-size: contain;
+      background-repeat: no-repeat;
+    }
+
+    #levelCounter{
+        margin-top: 5px;
+        text-align: center;
+    }
+
+
+
+#healthLevel{
+  position: absolute;
+  left: 80px;  
+  height: 60px;
+  width: 60px;
+  background-color: none;
+  border: 1px dotted grey;   
+}
+    #healthLevelIcon{
+      width: 40px;
+      height: 30px;
+      background-image: url("img//statsIcons/health.png");
+      margin-left: 10px;
+      background-size: contain;
+      background-repeat: no-repeat;
+    }
+
+    #healthCounter{
+        margin-top: 5px;
+        text-align: center;
+    }
+
+
+
+#goldCoins{
+  position: absolute;
+  left: 150px;  
+  height: 60px;
+  width: 60px;
+  background-color: none;
+  border: 1px dotted grey;   
+}
+    #goldCoinsIcon{
+      width: 30px;
+      height: 30px;
+      background-image: url("img/statsIcons/goldcoin.png");
+      margin-left: 15px;
+      background-size: contain;
+      background-repeat: no-repeat;
+    }
+
+    #goldCoinCounter{
+        margin-top: 5px;
+        text-align: center;
+    }
+
+
+
+#silverCoins{
+  position: absolute;
+  left: 215px;  
+  height: 60px;
+  width: 60px;
+  background-color: none;
+  border: 1px dotted grey;    
+}
+    #silverCoinsIcon{
+      width: 30px;
+      height: 30px;
+      background-image: url("img/statsIcons/silvercoin.png");
+      margin-left: 15px;
+      background-size: contain;
+      background-repeat: no-repeat;
+    }
+
+    #silverCoinCounter{
+        margin-top: 5px;
+        text-align: center;
+    }
+
+
+
+#copperCoins{
+  position: absolute;
+  left: 280px;  
+  height: 60px;
+  width: 60px;
+  background-color: none;
+  border: 1px dotted grey;    
+}
+    #copperCoinsIcon{
+      width: 30px;
+      height: 30px;
+      background-image: url("img/statsIcons/coppercoin.png");
+      margin-left: 15px;
+      background-size: contain;
+      background-repeat: no-repeat;
+    }
+
+    #copperCoinCounter{
+        margin-top: 5px;
+        text-align: center;
+    }
+
+
+
+#statsExperience{
+  position: absolute;
+  left: 350px;  
+  height: 60px;
+  width: 90px;
+  background-color: none;
+  border: 1px dotted grey;    
+}
+    #statsExperienceIcon{
+      width: 80px;
+      height: 25px;
+      background-image: url("img/statsIcons/experience.png");
+      margin-left: 5px;
+      background-size: contain;
+      
+    }
+
+    #experienceWrapper {
+      margin-top: 10px;
+      margin-left: 5px;
+      text-align: center;
+      display: inline-block;
+
+    }
+
+      #experienceCounter{
+          display: inline-block;
+          float: left;
+          padding-right: 5px;
+      }
+
+
+      #experienceSeparator {
+        display: inline-block;
+        margin: 0 auto;
+
+
+      }
+
+      #experienceNextLevel{
+          display: inline-block;
+          float: right;
+          padding-left: 5px;
+      }
+
+
+
+#statsAttack{
+  position: absolute;
+  left: 450px;  
+  height: 60px;
+  width: 60px;
+  background-color: none;
+  border: 1px dotted grey;   
+
+}
+    #statsAttackIcon{
+      width: 40px;
+      height: 30px;
+      background-image: url("img/statsIcons/attack.png");
+      margin-left: 15px;
+      background-size: contain;
+      background-repeat: no-repeat;
+    }
+
+    #attackCounter{
+        margin-top: 5px;
+        text-align: center;
+    }
+
+
+
+#statsDefense{
+  position: absolute;
+  left: 520px;  
+  height: 60px;
+  width: 60px;
+  background-color: none;
+  border: 1px dotted grey;    
+}
+    #statsDefenseIcon{
+      width: 40px;
+      height: 30px;
+      background-image: url("img/statsIcons/defense.png");
+      margin-left: 15px;
+      background-size: contain;
+      background-repeat: no-repeat;
+    }
+
+    #defenseCounter{
+        margin-top: 5px;
+        text-align: center;
+    }
+
+
+#statsDefense{
+  position: absolute;
+  left: 520px;  
+  height: 60px;
+  width: 60px;
+  background-color: none;
+  border: 1px dotted grey;   
+}
+    #statsDefenseIcon{
+      width: 40px;
+      height: 30px;
+      background-image: url("img/statsIcons/defense.png");
+      margin-left: 15px;
+      background-size: contain;
+      background-repeat: no-repeat;
+    }
+
+    #defenseCounter{
+        margin-top: 5px;
+        text-align: center;
+    }
+
+
+#statsLuck{
+  position: absolute;
+  left: 590px;  
+  height: 60px;
+  width: 60px;
+  background-color: none;
+  border: 1px dotted grey;   
+}
+    #statsLuckIcon{
+      width: 40px;
+      height: 30px;
+      background-image: url("img/statsIcons/luck.png");
+      margin-left: 15px;
+      background-size: contain;
+      background-repeat: no-repeat;
+    }
+
+    #luckCounter{
+        margin-top: 5px;
+        text-align: center;
+    }
+
+
+
+
+
+
+
+
 
 #status {
-     position: absolute;
+     /* position: absolute; */
+     float: right;
      top: 5px;
      right: 10px;  
 }
@@ -66,6 +343,7 @@
 }
 
 
+/* --------------------------------------------------------------------- */
 
 #version {
      position: fixed;

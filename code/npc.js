@@ -2,29 +2,24 @@
 var wizard = {
 
 	img: 'URL to the image',
+	chanceToMeet: parseFloat((0.5 - player.level/5).toFixed(2)),
 
 	defineOutcome: function(){
 
-		var playerHasSpellBook = false;
-
-		for (i = 0; i < player.inventory.length; i++){
-			if (player.inventory[i] === spellBook) {
-				var playerHasSpellBook = true;
-			}
-		}
-
+	
 		if (player.level <= 2) {
-			console.log('Wizard says: I would give you a spell book, but you cannot read it. I hope that next time I meet you you will be more advanced to receive the word of magic.');
+			console.log('Wizard says: I would give you a Book of Spells, but you cannot read it. I hope that next time I meet you you will be more advanced to receive the word of magic.');
 
 		} else { //player is level >2
 
-			if (playerHasSpellBook !== true) {
-				console.log('You get the spellbook from the wizard');
+			if (spellBook.equipped !== true) {
+				console.log('You get the Book of Spells from the wizard');
+				spellBook.equip(); 
 
 			} else { // player has the spell book
 
 				if (player.level > 10) {
-					console.log('You can choose a spell and an artefact from a wizard');
+					console.log('You can choose a spell and an artefact from the wizard');
 				
 				} else if (player.level > 8){
 					console.log('You can choose a spell and wizard gives you a random artefact');
@@ -32,7 +27,7 @@ var wizard = {
 				} else if (player.level > 6){
 					console.log('You can choose a spell from the wizard');
 				
-				} else if (player.level > 4){
+				} else if (player.level > 2){
 					console.log('Wizard gives you a random spell');
 				
 				}

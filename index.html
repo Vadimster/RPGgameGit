@@ -29,51 +29,65 @@
 <audio id="goldBonus" src="Sounds/goldbonus.mp3"></audio>
 
 
+<div id="statsContainer">
+	<div id="statsLevel">
+		<div id="statsLevelIcon"></div>
+		<div id="levelCounter"></div>
+	</div>
+	<div id="healthLevel">
+		<div id="healthLevelIcon"></div>
+		<div id="healthCounter"></div>
+	</div>
+	<div id="goldCoins">
+		<div id="goldCoinsIcon"></div>
+		<div id="goldCoinCounter"></div>
+	</div>
+	<div id="silverCoins">
+		<div id="silverCoinsIcon"></div>
+		<div id="silverCoinCounter"></div>
+	</div>
+	<div id="copperCoins">
+		<div id="copperCoinsIcon"></div>
+		<div id="copperCoinCounter"></div>
+	</div>
+	<div id="statsExperience">
+		<div id="statsExperienceIcon"></div>
+		<div id="experienceWrapper">	
+			<div id="experienceCounter"> </div>
+			<div id="experienceSeparator"> / </div>
+			<div id="experienceNextLevel"></div>
+			<div class="clear"></div>
+		</div>
+	</div>
+	<div id="statsAttack">
+		<div id="statsAttackIcon"></div>
+		<div id="attackCounter"></div>
+	</div>
+	<div id="statsDefense">
+		<div id="statsDefenseIcon"></div>
+		<div id="defenseCounter"></div>
+	</div>
+	<div id="statsLuck">
+		<div id="statsLuckIcon"></div>
+		<div id="luckCounter"></div>
+	</div>
 
+	<div id="status">
+	<table id="stats_table" border="0">
+		<tr>
+			<td><div align="center" title="Enemies are more dangerous at night"><img id="dayOrNightIcon" src="img/statusicons/day.png"><div></td>
+			<td><div id="turnCounter" title="Current turn">1</div></td>
+		</tr>
+	</table>
+	</div>
 
-<div>
-<table id="stats" border="0">
-	<tr>
-		<td width="10%" align="center"><img src="img/statsIcons/level.png" width="40" height="30" title="Progress"></td>
-		<td width="10%" align="center"><img src="img/statsIcons/health.png" width="40" height="30" title="Health"></td>
-		
-		<td width="10%" align="center"><img src="img/statsIcons/goldcoin.png" width="30" height="30" title="Gold coins"></td> 
-		<td width="10%" align="center"><img src="img/statsIcons/silvercoin.png" width="30" height="30" title="Silver coins"></td> 
-		<td width="10%" align="center"><img src="img/statsIcons/coppercoin.png" width="30" height="30" title="Copper coins"></td> 
-
-		<td colspan="3" width="20%" align="center"><img src="img/statsIcons/experience.png" width="50" height="40" title="Experience"></td>
-		<td width="10%" align="center"><img src="img/statsIcons/attack.png" width="40" height="30" title="Attack bonus"></td>
-		<td width="10%" align="center"><img src="img/statsIcons/defense.png" width="40" height="30" title="Defense bonus"></td>
-		<td width="10%" align="center"><img src="img/statsIcons/luck.png" width="35" height="30" title="Luck bonus"></td>
-		
-	</tr>
-	<tr>
-		<td align="center"><div id="levelCounter"></div></td>
-		<td align="center"><div id="healthCounter"></div></td>
-		
-		<td align="center"><div id="goldCoinCounter">0</div></td>
-		<td align="center"><div id="silverCoinCounter">0</div></td>
-		<td align="center"><div id="copperCoinCounter">0</div></td>
-
-
-		<td width="10%" align="right"><div id="experienceCounter"></div></td>
-		<td width="4%"align="center"><div>/</div></td>
-		<td width="10%" align="left"><div id="experienceNextLevel"></div></td>
-		<td align="center"><div id="attackCounter"></div></td>
-		<td align="center"><div id="defenseCounter"></div></td>
-		<td align="center"><div id="luckCounter"></div></td>
-	</tr>
-</table>
 </div>
 
-<div id="status">
-<table id="stats_table" border="0">
-	<tr>
-		<td><div align="center" title="Enemies are more dangerous at night"><img id="dayOrNightIcon" src="img/statusicons/day.png"><div></td>
-		<td><div id="turnCounter" title="Current turn">1</div></td>
-	</tr>
-</table>
-</div>
+
+
+
+
+
 
 <div id="map-content"></div>
 
@@ -180,13 +194,14 @@
 <script type="text/javascript" src="ui/jquery-ui/jquery-ui.min.js"></script>
 
 <script type="text/javascript" src="code/messages.js"></script>
+<script type="text/javascript" src="code/gameObjects.js"></script>
 
 <script type="text/javascript" src="code/inventoryObjects.js"></script>
 <script type="text/javascript" src="code/spells.js"></script>
 <script type="text/javascript" src="code/npc.js"></script>
 <script type="text/javascript" src="code/mobs.js"></script>
 
-<script type="text/javascript" src="code/gameObjects.js"></script>
+
 
 <script type="text/javascript" src="code/map.js"></script>
 
