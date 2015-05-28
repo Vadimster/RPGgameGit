@@ -4,6 +4,9 @@ var wizard = {
 	img: 'URL to the image',
 	chanceToMeet: parseFloat((0.5 - player.level/5).toFixed(2)),
 
+	spells: [fireBall, iceBall, ironSkin, enemyFreeze],
+
+
 	defineOutcome: function(){
 
 	
@@ -28,7 +31,25 @@ var wizard = {
 					console.log('You can choose a spell from the wizard');
 				
 				} else if (player.level > 2){
-					console.log('Wizard gives you a random spell');
+					var randomSpell = wizard.spells[Math.floor(Math.random()*wizard.spells.length)];
+					spellBook.spells.push(randomSpell); //introduce check to not to add an object if there is already one in the array poosivbly by the function below:
+					/*  
+					
+					Use same approach as for vivited maps tiles
+
+					            var n = player.visitedTiles.indexOf(tileID); //if tileID has not yet been visisted it is not found in the array and produces -1. Of vivisted it produces its index in the array
+            if (n < 0){
+                player.visitedTiles.push(tileID);  //add tileID to array to state it was visited.
+            } else {
+                console.log("tile has already been visited");
+                var tileVisited = true; 
+            }
+
+          		
+					 */
+					console.log('Wizard teaches you a random spell: ' + randomSpell.name + '! Player now has ' + spellBook.spells.length + ' spell(s) in the book');
+
+
 				
 				}
 			}

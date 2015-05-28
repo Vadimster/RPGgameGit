@@ -2,22 +2,17 @@
 
 var spellBook = {
 	
-	objectName: "spellbook", //also divID for jQuery
-	img: 'URL to the image',
+    objectDivID: 'statsSpellBookIcon',
+	img: 'img/statsIcons/spellbook.png',
 	equipped: false,
 	price: 1000,
 
 	equip: function(){
-		//add a logo to a div
-		$("#spellbook").attr("src", "img/statusicons/spellbook.png");
-
-		
+		$('#' + this.objectDivID).css({"background-image":"url('"+this.img+"')"});
 		this.equipped = true;
 	},
 
 	unequip: function(){
-
-
 	},
 
 	spells: []

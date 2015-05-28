@@ -90,7 +90,7 @@ var player = {
         maxExperience: null,
         expMult: 0.05, //multiplicator to calculate experience requirement for next level-up threshold 
 
-    level: 0,
+    level: 3,
         minLevel: 0,
         maxLevel: null,
         levelUp: function(){
