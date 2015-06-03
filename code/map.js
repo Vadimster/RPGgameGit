@@ -115,9 +115,14 @@ var Map = new function(){
 };
 
 
+
+
 $( document ).ready(function() {
     //$("#backgroundMusic").get(0).play();
-    Map.initiate();
+    
+    characters.page();
+
+  
     $('#healthCounter').html(player.health);
     $('#goldCounter').html(player.gold);
     $('#experienceCounter').html(player.experience);

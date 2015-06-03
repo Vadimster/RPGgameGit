@@ -1,45 +1,15 @@
 
-/*
-
-$('#arrowsCounter').html(playerArrows);
-$('#turnCounter').html(turn);
-$('#healingPotionsCounter').html(playerHealingPotions);
-
-$('#tile1div').prepend('<img id="player" src="img/maptiles/player.png" />'); //setting player's icon on the starting tile
-
-$('#axeIcon').attr("src", "img/inventory/axe.png");
-$('#swordIcon').attr("src", "img/inventory/sword.png");
-$('#woodenBowIcon').attr("src", "img/inventory/woodenbow.png");
-$('#improvedWoodenBowIcon').attr("src", "img/inventory/improvedwoodenbow.png");
-$('#leatherArmorIcon').attr("src", "img/inventory/leatherarmor.png");
-$('#metalArmorIcon').attr("src", "img/inventory/metalarmor.png");
-$('#woodenShieldIcon').attr("src", "img/inventory/woodenshield.png");
-$('#metalShieldIcon').attr("src", "img/inventory/metalshield.png");
-$('#metalHelmetIcon').attr("src", "img/inventory/metalhelmet.png");
-$('#improvedMetalHelmetIcon').attr("src", "img/inventory/improvedmetalhelmet.png");
-$("#dayOrNightIcon").attr("src", "img/statusicons/day.png");
-$("#dayOrNightCounter").html("day");
-
-*/
-
-
-
-/* EVENT HANDLERS FOR BUTTONS */
-
-/*
-HTML
-<input id="c" type="button" value="Function with closure keeps counting">
-
-JS
-document.getElementById('c').onclick = createCounter();
-*/
-
-/* GAME OBJECTS */
-
-
 var player = {
     id: "player",
     image: "img/maptiles/player.png",
+    
+    set: function(character){ //updates player stats according to character selected at game start
+        player.type = character.name;
+
+    },
+
+    type: null,
+
     alive: true,
     canRetreat: true, //can retret before battle screen loads
     bored: false, // used for slightly different event description if nothing happens 2 turns in a row. Reset to 0 by subsequent meaningful event.
@@ -90,7 +60,7 @@ var player = {
         maxExperience: null,
         expMult: 0.05, //multiplicator to calculate experience requirement for next level-up threshold 
 
-    level: 3,
+    level: 2,
         minLevel: 0,
         maxLevel: null,
         levelUp: function(){
@@ -99,6 +69,11 @@ var player = {
             $("#levelup").get(0).play();
             player.level++;
             $('#experienceNextLevel').html(experience.lvlUpThreshold);
+
+            if (player.level === 3) {
+                alert('Player gets a book of spells!');
+            }
+
             getLevelUpMessage();
             $('#levelCounter').html(player.level);
         },
@@ -354,6 +329,7 @@ var experience = {
             player.experience -= experience.lvlUpThreshold()
             console.log('level up!');
             console.log('  Step 4 - exp cost adjusted for level up and is now ' + player.experience);
+            
             player.levelUp();
 
             $('#experienceNextLevel').html(experience.lvlUpThreshold); 
@@ -361,6 +337,9 @@ var experience = {
           
             console.log("for next level (" + experience.getPlayerNextLevel() + ") you need " + experience.lvlUpThreshold() + " experience. You have " + player.experience + ' experience.');
              
+          
+
+
             if (player.experience >= experience.lvlUpThreshold()){
                 console.log('player experience after update is sufficient for next level up!');
                 
@@ -386,7 +365,7 @@ var experience = {
 	}
 };
 
-//experience.increase(8000); //FOR TESTING PURPOSES - gives experience straight away
+//experience.increase(180); //FOR TESTING PURPOSES - gives experience straight away
 
 
 

@@ -38,7 +38,7 @@ var wizard = {
 						console.log('Wizard teaches you a random spell: ' + randomSpell.name + '! Player now has ' + spellBook.spells.length + ' spell(s) in the book');
 
 		            } else {
-		                console.log('It looks lie you already know this spell: ' + randomSpell.name);
+		                console.log('It looks like you already know this spell: ' + randomSpell.name);
 		            }	
 				}
 			}

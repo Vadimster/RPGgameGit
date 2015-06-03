@@ -26,7 +26,8 @@ getLevelUpMessage = function(){
 	         			 '+1 Defense' :function(){
 	            			$(this).dialog('close');
 	            			player.addDefense(1);
-	 
+
+	            		 
 	               		},
 	               		'Nothing' :function(){
 	            			$(this).dialog('close');
