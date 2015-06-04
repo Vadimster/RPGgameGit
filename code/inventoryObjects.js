@@ -81,6 +81,8 @@ var spellBook = {
             }
         } else {
 
+            $('#spellbook-dialog-background').empty();
+
             var container = $("<div class='spellbook-spell-container'></div>");
             var message = $("<div class='spellbook-empty-message'></div>");
             
@@ -93,7 +95,7 @@ var spellBook = {
 
 
 
-	spells: [fireBall, enemyFreeze]
+	spells: []
 
 };
 

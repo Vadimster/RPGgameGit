@@ -117,10 +117,12 @@ var Map = new function(){
 
 
 
+
 $( document ).ready(function() {
     //$("#backgroundMusic").get(0).play();
     
     characters.page();
+
 
   
     $('#healthCounter').html(player.health);
@@ -134,6 +136,8 @@ $( document ).ready(function() {
 
     //NEED TO HAVE AN INIT FUNCTION, WHICH CREATES MAP AND PUTS STARTING VALUES IN THE INTERFACE. THIS WILL BE USED FOR GAMEOVER TOO
 });
+
+
 
    
 

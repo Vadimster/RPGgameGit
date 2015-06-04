@@ -555,18 +555,21 @@
   height: 30px;
   margin-left: 30px;
   margin-top: 25px;
-  border: 1px dotted grey;
+  border: 0px dotted grey;
 
 }
 
 .spellbook-empty-message {
 
-  position: absolute;
   font-family: cursive;
   font-style: italic;
   font-size: 18px;
-  margin: auto 0px;
-  border: 1px dotted blue;
+  text-align: center;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 50px;
+  border: 0px dotted blue;
 
 }
 
@@ -680,7 +683,7 @@
 
 
 #character-selector-Page-avatar-description {
-  position: absolute;
+  position: relative;
   width: 370px;
   margin-left: 320px;
   margin-top: 80px;
@@ -719,6 +722,27 @@
   background-repeat: no-repeat;
 }
 
+
+#character-selector-Page-bonus-container {
+  position: relative;
+  height: 200px;
+  width: 350px;
+  margin-left: 320px;
+  margin-top: 5px;
+  border: 0px dotted green;
+}
+
+.character-selector-Page-bonus-description {
+  position: relative;
+  width: 320px;
+  margin-left: 10px;
+  margin-top: 10px;
+  border: 0px dotted red;
+  font-size: 16px;
+  font-family: cursive;
+  font-style: Italic;
+  line-height: 17px;
+}
 
 
 

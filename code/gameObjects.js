@@ -3,8 +3,13 @@ var player = {
     id: "player",
     image: "img/maptiles/player.png",
     
-    set: function(character){ //updates player stats according to character selected at game start
+    update: function(character){ //updates player stats according to character selected at game start
         player.type = character.name;
+        alert('Class chosen: ' + player.type);
+        character.addBonusGold();
+        character.addBonusBook();
+
+
 
     },
 
@@ -298,7 +303,7 @@ var gold = {
 	}
 };
 
-gold.increase(7945); //FOR TESTING PURPOSES - gives gold straight away
+//gold.increase(7945); //FOR TESTING PURPOSES - gives gold straight away
 
 
 var experience = {
