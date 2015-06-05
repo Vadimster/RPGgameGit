@@ -4,11 +4,10 @@ var wizard = {
 	img: 'URL to the image',
 	chanceToMeet: parseFloat((0.5 - player.level/5).toFixed(2)),
 
-	spells: [fireBall, iceBall, ironSkin, enemyFreeze],
+	spells: [fireBall, iceBall, ironSkin, enemyFreeze],  //use method in a spellbook instead
 
 
 	defineOutcome: function(){
-
 	
 		if (player.level <= 2) {
 			console.log('Wizard says: I would give you a Book of Spells, but you cannot read it. I hope that next time I meet you you will be more advanced to receive the word of magic.');
@@ -30,16 +29,10 @@ var wizard = {
 				} else if (player.level > 6){
 					console.log('You can choose a spell from the wizard');
 				
-				} else if (player.level > 2){
-					var randomSpell = wizard.spells[Math.floor(Math.random()*wizard.spells.length)];
-					var n = spellBook.spells.indexOf(randomSpell); //code below checks if spell is already known to player
-					if (n < 0){
-						spellBook.spells.push(randomSpell);
-						console.log('Wizard teaches you a random spell: ' + randomSpell.name + '! Player now has ' + spellBook.spells.length + ' spell(s) in the book');
+				} else if (player.level > 2){ 
+					
+						spellBook.giveRandomSpell();
 
-		            } else {
-		                console.log('It looks like you already know this spell: ' + randomSpell.name);
-		            }	
 				}
 			}
 		}

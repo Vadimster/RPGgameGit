@@ -133,6 +133,7 @@ $( document ).ready(function() {
     $('#defenseCounter').html(player.defense);
     $('#luckCounter').html(player.luck);
     $('#levelCounter').html(player.level);
+    $('#manaCounter').html(player.mana);
 
     //NEED TO HAVE AN INIT FUNCTION, WHICH CREATES MAP AND PUTS STARTING VALUES IN THE INTERFACE. THIS WILL BE USED FOR GAMEOVER TOO
 });

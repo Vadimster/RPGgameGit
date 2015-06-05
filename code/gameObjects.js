@@ -19,6 +19,10 @@ var player = {
     canRetreat: true, //can retret before battle screen loads
     bored: false, // used for slightly different event description if nothing happens 2 turns in a row. Reset to 0 by subsequent meaningful event.
 
+
+    mana: 10,
+        minMana: 0,
+        maxMana: 100,
         
     gold: 0,
         minGold: 0,

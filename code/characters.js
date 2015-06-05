@@ -6,7 +6,7 @@ var shaman = {
   name: "Shaman",
   img: 'img/characterselectorpage/avatars/shaman.png',
   description: 'Highly spiritual, shamans speak to nature and communicate with ghosts. While not particularly strong in combat, they can summon supernatural forces to assist them.',
-  bonus: ['* Start a game with a Book of Spells and a random spell',
+  bonus: ['* Start the game with a Book of Spells and a random spell',
           '* Choose a free spell every 3 levels',
           '* Spells cost 20% less mana to cast',
           '* Start game with 50 copper coins'
@@ -25,7 +25,8 @@ var shaman = {
     addBonusBook: function(){
       if (shaman.bonusBook) {
         spellBook.equip();
-        console.log('Player gets a free spellbook');
+        spellBook.giveRandomSpell();
+        console.log('Player gets a free spellbook and a random spell');
       } else {
         console.log('Player does not get a free spellbook');
       }
@@ -38,7 +39,7 @@ var scribe = {
   name: "Scribe",
   img: 'img/characterselectorpage/avatars/scribe.png', 
   description: 'People of science and books, scribes belong more to a library than a battlefield. But do not be mislead, for knowledge is power and these lads will not hesitate in taking their advantage against less scholared enemies.',
-  bonus: ['* Upon achieving level 3 get a Book of Spells and a random spell',
+  bonus: ['* Start the game with a Book of Spells',
           '* Get a random free spell every 3 levels',
           '* Spells cost 20% less experience to learn',
           '* Start game with 1 silver coin'
@@ -53,9 +54,11 @@ var scribe = {
       }
     },
 
-  bonusBook: false,
+  bonusBook: true,
     addBonusBook: function(){
       if (scribe.bonusBook) {
+      spellBook.equip();
+
         console.log('Player gets a free spellbook');
       } else {
         console.log('Player does not get a free spellbook');

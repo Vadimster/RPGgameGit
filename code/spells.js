@@ -10,7 +10,6 @@ var fireBall = {
 	range: 2,
 	duration: null
 
-
 };
 
 
@@ -39,7 +38,6 @@ var lightningBall = {
 	range: 4,
 	duration: null
 
-
 };
 
 
@@ -55,6 +53,7 @@ var enemySlowdown = {
 	duration: 3
 
 };
+
 
 var enemyFreeze = {
 	
@@ -125,7 +124,6 @@ var quickening = {
 	range: 1,
 	duration: 2
 
-
 };
 
 
@@ -140,8 +138,8 @@ var madness = {
 	range: 6,
 	duration: 1
 
-
 };
+
 
 var weakness = {
 
@@ -154,7 +152,6 @@ var weakness = {
 	attackDiscount: 20, //  % for wich enemy attack stats are affected
 	range: 2,
 	duration: 1
-
 
 };
 
@@ -171,8 +168,13 @@ var blindness = {
 	range: 6,
 	duration: 2
 
-
 };
 
+var lvl1Spells = [fireBall, stoneSkin];
 
+var lvl2Spells = [iceBall, quickening];
+
+var lvl3Spells = [lightningBall, enemySlowdown, enemyFreeze, ironSkin, madness, weakness, blindness];
+
+var lvl4Spells = [diamondSkin];
 

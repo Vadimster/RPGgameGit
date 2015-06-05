@@ -28,11 +28,18 @@ var spellBook = {
         $('#spellBookPage')
             .dialog(
                 {buttons: 
-                    {'Close!' : function(){
+                    {'Close Book' : function(){
                         $(this).dialog('close'); 
-                        //playerFights();  // action when OK pressed. Must also delete the div from DOM as it is not needed in the future (to be dynamically generated) possibly via .remove() method
+
+
+                        },
+                
+                     'Learn a spell' : function(){
+                        console.log('Player chose to learn a spell');
+                        $(this).dialog('close'); 
                         }
-                    },
+                }, //buttons added
+
             draggable: false,
             resizable: false,
             modal: true,
@@ -89,13 +96,71 @@ var spellBook = {
             container.appendTo('#spellbook-dialog-background');
             message.appendTo(container);
             message.html(spellBook.emptyText);
+
         }
 
     },
 
 
+    giveRandomSpell: function(){
 
-	spells: []
+        if (player.level > 10) {
+
+            var spell = lvl4Spells[Math.floor(Math.random()*lvl4Spells.length)];
+
+                var n = spellBook.spells.indexOf(spell); //code below checks if spell is already known to player
+                    if (n < 0){
+                        spellBook.spells.push(spell);
+                        console.log('Random spell is: ' + spell.name + '! Player now has ' + spellBook.spells.length + ' spell(s) in the book');
+                    } else {
+                        console.log('Player already has this spell: ' + spell.name);
+                    }
+                
+        } else if (player.level > 7) {
+
+            var spell = lvl3Spells[Math.floor(Math.random()*lvl3Spells.length)];
+                
+                var n = spellBook.spells.indexOf(spell); //code below checks if spell is already known to player
+                    if (n < 0){
+                        spellBook.spells.push(spell);
+                        console.log('Random spell is: ' + spell.name + '! Player now has ' + spellBook.spells.length + ' spell(s) in the book');
+                    } else {
+                        console.log('Player already has this spell: ' + spell.name);
+                    }
+
+
+        } else if (player.level > 3) {
+
+            var spell = lvl2Spells[Math.floor(Math.random()*lvl2Spells.length)];
+
+                var n = spellBook.spells.indexOf(spell); //code below checks if spell is already known to player
+                    if (n < 0){
+                        spellBook.spells.push(spell);
+                        console.log('Random spell is: ' + spell.name + '! Player now has ' + spellBook.spells.length + ' spell(s) in the book');
+                    } else {
+                        console.log('Player already has this spell: ' + spell.name);
+                    }
+
+        } else if (player.level >= 0) {
+
+            var spell = lvl1Spells[Math.floor(Math.random()*lvl1Spells.length)];
+
+                var n = spellBook.spells.indexOf(spell); //code below checks if spell is already known to player
+                    if (n < 0){
+                        spellBook.spells.push(spell);
+                        console.log('Random spell is: ' + spell.name + '! Player now has ' + spellBook.spells.length + ' spell(s) in the book');
+                    } else {
+                        console.log('Player already has this spell: ' + spell.name);
+                    }
+
+        }
+
+
+    },
+
+
+
+	spells: [] //player's spells in SpellBook
 
 };
 

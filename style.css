@@ -310,9 +310,35 @@
 
 
 
+#statsMana{
+  position: absolute;
+  left: 660px;  
+  height: 60px;
+  width: 60px;
+  border: 1px dotted grey;   
+}
+    #statsManaIcon{
+      width: 35px;
+      height: 30px;
+      background-image: url("img/statsIcons/mana.png");
+      margin-left: 15px;
+      background-size: contain;
+      background-repeat: no-repeat;
+    }
+
+
+   #manaCounter{
+        margin-top: 5px;
+        text-align: center;
+    }
+
+
+
+
+
 #statsSpellBook{
   position: absolute;
-  left: 690px;  
+  left: 750px;  
   height: 60px;
   width: 60px;
   border: 1px dotted grey;   
