@@ -24,6 +24,8 @@ var spellBook = {
 
     open: function(){
 
+        $("#pageTurn").get(0).play();
+
 
         $('#spellBookPage')
             .dialog(
@@ -35,15 +37,16 @@ var spellBook = {
                         },
                 
                      'Learn a spell' : function(){
-                        console.log('Player chose to learn a spell');
+                        spellBook.learnSpell();
                         $(this).dialog('close'); 
+
                         }
                 }, //buttons added
 
             draggable: false,
             resizable: false,
             modal: true,
-            width: 600,
+            width: 1000,
             height: 630, 
             closeOnEscape: false,
             dialogClass: "no-close"
@@ -54,7 +57,7 @@ var spellBook = {
 
         if (spellBook.spells.length > 0) {
 
-            $('#spellbook-dialog-background').empty();
+            $('#spellbook-spell-all-spells-container').empty(); // originally emptied spellbook-dialog-background
 
 
             for (i = 0; i < spellBook.spells.length; i++) {
@@ -64,10 +67,13 @@ var spellBook = {
                         var spelldescription = $("<div class='spellbook-spell-description'></div>");
                         var spellManaCost = $("<div class='spellbook-spell-manaCost'></div>");
                         var spellRange = $("<div class='spellbook-spell-range'></div>");
+                        var spellDamage = $("<div class='spellbook-spell-damage'></div>");
+
+
                         var spellDuration = $("<div class='spellbook-spell-duration'></div>");
                         // div.css({"background":"url('"+spellBook.img+"')"});
 
-                        container.appendTo('#spellbook-dialog-background');
+                        container.appendTo('#spellbook-spell-all-spells-container');
                         
                         spellname.appendTo(container);
                         spellname.html(spellBook.spells[i].name);
@@ -78,6 +84,10 @@ var spellBook = {
 
                         spellRange.appendTo(container);
                         spellRange.html(spellBook.spells[i].range);
+
+                        spellDamage.appendTo(container);
+                        spellDamage.html(spellBook.spells[i].baseDamage);
+
 
                         spellDuration.appendTo(container);
                         spellDuration.html(spellBook.spells[i].duration);
@@ -158,6 +168,14 @@ var spellBook = {
 
     },
 
+
+
+    learnSpell: function() {
+
+        console.log('learnSpell() launched');
+
+
+    },
 
 
 	spells: [] //player's spells in SpellBook

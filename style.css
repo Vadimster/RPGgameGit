@@ -559,7 +559,7 @@
 
 #spellBookPage { 
  display: none;
- width: 400px;
+ width: 950px;
  height: 500px;
 }
 
@@ -568,97 +568,206 @@
   background-image: url(img/messages/encounter_dialogue_background_400x500.png);
   background-size: 100% 100%;
   background-repeat: no-repeat;
-  width: 600px;
+  width: 950px;
   height: 500px;
-  margin-left: -20px;
-  margin-top: -10px; 
+  margin-left: 0px;
+  margin-top: -5px; 
 
 }
 
-.spellbook-spell-container {
+#spellbook-spell-legend-container {
   position: relative;
-  width: 530px;
-  height: 30px;
+  width: 950px;
+  height: 40px;
   margin-left: 30px;
   margin-top: 25px;
-  border: 0px dotted grey;
-
+  border: 0px dotted red;
 }
+
+
+
+      #spellbook-spell-legend-name { /* for names of the spells in the spellBook */
+        position: absolute;
+        font-family: cursive;
+        font-style: italic;
+        font-size: 16px;
+        width: 100px;
+        margin-left: 10px;
+        margin-top: 5px;
+        padding-left: 5px;
+        border: 0px dotted red;
+
+      }
+
+     
+      #spellbook-spell-legend-manacost { 
+        position: absolute;
+        font-family: cursive;
+        font-style: italic;
+        font-size: 16px;
+        margin-left: 130px;
+        margin-top: 5px;
+        border: 0px dotted blue;
+
+      }
+
+
+      #spellbook-spell-legend-range { 
+        position: absolute;
+        font-family: cursive;
+        font-style: italic;
+        font-size: 16px;
+        margin-left: 190px;
+        margin-top: 5px;
+        border: 0px dotted blue;
+
+      }
+
+      #spellbook-spell-legend-damage { 
+        position: absolute;
+        font-family: cursive;
+        font-style: italic;
+        font-size: 16px;
+        margin-left: 250px;
+        margin-top: 5px;
+        border: 0px dotted blue;
+
+      }
+
+
+
+
+      #spellbook-spell-legend-duration { 
+        position: absolute;
+        font-family: cursive;
+        font-style: italic;
+        font-size: 16px;
+        margin-left: 320px;
+        margin-top: 5px;
+        border: 0px dotted blue;
+
+      }
+
+     #spellbook-spell-legend-description { /* for names of the spells in the spellBook */
+            position: absolute;
+            font-family: cursive;
+            font-style: italic;
+            font-size: 16px;
+            margin-left: 400px;
+            margin-top: 5px;
+            border: 0px dotted blue;
+
+          }
+
+
+#spellbook-spell-all-spells-container {
+  position: relative;
+  width: 950px;
+  margin-left: 30px;
+  margin-top: 0px;
+  border: 0px dotted green;
+}
+
+
+      .spellbook-spell-container {
+        position: relative;
+        width: 850px;
+        height: 30px;
+        margin-left: 15px;
+        margin-top: 15px;
+        border: 0px dotted grey;
+
+      }
+
+      
+
+      .spellbook-spell-name { /* for names of the spells in the spellBook */
+        position: absolute;
+        font-family: cursive;
+        font-style: italic;
+        font-size: 18px;
+        width: 100px;
+        height: 20px;
+        margin-left: 0px;
+        margin-top: 0px;
+        padding-left: 5px;
+        border: 0px dotted red;
+
+      }
+
+
+      .spellbook-spell-manacost { 
+        position: absolute;
+        font-family: cursive;
+        font-style: italic;
+        font-size: 12px;
+        margin-left: 130px;
+        margin-top: 5px;
+        border: 0px dotted blue;
+
+      }
+
+
+      .spellbook-spell-range { 
+        position: absolute;
+        font-family: cursive;
+        font-style: italic;
+        font-size: 12px;
+        margin-left: 190px;
+        margin-top: 5px;
+        border: 0px dotted blue;
+
+      }
+
+    .spellbook-spell-damage { 
+        position: absolute;
+        font-family: cursive;
+        font-style: italic;
+        font-size: 12px;
+        margin-left: 260px;
+        margin-top: 5px;
+        border: 0px dotted blue;
+
+      }
+
+
+      .spellbook-spell-duration { 
+        position: absolute;
+        font-family: cursive;
+        font-style: italic;
+        font-size: 12px;
+        margin-left: 330px;
+        margin-top: 5px;
+        border: 0px dotted blue;
+
+      }
+
+
+      .spellbook-spell-description { /* for names of the spells in the spellBook */
+        position: absolute;
+        font-family: cursive;
+        font-style: italic;
+        font-size: 12px;
+        margin-left: 390px;
+        margin-top: 5px;
+        border: 0px dotted blue;
+
+      }
+
 
 .spellbook-empty-message {
 
-  font-family: cursive;
-  font-style: italic;
-  font-size: 18px;
-  text-align: center;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 50px;
-  border: 0px dotted blue;
+        font-family: cursive;
+        font-style: italic;
+        font-size: 18px;
+        text-align: center;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 50px;
+        border: 0px dotted blue;
 
-}
-
-
-
-.spellbook-spell-name { /* for names of the spells in the spellBook */
-  position: absolute;
-  font-family: cursive;
-  font-style: italic;
-  font-size: 18px;
-  width: 100px;
-  height: 20px;
-  margin-left: 0px;
-  margin-top: 0px;
-  padding-left: 10px;
-  border: 1px dotted red;
-
-}
-
-.spellbook-spell-description { /* for names of the spells in the spellBook */
-  position: absolute;
-  font-family: cursive;
-  font-style: italic;
-  font-size: 12px;
-  margin-left: 220px;
-  margin-top: 5px;
-  border: 1px dotted blue;
-
-}
-
-.spellbook-spell-manacost { 
-  position: absolute;
-  font-family: cursive;
-  font-style: italic;
-  font-size: 12px;
-  margin-left: 120px;
-  margin-top: 5px;
-  border: 1px dotted blue;
-
-}
-
-
-.spellbook-spell-range { 
-  position: absolute;
-  font-family: cursive;
-  font-style: italic;
-  font-size: 12px;
-  margin-left: 150px;
-  margin-top: 5px;
-  border: 1px dotted blue;
-
-}
-
-.spellbook-spell-duration { 
-  position: absolute;
-  font-family: cursive;
-  font-style: italic;
-  font-size: 12px;
-  margin-left: 180px;
-  margin-top: 5px;
-  border: 1px dotted blue;
-
-}
+      }
 
 
 

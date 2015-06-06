@@ -9,8 +9,12 @@ var wizard = {
 
 	defineOutcome: function(){
 	
-		if (player.level <= 2) {
+		if (player.level <= 2 && spellBook.equipped === false) {
 			console.log('Wizard says: I would give you a Book of Spells, but you cannot read it. I hope that next time I meet you you will be more advanced to receive the word of magic.');
+
+		} else if (player.level <= 2 && spellBook.equipped === true) {
+			
+			console.log('Wizard says: I see you already have a bok of spells');
 
 		} else { //player is level >2
 

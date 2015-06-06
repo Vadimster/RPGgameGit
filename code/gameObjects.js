@@ -374,7 +374,7 @@ var experience = {
 	}
 };
 
-//experience.increase(180); //FOR TESTING PURPOSES - gives experience straight away
+//experience.increase(300); //FOR TESTING PURPOSES - gives experience straight away
 
 
 

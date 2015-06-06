@@ -77,7 +77,7 @@ var stoneSkin = {
 	description: "Suffer 10% less damage from enemies for 2 rounds",
 	baseDamage: null,
 	damageDiscount: 10, // % less damage taken
-	range: 1,
+	range: null,
 	duration: 2
 
 };
@@ -92,7 +92,7 @@ var ironSkin = {
 	description: "Suffer 25% less damage from enemies for 2 rounds",
 	baseDamage: null,
 	damageDiscount: 10, // % less damage taken
-	range: 1,
+	range: null,
 	duration: 2
 
 };
