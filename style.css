@@ -352,6 +352,14 @@
       background-repeat: no-repeat;
     }
 
+        #spellBookEquipIndicator{
+          position: absolute;
+          margin-top: 25px;
+          margin-left: 20px;
+          width: 30px;
+          height: 30px;
+          background-image: url("img/statsIcons/redcross.png");
+        }
 
 
 

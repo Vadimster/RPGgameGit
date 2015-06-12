@@ -7,105 +7,131 @@ var spellBook = {
     objectDivID: 'statsSpellBookIcon',
 	img: 'img/statsIcons/spellbook.png',
 	equipped: false,
-	price: 1000,
+	price: 100,
     emptyText: 'There are no spells known to you yet...', //text displayed when there are no spells in the book
 
-	equip: function(){
+	
+    equip: function(){
 
-
-        $('<div id=statsSpellBookIcon/>').appendTo($('#statsSpellBook'));
-        statsSpellBookIcon.addEventListener('click', spellBook.open , false);
-		this.equipped = true;
+        $('#spellBookEquipIndicator').css('background', '0'); //clears the background image of a div
+        this.equipped = true;
 	},
+
 
 	unequip: function(){
 	},
 
 
-    open: function(){
+    open: function(){ //opens book if equipped, attempts to buy if not equipped
 
-        $("#pageTurn").get(0).play();
+        if (this.equipped) {
 
-
-        $('#spellBookPage')
-            .dialog(
-                {buttons: 
-                    {'Close Book' : function(){
-                        $(this).dialog('close'); 
+            $("#pageTurn").get(0).play();
 
 
-                        },
-                
-                     'Learn a spell' : function(){
-                        spellBook.learnSpell();
-                        $(this).dialog('close'); 
-
-                        }
-                }, //buttons added
-
-            draggable: false,
-            resizable: false,
-            modal: true,
-            width: 1000,
-            height: 630, 
-            closeOnEscape: false,
-            dialogClass: "no-close"
-            //position: ["right", "center"]
-            }
-        ); //creates the dialog
-    
-
-        if (spellBook.spells.length > 0) {
-
-            $('#spellbook-spell-all-spells-container').empty(); // originally emptied spellbook-dialog-background
+                $('#spellBookPage')
+                    .dialog(
+                        {buttons: 
+                            {'Close Book' : function(){
+                                $(this).dialog('close'); 
 
 
-            for (i = 0; i < spellBook.spells.length; i++) {
-
-                        var container = $("<div class='spellbook-spell-container'></div>");
-                        var spellname = $("<div class='spellbook-spell-name'></div>");
-                        var spelldescription = $("<div class='spellbook-spell-description'></div>");
-                        var spellManaCost = $("<div class='spellbook-spell-manaCost'></div>");
-                        var spellRange = $("<div class='spellbook-spell-range'></div>");
-                        var spellDamage = $("<div class='spellbook-spell-damage'></div>");
-
-
-                        var spellDuration = $("<div class='spellbook-spell-duration'></div>");
-                        // div.css({"background":"url('"+spellBook.img+"')"});
-
-                        container.appendTo('#spellbook-spell-all-spells-container');
+                                },
                         
-                        spellname.appendTo(container);
-                        spellname.html(spellBook.spells[i].name);
+                             'Learn a spell' : function(){
+                                spellBook.learnSpell();
+                                $(this).dialog('close'); 
 
-                        spellManaCost.appendTo(container);
-                        spellManaCost.html(spellBook.spells[i].manaCost);
+                                }
+                        }, //buttons added
+
+                    draggable: false,
+                    resizable: false,
+                    modal: true,
+                    width: 1000,
+                    height: 630, 
+                    closeOnEscape: false,
+                    dialogClass: "no-close"
+                    //position: ["right", "center"]
+                    }
+                ); //creates the dialog
+            
+
+                if (spellBook.spells.length > 0) {
+
+                    $('#spellbook-spell-all-spells-container').empty(); // originally emptied spellbook-dialog-background
 
 
-                        spellRange.appendTo(container);
-                        spellRange.html(spellBook.spells[i].range);
+                    for (i = 0; i < spellBook.spells.length; i++) {
 
-                        spellDamage.appendTo(container);
-                        spellDamage.html(spellBook.spells[i].baseDamage);
+                                var container = $("<div class='spellbook-spell-container'></div>");
+                                var spellname = $("<div class='spellbook-spell-name'></div>");
+                                var spelldescription = $("<div class='spellbook-spell-description'></div>");
+                                var spellManaCost = $("<div class='spellbook-spell-manaCost'></div>");
+                                var spellRange = $("<div class='spellbook-spell-range'></div>");
+                                var spellDamage = $("<div class='spellbook-spell-damage'></div>");
 
 
-                        spellDuration.appendTo(container);
-                        spellDuration.html(spellBook.spells[i].duration);
+                                var spellDuration = $("<div class='spellbook-spell-duration'></div>");
+                                // div.css({"background":"url('"+spellBook.img+"')"});
+
+                                container.appendTo('#spellbook-spell-all-spells-container');
+                                
+                                spellname.appendTo(container);
+                                spellname.html(spellBook.spells[i].name);
+
+                                spellManaCost.appendTo(container);
+                                spellManaCost.html(spellBook.spells[i].manaCost);
 
 
-                        spelldescription.appendTo(container);
-                        spelldescription.html(spellBook.spells[i].description);
-            }
+                                spellRange.appendTo(container);
+                                spellRange.html(spellBook.spells[i].range);
+
+                                spellDamage.appendTo(container);
+                                spellDamage.html(spellBook.spells[i].baseDamage);
+
+
+                                spellDuration.appendTo(container);
+                                spellDuration.html(spellBook.spells[i].duration);
+
+
+                                spelldescription.appendTo(container);
+                                spelldescription.html(spellBook.spells[i].description);
+                    }
+                } else {
+
+                    $('#spellbook-dialog-background').empty();
+
+                    var container = $("<div class='spellbook-spell-container'></div>");
+                    var message = $("<div class='spellbook-empty-message'></div>");
+                    
+                    container.appendTo('#spellbook-dialog-background');
+                    message.appendTo(container);
+                    message.html(spellBook.emptyText);
+
+                }
         } else {
 
-            $('#spellbook-dialog-background').empty();
-
-            var container = $("<div class='spellbook-spell-container'></div>");
-            var message = $("<div class='spellbook-empty-message'></div>");
             
-            container.appendTo('#spellbook-dialog-background');
-            message.appendTo(container);
-            message.html(spellBook.emptyText);
+
+
+
+
+
+
+
+
+
+
+
+
+            console.log('book is not equipped, would you like to purchase the book now for ' +this.price+ ' coins?');
+            
+            //FIX: introduce the dialogue to confirm the purchase of spellbook
+
+            tradeItem(this, 'buy');
+
+
 
         }
 

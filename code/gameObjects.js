@@ -382,6 +382,7 @@ var experience = {
     //------------------------ PLAYING AROUND WITH OBJECTS ---//
 
     var tradeItem = function(item, action){ //whole object is passed into the function as well as instructions on what to do with this object
+        
         if (action === "buy") {
             if (player.gold >= item.price) {
                 playerStatsUpdateItem(item, "buy");
