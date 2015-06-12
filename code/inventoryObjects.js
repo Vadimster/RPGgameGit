@@ -4,6 +4,7 @@
 
 var spellBook = {
 	
+    name: 'Book of Spells', //display in messages
     objectDivID: 'statsSpellBookIcon',
 	img: 'img/statsIcons/spellbook.png',
 	equipped: false,
@@ -112,27 +113,40 @@ var spellBook = {
                 }
         } else {
 
+                $("#spellbook-buy-message").text('All the spells known to you are kept in the ' +spellBook.name+  '. You do not seem to have such item, would you like to buy it for ' +spellBook.price+' coins?'); //calling a function which will generate event title using the argument   
+
+
+                $('#spellBookBuyPage')
+                    .dialog(
+                        {buttons: 
+                            {'Purchase' : function(){
+                                
+                                    if (tradeItem(spellBook, 'buy')){ //if spellbook was traded successfuly
+                                        spellBook.equip();                            
+
+                                    } 
+                                
+                                    $(this).dialog('close');
+
+                                },
+                        
+                             'Not now' : function(){
+                                $(this).dialog('close'); 
+
+                                }
+                        }, //buttons added
+
+                    draggable: false,
+                    resizable: false,
+                    modal: true,
+                    width: 400,
+                    height: 400, 
+                    closeOnEscape: false,
+                    dialogClass: "no-close"
+                    //position: ["right", "center"]
+                    }
+                ); //creates the dialog
             
-
-
-
-
-
-
-
-
-
-
-
-
-            console.log('book is not equipped, would you like to purchase the book now for ' +this.price+ ' coins?');
-            
-            //FIX: introduce the dialogue to confirm the purchase of spellbook
-
-            tradeItem(this, 'buy');
-
-
-
         }
 
     },

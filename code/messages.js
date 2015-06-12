@@ -5,6 +5,40 @@ url: "img/monsters/dragon.png"
 
 };
 
+insufficientFundsMessage = function(item){
+
+			
+        	$("#insufficientFundsPage-message").text('Oh you are a real bomzh! You do not have enough money to purchase ' +item.name+ ' for ' +item.price+ ' coins.'); //calling a function which will generate event title using the argument   
+
+
+			$('#insufficientFundsPage')
+	    		.dialog(
+	      			{buttons: 
+	         			{
+	         			 'Okay...' :function(){
+	            			$(this).dialog('close');
+	            			player.addDefense(1);
+
+	            		 
+	               		}
+	               		
+	       			},
+		   		draggable: false,
+	       		resizable: false,
+	       		modal: true,
+	      		width: 400,
+	       		height: 400,
+	       		closeOnEscape: false,
+	       		dialogClass: "no-close"
+	       		//position: ["right", "center"]
+	       		}
+	       	); //creat
+
+
+
+};
+
+
 
 getLevelUpMessage = function(){
         	console.log('getLevelUpMessage() launched');

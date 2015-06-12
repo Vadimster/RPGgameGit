@@ -78,7 +78,7 @@ var hunter = {
           '* Accuracy bonus for ranged weapons'
           ],
   
-  bonusGold: 0,
+  bonusGold: 100,
     addBonusGold: function(){
       if (hunter.bonusGold) {
         gold.increase(hunter.bonusGold);

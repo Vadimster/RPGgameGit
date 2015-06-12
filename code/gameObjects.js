@@ -381,22 +381,27 @@ var experience = {
 
     //------------------------ PLAYING AROUND WITH OBJECTS ---//
 
-    var tradeItem = function(item, action){ //whole object is passed into the function as well as instructions on what to do with this object
+    var tradeItem = function(item, action){ //whole object is passed into the function as well as instructions on what to do with this object.
         
-        if (action === "buy") {
-            if (player.gold >= item.price) {
-                playerStatsUpdateItem(item, "buy");
+        if (action === "buy") { 
+            if (player.gold >= item.price) { 
                 gold.decrease(item.price);
+                return true; //returns true back so that code can proceed to next step, e.g. playerStatsUpdateItem. See spellBook.open() for example
                 } else {
-                    alert("Insufficient funds");
+                    //alert("Insufficient funds"); //FIX: make a proper jquery-ui message
+                    insufficientFundsMessage(item);
+                    return false;
             }
         } 
         else if (action === "sell") {
             alert("player wants to sell, will sell now");
-            playerStatsUpdateItem(item, "sell");
             gold.increase(item.sellPrice);
+            return true;
         }
     };
+
+
+
 
 
 

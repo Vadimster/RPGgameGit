@@ -890,6 +890,81 @@
 
 
 
+#spellBookBuyPage { 
+ display: none;
+ width: 350px;
+ height: 270px;
+}
+
+    #spellbook-buy-dialog-background {
+      position: absolute;
+      background-image: url(img/messages/encounter_dialogue_background_400x500.png);
+      background-size: 100% 100%;
+      background-repeat: no-repeat;
+      width: 350px;
+      height: 270px;
+      margin-left: 0px;
+      margin-top: 0px; 
+
+    }
+
+        #spellbook-buy-message {
+
+                width: 300px;
+                font-family: cursive;
+                font-style: italic;
+                font-size: 18px;
+                text-align: center;
+                display: block;
+                margin-left: auto;
+                margin-right: auto;
+                margin-top: 50px;
+                border: 0px dotted blue;
+
+        }
+
+
+
+
+
+
+#insufficientFundsPage { 
+ display: none;
+ width: 350px;
+ height: 270px;
+}
+
+    #insufficientFundsPage-background {
+      position: absolute;
+      background-image: url(img/messages/encounter_dialogue_background_400x500.png);
+      background-size: 100% 100%;
+      background-repeat: no-repeat;
+      width: 350px;
+      height: 270px;
+      margin-left: 0px;
+      margin-top: 0px; 
+
+    }
+
+        #insufficientFundsPage-message {
+
+                width: 300px;
+                font-family: cursive;
+                font-style: italic;
+                font-size: 18px;
+                text-align: center;
+                display: block;
+                margin-left: auto;
+                margin-right: auto;
+                margin-top: 50px;
+                border: 0px dotted blue;
+
+        }
+
+
+
+
+
 .no-close .ui-dialog-titlebar-close { /* hides close button in Jquery UI dialogues  */
   display: none;
 }
