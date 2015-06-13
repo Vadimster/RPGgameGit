@@ -17,9 +17,7 @@ insufficientFundsMessage = function(item){
 	         			{
 	         			 'Okay...' :function(){
 	            			$(this).dialog('close');
-	            			player.addDefense(1);
-
-	            		 
+            		 
 	               		}
 	               		
 	       			},

@@ -123,7 +123,19 @@ var warrior = {
       } else {
         console.log('Player does not get a free spellbook');
       }
-    }     
+    },
+
+    bonusAttack: 1,
+      addBonusAttack: function(){
+        if (warrior.bonusAttack) {
+          player.addAttack(warrior.bonusAttack);
+        } else {
+          console.log('Player does not get a bonus to attack');
+        }
+
+      }
+
+
 };
 
 

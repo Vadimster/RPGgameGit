@@ -8,6 +8,7 @@ var player = {
         alert('Class chosen: ' + player.type);
         character.addBonusGold();
         character.addBonusBook();
+        character.addBonusAttack();
 
 
 
