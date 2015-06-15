@@ -40,8 +40,9 @@ var spellBook = {
                                 },
                         
                              'Learn a spell' : function(){
+                                $(this).dialog('close');
                                 spellBook.learnSpell();
-                                $(this).dialog('close'); 
+
 
                                 }
                         }, //buttons added
@@ -111,6 +112,7 @@ var spellBook = {
                     message.html(spellBook.emptyText);
 
                 }
+        
         } else {
 
                 $("#spellbook-buy-message").text('All the spells known to you are kept in the ' +spellBook.name+  '. You do not seem to have such item, would you like to buy it for ' +spellBook.price+' coins?'); //calling a function which will generate event title using the argument   
@@ -211,8 +213,71 @@ var spellBook = {
 
 
     learnSpell: function() {
+ 
 
-        console.log('learnSpell() launched');
+
+        $('#spellPurchasePage')
+                    .dialog(
+                        {buttons: 
+                            {'Close' : function(){
+                                $(this).dialog('close'); 
+
+
+                                }
+                        }, //buttons added
+
+                    draggable: false,
+                    resizable: false,
+                    modal: true,
+                    width: 1015,
+                    height: 630, 
+                    closeOnEscape: false,
+                    dialogClass: "no-close"
+                    //position: ["right", "center"]
+                    }
+                ); //creates the dialog
+
+
+        $('#spellbook-purchasespell-all-spells-container').empty(); // originally emptied spellbook-dialog-background
+
+
+                    for (i = 0; i < allSpells.length; i++) {
+
+                                var container = $("<div class='purchasespell-spell-container'></div>");
+                                var spellname = $("<div class='purchasespell-spell-name'></div>");
+                                var spellprice = $("<div class='purchasespell-spell-price'></div>");
+
+                                var spelldescription = $("<div class='purchasespell-spell-description'></div>");
+                                var spellManaCost = $("<div class='purchasespell-spell-manaCost'></div>");
+                                var spellRange = $("<div class='purchasespell-spell-range'></div>");
+                                var spellDamage = $("<div class='purchasespell-spell-damage'></div>");
+
+
+                                var spellDuration = $("<div class='purchasespell-spell-duration'></div>");
+
+                                container.appendTo('#spellbook-purchasespell-all-spells-container');
+                                
+                                spellname.appendTo(container);
+                                spellname.html(allSpells[i].name);
+                                
+                                spellprice.appendTo(container);
+                                spellprice.html(allSpells[i].price);
+
+                                spellManaCost.appendTo(container);
+                                spellManaCost.html(allSpells[i].manaCost);
+
+                                spellRange.appendTo(container);
+                                spellRange.html(allSpells[i].range);
+
+                                spellDamage.appendTo(container);
+                                spellDamage.html(allSpells[i].baseDamage);
+
+                                spellDuration.appendTo(container);
+                                spellDuration.html(allSpells[i].duration);
+
+                                spelldescription.appendTo(container);
+                                spelldescription.html(allSpells[i].description);
+                    }
 
 
     },

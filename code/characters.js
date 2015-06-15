@@ -30,7 +30,21 @@ var shaman = {
       } else {
         console.log('Player does not get a free spellbook');
       }
-    }
+    },
+
+  bonusAttack: 0,
+      addBonusAttack: function(){
+        if (shaman.bonusAttack) {
+          player.addAttack(shaman.bonusAttack);
+        } else {
+          console.log('Player does not get a bonus to attack');
+        }
+
+      }
+
+
+
+
 };
 
 
@@ -63,7 +77,18 @@ var scribe = {
       } else {
         console.log('Player does not get a free spellbook');
       }
-    }
+    },
+
+
+  bonusAttack: 0,
+      addBonusAttack: function(){
+        if (scribe.bonusAttack) {
+          player.addAttack(scribe.bonusAttack);
+        } else {
+          console.log('Player does not get a bonus to attack');
+        }
+
+      }
 
 };
 
@@ -94,8 +119,23 @@ var hunter = {
       } else {
         console.log('Player does not get a free spellbook');
       }
-    }
+    },
+  
+  bonusAttack: 0,
+      addBonusAttack: function(){
+        if (hunter.bonusAttack) {
+          player.addAttack(hunter.bonusAttack);
+        } else {
+          console.log('Player does not get a bonus to attack');
+        }
+
+      }
+
+
+
+
 };
+
 
 
 var warrior = {
