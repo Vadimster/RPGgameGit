@@ -8,7 +8,7 @@ url: "img/monsters/dragon.png"
 insufficientFundsMessage = function(item){
 
 			
-        	$("#insufficientFundsPage-message").text('Oh you are a real bomzh! You do not have enough money to purchase ' +item.name+ ' for ' +item.price+ ' coins.'); //calling a function which will generate event title using the argument   
+        	$("#insufficientFundsPage-message").text('Oh you are a real bomzh! You do not have enough money to purchase ' +item.name+ ' for ' +item.buyPrice+ ' coins.'); //calling a function which will generate event title using the argument   
 
 
 			$('#insufficientFundsPage')

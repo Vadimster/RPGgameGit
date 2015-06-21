@@ -123,17 +123,12 @@ $( document ).ready(function() {
     
     characters.page();
 
-
-  
     $('#healthCounter').html(player.health);
     $('#goldCounter').html(player.gold);
     $('#experienceCounter').html(player.experience);
     $('#experienceNextLevel').html(experience.lvlUpThreshold);                                             
-    $('#attackCounter').html(player.attack);
-    $('#defenseCounter').html(player.defense);
-    $('#luckCounter').html(player.luck);
+
     $('#levelCounter').html(player.level);
-    $('#manaCounter').html(player.mana);
 
     //NEED TO HAVE AN INIT FUNCTION, WHICH CREATES MAP AND PUTS STARTING VALUES IN THE INTERFACE. THIS WILL BE USED FOR GAMEOVER TOO
 });

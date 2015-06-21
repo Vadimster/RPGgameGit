@@ -1,0 +1,587 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"back",
+				"background"
+			],
+			[
+				"add",
+				"addAttack"
+			],
+			[
+				"bonus",
+				"bonusAttack〔variable〕"
+			],
+			[
+				"eq",
+				"equip〔function〕"
+			],
+			[
+				"mari",
+				"margin-left"
+			],
+			[
+				"spell",
+				"spellbook"
+			],
+			[
+				"trade",
+				"tradeItem〔function〕"
+			],
+			[
+				"equ",
+				"equipped〔variable〕"
+			],
+			[
+				"learn",
+				"learnSpell"
+			],
+			[
+				"fun",
+				"function〔keyword〕"
+			],
+			[
+				"mar",
+				"margin-top"
+			],
+			[
+				"bon",
+				"bonusGold〔variable〕"
+			],
+			[
+				"lin",
+				"letter-spacing"
+			],
+			[
+				"app",
+				"appendTo	.appendTo()"
+			],
+			[
+				"char",
+				"characters〔variable〕"
+			],
+			[
+				"marg",
+				"margin-top"
+			],
+			[
+				"margin",
+				"margin-right"
+			],
+			[
+				"ene",
+				"enemyFreeze〔variable〕"
+			],
+			[
+				"fir",
+				"fireBall〔variable〕"
+			],
+			[
+				"spel",
+				"spellBook〔variable〕"
+			],
+			[
+				"spe",
+				"spellBook〔variable〕"
+			],
+			[
+				"padd",
+				"padding-bottom"
+			],
+			[
+				"padding",
+				"padding-left"
+			],
+			[
+				"font",
+				"font-size"
+			],
+			[
+				"random",
+				"randomSpell〔variable〕"
+			],
+			[
+				"sp",
+				"spellBook"
+			],
+			[
+				"ob",
+				"objectName"
+			],
+			[
+				"ma",
+				"margin-top"
+			],
+			[
+				"level",
+				"levelCounter"
+			],
+			[
+				"player",
+				"playerHasSpellBook〔variable〕"
+			],
+			[
+				"resol",
+				"resolveWizard"
+			],
+			[
+				"resolve",
+				"resolveWizard"
+			],
+			[
+				"thr",
+				"thresholdMerchant〔variable〕"
+			],
+			[
+				"thre",
+				"thresholdMerchant"
+			],
+			[
+				"not",
+				"nothingEventThreshold〔variable〕"
+			],
+			[
+				"ro",
+				"roll"
+			],
+			[
+				"con",
+				"console"
+			],
+			[
+				"time",
+				"timeOfDay〔variable〕"
+			],
+			[
+				"tile",
+				"tileHasBonus〔variable〕"
+			],
+			[
+				"max",
+				"maxDefense〔variable〕"
+			],
+			[
+				"att",
+				"attack"
+			],
+			[
+				"atta",
+				"addAttack〔function〕"
+			],
+			[
+				"a",
+				"attack〔variable〕"
+			],
+			[
+				"bonu",
+				"bonusType"
+			],
+			[
+				"blu",
+				"blue〔variable〕"
+			],
+			[
+				"dra",
+				"drawMap"
+			],
+			[
+				"render",
+				"renderMap〔function〕"
+			],
+			[
+				"creat",
+				"createMap〔function〕"
+			],
+			[
+				"height",
+				"heightY"
+			],
+			[
+				"exp",
+				"experience"
+			],
+			[
+				"base",
+				"baseAmount"
+			],
+			[
+				"chi",
+				"chimera〔variable〕"
+			],
+			[
+				"und",
+				"undeadWarriors〔variable〕"
+			],
+			[
+				"uni",
+				"unicorn〔variable〕"
+			],
+			[
+				"dwar",
+				"dwarfConjuror〔variable〕"
+			],
+			[
+				"terra",
+				"terrainType〔variable〕"
+			],
+			[
+				"event",
+				"eventResult〔variable〕"
+			],
+			[
+				"swa",
+				"swampSpirit〔variable〕"
+			],
+			[
+				"swam",
+				"swampThing〔variable〕"
+			],
+			[
+				"swamp",
+				"swampMonster〔variable〕"
+			],
+			[
+				"terr",
+				"terrainType〔argument〕"
+			],
+			[
+				"even",
+				"eventResult〔variable〕"
+			],
+			[
+				"margi",
+				"margin-right"
+			],
+			[
+				"test",
+				"testFunction〔function〕"
+			],
+			[
+				"ba",
+				"background-color"
+			],
+			[
+				"evet",
+				"eventResult"
+			],
+			[
+				"cr",
+				"createEventIntroHeader"
+			],
+			[
+				"nex",
+				"nextTurn"
+			],
+			[
+				"handle",
+				"handleBonus"
+			],
+			[
+				"visi",
+				"visitedTiles"
+			],
+			[
+				"Tile",
+				"TileCoordinateHor〔variable〕"
+			],
+			[
+				"po",
+				"position"
+			],
+			[
+				"TileCoor",
+				"TileCoordinateVert"
+			],
+			[
+				"visit",
+				"visitCount"
+			],
+			[
+				"ter",
+				"terrainTypes〔variable〕"
+			],
+			[
+				"terrai",
+				"terrainBonus〔variable〕"
+			],
+			[
+				"ini",
+				"initiateEvent"
+			],
+			[
+				"til",
+				"tileHeight"
+			],
+			[
+				"create",
+				"createMap〔class〕"
+			],
+			[
+				"com",
+				"computerStart"
+			],
+			[
+				"u",
+				"u"
+			],
+			[
+				"hit",
+				"hitsToEnemy  (variable)"
+			],
+			[
+				"hits",
+				"hitsToPlayer"
+			],
+			[
+				"is",
+				"isNaN"
+			],
+			[
+				"number",
+				"number3"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "/Users/instantbank/Documents/PERSONAL/programming/javascript/RPGgameGit/index.html",
+			"settings":
+			{
+				"buffer_size": 10805,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 47.0,
+		"selected_items":
+		[
+			[
+				"insta",
+				"Package Control: Install Package"
+			],
+			[
+				"pack",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 449.0
+	},
+	"console":
+	{
+		"height": 125.0
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/Users/instantbank/Documents/PERSONAL/programming/javascript/RPGgameGit/jquery-2.1.1.min.js",
+		"/Users/instantbank/Documents/PERSONAL/programming/javascript/RPGgameGit/code/characters.js",
+		"/Users/instantbank/Documents/PERSONAL/programming/javascript/RPGgameGit/style.css",
+		"/Users/instantbank/Documents/PERSONAL/programming/javascript/RPGgameGit/code/player.js",
+		"/Users/instantbank/Documents/PERSONAL/programming/javascript/RPGgameGit/code/map.js",
+		"/Users/instantbank/Documents/PERSONAL/programming/javascript/RPGgameGit/code/monsters.js",
+		"/Users/instantbank/Documents/PERSONAL/programming/javascript/Sandbox/Test JS/Monster Constructor/code.js",
+		"/Users/instantbank/Documents/PERSONAL/programming/javascript/RPGgameGit/code/events.js",
+		"/Users/instantbank/Documents/PERSONAL/programming/javascript/RPGgameGit/index.html",
+		"/Users/instantbank/Documents/PERSONAL/programming/javascript/RPGgameGit/events.js",
+		"/Users/instantbank/Documents/PERSONAL/programming/javascript/RPGgameGit/init.js",
+		"/Users/instantbank/Documents/PERSONAL/programming/javascript/New version of RPG game/Map.js",
+		"/Users/instantbank/Documents/PERSONAL/programming/javascript/New version of RPG game/index.html",
+		"/Users/instantbank/Documents/PERSONAL/programming/javascript/New version of RPG game/style.css",
+		"/Users/instantbank/Documents/PERSONAL/programming/javascript/Sandbox/Test JS/Debugging test/styles.css",
+		"/Users/instantbank/Documents/PERSONAL/programming/javascript/Sandbox/Test JS/Debugging test/index.html",
+		"/Users/instantbank/Documents/PERSONAL/programming/javascript/Sandbox/Test JS/Debugging test/code.js",
+		"/Users/instantbank/Documents/PERSONAL/programming/javascript/New version of RPG game/init.js",
+		"/Users/instantbank/Documents/PERSONAL/programming/javascript/Sandbox/Test JS/Mastermind Game/Mastermind.html",
+		"/Users/instantbank/Documents/PERSONAL/programming/javascript/Sandbox/Test JS/Mastermind Game/code.js",
+		"/Users/instantbank/Desktop/Test JS/test 2 - jquery ui dialog/styles.css",
+		"/Users/instantbank/Desktop/Test JS/test 2 - jquery ui dialog/index.html",
+		"/Users/instantbank/Desktop/Test JS/test 2 - jquery ui dialog/code.js",
+		"/Users/instantbank/Desktop/object_test/stylesheet.css",
+		"/Users/instantbank/Desktop/Test JS/test.html",
+		"/Users/instantbank/Desktop/style",
+		"/Users/instantbank/Desktop/inventory.html",
+		"/Users/instantbank/Desktop/alchemy_engine.html"
+	],
+	"find":
+	{
+		"height": 35.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"tradeItem",
+			"wizard.spells",
+			"spellBook",
+			"spellBookPage",
+			".dialog",
+			".dial",
+			"player",
+			"#player",
+			"player",
+			"}\n",
+			" \n",
+			"eventIntro",
+			"Fight",
+			"playerFights",
+			"url",
+			"initiate",
+			"init",
+			"initiate",
+			"turnbutton",
+			"tile",
+			"GetMap",
+			"Get",
+			"GetMap",
+			"Move",
+			"alert",
+			"Alert",
+			"playerPosi",
+			"GetMap",
+			"removeGoldNew",
+			"removeGoldNew();",
+			"level1Req",
+			"addGoldNew",
+			"removeGoldNew",
+			"Choose color",
+			"dialog",
+			"drag",
+			"dragon.png",
+			"remove",
+			"take",
+			"addgol",
+			"alert",
+			"Holder("
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": true,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": false
+	},
+	"groups":
+	[
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "/Users/instantbank/Documents/PERSONAL/programming/javascript/RPGgameGit/index.html",
+					"settings":
+					{
+						"buffer_size": 10805,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								15,
+								15
+							]
+						],
+						"settings":
+						{
+							"auto_complete": false,
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 0.0
+	},
+	"input":
+	{
+		"height": 0.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"replace":
+	{
+		"height": 0.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"selected_items":
+		[
+		],
+		"width": 380.0
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 150.0,
+	"status_bar_visible": true
+}

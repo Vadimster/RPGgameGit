@@ -8,11 +8,10 @@ var shaman = {
   description: 'Highly spiritual, shamans speak to nature and communicate with ghosts. While not particularly strong in combat, they can summon supernatural forces to assist them.',
   bonus: ['* Start the game with a Book of Spells and a random spell',
           '* Choose a free spell every 3 levels',
-          '* Spells cost 20% less mana to cast',
-          '* Start game with 50 copper coins'
+          '* Spells cost 20% less mana to cast'
           ],
 
-  bonusGold: 50,
+  bonusGold: 0,
     addBonusGold: function(){
       if (shaman.bonusGold) {
         gold.increase(shaman.bonusGold);
@@ -32,12 +31,12 @@ var shaman = {
       }
     },
 
-  bonusAttack: 0,
-      addBonusAttack: function(){
-        if (shaman.bonusAttack) {
-          player.addAttack(shaman.bonusAttack);
+  bonusItems: false,
+      addBonusItems: function(){
+        if (shaman.bonusItems) {
+          console.log('Player gets some bonus item - TBD');
         } else {
-          console.log('Player does not get a bonus to attack');
+          console.log('Player does not get bonus item');
         }
 
       }
@@ -56,10 +55,10 @@ var scribe = {
   bonus: ['* Start the game with a Book of Spells',
           '* Get a random free spell every 3 levels',
           '* Spells cost 20% less experience to learn',
-          '* Start game with 1 silver coin'
+          '* Start game with 2 gold coins'
           ],
   
-  bonusGold: 100,
+  bonusGold: 2,
     addBonusGold: function(){
       if (scribe.bonusGold) {
         gold.increase(scribe.bonusGold);
@@ -80,12 +79,12 @@ var scribe = {
     },
 
 
-  bonusAttack: 0,
-      addBonusAttack: function(){
-        if (scribe.bonusAttack) {
-          player.addAttack(scribe.bonusAttack);
+  bonusItems: false,
+      addBonusItems: function(){
+        if (scribe.bonusItems) {
+          console.log('Player gets some bonus item - TBD');
         } else {
-          console.log('Player does not get a bonus to attack');
+          console.log('Player does not get bonus item');
         }
 
       }
@@ -103,7 +102,7 @@ var hunter = {
           '* Accuracy bonus for ranged weapons'
           ],
   
-  bonusGold: 100,
+  bonusGold: 10,
     addBonusGold: function(){
       if (hunter.bonusGold) {
         gold.increase(hunter.bonusGold);
@@ -121,12 +120,12 @@ var hunter = {
       }
     },
   
-  bonusAttack: 0,
-      addBonusAttack: function(){
-        if (hunter.bonusAttack) {
-          player.addAttack(hunter.bonusAttack);
+  bonusItems: false,
+      addBonusItems: function(){
+        if (hunter.bonusItems) {
+          console.log('Player gets some bonus item - TBD');
         } else {
-          console.log('Player does not get a bonus to attack');
+          console.log('Player does not get bonus item');
         }
 
       }
@@ -137,14 +136,13 @@ var hunter = {
 };
 
 
-
 var warrior = {
 
   name: "Warrior",
   img: 'img/characterselectorpage/avatars/warrior.png',
   description: 'Born and trained with only one purpose - to fight and be victorious - warriors spread terror on a battlefield. Crude in their manners but extremely efficient in melee they make an unstoppable force.',
   bonus: ['* Get the Book of Spells on level 5',
-          '* Bonus to attack'
+          '* Start game with a sword in inventory'
           ],
 
   bonusGold: 0,
@@ -165,12 +163,12 @@ var warrior = {
       }
     },
 
-    bonusAttack: 1,
-      addBonusAttack: function(){
-        if (warrior.bonusAttack) {
-          player.addAttack(warrior.bonusAttack);
+    bonusItems: true,
+      addBonusItems: function(){
+        if (warrior.bonusItems) {
+          sword.addToInventory();
         } else {
-          console.log('Player does not get a bonus to attack');
+          console.log('Player does not get bonus item');
         }
 
       }

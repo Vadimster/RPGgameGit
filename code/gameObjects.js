@@ -3,18 +3,20 @@ var player = {
     id: "player",
     image: "img/maptiles/player.png",
     
+
     update: function(character){ //updates player stats according to character selected at game start
         player.type = character.name;
-        alert('Class chosen: ' + player.type);
+
+        var characterIcon = 'img/statsIcons/characters/'+ player.type +'.png'
+        $('#statsCharacterIcon').css({"background":"url('"+characterIcon+"')"});
+
         character.addBonusGold();
         character.addBonusBook();
-        character.addBonusAttack();
-
-
+        character.addBonusItems();
 
     },
 
-    type: null,
+    type: null, //
 
     alive: true,
     canRetreat: true, //can retret before battle screen loads
@@ -25,6 +27,7 @@ var player = {
         minMana: 0,
         maxMana: 100,
         
+
     gold: 0,
         minGold: 0,
         maxGold: null,
@@ -33,37 +36,107 @@ var player = {
         minHealth: 1,
         maxHealth: 100,
         
-    attack: 0,
+
+    attack: 0, //  DO NOT MODIFY THIS MANUALLY BUT RUN THE METHOD INSTEAD!!!  (displayed in game and used for calculations)
+    attackLog: 0, //used to keep track of luck changes and account for value if over max limit
         minAttack: 0,
         maxAttack: 10,
-        addAttack: function(amount){
-            var n = player.attack + amount;
-            if (n > player.maxAttack){
-                alert('Attack is currently at its max, cannot add');
+        increaseAttack: function(amount){ //this works only if starting luck is 0!
+                    
+            player.attackLog += amount;
+            console.log('player attackLog is ' + player.attackLog);
+
+            if (player.attackLog > player.maxAttack) {
+                player.attack = player.maxAttack;
+
             } else {
-                player.attack += amount;
-                console.log('player attack is now ' + player.attack);
-                $('#attackCounter').html(player.attack);
-            }
-        },
-        
-    defense: 0,
-        minDefense: 0,
-        maxDefense: 10,
-        addDefense: function(amount){
-            var n = player.defense + amount;
-            if (n > player.maxDefense){
-                alert('Defense is currently at its max, cannot add');
-            } else {
-                player.defense += amount;
-                console.log('player defense is now ' + player.defense);
-                $('#defenseCounter').html(player.defense);
+                 player.attack = player.attackLog;
+
             }
         },
 
-    luck: 0,
+        decreaseAttack: function(amount){ ////this works only if starting luck is 0!
+
+            player.attackLog -= amount;
+            console.log('player attackLog is ' + player.attackLog);
+            
+            if (player.attackLog > player.maxAttack) {
+                player.attack = player.maxAttack;
+
+            } else {
+                 player.attack = player.attackLog;
+
+            }       
+        },
+
+
+        
+    defense: 0, //  DO NOT MODIFY THIS MANUALLY BUT RUN THE METHOD INSTEAD!!!  (displayed in game and used for calculations)
+    defenseLog: 0, //used to keep track of luck changes and account for value if over max limit
+        minDefense: 0,
+        maxDefense: 10,
+        increaseDefense: function(amount){ //this works only if starting luck is 0!
+                    
+            player.defenseLog += amount;
+            console.log('player defenseLog is ' + player.defenseLog);
+
+            if (player.defenseLog > player.maxDefense) {
+                player.defense = player.maxDefense;
+
+            } else {
+                 player.defense = player.defenseLog;
+
+            }
+        },
+
+        decreaseDefense: function(amount){ ////this works only if starting luck is 0!
+
+            player.defenseLog -= amount;
+            console.log('player defenseLog is ' + player.defenseLog);
+            
+            if (player.defenseLog > player.maxDefense) {
+                player.defense = player.maxDefense;
+
+            } else {
+                 player.defense = player.defenseLog;
+
+            }       
+        },
+
+
+
+    luck: 0, //  DO NOT MODIFY THIS MANUALLY BUT RUN THE METHOD INSTEAD!!!  (displayed in game and used for calculations)
+    luckLog: 0, //used to keep track of luck changes and account for value if over max limit
         minLuck: 0,
         maxLuck: 5,
+        increaseLuck: function(amount){ //this works only if starting luck is 0!
+                    
+            player.luckLog += amount;
+            console.log('player luckLog is ' + player.luckLog);
+
+            if (player.luckLog > player.maxLuck) {
+                player.luck = player.maxLuck;
+
+            } else {
+                 player.luck = player.luckLog;
+
+            }
+        },
+
+        decreaseLuck: function(amount){ ////this works only if starting luck is 0!
+
+            player.luckLog -= amount;
+            console.log('player luckLog is ' + player.luckLog);
+            
+            if (player.luckLog > player.maxLuck) {
+                player.luck = player.maxLuck;
+
+            } else {
+                 player.luck = player.luckLog;
+
+            }       
+        },
+
     
     experience: 0,
         minExperience: 0,
@@ -92,10 +165,6 @@ var player = {
     position: 1, //player starts on the first tile
         y: 0,
         x: 0,
-
-
-
-    inventory: [],
 
 
 
@@ -272,7 +341,43 @@ var handleBonus = function(tileID, tileHasBonus, bonusType){ //to be launched af
 
 var gold = {
 		
-	increase: function (amount) {
+	
+
+    checkBalance : function(item) {
+
+        if (player.gold >= item.buyPrice) {
+            return true;
+        } else {
+            return false;
+        }
+
+
+    },
+
+/*
+    var tradeItem = function(item, action){ //whole object is passed into the function as well as instructions on what to do with this object.
+        
+        if (action === "buy") { 
+            if (player.gold >= item.price) { 
+                gold.decrease(item.price);
+                return true; //returns true back so that code can proceed to next step, e.g. playerStatsUpdateItem. See spellBook.open() for example
+                } else {
+                    //alert("Insufficient funds"); //FIX: make a proper jquery-ui message
+                    insufficientFundsMessage(item);
+                    return false;
+            }
+        } 
+        else if (action === "sell") {
+            alert("player wants to sell, will sell now");
+            gold.increase(item.sellPrice);
+            return true;
+        }
+    };
+
+*/
+
+
+    increase: function (amount) {
 	 	console.log("player gold before transaction: " + player.gold);
 		player.gold += amount;
 		console.log("player gold after transaction: " + player.gold);
@@ -282,28 +387,29 @@ var gold = {
 					$("#onecoinfound").get(0).play();
 			}
 		
+        var goldCoins = parseFloat(player.gold.toFixed(2));
+        $('#goldCoinCounter').html(goldCoins);
+
+        /*  CODE TO BREAK AMOUNT INTO GOLD,SILVER and COPPER COINS
+
         var goldCoins = Math.round(parseInt((player.gold/1000)));
         var a = player.gold % 1000;
         var silverCoins = Math.round(parseInt((a/100)));
         var copperCoins = a % 100 
  
-        $('#goldCoinCounter').html(goldCoins);
-        $('#silverCoinCounter').html(silverCoins);
-        $('#copperCoinCounter').html(copperCoins); 
+        */
+
+      
+
+
 	},
 
 	decrease: function (amount){
 		player.gold -= amount;
 		$("#sell").get(0).play();
 
-        var goldCoins = Math.round(parseInt((player.gold/1000)));
-        var a = player.gold % 1000;
-        var silverCoins = Math.round(parseInt((a/100)));
-        var copperCoins = a % 100 
- 
+        var goldCoins = parseFloat(player.gold.toFixed(2));
         $('#goldCoinCounter').html(goldCoins);
-        $('#silverCoinCounter').html(silverCoins);
-        $('#copperCoinCounter').html(copperCoins); 
 
 	}
 };
@@ -382,24 +488,6 @@ var experience = {
 
     //------------------------ PLAYING AROUND WITH OBJECTS ---//
 
-    var tradeItem = function(item, action){ //whole object is passed into the function as well as instructions on what to do with this object.
-        
-        if (action === "buy") { 
-            if (player.gold >= item.price) { 
-                gold.decrease(item.price);
-                return true; //returns true back so that code can proceed to next step, e.g. playerStatsUpdateItem. See spellBook.open() for example
-                } else {
-                    //alert("Insufficient funds"); //FIX: make a proper jquery-ui message
-                    insufficientFundsMessage(item);
-                    return false;
-            }
-        } 
-        else if (action === "sell") {
-            alert("player wants to sell, will sell now");
-            gold.increase(item.sellPrice);
-            return true;
-        }
-    };
 
 
 

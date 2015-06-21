@@ -8,7 +8,7 @@ var spellBook = {
     objectDivID: 'statsSpellBookIcon',
 	img: 'img/statsIcons/spellbook.png',
 	equipped: false,
-	price: 100,
+	buyPrice: 5,
     emptyText: 'There are no spells known to you yet...', //text displayed when there are no spells in the book
 
 	
@@ -21,6 +21,21 @@ var spellBook = {
 
 	unequip: function(){
 	},
+
+
+    purchase: function(){
+
+            if (gold.checkBalance(this)) {
+
+                gold.decrease(this.buyPrice);
+                spellBook.equip();
+
+            } else {
+
+                //alert('insufficient funds!');
+                insufficientFundsMessage(this);
+            } 
+    },
 
 
     open: function(){ //opens book if equipped, attempts to buy if not equipped
@@ -52,7 +67,7 @@ var spellBook = {
                     modal: true,
                     width: 1000,
                     height: 630, 
-                    closeOnEscape: false,
+                    closeOnEscape: true,
                     dialogClass: "no-close"
                     //position: ["right", "center"]
                     }
@@ -115,7 +130,7 @@ var spellBook = {
         
         } else {
 
-                $("#spellbook-buy-message").text('All the spells known to you are kept in the ' +spellBook.name+  '. You do not seem to have such item, would you like to buy it for ' +spellBook.price+' coins?'); //calling a function which will generate event title using the argument   
+                $("#spellbook-buy-message").text('All the spells known to you are kept in the ' +spellBook.name+  '. You do not seem to have such item, would you like to buy it for ' +spellBook.buyPrice+' coins?'); //calling a function which will generate event title using the argument   
 
 
                 $('#spellBookBuyPage')
@@ -123,11 +138,7 @@ var spellBook = {
                         {buttons: 
                             {'Purchase' : function(){
                                 
-                                    if (tradeItem(spellBook, 'buy')){ //if spellbook was traded successfuly
-                                        spellBook.equip();                            
-
-                                    } 
-                                
+                                    spellBook.purchase(spellBook); 
                                     $(this).dialog('close');
 
                                 },
@@ -229,7 +240,7 @@ var spellBook = {
                     draggable: false,
                     resizable: false,
                     modal: true,
-                    width: 1015,
+                    width: 1100,
                     height: 630, 
                     closeOnEscape: false,
                     dialogClass: "no-close"
@@ -286,29 +297,3 @@ var spellBook = {
 	spells: [] //player's spells in SpellBook
 
 };
-
-
-
-
-var sword = {
-    objectName: "sword", //also divID for jQuery
-    type: "weapon",
-    equipped: false,
-    price: 50,
-    attack: 2,
-    defense: 0,
-    trade: function(){ 
-        if (this.equipped) {
-            if (confirm("You already have the " + this.objectName + ". Do you want to sell it for " + this.sellPrice + " gold?")){
-                tradeItem(this, "sell");
-            }
-                } else { // INTRODUCE CHECK IF ALREaDY HAS A WEAPON OF THIS TYPE => CANNOT BUY 
-                    alert("Not equipped, will attempt to buy now");
-                    tradeItem(this, "buy");
-                }
-    }
-        
-    //may be develop a stats update method for this object instead of using the playerStatsUpdateItem function?
-
-};
-sword.sellPrice = sword.price/2;

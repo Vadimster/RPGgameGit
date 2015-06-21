@@ -3,8 +3,8 @@
 	<HEAD>
 		<meta charset="utf-8">
 		<TITLE>Adventures in Vadimaria</TITLE>
-		<link rel="stylesheet" type="text/css" href="style.css">
-		<link rel="stylesheet" href="ui/jquery-ui/jquery-ui.min.css"> 
+		<link rel="stylesheet" type="text/css" href="styles/style.css" />
+		<link rel="stylesheet" href="ui/jquery-ui/jquery-ui.min.css" /> 
 	</HEAD>
 <BODY background="img/background.jpg">
 
@@ -43,14 +43,14 @@
 		<div id="goldCoinsIcon"></div>
 		<div id="goldCoinCounter">0</div>
 	</div>
-	<div id="silverCoins">
+	<!-- <div id="silverCoins">
 		<div id="silverCoinsIcon"></div>
 		<div id="silverCoinCounter">0</div>
 	</div>
 	<div id="copperCoins">
 		<div id="copperCoinsIcon"></div>
 		<div id="copperCoinCounter">0</div>
-	</div>
+	</div> -->
 	<div id="statsExperience">
 		<div id="statsExperienceIcon"></div>
 		<div id="experienceWrapper">	
@@ -59,24 +59,6 @@
 			<div id="experienceNextLevel"></div>
 			<div class="clear"></div>
 		</div>
-	</div>
-	<div id="statsAttack">
-		<div id="statsAttackIcon"></div>
-		<div id="attackCounter"></div>
-	</div>
-	<div id="statsDefense">
-		<div id="statsDefenseIcon"></div>
-		<div id="defenseCounter"></div>
-	</div>
-	<div id="statsLuck">
-		<div id="statsLuckIcon"></div>
-		<div id="luckCounter"></div>
-	</div>
-
-
-	<div id="statsMana">
-		<div id="statsManaIcon"></div>
-		<div id="manaCounter">0</div>	
 	</div>
 
 
@@ -87,6 +69,11 @@
 			<div id="spellBookEquipIndicator"></div>
 
 		</div>
+	</div>
+
+
+	<div id="statsCharacter" title="Click for character details" onclick="characterDetailsPage.open()">
+		<div id="statsCharacterIcon"> </div>
 	</div>
 
 
@@ -111,82 +98,8 @@
 <div id="map-content"></div>
 
 
-<div>
-	
-<table id="inventory" border="0">
-	<tr>
-		<td bgcolor="#A52A2A"><input type="image" id="swordIcon" width="50" height="50" title="Sword. +2 Attack bonus" src="img/inventory/sword.png" onclick="sword.trade();"></td> 
-		<td bgcolor="#A52A2A"><input type="image" id="improvedWoodenBowIcon" width="50" height="50" title="Improved wooden bow. +1 to arrows damage" src="img/inventory/improvedwoodenbow.png" onclick="exploreImprovedWoodenBow();"></td> 
-		<td width = "10px"></td>
-		<td bgcolor="#A52A2A"><input type="image" id="metalShieldIcon" width="50" height="50" title="Metal shield. +2 Defense bonus" src="img/inventory/metalshield.png" onclick="exploreMetalShield();"></td> 
-		<td bgcolor="#A52A2A"><input type="image" id="metalArmorIcon" width="50" height="50" title="Metal armor. +2 Defense bonus" src="img/inventory/metalarmor.png" onclick="exploreMetalArmor();"></td> 
-		<td bgcolor="#A52A2A"><input type="image" id="improvedMetalHelmetIcon" width="50" height="50" title="Improved metal helmet. +2 Defense bonus" src="img/inventory/improvedmetalhelmet.png" onclick="exploreImprovedMetalHelmet();"></td> 
-		<td width="10"></td>
-		<td></td> <!-- here can paste another icon of potion -->
-		<td></td>
-		<td></td>
-		<td width="10"></td>
-		<td></td> <!-- here can paste another icon of arrows -->
-		<td></td>
-		<td width="10"></td>
-		<td></td>
-	
-	</tr>
-	<tr>
-		<td><div id="swordPrice"></div> </td>
-		<td><div id="improvedWoodenBowPrice"></div> </td>
-		<td></td>
-		<td><div id="metalShieldPrice"></div> </td>
-		<td><div id="metalArmorPrice"></div> </td>
-		<td><div id="improvedMetalHelmetPrice"></div> </td>
-		<td width="10"></td>
-		<td></td> <!-- here can go price for another potion type-->
-		<td></td>
-		<td></td>
-		<td width="10"></td> 
-		<td></td> <!-- here can go price for another arrow type -->
-		<td></td>
-		<td></td>
 
-		
-	</tr>
-	<tr>
-		<td bgcolor="#A52A2A"><input type="image" id="axeIcon" width="50" height="50" title="Axe. +1 Attack bonus" src="img/inventory/axe.png" onclick="exploreAxe();" / ></td> 
-		<td bgcolor="#A52A2A"><input type="image" id="woodenBowIcon" width="50" height="50" title="Wooden bow. Allows to shoot arrows" src="img/inventory/woodenbow.png" onclick="exploreWoodenBow();" / ></td> 
-		<td></td>
-		<td bgcolor="#A52A2A"><input type="image" id="woodenShieldIcon" width="50" height="50" title="Wodden shield. +1 Defense bonus" src="img/inventory/woodenshield.png" onclick="exploreWoodenShield();" / ></td> 
-		<td bgcolor="#A52A2A"><input type="image" id="leatherArmorIcon" width="50" height="50" title="Leather armor. +1 Defense bonus" src="img/inventory/leatherarmor.png" onclick="exploreLeatherArmor();" / ></td> 
-		<td bgcolor="#A52A2A"><input type="image" id="metalHelmetIcon" width="50" height="50" title="Metal helmet. +1 Defense bonus" src="img/inventory/metalhelmet.png" onclick="exploreMetalHelmet();" / ></td> 
-		<td width="10"></td>
-		<td bgcolor="#A52A2A"><input type="image" id="healingPotionIcon" width="50" height="50" title="Healing potion. Restores 10 Health" src="img/inventory/healingpotion.png" onclick="purchaseHealingPotion();" / ></td> 
-		<td>x</td>
-		<td><div id="healingPotionsCounter" onclick="addHealthFromHealingPotion();" title="Use the potion to restore some health"></div></td> <!-- count of potions available -->
-		<td width="10"></td> 
-		<td bgcolor="#A52A2A"><input type="image" id="arrowsIcon" width="50" height="50" title="Arrows. Deal 5 damage, require a bow to be fired" src="img/inventory/arrows.png" onclick="purchaseArrow();" / ></td> 
-		<td>x</td>
-		<td><div id="arrowsCounter"></div></td> <!-- count of arrows available -->
-
-	</tr>
-	<tr>
-		<td><div id="axePrice"></div></td>
-		<td><div id="woodenBowPrice"></div></td>
-		<td></td>
-		<td><div id="woodenShieldPrice"></div> </td>
-		<td><div id="leatherArmorPrice"></div> </td>
-		<td><div id="metalHelmetPrice">1</div> </td>
-		<td width="10"></td>
-		<td><div id="healingPotionPrice">1</div></td>
-		<td></td>
-		<td></td>
-		<td width="15"></td> 
-		<td><div id="arrowPrice"></div></td>
-		<td></td>
-
-	</tr>
-</table>
-</div>
-
-<div id="version">v 3.0.0</div>
+<div id="version">v 10.5.16</div>
 
 
  <div id="eventIntro" class="dialog">
@@ -212,10 +125,10 @@
  	 <div id="spellbook-dialog-background">
  	 	<div id="spellbook-spell-legend-container">
  	 		<div id="spellbook-spell-legend-name"> Spell Name</div>
- 	 		<div id="spellbook-spell-legend-manacost">Mana</div>
+ 	 		<div id="spellbook-spell-legend-manacost" title="Mana points required to cast a spell">Mana</div>
  	 		<div id="spellbook-spell-legend-range">Range</div>
  	 		<div id="spellbook-spell-legend-damage">Damage</div>
-  	 		<div id="spellbook-spell-legend-duration">Duration</div>
+  	 		<div id="spellbook-spell-legend-duration" title="Number of rounds the spell is active during combat">Duration</div>
   	 		<div id="spellbook-spell-legend-description">Description</div>
  	 	</div>
  	 	<div id="spellbook-spell-all-spells-container"></div>
@@ -232,7 +145,7 @@
  	 		<div id="spellbook-purchasespell-legend-manacost" title="Mana points required to cast a spell">Mana</div>
  	 		<div id="spellbook-purchasespell-legend-range">Range</div>
  	 		<div id="spellbook-purchasespell-legend-damage">Damage</div>
-  	 		<div id="spellbook-purchasespell-legend-duration" title="Number of turns during combat when the spell is active">Duration</div>
+  	 		<div id="spellbook-purchasespell-legend-duration" title="Number of rounds the spell is active during combat">Duration</div>
   	 		<div id="spellbook-purchasespell-legend-description">Description</div>
  	 	</div>
  	 	<div id="spellbook-purchasespell-all-spells-container"></div>
@@ -264,6 +177,41 @@
  </div>
 
 
+ <div id="characterDetails" class= "dialog">
+ 	<div id="characterDetails-background"> 
+ 		<div id="characterDetails-equippedItems-container">picture of a warrior + equipped items </div> <!-- Image of a warrior + aquipped items -->
+ 	 	<div id="characterDetails-activeItems-container">active items </div> <!-- contains slots for active auxilary  -->
+ 	 	<div id="characterDetails-inventory-container"></div> <!-- contains inactive items in inventory  -->
+ 	 	<div id="characterDetails-stats-container"> <!-- contains inactive items in inventory  -->
+			<div id="statsAttack">
+				<div id="statsAttackIcon" title="Your base attack value"></div>
+				<div id="attackCounter"></div>
+			</div>
+			
+			<div id="statsDefense">
+				<div id="statsDefenseIcon" title="Your base defense value"></div>
+				<div id="defenseCounter"></div>
+			</div>
+			
+			<div id="statsLuck">
+				<div id="statsLuckIcon" title="Luck increases chances of favorable events happening to you"></div>
+				<div id="luckCounter"></div>
+			</div>
+
+
+			<div id="statsMana">
+				<div id="statsManaIcon" title="Mana is used to cast spells in battle"></div>
+				<div id="manaCounter">0</div>	
+			</div>
+		</div>
+
+ 	</div>
+ </div>
+
+
+
+
+
   <div id="insufficientFundsPage" class= "dialog">
  	<div id="insufficientFundsPage-background"> 
 		<div id="insufficientFundsPage-message"></div>
@@ -278,11 +226,13 @@
 <script type="text/javascript" src="jquery-2.1.1.min.js"></script>
 <script type="text/javascript" src="ui/jquery-ui/jquery-ui.min.js"></script>
 
+<script type="text/javascript" src="code/weapons.js"></script>
+<script type="text/javascript" src="code/inventory.js"></script>
 <script type="text/javascript" src="code/spells.js"></script>
 <script type="text/javascript" src="code/messages.js"></script>
 <script type="text/javascript" src="code/gameObjects.js"></script>
 
-<script type="text/javascript" src="code/inventoryObjects.js"></script>
+<script type="text/javascript" src="code/spellBook.js"></script>
 
 <script type="text/javascript" src="code/characters.js"></script>
 
@@ -293,7 +243,7 @@
 
 
 <script type="text/javascript" src="code/map.js"></script>
-
+<script type="text/javascript" src="code/characterDetails.js"></script>
 
 
 <script type="text/javascript" src="code/events.js"></script>

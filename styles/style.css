@@ -1,4 +1,15 @@
 
+.testClass {
+  background-color: yellow;
+  width: 50px;
+  height: 50px;
+  border: 1px solid blue;
+  /* float: left; */
+  display: inline-block;
+
+}
+
+
 
 .bonus {
 
@@ -17,12 +28,6 @@
     height: 60px;
 }
 
-
-#inventory {
-    display: none;
-
-
-}
 
 #map-content {
     margin: 0 auto;
@@ -59,7 +64,7 @@
     #statsLevelIcon{
       width: 40px;
       height: 30px;
-      background-image: url("img//statsIcons/level.png");
+      background-image: url("../img/statsIcons/level.png");
       margin-left: 10px;
       background-size: contain;
       background-repeat: no-repeat;
@@ -83,7 +88,7 @@
     #healthLevelIcon{
       width: 40px;
       height: 30px;
-      background-image: url("img//statsIcons/health.png");
+      background-image: url("../img//statsIcons/health.png");
       margin-left: 10px;
       background-size: contain;
       background-repeat: no-repeat;
@@ -107,7 +112,7 @@
     #goldCoinsIcon{
       width: 30px;
       height: 30px;
-      background-image: url("img/statsIcons/goldcoin.png");
+      background-image: url("../img/statsIcons/goldcoin.png");
       margin-left: 15px;
       background-size: contain;
       background-repeat: no-repeat;
@@ -131,7 +136,7 @@
     #silverCoinsIcon{
       width: 30px;
       height: 30px;
-      background-image: url("img/statsIcons/silvercoin.png");
+      background-image: url("../img/statsIcons/silvercoin.png");
       margin-left: 15px;
       background-size: contain;
       background-repeat: no-repeat;
@@ -155,7 +160,7 @@
     #copperCoinsIcon{
       width: 30px;
       height: 30px;
-      background-image: url("img/statsIcons/coppercoin.png");
+      background-image: url("../img/statsIcons/coppercoin.png");
       margin-left: 15px;
       background-size: contain;
       background-repeat: no-repeat;
@@ -179,7 +184,7 @@
     #statsExperienceIcon{
       width: 80px;
       height: 25px;
-      background-image: url("img/statsIcons/experience.png");
+      background-image: url("../img/statsIcons/experience.png");
       margin-left: 5px;
       background-size: contain;
       
@@ -217,7 +222,8 @@
 
 #statsAttack{
   position: absolute;
-  left: 450px;  
+  margin-left: 10px;
+  margin-top: 10px;  
   height: 60px;
   width: 60px;
   background-color: none;
@@ -227,7 +233,7 @@
     #statsAttackIcon{
       width: 40px;
       height: 30px;
-      background-image: url("img/statsIcons/attack.png");
+      background-image: url("../img/statsIcons/attack.png");
       margin-left: 15px;
       background-size: contain;
       background-repeat: no-repeat;
@@ -242,7 +248,8 @@
 
 #statsDefense{
   position: absolute;
-  left: 520px;  
+  margin-left: 80px;
+  top: 10px;  
   height: 60px;
   width: 60px;
   background-color: none;
@@ -251,30 +258,7 @@
     #statsDefenseIcon{
       width: 40px;
       height: 30px;
-      background-image: url("img/statsIcons/defense.png");
-      margin-left: 15px;
-      background-size: contain;
-      background-repeat: no-repeat;
-    }
-
-    #defenseCounter{
-        margin-top: 5px;
-        text-align: center;
-    }
-
-
-#statsDefense{
-  position: absolute;
-  left: 520px;  
-  height: 60px;
-  width: 60px;
-  background-color: none;
-  border: 1px dotted grey;   
-}
-    #statsDefenseIcon{
-      width: 40px;
-      height: 30px;
-      background-image: url("img/statsIcons/defense.png");
+      background-image: url("../img/statsIcons/defense.png");
       margin-left: 15px;
       background-size: contain;
       background-repeat: no-repeat;
@@ -288,7 +272,8 @@
 
 #statsLuck{
   position: absolute;
-  left: 590px;  
+  left: 150px;
+  top: 10px;  
   height: 60px;
   width: 60px;
   background-color: none;
@@ -297,7 +282,7 @@
     #statsLuckIcon{
       width: 40px;
       height: 30px;
-      background-image: url("img/statsIcons/luck.png");
+      background-image: url("../img/statsIcons/luck.png");
       margin-left: 15px;
       background-size: contain;
       background-repeat: no-repeat;
@@ -312,7 +297,8 @@
 
 #statsMana{
   position: absolute;
-  left: 660px;  
+  left: 220px;  
+  top: 10px;
   height: 60px;
   width: 60px;
   border: 1px dotted grey;   
@@ -320,7 +306,7 @@
     #statsManaIcon{
       width: 35px;
       height: 30px;
-      background-image: url("img/statsIcons/mana.png");
+      background-image: url("../img/statsIcons/mana.png");
       margin-left: 15px;
       background-size: contain;
       background-repeat: no-repeat;
@@ -346,7 +332,7 @@
     #statsSpellBookIcon{
       width: 50px;
       height: 50px;
-      background-image: url("img/statsIcons/spellbook.png");
+      background-image: url("../img/statsIcons/spellbook.png");
       margin-left: 5px;
       background-size: contain;
       background-repeat: no-repeat;
@@ -358,8 +344,29 @@
           margin-left: 20px;
           width: 30px;
           height: 30px;
-          background-image: url("img/statsIcons/redcross.png");
+          background-image: url("../img/statsIcons/redcross.png");
         }
+
+
+
+
+#statsCharacter{
+  position: absolute;
+  left: 820px;  
+  height: 60px;
+  width: 60px;
+  border: 1px dotted grey;   
+}
+    #statsCharacterIcon{
+      width: 50px;
+      height: 50px;
+      /* background-image: url(""); */
+      margin-left: 5px;
+      margin-top: 5px;
+      background-size: contain;
+      background-repeat: no-repeat;
+    }
+
 
 
 
@@ -485,7 +492,7 @@
 #combat-dialog-background {
   position: absolute;
   background-repeat: no-repeat;
-  /* background-image: url(img/messages/encounter_dialogue_background_400x500.png);
+  /* background-image: url(../img/messages/encounter_dialogue_background_400x500.png);
   background-repeat: no-repeat; 
   background-color: #F0F0F0; */
   width: 999px;
@@ -512,7 +519,7 @@
 
 #dialog-background {
   position: absolute;
-  background-image: url(img/messages/encounter_dialogue_background_400x500.png);
+  background-image: url(../img/messages/encounter_dialogue_background_400x500.png);
   background-repeat: no-repeat;
   width: 400px;
   height: 500px;
@@ -573,7 +580,7 @@
 
 #spellbook-dialog-background {
   position: absolute;
-  background-image: url(img/messages/encounter_dialogue_background_400x500.png);
+  background-image: url(../img/messages/encounter_dialogue_background_400x500.png);
   background-size: 100% 100%;
   background-repeat: no-repeat;
   width: 950px;
@@ -783,25 +790,28 @@
 
 
 #spellPurchasePage { 
+ position: relative;
  display: none;
- width: 950px;
- height: 500px;
+ /* width: 950px;
+ height: 500px; */
 }
 
 #purchasespell-dialog-background {
-  position: absolute;
-  background-image: url(img/messages/encounter_dialogue_background_400x500.png);
+  position: relative;
+  overflow: hidden;
+  background-image: url(../img/messages/encounter_dialogue_background_400x500.png);
   background-size: 100% 100%;
   background-repeat: no-repeat;
-  width: 950px;
-  height: 500px;
+  width: 1060px;
+  height: 490px;
   margin-left: 0px;
   margin-top: 0px; 
 
 }
 
 #spellbook-purchasespell-legend-container {
-  position: relative;
+  /* removed position fixed */
+  z-index: 10;
   width: 950px;
   height: 40px;
   margin-left: 30px;
@@ -898,10 +908,12 @@
 
 #spellbook-purchasespell-all-spells-container {
   position: relative;
+  z-index: 5;
+  overflow-y: auto; /* added -y */
   width: 950px;
   margin-left: 30px;
-  margin-top: 0px;
   border: 0px dotted green;
+  height: 400px; /* new */
 }
 
 
@@ -940,7 +952,6 @@
         margin-left: 130px;
         margin-top: 5px;
         border: 0px dotted blue;
-
       }
 
 
@@ -1029,7 +1040,7 @@
 
 #character-selector-Page-background {
   position: absolute;
-  background-image: url(img/messages/encounter_dialogue_background_400x500.png);
+  background-image: url(../img/messages/encounter_dialogue_background_400x500.png);
   background-size: 100% 100%;
   background-repeat: no-repeat;
   width: 760;
@@ -1087,7 +1098,7 @@
   margin-left: 110px;
   margin-top: 390px;
   border: 0px dotted green;
-  background-image: url(img/characterselectorpage/leftarrow.png);
+  background-image: url(../img/characterselectorpage/leftarrow.png);
   background-size: 100% 100%;
   background-repeat: no-repeat;
 }
@@ -1100,7 +1111,7 @@
   margin-left: 220px;
   margin-top: 390px;
   border: 0px dotted green;
-  background-image: url(img/characterselectorpage/rightarrow.png);
+  background-image: url(../img/characterselectorpage/rightarrow.png);
   background-size: 100% 100%;
   background-repeat: no-repeat;
 }
@@ -1138,7 +1149,7 @@
 
     #spellbook-buy-dialog-background {
       position: absolute;
-      background-image: url(img/messages/encounter_dialogue_background_400x500.png);
+      background-image: url(../img/messages/encounter_dialogue_background_400x500.png);
       background-size: 100% 100%;
       background-repeat: no-repeat;
       width: 350px;
@@ -1176,7 +1187,7 @@
 
     #insufficientFundsPage-background {
       position: absolute;
-      background-image: url(img/messages/encounter_dialogue_background_400x500.png);
+      background-image: url(../img/messages/encounter_dialogue_background_400x500.png);
       background-size: 100% 100%;
       background-repeat: no-repeat;
       width: 350px;
@@ -1202,8 +1213,72 @@
         }
 
 
+/*  ============= CHARACTER DETAILS DIALOG ======================================================================================================================================================================= */
+
+#characterDetails {
+  display: none;
+  position: relative;
+
+}
 
 
+    #characterDetails-background {
+          position: relative;
+          background-image: url(../img/messages/encounter_dialogue_background_400x500.png);
+          background-size: 100% 100%;
+          background-repeat: no-repeat;
+          width: 950px;
+          height: 540px;
+    }
+
+
+        #characterDetails-equippedItems-container {
+                  position: absolute;
+                  width: 350px;
+                  height: 340px;
+                  border: 1px dotted blue;
+                  margin-top: 25px;
+                  margin-left: 65px;
+            }
+
+        #characterDetails-activeItems-container {
+                  position: absolute;
+                  width: 255px;
+                  height: 50px;
+                  border: 1px dotted green;
+                  margin-top: 380px;
+                  margin-left: 350px;
+            }
+
+
+
+       #characterDetails-inventory-container {
+                  position: absolute;
+                  width: 750px;
+                  height: 68px;
+                  border: 1px dotted red;
+                  margin-top: 450px;
+                  margin-left: 100px;
+                  overflow-x: auto;
+                  overflow-y: hidden;
+                  white-space: nowrap; 
+            }
+
+     #characterDetails-stats-container {
+                  position: absolute;
+                  width: 400px;
+                  height: 340px;
+                  border: 1px dotted black;
+                  margin-top: 25px;
+                  margin-left: 450px;
+            }
+
+
+
+
+
+
+/*  =============================================================================================================================================================================================================== */
 
 .no-close .ui-dialog-titlebar-close { /* hides close button in Jquery UI dialogues  */
   display: none;
