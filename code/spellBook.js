@@ -40,9 +40,17 @@ var spellBook = {
     },
 
 
+    iconClicked: function(){
+
+         $("#spellBookOpen").get(0).play();
+         spellBook.open();
+
+
+    },
+
     open: function(){ //opens book if equipped, attempts to buy if not equipped
 
-        $("#spellBookOpen").get(0).play();
+       
 
         console.log('number of spells known to player: ' +spellBook.spells.length);
 
@@ -56,14 +64,16 @@ var spellBook = {
                     .dialog(
                         {buttons: 
                             {'Close Book' : function(){
-                                $(this).dialog('close'); 
+                                $(this).dialog('close');
+                                $("#spellBookClosed").get(0).play();
+
 
 
                                 },
                         
                              'Learn a spell' : function(){
                                 $(this).dialog('close');
-                                spellBook.openLearnSpellPage();
+                                spellBook.learnSpellPageClicked();
 
 
                                 }
@@ -147,7 +157,7 @@ var spellBook = {
                         {buttons: 
                             {'Purchase' : function(){
                                 
-                                    spellBook.purchase(spellBook); 
+                                    spellBook.purchase(); 
                                     $(this).dialog('close');
 
                                 },
@@ -230,10 +240,18 @@ var spellBook = {
 
     },
 
+    learnSpellPageClicked: function(){
+            
+            $("#spellBookOpen").get(0).play();
+            spellBook.openLearnSpellPage();
+
+
+
+    },
+
 
     openLearnSpellPage: function() {
  
-        $("#spellBookOpen").get(0).play();
 
         $('#spellPurchasePage')
                     .dialog(

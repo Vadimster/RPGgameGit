@@ -29,6 +29,10 @@
 <audio id="goldBonus" src="Sounds/goldbonus.mp3"></audio>
 <audio id="pageTurn" src="Sounds/pageturn.mp3"></audio>
 <audio id="spellBookOpen" src="Sounds/spellbook_open.mp3"></audio>
+<audio id="spellBookClosed" src="Sounds/book_closed.mp3"></audio>
+<audio id="spellLearnt" src="Sounds/spell_learnt.mp3"></audio>
+
+
 
 
 
@@ -66,7 +70,7 @@
 
 
 
-	<div id="statsSpellBook" title="Book of Spells" onclick="spellBook.open()">
+	<div id="statsSpellBook" title="Book of Spells" onclick="spellBook.iconClicked()">
 		<div id="statsSpellBookIcon">
 			<div id="spellBookEquipIndicator"></div>
 
@@ -131,7 +135,7 @@
  	 		<div id="spellbook-spell-legend-range">Range</div>
  	 		<div id="spellbook-spell-legend-damage">Damage</div>
   	 		<div id="spellbook-spell-legend-duration" title="Number of rounds the spell is active during combat">Duration</div>
-  	 		<div id="spellbook-spell-legend-description">Description</div>
+  	 		<div id="spellbook-spell-legend-description" title="Effects in combat">Description</div>
  	 	</div>
  	 	<div id="spellbook-spell-all-spells-container"></div>
  	 </div>
@@ -148,7 +152,7 @@
  	 		<div id="spellbook-purchasespell-legend-range">Range</div>
  	 		<div id="spellbook-purchasespell-legend-damage">Damage</div>
   	 		<div id="spellbook-purchasespell-legend-duration" title="Number of rounds the spell is active during combat">Duration</div>
-  	 		<div id="spellbook-purchasespell-legend-description">Description</div>
+  	 		<div id="spellbook-purchasespell-legend-description" title="Effects in combat">Description</div>
  	 	</div>
  	 	<div id="spellbook-purchasespell-all-spells-container"></div>
  	 </div>

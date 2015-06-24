@@ -15,9 +15,12 @@ var fireBall = {
 
 		if (experience.checkBalance(this)){
 			
+			
 			experience.decrease(this.price);
 			spellBook.spells.push(this);
+			$("#spellLearnt").get(0).play();
 			spellBook.openLearnSpellPage();
+
 
 		} else {
 			console.log('experience is not enough to  learn the spell');
@@ -45,6 +48,7 @@ var iceBall = {
 		if (experience.checkBalance(this)){
 
 			experience.decrease(this.price);
+			$("#spellLearnt").get(0).play();
 			spellBook.spells.push(this);
 			spellBook.openLearnSpellPage();
 
@@ -75,6 +79,7 @@ var lightningBall = {
 			console.log('experience is enough to  learn the spell');
 			
 			experience.decrease(this.price);
+			$("#spellLearnt").get(0).play();
 			spellBook.spells.push(this);
 			spellBook.openLearnSpellPage();
 
@@ -105,6 +110,7 @@ var enemySlowdown = {
 			console.log('experience is enough to  learn the spell');
 			
 			experience.decrease(this.price);
+			$("#spellLearnt").get(0).play();
 			spellBook.spells.push(this);
 			spellBook.openLearnSpellPage();
 
@@ -134,6 +140,7 @@ var enemyFreeze = {
 			console.log('experience is enough to  learn the spell');
 			
 			experience.decrease(this.price);
+			$("#spellLearnt").get(0).play();
 			spellBook.spells.push(this);
 			spellBook.openLearnSpellPage();
 
@@ -163,6 +170,7 @@ var stoneSkin = {
 			console.log('experience is enough to  learn the spell');
 			
 			experience.decrease(this.price);
+			$("#spellLearnt").get(0).play();
 			spellBook.spells.push(this);
 			spellBook.openLearnSpellPage();
 
@@ -193,6 +201,7 @@ var ironSkin = {
 			console.log('experience is enough to  learn the spell');
 			
 			experience.decrease(this.price);
+			$("#spellLearnt").get(0).play();
 			spellBook.spells.push(this);
 			spellBook.openLearnSpellPage();
 
@@ -223,6 +232,7 @@ var diamondSkin = {
 			console.log('experience is enough to  learn the spell');
 			
 			experience.decrease(this.price);
+			$("#spellLearnt").get(0).play();
 			spellBook.spells.push(this);
 			spellBook.openLearnSpellPage();
 
@@ -252,6 +262,7 @@ var quickening = {
 			console.log('experience is enough to  learn the spell');
 			
 			experience.decrease(this.price);
+			$("#spellLearnt").get(0).play();
 			spellBook.spells.push(this);
 			spellBook.openLearnSpellPage();
 
@@ -282,6 +293,7 @@ var madness = {
 			console.log('experience is enough to  learn the spell');
 			
 			experience.decrease(this.price);
+			$("#spellLearnt").get(0).play();
 			spellBook.spells.push(this);
 			spellBook.openLearnSpellPage();
 
@@ -313,6 +325,7 @@ var weakness = {
 			console.log('experience is enough to  learn the spell');
 			
 			experience.decrease(this.price);
+			$("#spellLearnt").get(0).play();
 			spellBook.spells.push(this);
 			spellBook.openLearnSpellPage();
 
@@ -344,6 +357,7 @@ var blindness = {
 			console.log('experience is enough to  learn the spell');
 			
 			experience.decrease(this.price);
+			$("#spellLearnt").get(0).play();
 			spellBook.spells.push(this);
 			spellBook.openLearnSpellPage();
 
