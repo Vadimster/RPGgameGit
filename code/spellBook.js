@@ -11,6 +11,8 @@ var spellBook = {
 	buyPrice: 5,
     emptyText: 'There are no spells known to you yet...', //text displayed when there are no spells in the book
 
+    spells: [], //spells known to player
+
 	
     equip: function(){
 
@@ -40,6 +42,11 @@ var spellBook = {
 
     open: function(){ //opens book if equipped, attempts to buy if not equipped
 
+        $("#spellBookOpen").get(0).play();
+
+        console.log('number of spells known to player: ' +spellBook.spells.length);
+
+
         if (this.equipped) {
 
             $("#pageTurn").get(0).play();
@@ -56,7 +63,7 @@ var spellBook = {
                         
                              'Learn a spell' : function(){
                                 $(this).dialog('close');
-                                spellBook.learnSpell();
+                                spellBook.openLearnSpellPage();
 
 
                                 }
@@ -75,6 +82,8 @@ var spellBook = {
             
 
                 if (spellBook.spells.length > 0) {
+
+                    console.log('player knows some spells will loop through them now');
 
                     $('#spellbook-spell-all-spells-container').empty(); // originally emptied spellbook-dialog-background
 
@@ -115,14 +124,14 @@ var spellBook = {
                                 spelldescription.appendTo(container);
                                 spelldescription.html(spellBook.spells[i].description);
                     }
-                } else {
-
-                    $('#spellbook-dialog-background').empty();
+                } else { //if player does not have any spells known to him
+                    
+                    $('#spellbook-spell-all-spells-container').empty();
 
                     var container = $("<div class='spellbook-spell-container'></div>");
                     var message = $("<div class='spellbook-empty-message'></div>");
                     
-                    container.appendTo('#spellbook-dialog-background');
+                    container.appendTo('#spellbook-spell-all-spells-container'); 
                     message.appendTo(container);
                     message.html(spellBook.emptyText);
 
@@ -222,16 +231,16 @@ var spellBook = {
     },
 
 
-
-    learnSpell: function() {
+    openLearnSpellPage: function() {
  
-
+        $("#spellBookOpen").get(0).play();
 
         $('#spellPurchasePage')
                     .dialog(
                         {buttons: 
                             {'Close' : function(){
-                                $(this).dialog('close'); 
+                                $(this).dialog('close');
+                                spellBook.open(); 
 
 
                                 }
@@ -249,28 +258,40 @@ var spellBook = {
                 ); //creates the dialog
 
 
+
+
+
+
+
+
         $('#spellbook-purchasespell-all-spells-container').empty(); // originally emptied spellbook-dialog-background
 
 
                     for (i = 0; i < allSpells.length; i++) {
 
+                        var n = spellBook.spells.indexOf(allSpells[i]); //checks if a spell is already known to player in order to not to display it in all spells list on purchase page
+
+                            if (n < 0) { //if spell is not known
+                             
                                 var container = $("<div class='purchasespell-spell-container'></div>");
                                 var spellname = $("<div class='purchasespell-spell-name'></div>");
                                 var spellprice = $("<div class='purchasespell-spell-price'></div>");
-
                                 var spelldescription = $("<div class='purchasespell-spell-description'></div>");
                                 var spellManaCost = $("<div class='purchasespell-spell-manaCost'></div>");
                                 var spellRange = $("<div class='purchasespell-spell-range'></div>");
                                 var spellDamage = $("<div class='purchasespell-spell-damage'></div>");
-
-
                                 var spellDuration = $("<div class='purchasespell-spell-duration'></div>");
 
                                 container.appendTo('#spellbook-purchasespell-all-spells-container');
                                 
                                 spellname.appendTo(container);
                                 spellname.html(allSpells[i].name);
-                                
+                                spellname.get(0).obj = allSpells[i]; //link DOM elemtn to an object
+                                spellname.click(function(){
+                                    this.obj.learn();
+
+                                }); 
+
                                 spellprice.appendTo(container);
                                 spellprice.html(allSpells[i].price);
 
@@ -288,12 +309,16 @@ var spellBook = {
 
                                 spelldescription.appendTo(container);
                                 spelldescription.html(allSpells[i].description);
+
+
+                            } else {
+
+                                console.log(allSpells[i].name + ' is already known to player');
+
+                            }
+
                     }
 
-
-    },
-
-
-	spells: [] //player's spells in SpellBook
+    }
 
 };

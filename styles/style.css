@@ -591,8 +591,6 @@
 }
 
 #spellbook-spell-legend-container {
-  position: relative;
-
   width: 950px;
   height: 40px;
   margin-left: 30px;
@@ -682,6 +680,10 @@
   margin-left: 30px;
   margin-top: 0px;
   border: 0px dotted green;
+  overflow-y: auto;
+  overflow-x: hidden; 
+  height: 400px; 
+
 }
 
 
@@ -910,6 +912,7 @@
   position: relative;
   z-index: 5;
   overflow-y: auto; /* added -y */
+  overflow-x: hidden;
   width: 950px;
   margin-left: 30px;
   border: 0px dotted green;

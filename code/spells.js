@@ -9,7 +9,21 @@ var fireBall = {
 	description: "Shoots a fireball at medium ranges",
 	baseDamage: 2,
 	range: 2,
-	duration: null
+	duration: null,
+
+	learn: function(){
+
+		if (experience.checkBalance(this)){
+			
+			experience.decrease(this.price);
+			spellBook.spells.push(this);
+			spellBook.openLearnSpellPage();
+
+		} else {
+			console.log('experience is not enough to  learn the spell');
+		}
+	
+	}
 
 };
 
@@ -24,7 +38,21 @@ var iceBall = {
 	description: "Shoots a sharp icicle at short ranges",
 	baseDamage: 3,
 	range: 1,
-	duration: null
+	duration: null,
+
+	learn: function(){
+
+		if (experience.checkBalance(this)){
+
+			experience.decrease(this.price);
+			spellBook.spells.push(this);
+			spellBook.openLearnSpellPage();
+
+		} else {
+			console.log('experience is not enough to  learn the spell');
+		}
+	
+	}
 
 };
 
@@ -39,7 +67,22 @@ var lightningBall = {
 	description: "Powerful lightning strikes target at long ranges",
 	baseDamage: 2,
 	range: 4,
-	duration: null
+	duration: null,
+
+	learn: function(){
+
+		if (experience.checkBalance(this)){
+			console.log('experience is enough to  learn the spell');
+			
+			experience.decrease(this.price);
+			spellBook.spells.push(this);
+			spellBook.openLearnSpellPage();
+
+		} else {
+			console.log('experience is not enough to  learn the spell');
+		}
+	
+	}
 
 };
 
@@ -54,8 +97,22 @@ var enemySlowdown = {
 	description: "Enemy can move only one tile per turn for 3 rounds",
 	baseDamage: null,
 	range: 5,
-	duration: 3
+	duration: 3,
 
+	learn: function(){
+
+		if (experience.checkBalance(this)){
+			console.log('experience is enough to  learn the spell');
+			
+			experience.decrease(this.price);
+			spellBook.spells.push(this);
+			spellBook.openLearnSpellPage();
+
+		} else {
+			console.log('experience is not enough to  learn the spell');
+		}
+	
+	}
 };
 
 
@@ -69,8 +126,22 @@ var enemyFreeze = {
 	description: "Enemy cannot move for three rounds",
 	baseDamage: null,
 	range: 5,
-	duration: 3
+	duration: 3,
 
+	learn: function(){
+
+		if (experience.checkBalance(this)){
+			console.log('experience is enough to  learn the spell');
+			
+			experience.decrease(this.price);
+			spellBook.spells.push(this);
+			spellBook.openLearnSpellPage();
+
+		} else {
+			console.log('experience is not enough to  learn the spell');
+		}
+	
+	}
 };
 
 var stoneSkin = {
@@ -84,8 +155,22 @@ var stoneSkin = {
 	baseDamage: null,
 	damageDiscount: 10, // % less damage taken
 	range: null,
-	duration: 2
+	duration: 2,
 
+	learn: function(){
+
+		if (experience.checkBalance(this)){
+			console.log('experience is enough to  learn the spell');
+			
+			experience.decrease(this.price);
+			spellBook.spells.push(this);
+			spellBook.openLearnSpellPage();
+
+		} else {
+			console.log('experience is not enough to  learn the spell');
+		}
+	
+	}
 };
 
 
@@ -100,8 +185,22 @@ var ironSkin = {
 	baseDamage: null,
 	damageDiscount: 10, // % less damage taken
 	range: null,
-	duration: 2
+	duration: 2,
 
+	learn: function(){
+
+		if (experience.checkBalance(this)){
+			console.log('experience is enough to  learn the spell');
+			
+			experience.decrease(this.price);
+			spellBook.spells.push(this);
+			spellBook.openLearnSpellPage();
+
+		} else {
+			console.log('experience is not enough to  learn the spell');
+		}
+	
+	}
 };
 
 
@@ -116,8 +215,22 @@ var diamondSkin = {
 	baseDamage: null,
 	damageDiscount: 10, // % less damage taken
 	range: 1,
-	duration: 2
+	duration: 2,
 
+	learn: function(){
+
+		if (experience.checkBalance(this)){
+			console.log('experience is enough to  learn the spell');
+			
+			experience.decrease(this.price);
+			spellBook.spells.push(this);
+			spellBook.openLearnSpellPage();
+
+		} else {
+			console.log('experience is not enough to  learn the spell');
+		}
+	
+	}
 };
 
 
@@ -131,7 +244,22 @@ var quickening = {
 	description: "Incrase movement speed by one tile for 2 rounds",
 	baseDamage: 3,
 	range: 1,
-	duration: 2
+	duration: 2,
+
+	learn: function(){
+
+		if (experience.checkBalance(this)){
+			console.log('experience is enough to  learn the spell');
+			
+			experience.decrease(this.price);
+			spellBook.spells.push(this);
+			spellBook.openLearnSpellPage();
+
+		} else {
+			console.log('experience is not enough to  learn the spell');
+		}
+	
+	}
 
 };
 
@@ -146,7 +274,22 @@ var madness = {
 	description: "Makes enemy act randomly for 1 round",
 	baseDamage: null,
 	range: 6,
-	duration: 1
+	duration: 1,
+
+	learn: function(){
+
+		if (experience.checkBalance(this)){
+			console.log('experience is enough to  learn the spell');
+			
+			experience.decrease(this.price);
+			spellBook.spells.push(this);
+			spellBook.openLearnSpellPage();
+
+		} else {
+			console.log('experience is not enough to  learn the spell');
+		}
+	
+	}
 
 };
 
@@ -162,7 +305,22 @@ var weakness = {
 	baseDamage: null,
 	attackDiscount: 20, //  % for wich enemy attack stats are affected
 	range: 2,
-	duration: 1
+	duration: 1,
+
+	learn: function(){
+
+		if (experience.checkBalance(this)){
+			console.log('experience is enough to  learn the spell');
+			
+			experience.decrease(this.price);
+			spellBook.spells.push(this);
+			spellBook.openLearnSpellPage();
+
+		} else {
+			console.log('experience is not enough to  learn the spell');
+		}
+	
+	}
 
 };
 
@@ -178,7 +336,22 @@ var blindness = {
 	baseDamage: null,
 	attackDiscount: 50, //  % for wich enemy attack stats are affected
 	range: 6,
-	duration: 2
+	duration: 2,
+
+	learn: function(){
+
+		if (experience.checkBalance(this)){
+			console.log('experience is enough to  learn the spell');
+			
+			experience.decrease(this.price);
+			spellBook.spells.push(this);
+			spellBook.openLearnSpellPage();
+
+		} else {
+			console.log('experience is not enough to  learn the spell');
+		}
+	
+	}
 
 };
 

@@ -120,6 +120,11 @@ var Map = new function(){
 
 $( document ).ready(function() {
     //$("#backgroundMusic").get(0).play();
+
+    //gold.increase(100); //FOR TESTING PURPOSES - gives gold straight away
+    //experience.increase(300); //FOR TESTING PURPOSES - gives experience straight away
+
+
     
     characters.page();
 
@@ -127,7 +132,6 @@ $( document ).ready(function() {
     $('#goldCounter').html(player.gold);
     $('#experienceCounter').html(player.experience);
     $('#experienceNextLevel').html(experience.lvlUpThreshold);                                             
-
     $('#levelCounter').html(player.level);
 
     //NEED TO HAVE AN INIT FUNCTION, WHICH CREATES MAP AND PUTS STARTING VALUES IN THE INTERFACE. THIS WILL BE USED FOR GAMEOVER TOO

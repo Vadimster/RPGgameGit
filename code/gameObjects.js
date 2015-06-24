@@ -138,7 +138,7 @@ var player = {
         },
 
     
-    experience: 0,
+    experience: 500,
         minExperience: 0,
         maxExperience: null,
         expMult: 0.05, //multiplicator to calculate experience requirement for next level-up threshold 
@@ -341,8 +341,6 @@ var handleBonus = function(tileID, tileHasBonus, bonusType){ //to be launched af
 
 var gold = {
 		
-	
-
     checkBalance : function(item) {
 
         if (player.gold >= item.buyPrice) {
@@ -390,18 +388,14 @@ var gold = {
         var goldCoins = parseFloat(player.gold.toFixed(2));
         $('#goldCoinCounter').html(goldCoins);
 
-        /*  CODE TO BREAK AMOUNT INTO GOLD,SILVER and COPPER COINS
+                    /*  CODE TO BREAK AMOUNT INTO GOLD,SILVER and COPPER COINS
 
-        var goldCoins = Math.round(parseInt((player.gold/1000)));
-        var a = player.gold % 1000;
-        var silverCoins = Math.round(parseInt((a/100)));
-        var copperCoins = a % 100 
- 
-        */
-
-      
-
-
+                    var goldCoins = Math.round(parseInt((player.gold/1000)));
+                    var a = player.gold % 1000;
+                    var silverCoins = Math.round(parseInt((a/100)));
+                    var copperCoins = a % 100 
+             
+                    */
 	},
 
 	decrease: function (amount){
@@ -414,7 +408,6 @@ var gold = {
 	}
 };
 
-//gold.increase(7945); //FOR TESTING PURPOSES - gives gold straight away
 
 
 var experience = {
@@ -477,11 +470,22 @@ var experience = {
     },
 
 	decrease: function (amount){
-	 	//just in case I ever need to decrease player exp value
-	}
+        player.experience -= amount;
+        $('#experienceCounter').html(player.experience);
+	},
+
+
+    checkBalance : function(item) {
+
+        if (player.experience >= item.price) {
+            return true;
+        } else {
+            return false;
+        }
+    },
+
 };
 
-//experience.increase(300); //FOR TESTING PURPOSES - gives experience straight away
 
 
 
