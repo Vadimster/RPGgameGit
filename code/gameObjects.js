@@ -138,7 +138,7 @@ var player = {
         },
 
     
-    experience: 500,
+    experience: 10,
         minExperience: 0,
         maxExperience: null,
         expMult: 0.05, //multiplicator to calculate experience requirement for next level-up threshold 

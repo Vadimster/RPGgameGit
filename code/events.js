@@ -53,6 +53,14 @@ var turnManager = {
 
 var createEvent = function(tileID, terrainType, tileHasBonus, bonusType){
 
+	if (terrainType === 'city') {
+
+		alert('You have entered the city!'); //Possibly higher chances to meet robbers at night??
+
+	}
+
+
+
 	if(turnManager.day){
 		var timeOfDay = 'day'; 
 	
@@ -124,7 +132,7 @@ var createEvent = function(tileID, terrainType, tileHasBonus, bonusType){
 	    			experience.increase(1);
 
 	    		} else {
-	    			console.log('Will now generate mob');
+	    			console.log('Will now generate mob'); //FINISH THIS
 
 	    		}
 	   		}

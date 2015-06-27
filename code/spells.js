@@ -19,11 +19,11 @@ var fireBall = {
 			experience.decrease(this.price);
 			spellBook.spells.push(this);
 			$("#spellLearnt").get(0).play();
-			spellBook.openLearnSpellPage();
+			spellBook.drawLearnSpellPage();
 
 
 		} else {
-			console.log('experience is not enough to  learn the spell');
+			insufficientExperienceMessage(this);
 		}
 	
 	}
@@ -50,10 +50,10 @@ var iceBall = {
 			experience.decrease(this.price);
 			$("#spellLearnt").get(0).play();
 			spellBook.spells.push(this);
-			spellBook.openLearnSpellPage();
+			spellBook.drawLearnSpellPage();
 
 		} else {
-			console.log('experience is not enough to  learn the spell');
+			insufficientExperienceMessage(this);
 		}
 	
 	}
@@ -81,10 +81,10 @@ var lightningBall = {
 			experience.decrease(this.price);
 			$("#spellLearnt").get(0).play();
 			spellBook.spells.push(this);
-			spellBook.openLearnSpellPage();
+			spellBook.drawLearnSpellPage();
 
 		} else {
-			console.log('experience is not enough to  learn the spell');
+			insufficientExperienceMessage(this);
 		}
 	
 	}
@@ -112,10 +112,10 @@ var enemySlowdown = {
 			experience.decrease(this.price);
 			$("#spellLearnt").get(0).play();
 			spellBook.spells.push(this);
-			spellBook.openLearnSpellPage();
+			spellBook.drawLearnSpellPage();
 
 		} else {
-			console.log('experience is not enough to  learn the spell');
+			insufficientExperienceMessage(this);
 		}
 	
 	}
@@ -142,10 +142,10 @@ var enemyFreeze = {
 			experience.decrease(this.price);
 			$("#spellLearnt").get(0).play();
 			spellBook.spells.push(this);
-			spellBook.openLearnSpellPage();
+			spellBook.drawLearnSpellPage();
 
 		} else {
-			console.log('experience is not enough to  learn the spell');
+			insufficientExperienceMessage(this);
 		}
 	
 	}
@@ -172,10 +172,10 @@ var stoneSkin = {
 			experience.decrease(this.price);
 			$("#spellLearnt").get(0).play();
 			spellBook.spells.push(this);
-			spellBook.openLearnSpellPage();
+			spellBook.drawLearnSpellPage();
 
 		} else {
-			console.log('experience is not enough to  learn the spell');
+			insufficientExperienceMessage(this);
 		}
 	
 	}
@@ -203,10 +203,10 @@ var ironSkin = {
 			experience.decrease(this.price);
 			$("#spellLearnt").get(0).play();
 			spellBook.spells.push(this);
-			spellBook.openLearnSpellPage();
+			spellBook.drawLearnSpellPage();
 
 		} else {
-			console.log('experience is not enough to  learn the spell');
+			insufficientExperienceMessage(this);
 		}
 	
 	}
@@ -237,7 +237,7 @@ var diamondSkin = {
 			spellBook.openLearnSpellPage();
 
 		} else {
-			console.log('experience is not enough to  learn the spell');
+			spellBook.drawLearnSpellPage();
 		}
 	
 	}
@@ -264,10 +264,10 @@ var quickening = {
 			experience.decrease(this.price);
 			$("#spellLearnt").get(0).play();
 			spellBook.spells.push(this);
-			spellBook.openLearnSpellPage();
+			spellBook.drawLearnSpellPage();
 
 		} else {
-			console.log('experience is not enough to  learn the spell');
+			insufficientExperienceMessage(this);
 		}
 	
 	}
@@ -295,10 +295,10 @@ var madness = {
 			experience.decrease(this.price);
 			$("#spellLearnt").get(0).play();
 			spellBook.spells.push(this);
-			spellBook.openLearnSpellPage();
+			spellBook.drawLearnSpellPage();
 
 		} else {
-			console.log('experience is not enough to  learn the spell');
+			insufficientExperienceMessage(this);
 		}
 	
 	}
@@ -327,10 +327,10 @@ var weakness = {
 			experience.decrease(this.price);
 			$("#spellLearnt").get(0).play();
 			spellBook.spells.push(this);
-			spellBook.openLearnSpellPage();
+			spellBook.drawLearnSpellPage();
 
 		} else {
-			console.log('experience is not enough to  learn the spell');
+			insufficientExperienceMessage(this);
 		}
 	
 	}
@@ -359,10 +359,10 @@ var blindness = {
 			experience.decrease(this.price);
 			$("#spellLearnt").get(0).play();
 			spellBook.spells.push(this);
-			spellBook.openLearnSpellPage();
+			spellBook.drawLearnSpellPage();
 
 		} else {
-			console.log('experience is not enough to  learn the spell');
+			insufficientExperienceMessage(this);
 		}
 	
 	}

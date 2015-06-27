@@ -1,7 +1,4 @@
 
- 
-
-
 var Tile = function(TileCoordinateHor, TileCoordinateVert, tileNumericID){
 
     var self = this; //CRITICAL TO UNDERSTAND !!!
@@ -13,54 +10,66 @@ var Tile = function(TileCoordinateHor, TileCoordinateVert, tileNumericID){
     var visitCount = 0;
     
     var terrainTypes = ["grass","forest","hills","swamp","forest", "mountains"];
-    var terrainType = terrainTypes[Math.floor(Math.random()*terrainTypes.length)];
+    
+    this.terrainType = terrainTypes[Math.floor(Math.random()*terrainTypes.length)];
+    
+    //self.id = tileNumericID;
+    //self.terrainType = terrainType;
 
-    var img = 'img/maptiles/'+ terrainType +'.png';
+    
+    this.img = 'img/maptiles/'+ this.terrainType +'.png';
 
 
 /* Taking care of bonuses on each tile - start */
-    var bonusArray = [1,1,1,0,0,0,0,0,0,0,0,0,0,0];
+    var bonusArray = [1,1,1,0,0,0,0,0,0,0,0,0,0,0]; //to increase chances of bonus being applied to a tile replace 0 with 1 and the other way round 
     
-    if(terrainType !== "grass"){ //grass tile cannot have a bonus on it
-        var tileHasBonus = bonusArray[Math.floor(Math.random()*bonusArray.length)];
+    var tileHasBonus = bonusArray[Math.floor(Math.random()*bonusArray.length)];
+
+    if(this.terrainType !== "grass" || "city"){ //grass/city tile cannot have a bonus on it
         if (tileHasBonus > 0){
-            if (terrainType === "swamp" && tileID !== 1) {
+            if (this.terrainType === "swamp" && tileID !== 1) {
                 var bonusType = "gold";
         
-            } else if (terrainType === "hills" && tileID !== 1) {
+            } else if (this.terrainType === "hills" && tileID !== 1) {
                 var bonusType = "chest";
         
-            } else if (terrainType === "mountains" && tileID !== 1) {
+            } else if (this.terrainType === "mountains" && tileID !== 1) {
                 var bonusType = "artefact";
         
-            } else if (terrainType === "forest" && tileID !== 1){
+            } else if (this.terrainType === "forest" && tileID !== 1){
                 var bonusType = "experience";
             }
         }
+    } else {
+
     }
     
     var bonusImage = 'img/maptiles/bonuses/'+ bonusType +'.png';
+
 /* Bonus config end*/
+
+
+
 
     this.draw = function(){ 
 
         var div = $("<div class='tile'></div>");
 
-        div.attr('id',tileID).data('type',terrainType).data('x',x).data('y',y);
+        div.attr('id',tileID).data('type',this.terrainType).data('x',x).data('y',y);
         div.get(0).Tile = self;// CRITICAL TO UNDERSTAND!!!!
         div.css({top:tileHeight*y, left:tileWidth*x});
-        div.css({"background":"url('"+img+"')"});
+        div.css({"background":"url('"+this.img+"')"});
         div.appendTo('#map-content');
-            if (terrainType === "swamp" && tileHasBonus > 0 && tileID !== 1) {
+            if (this.terrainType === "swamp" && tileHasBonus > 0 && tileID !== 1) {
                 div.append('<img id="bonus'+tileID+'" class="bonus" src="'+bonusImage+'" title = "Gold" />');
            
-            } else if (terrainType === "hills" && tileHasBonus > 0 && tileID !== 1) {
+            } else if (this.terrainType === "hills" && tileHasBonus > 0 && tileID !== 1) {
                 div.append('<img id="bonus'+tileID+'" class="bonus" src="'+bonusImage+'" title = "Chest" />');
            
-            } else if (terrainType === "mountains" && tileHasBonus > 0 && tileID !== 1) {
+            } else if (this.terrainType === "mountains" && tileHasBonus > 0 && tileID !== 1) {
                 div.append('<img id="bonus'+tileID+'" class="bonus" src="'+bonusImage+'" title = "Artefact"/>');
            
-            } else if (terrainType === "forest" && tileHasBonus > 0 && tileID !== 1) {
+            } else if (this.terrainType === "forest" && tileHasBonus > 0 && tileID !== 1) {
                 div.append('<img id="bonus'+tileID+'" class="bonus" src="'+bonusImage+'" title = "Experience"/>');
             }
     };
@@ -68,7 +77,7 @@ var Tile = function(TileCoordinateHor, TileCoordinateVert, tileNumericID){
       
 
     this.initiateEvent = function(mapMaxWidth){  //TILE IS CLICKED
-       bonusCollected = player.move(tileID, visitCount, terrainType, tileHasBonus, bonusType, x, y, mapMaxWidth); //Since I do not know how to return back to this Tile, I pass important info as arguments to an external function.
+       bonusCollected = player.move(tileID, visitCount, this.terrainType, tileHasBonus, bonusType, x, y, mapMaxWidth); //Since I do not know how to return back to this Tile, I pass important info as arguments to an external function.
        
        if (bonusCollected){ // result of bonus handling procedure. If bonus was collected, it is removed. 
             tileHasBonus = false;
@@ -92,10 +101,15 @@ var Map = new function(){
         for(var i = 0; i < mapMaxHeight; i++){
             tileBox[i] = [];
             for(var j = 0; j < mapMaxWidth; j++) {
+                
                 tileBox[i][j] = new Tile(j, i, firstTileID++); // ... and create and place instances of object Tile into the array
             }
         }
         
+
+
+        setCities();
+
         renderMap();
 
         $('#map-content').on('click','div.tile', function(e){ //click handler
@@ -111,7 +125,27 @@ var Map = new function(){
             });
         $('#map-content').children().last().append('<img id="dragon" src="img/maptiles/dragon.png" />'); //adds dragon to the last tile in the map
         $('#map-content').children().first().append('<img id="player" src="'+player.image+'" />'); //adds player to the first tile in the map
-    };       
+    }; 
+
+
+    var setCities = function(){
+
+        var cityLimit = 3;
+
+        for (i = 0; i < cityLimit; i++) {
+            
+            var arrayX = Math.floor(Math.random()*(mapMaxHeight));
+            var arrayY = Math.floor(Math.random()*(mapMaxWidth));
+
+            var tile = tileBox[arrayX][arrayY];
+
+            console.log('TileID: ' + tile.id + '. Terrain: ' + tile.terrainType);
+
+            tile.terrainType = 'city';
+            tile.img = 'img/maptiles/'+ tile.terrainType +'.png';
+        }
+    };
+
 };
 
 

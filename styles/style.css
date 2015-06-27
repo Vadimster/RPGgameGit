@@ -921,6 +921,7 @@
 
 
       .purchasespell-spell-container {
+        border-radius: 10px;
         position: relative;
         width: 850px;
         height: 30px;
@@ -929,6 +930,11 @@
         border: 0px dotted grey;
 
       }
+
+      .purchasespell-spell-container:hover{
+        background: rgba(255, 204, 0, 0.5); /*  sets opacity only on background color and NOT on the text as opposed to opacity: attribute; */
+
+      } 
 
       
 
@@ -1214,6 +1220,45 @@
                 border: 0px dotted blue;
 
         }
+
+
+#insufficientExperiencePage { 
+ display: none;
+ width: 350px;
+ height: 270px;
+}
+
+    #insufficientExperiencePage-background {
+      position: absolute;
+      background-image: url(../img/messages/encounter_dialogue_background_400x500.png);
+      background-size: 100% 100%;
+      background-repeat: no-repeat;
+      width: 350px;
+      height: 270px;
+      margin-left: 0px;
+      margin-top: 0px; 
+
+    }
+
+        #insufficientExperiencePage-message {
+
+                width: 300px;
+                font-family: cursive;
+                font-style: italic;
+                font-size: 18px;
+                text-align: center;
+                display: block;
+                margin-left: auto;
+                margin-right: auto;
+                margin-top: 50px;
+                border: 0px dotted blue;
+
+        }
+
+
+
+
+
 
 
 /*  ============= CHARACTER DETAILS DIALOG ======================================================================================================================================================================= */

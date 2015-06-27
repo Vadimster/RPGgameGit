@@ -34,7 +34,43 @@ insufficientFundsMessage = function(item){
 
 
 
-};
+}
+
+
+insufficientExperienceMessage = function(item){
+
+			
+        	$("#insufficientExperiencePage-message").text('You do not have enough experience to learn the ' +item.name+ ' spell. This spell requires ' +item.price+ ' experience, but you have ' +player.experience+ ' available.'); //calling a function which will generate event title using the argument   
+
+
+			$('#insufficientExperiencePage')
+	    		.dialog(
+	      			{buttons: 
+	         			{
+	         			 'Okay...' :function(){
+	            			$(this).dialog('close');
+            		 
+	               		}
+	               		
+	       			},
+		   		draggable: false,
+	       		resizable: false,
+	       		modal: true,
+	      		width: 400,
+	       		height: 400,
+	       		closeOnEscape: false,
+	       		dialogClass: "no-close"
+	       		//position: ["right", "center"]
+	       		}
+	       	); //creates dialog
+
+
+
+}
+
+
+
+
 
 
 

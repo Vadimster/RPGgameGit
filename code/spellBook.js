@@ -43,12 +43,12 @@ var spellBook = {
     iconClicked: function(){
 
          $("#spellBookOpen").get(0).play();
-         spellBook.open();
+         spellBook.drawPage();
 
 
     },
 
-    open: function(){ //opens book if equipped, attempts to buy if not equipped
+    drawPage: function(){ //opens book if equipped, attempts to buy if not equipped
 
        
 
@@ -243,14 +243,14 @@ var spellBook = {
     learnSpellPageClicked: function(){
             
             $("#spellBookOpen").get(0).play();
-            spellBook.openLearnSpellPage();
+            spellBook.drawLearnSpellPage();
 
 
 
     },
 
 
-    openLearnSpellPage: function() {
+    drawLearnSpellPage: function() {
  
 
         $('#spellPurchasePage')
@@ -258,7 +258,7 @@ var spellBook = {
                         {buttons: 
                             {'Close' : function(){
                                 $(this).dialog('close');
-                                spellBook.open(); 
+                                spellBook.drawPage(); 
 
 
                                 }
@@ -300,15 +300,17 @@ var spellBook = {
                                 var spellDamage = $("<div class='purchasespell-spell-damage'></div>");
                                 var spellDuration = $("<div class='purchasespell-spell-duration'></div>");
 
-                                container.appendTo('#spellbook-purchasespell-all-spells-container');
                                 
-                                spellname.appendTo(container);
-                                spellname.html(allSpells[i].name);
-                                spellname.get(0).obj = allSpells[i]; //link DOM elemtn to an object
-                                spellname.click(function(){
+                                container.prop('title', 'Click on this spell to learn it');
+                                container.appendTo('#spellbook-purchasespell-all-spells-container');
+                                container.get(0).obj = allSpells[i]; //link DOM element to an object
+                                container.click(function(){
                                     this.obj.learn();
 
                                 }); 
+
+                                spellname.appendTo(container);
+                                spellname.html(allSpells[i].name);                                                         
 
                                 spellprice.appendTo(container);
                                 spellprice.html(allSpells[i].price);
