@@ -51,11 +51,11 @@ var turnManager = {
 
 
 
-var createEvent = function(tileID, terrainType, tileHasBonus, bonusType){
+var createEvent = function(tileID, terrainType, tileHasBonus, bonusType, cityName){
 
 	if (terrainType === 'city') {
 
-		alert('You have entered the city!'); //Possibly higher chances to meet robbers at night??
+		alert('You have entered ' + cityName); //Possibly higher chances to meet robbers at night??
 
 	}
 

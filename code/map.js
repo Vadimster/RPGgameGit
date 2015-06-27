@@ -12,7 +12,7 @@ var Tile = function(TileCoordinateHor, TileCoordinateVert, tileNumericID){
     var terrainTypes = ["grass","forest","hills","swamp","forest", "mountains"];
     
     this.terrainType = terrainTypes[Math.floor(Math.random()*terrainTypes.length)];
-    
+    this.cityName  = null;
     //self.id = tileNumericID;
     //self.terrainType = terrainType;
 
@@ -40,10 +40,9 @@ var Tile = function(TileCoordinateHor, TileCoordinateVert, tileNumericID){
                 var bonusType = "experience";
             }
         }
-    } else {
+    } 
 
-    }
-    
+
     var bonusImage = 'img/maptiles/bonuses/'+ bonusType +'.png';
 
 /* Bonus config end*/
@@ -72,12 +71,22 @@ var Tile = function(TileCoordinateHor, TileCoordinateVert, tileNumericID){
             } else if (this.terrainType === "forest" && tileHasBonus > 0 && tileID !== 1) {
                 div.append('<img id="bonus'+tileID+'" class="bonus" src="'+bonusImage+'" title = "Experience"/>');
             }
+
+        if (this.terrainType === 'city') {
+            div.prop('title', this.cityName);
+        } else {
+            div.prop('title', this.terrainType);
+
+
+        }
+
+
     };
 
       
 
     this.initiateEvent = function(mapMaxWidth){  //TILE IS CLICKED
-       bonusCollected = player.move(tileID, visitCount, this.terrainType, tileHasBonus, bonusType, x, y, mapMaxWidth); //Since I do not know how to return back to this Tile, I pass important info as arguments to an external function.
+       bonusCollected = player.move(tileID, visitCount, this.terrainType, tileHasBonus, bonusType, x, y, mapMaxWidth, this.cityName); //Since I do not know how to return back to this Tile, I pass important info as arguments to an external function.
        
        if (bonusCollected){ // result of bonus handling procedure. If bonus was collected, it is removed. 
             tileHasBonus = false;
@@ -130,7 +139,8 @@ var Map = new function(){
 
     var setCities = function(){
 
-        var cityLimit = 3;
+        var cityNames = ['Vadimgrad', 'Zhbongrad', 'Dragonmoor', 'Stonehall', 'Newmarsh'];
+        var cityLimit = 5; //make a config variable for diffculty level?
 
         for (i = 0; i < cityLimit; i++) {
             
@@ -143,6 +153,7 @@ var Map = new function(){
 
             tile.terrainType = 'city';
             tile.img = 'img/maptiles/'+ tile.terrainType +'.png';
+            tile.cityName =  cityNames[Math.floor(Math.random()*cityNames.length)]; // DEVELOP - check if name already taken
         }
     };
 

@@ -168,7 +168,7 @@ var player = {
 
 
 
-    move: function(tileID, visitCount, terrainType, tileHasBonus, bonusType, TileCoordinateHor, TileCoordinateVert, mapMaxWidth){
+    move: function(tileID, visitCount, terrainType, tileHasBonus, bonusType, TileCoordinateHor, TileCoordinateVert, mapMaxWidth, cityName){
         alert('Move check: \n\nplayer position: ' + player.position + '\nplayer Y coordinate: ' +player.y + '\nplayer X coordinate: ' + player.x + ' \n\n Tile info: \n\n TileID: ' + tileID + '\n Tile X coordinate: ' + TileCoordinateHor + '\n Tile Y coordinate: ' + TileCoordinateVert + '\n Terrain: ' + terrainType + '\n Tile has bonus: ' + tileHasBonus + '\n Bonus type: ' + bonusType + '\n Times visited: ' + visitCount);
 
         if (player.position === tileID - 1 && player.y === TileCoordinateVert){
@@ -187,7 +187,7 @@ var player = {
             }
             console.log("tileIDs visited: " + player.visitedTiles);
 
-            createEvent(tileID, terrainType, tileHasBonus, bonusType);
+            createEvent(tileID, terrainType, tileHasBonus, bonusType, cityName);
 
 
             /*
