@@ -1,0 +1,106 @@
+
+#character-selector-Page {
+  display: none;
+  position: relative;
+  border: 0px dotted green;
+}
+
+      #character-selector-Page-background {
+        position: absolute;
+        background-image: url(../img/messages/encounter_dialogue_background_400x500.png);
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+        width: 760;
+        height: 500; 
+        border: 0px dotted red;
+
+      }
+
+                #character-selector-Page-avatar {
+                  position: absolute;
+                  height: 300px;
+                  width: 200px;
+                  margin-left: 100px;
+                  margin-top: 85px;
+                  border: 0px dotted blue;
+                  background-repeat: no-repeat;
+                  background-size: cover;
+
+
+                }
+
+                #character-selector-Page-avatar-name {
+                  position: absolute;
+                  height: 40px;
+                  width: 150px;
+                  margin-left: 145px;
+                  margin-top: 30px;
+                  border: 0px dotted red;
+                  font-size: 35px;
+                  font-family: cursive;
+                  font-style: Italic;
+                  color: black;
+                }
+
+
+                #character-selector-Page-avatar-description {
+                  position: relative;
+                  width: 370px;
+                  margin-left: 320px;
+                  margin-top: 80px;
+                  border: 0px dotted red;
+                  font-size: 18px;
+                  font-family: cursive;
+                  font-style: Italic;
+                  color: black;
+                }
+
+
+
+
+                #character-selector-Page-left-arrow {
+                  position: absolute;
+                  height: 40px;
+                  width: 60px;
+                  margin-left: 110px;
+                  margin-top: 390px;
+                  border: 0px dotted green;
+                  background-image: url(../img/characterselectorpage/leftarrow.png);
+                  background-size: 100% 100%;
+                  background-repeat: no-repeat;
+                }
+
+
+                #character-selector-Page-right-arrow {
+                  position: absolute;
+                  height: 40px;
+                  width: 60px;
+                  margin-left: 220px;
+                  margin-top: 390px;
+                  border: 0px dotted green;
+                  background-image: url(../img/characterselectorpage/rightarrow.png);
+                  background-size: 100% 100%;
+                  background-repeat: no-repeat;
+                }
+
+
+                #character-selector-Page-bonus-container {
+                  position: relative;
+                  height: 200px;
+                  width: 350px;
+                  margin-left: 320px;
+                  margin-top: 5px;
+                  border: 0px dotted green;
+                }
+
+                        .character-selector-Page-bonus-description {
+                          position: relative;
+                          width: 320px;
+                          margin-left: 10px;
+                          margin-top: 10px;
+                          border: 0px dotted red;
+                          font-size: 16px;
+                          font-family: cursive;
+                          font-style: Italic;
+                          line-height: 17px;
+                        }

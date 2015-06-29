@@ -69,7 +69,36 @@ insufficientExperienceMessage = function(item){
 }
 
 
+cityEntranceErrorPage = function(){
 
+			
+        	$("#cityEntranceErrorPage-message").text('You need to be on the same tile as the city in order to enter it. You can trade items in a city.'); //calling a function which will generate event title using the argument   
+
+
+			$('#cityEntranceErrorPage')
+	    		.dialog(
+	      			{buttons: 
+	         			{
+	         			 'Got it!' :function(){
+	            			$(this).dialog('close');
+            		 
+	               		}
+	               		
+	       			},
+		   		draggable: false,
+	       		resizable: false,
+	       		modal: true,
+	      		width: 400,
+	       		height: 400,
+	       		closeOnEscape: false,
+	       		dialogClass: "no-close"
+	       		//position: ["right", "center"]
+	       		}
+	       	); //creat
+
+
+
+}
 
 
 

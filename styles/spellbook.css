@@ -1,0 +1,501 @@
+
+#spellBookPage { 
+ display: none;
+ width: 950px;
+ height: 500px;
+}
+
+      #spellbook-dialog-background {
+        position: absolute;
+        background-image: url(../img/messages/encounter_dialogue_background_400x500.png);
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+        width: 950px;
+        height: 500px;
+        margin-left: 0px;
+        margin-top: 0px; 
+
+      }
+
+              #spellbook-spell-legend-container {
+                width: 950px;
+                height: 40px;
+                margin-left: 30px;
+                margin-top: 25px;
+                border: 0px dotted red;
+              }
+
+
+
+                        #spellbook-spell-legend-name { /* for names of the spells in the spellBook */
+                          position: absolute;
+                          font-family: cursive;
+                          font-style: italic;
+                          font-size: 16px;
+                          width: 100px;
+                          margin-left: 10px;
+                          margin-top: 5px;
+                          padding-left: 5px;
+                          border: 0px dotted red;
+
+                        }
+
+                       
+                        #spellbook-spell-legend-manacost { 
+                          position: absolute;
+                          font-family: cursive;
+                          font-style: italic;
+                          font-size: 16px;
+                          margin-left: 130px;
+                          margin-top: 5px;
+                          border: 0px dotted blue;
+
+                        }
+
+
+                        #spellbook-spell-legend-range { 
+                          position: absolute;
+                          font-family: cursive;
+                          font-style: italic;
+                          font-size: 16px;
+                          margin-left: 190px;
+                          margin-top: 5px;
+                          border: 0px dotted blue;
+
+                        }
+
+                        #spellbook-spell-legend-damage { 
+                          position: absolute;
+                          font-family: cursive;
+                          font-style: italic;
+                          font-size: 16px;
+                          margin-left: 250px;
+                          margin-top: 5px;
+                          border: 0px dotted blue;
+
+                        }
+
+
+
+
+                        #spellbook-spell-legend-duration { 
+                          position: absolute;
+                          font-family: cursive;
+                          font-style: italic;
+                          font-size: 16px;
+                          margin-left: 320px;
+                          margin-top: 5px;
+                          border: 0px dotted blue;
+
+                        }
+
+                       #spellbook-spell-legend-description { /* for names of the spells in the spellBook */
+                              position: absolute;
+                              font-family: cursive;
+                              font-style: italic;
+                              font-size: 16px;
+                              margin-left: 400px;
+                              margin-top: 5px;
+                              border: 0px dotted blue;
+
+                            }
+
+
+              #spellbook-spell-all-spells-container {
+                position: relative;
+                width: 950px;
+                margin-left: 30px;
+                margin-top: 0px;
+                border: 0px dotted green;
+                overflow-y: auto;
+                overflow-x: hidden; 
+                height: 400px; 
+
+              }
+
+
+                          .spellbook-spell-container {
+                            position: relative;
+                            width: 850px;
+                            height: 30px;
+                            margin-left: 15px;
+                            margin-top: 15px;
+                            border: 0px dotted grey;
+
+                          }
+
+                          
+
+
+                          .spellbook-spell-name { /* for names of the spells in the spellBook */
+                            position: absolute;
+                            font-family: cursive;
+                            font-style: italic;
+                            font-size: 18px;
+                            width: 100px;
+                            height: 20px;
+                            margin-left: 0px;
+                            margin-top: 0px;
+                            padding-left: 5px;
+                            border: 0px dotted red;
+
+                          }
+
+
+                          .spellbook-spell-manacost { 
+                            position: absolute;
+                            font-family: cursive;
+                            font-style: italic;
+                            font-size: 12px;
+                            margin-left: 130px;
+                            margin-top: 5px;
+                            border: 0px dotted blue;
+
+                          }
+
+
+                          .spellbook-spell-range { 
+                            position: absolute;
+                            font-family: cursive;
+                            font-style: italic;
+                            font-size: 12px;
+                            margin-left: 190px;
+                            margin-top: 5px;
+                            border: 0px dotted blue;
+
+                          }
+
+                        .spellbook-spell-damage { 
+                            position: absolute;
+                            font-family: cursive;
+                            font-style: italic;
+                            font-size: 12px;
+                            margin-left: 260px;
+                            margin-top: 5px;
+                            border: 0px dotted blue;
+
+                          }
+
+
+                          .spellbook-spell-duration { 
+                            position: absolute;
+                            font-family: cursive;
+                            font-style: italic;
+                            font-size: 12px;
+                            margin-left: 330px;
+                            margin-top: 5px;
+                            border: 0px dotted blue;
+
+                          }
+
+
+                          .spellbook-spell-description { /* for names of the spells in the spellBook */
+                            position: absolute;
+                            font-family: cursive;
+                            font-style: italic;
+                            font-size: 12px;
+                            margin-left: 390px;
+                            margin-top: 5px;
+                            border: 0px dotted blue;
+
+                          }
+
+
+      .spellbook-empty-message {
+
+              font-family: cursive;
+              font-style: italic;
+              font-size: 18px;
+              text-align: center;
+              display: block;
+              margin-left: auto;
+              margin-right: auto;
+              margin-top: 50px;
+              border: 0px dotted blue;
+
+            }
+
+
+
+
+#spellPurchasePage { 
+ position: relative;
+ display: none;
+
+}
+
+        #purchasespell-dialog-background {
+          position: relative;
+          overflow: hidden;
+          background-image: url(../img/messages/encounter_dialogue_background_400x500.png);
+          background-size: 100% 100%;
+          background-repeat: no-repeat;
+          width: 1060px;
+          height: 490px;
+          margin-left: 0px;
+          margin-top: 0px; 
+
+        }
+
+                  #spellbook-purchasespell-legend-container {
+                    /* removed position fixed */
+                    z-index: 10;
+                    width: 950px;
+                    height: 40px;
+                    margin-left: 30px;
+                    margin-top: 25px;
+                    border: 0px dotted red;
+                  }
+
+
+
+                            #spellbook-purchasespell-legend-name { /* for names of the spells in the spellBook */
+                              position: absolute;
+                              font-family: cursive;
+                              font-style: italic;
+                              font-size: 16px;
+                              width: 100px;
+                              margin-left: 10px;
+                              margin-top: 5px;
+                              padding-left: 5px;
+                              border: 0px dotted red;
+
+                            }
+
+                            #spellbook-purchasespell-legend-price { 
+                              position: absolute;
+                              font-family: cursive;
+                              font-style: italic;
+                              font-size: 16px;
+                              margin-left: 130px;
+                              margin-top: 5px;
+                              border: 0px dotted blue;
+
+                            }
+
+
+                            #spellbook-purchasespell-legend-manacost { 
+                              position: absolute;
+                              font-family: cursive;
+                              font-style: italic;
+                              font-size: 16px;
+                              margin-left: 190px;
+                              margin-top: 5px;
+                              border: 0px dotted blue;
+
+                            }
+
+
+                            #spellbook-purchasespell-legend-range { 
+                              position: absolute;
+                              font-family: cursive;
+                              font-style: italic;
+                              font-size: 16px;
+                              margin-left: 250px;
+                              margin-top: 5px;
+                              border: 0px dotted blue;
+
+                            }
+
+                            #spellbook-purchasespell-legend-damage { 
+                              position: absolute;
+                              font-family: cursive;
+                              font-style: italic;
+                              font-size: 16px;
+                              margin-left: 320px;
+                              margin-top: 5px;
+                              border: 0px dotted blue;
+
+                            }
+
+
+
+
+                            #spellbook-purchasespell-legend-duration { 
+                              position: absolute;
+                              font-family: cursive;
+                              font-style: italic;
+                              font-size: 16px;
+                              margin-left: 400px;
+                              margin-top: 5px;
+                              border: 0px dotted blue;
+
+                            }
+
+                           #spellbook-purchasespell-legend-description { /* for names of the spells in the spellBook */
+                                  position: absolute;
+                                  font-family: cursive;
+                                  font-style: italic;
+                                  font-size: 16px;
+                                  margin-left: 480px;
+                                  margin-top: 5px;
+                                  border: 0px dotted blue;
+
+                                }
+
+
+            #spellbook-purchasespell-all-spells-container {
+              position: relative;
+              z-index: 5;
+              overflow-y: auto; /* added -y */
+              overflow-x: hidden;
+              width: 950px;
+              margin-left: 30px;
+              border: 0px dotted green;
+              height: 400px; /* new */
+            }
+
+
+                                  .purchasespell-spell-container {
+                                    border-radius: 10px;
+                                    position: relative;
+                                    width: 850px;
+                                    height: 30px;
+                                    margin-left: 15px;
+                                    margin-top: 15px;
+                                    border: 0px dotted grey;
+
+                                  }
+
+                                  .purchasespell-spell-container:hover{
+                                    background: rgba(255, 204, 0, 0.5); /*  sets opacity only on background color and NOT on the text as opposed to opacity: attribute; */
+
+                                  } 
+
+                                  
+
+
+                                  .purchasespell-spell-name { /* for names of the spells in the spellBook */
+                                    position: absolute;
+                                    font-family: cursive;
+                                    font-style: italic;
+                                    font-size: 18px;
+                                    width: 100px;
+                                    height: 20px;
+                                    margin-left: 0px;
+                                    margin-top: 0px;
+                                    padding-left: 5px;
+                                    border: 0px dotted red;
+
+                                  }
+
+                                  .purchasespell-spell-price { 
+                                    position: absolute;
+                                    font-family: cursive;
+                                    font-style: italic;
+                                    font-size: 12px;
+                                    margin-left: 130px;
+                                    margin-top: 5px;
+                                    border: 0px dotted blue;
+                                  }
+
+
+
+
+                                  .purchasespell-spell-manacost { 
+                                    position: absolute;
+                                    font-family: cursive;
+                                    font-style: italic;
+                                    font-size: 12px;
+                                    margin-left: 190px;
+                                    margin-top: 5px;
+                                    border: 0px dotted blue;
+
+                                  }
+
+
+                                  .purchasespell-spell-range { 
+                                    position: absolute;
+                                    font-family: cursive;
+                                    font-style: italic;
+                                    font-size: 12px;
+                                    margin-left: 260px;
+                                    margin-top: 5px;
+                                    border: 0px dotted blue;
+
+                                  }
+
+                                .purchasespell-spell-damage { 
+                                    position: absolute;
+                                    font-family: cursive;
+                                    font-style: italic;
+                                    font-size: 12px;
+                                    margin-left: 330px;
+                                    margin-top: 5px;
+                                    border: 0px dotted blue;
+
+                                  }
+
+
+                                  .purchasespell-spell-duration { 
+                                    position: absolute;
+                                    font-family: cursive;
+                                    font-style: italic;
+                                    font-size: 12px;
+                                    margin-left: 400px;
+                                    margin-top: 5px;
+                                    border: 0px dotted blue;
+
+                                  }
+
+
+                                  .purchasespell-spell-description { /* for names of the spells in the spellBook */
+                                    position: absolute;
+                                    font-family: cursive;
+                                    font-style: italic;
+                                    font-size: 12px;
+                                    margin-left: 470px;
+                                    margin-top: 5px;
+                                    border: 0px dotted blue;
+
+                                  }
+
+
+        .spellbook-empty-message {
+
+                font-family: cursive;
+                font-style: italic;
+                font-size: 18px;
+                text-align: center;
+                display: block;
+                margin-left: auto;
+                margin-right: auto;
+                margin-top: 50px;
+                border: 0px dotted blue;
+
+              }
+
+
+
+#spellBookBuyPage { 
+ display: none;
+ width: 350px;
+ height: 270px;
+}
+
+    #spellbook-buy-dialog-background {
+      position: absolute;
+      background-image: url(../img/messages/encounter_dialogue_background_400x500.png);
+      background-size: 100% 100%;
+      background-repeat: no-repeat;
+      width: 350px;
+      height: 270px;
+      margin-left: 0px;
+      margin-top: 0px; 
+
+    }
+
+        #spellbook-buy-message {
+
+                width: 300px;
+                font-family: cursive;
+                font-style: italic;
+                font-size: 18px;
+                text-align: center;
+                display: block;
+                margin-left: auto;
+                margin-right: auto;
+                margin-top: 50px;
+                border: 0px dotted blue;
+
+        }

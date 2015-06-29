@@ -3,7 +3,27 @@
 	<HEAD>
 		<meta charset="utf-8">
 		<TITLE>Adventures in Vadimaria</TITLE>
-		<link rel="stylesheet" type="text/css" href="styles/style.css" />
+		
+		<link rel="stylesheet" type="text/css" href="styles/map.css" />
+		<link rel="stylesheet" type="text/css" href="styles/mainPage.css" />
+		<link rel="stylesheet" type="text/css" href="styles/jquery-ui-config.css" />
+		<link rel="stylesheet" type="text/css" href="styles/spellbook.css" />
+		<link rel="stylesheet" type="text/css" href="styles/select-character-page.css" />
+		<link rel="stylesheet" type="text/css" href="styles/character-page.css" />
+		<link rel="stylesheet" type="text/css" href="styles/error-messages.css" />
+		<link rel="stylesheet" type="text/css" href="styles/city.css" />
+
+
+
+
+
+
+
+
+
+
+
+
 		<link rel="stylesheet" href="ui/jquery-ui/jquery-ui.min.css" /> 
 	</HEAD>
 <BODY background="img/background.jpg">
@@ -49,14 +69,6 @@
 		<div id="goldCoinsIcon"></div>
 		<div id="goldCoinCounter">0</div>
 	</div>
-	<!-- <div id="silverCoins">
-		<div id="silverCoinsIcon"></div>
-		<div id="silverCoinCounter">0</div>
-	</div>
-	<div id="copperCoins">
-		<div id="copperCoinsIcon"></div>
-		<div id="copperCoinCounter">0</div>
-	</div> -->
 	<div id="statsExperience">
 		<div id="statsExperienceIcon"></div>
 		<div id="experienceWrapper">	
@@ -81,6 +93,11 @@
 	<div id="statsCharacter" title="Click for character details" onclick="characterDetailsPage.open()">
 		<div id="statsCharacterIcon"> </div>
 	</div>
+
+		<div id="statsCity" title="Enter a city" onclick="city.onClick()">
+			<div id="statsCityIcon"> </div>
+	</div>
+
 
 
 
@@ -215,6 +232,16 @@
  </div>
 
 
+<div id="cityPage" class= "dialog">
+ 	<div id="cityPage-background"> 
+ 		<div id="cityPage-cityName"></div>
+
+
+ 		<div id="cityPage-inventory-container"></div> <!-- contains inactive items in inventory which are available for trade -->
+ 	</div>
+ </div>
+
+
 
 
 
@@ -232,17 +259,22 @@
  </div>
 
 
+   <div id="cityEntranceErrorPage" class= "dialog">
+ 	<div id="cityEntranceErrorPage-background"> 
+		<div id="cityEntranceErrorPage-message"></div>
+ 	</div>
+ </div>
 
 
-
-<!-- <script type="text/javascript" src="jquery-ui.min.js"></script> -->
 <script type="text/javascript" src="jquery-2.1.1.min.js"></script>
 <script type="text/javascript" src="ui/jquery-ui/jquery-ui.min.js"></script>
+
+<script type="text/javascript" src="code/messages.js"></script>
+<script type="text/javascript" src="code/city.js"></script>
 
 <script type="text/javascript" src="code/weapons.js"></script>
 <script type="text/javascript" src="code/inventory.js"></script>
 <script type="text/javascript" src="code/spells.js"></script>
-<script type="text/javascript" src="code/messages.js"></script>
 <script type="text/javascript" src="code/gameObjects.js"></script>
 
 <script type="text/javascript" src="code/spellBook.js"></script>

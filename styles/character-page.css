@@ -1,0 +1,176 @@
+
+#characterDetails {
+  display: none;
+  position: relative;
+}
+
+
+    #characterDetails-background {
+      position: relative;
+      background-image: url(../img/messages/encounter_dialogue_background_400x500.png);
+      background-size: 100% 100%;
+      background-repeat: no-repeat;
+      width: 950px;
+      height: 540px;
+    }
+
+
+        #characterDetails-equippedItems-container {
+          position: absolute;
+          width: 350px;
+          height: 340px;
+          border: 1px dotted blue;
+          margin-top: 25px;
+          margin-left: 65px;
+        }
+
+
+        #characterDetails-activeItems-container {
+          position: absolute;
+          width: 255px;
+          height: 50px;
+          border: 1px dotted green;
+          margin-top: 380px;
+          margin-left: 350px;
+        }
+
+
+
+       #characterDetails-inventory-container {
+          position: absolute;
+          width: 750px;
+          height: 68px;
+          border: 1px dotted red;
+          margin-top: 450px;
+          margin-left: 100px;
+          overflow-x: auto;
+          overflow-y: hidden;
+          white-space: nowrap; 
+        }
+
+
+                .testClass { /* USED TO DISPLAY ITEMS IN INVENTORY */
+                  background-color: yellow;
+                  width: 50px;
+                  height: 50px;
+                  border: 1px solid blue;
+                  /* float: left; */
+                  display: inline-block;
+
+                }
+
+
+
+
+
+
+
+
+     #characterDetails-stats-container {
+        position: absolute;
+        width: 400px;
+        height: 340px;
+        border: 1px dotted black;
+        margin-top: 25px;
+        margin-left: 450px;
+      }
+
+
+            #statsAttack{
+              position: absolute;
+              margin-left: 10px;
+              margin-top: 10px;  
+              height: 60px;
+              width: 60px;
+              background-color: none;
+              border: 1px dotted grey;   
+
+            }
+                #statsAttackIcon{
+                  width: 40px;
+                  height: 30px;
+                  background-image: url("../img/statsIcons/attack.png");
+                  margin-left: 15px;
+                  background-size: contain;
+                  background-repeat: no-repeat;
+                }
+
+                #attackCounter{
+                    margin-top: 5px;
+                    text-align: center;
+                }
+
+
+
+            #statsDefense{
+              position: absolute;
+              margin-left: 80px;
+              top: 10px;  
+              height: 60px;
+              width: 60px;
+              background-color: none;
+              border: 1px dotted grey;    
+            }
+                #statsDefenseIcon{
+                  width: 40px;
+                  height: 30px;
+                  background-image: url("../img/statsIcons/defense.png");
+                  margin-left: 15px;
+                  background-size: contain;
+                  background-repeat: no-repeat;
+                }
+
+                #defenseCounter{
+                    margin-top: 5px;
+                    text-align: center;
+                }
+
+
+            #statsLuck{
+              position: absolute;
+              left: 150px;
+              top: 10px;  
+              height: 60px;
+              width: 60px;
+              background-color: none;
+              border: 1px dotted grey;   
+            }
+                #statsLuckIcon{
+                  width: 40px;
+                  height: 30px;
+                  background-image: url("../img/statsIcons/luck.png");
+                  margin-left: 15px;
+                  background-size: contain;
+                  background-repeat: no-repeat;
+                }
+
+                #luckCounter{
+                    margin-top: 5px;
+                    text-align: center;
+                }
+
+
+            #statsMana{
+              position: absolute;
+              left: 220px;  
+              top: 10px;
+              height: 60px;
+              width: 60px;
+              border: 1px dotted grey;   
+            }
+                #statsManaIcon{
+                  width: 35px;
+                  height: 30px;
+                  background-image: url("../img/statsIcons/mana.png");
+                  margin-left: 15px;
+                  background-size: contain;
+                  background-repeat: no-repeat;
+                }
+
+               #manaCounter{
+                    margin-top: 5px;
+                    text-align: center;
+                }
+
+
+

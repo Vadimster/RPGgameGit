@@ -1,0 +1,49 @@
+
+
+#cityPage {
+  display: none;
+  position: relative;
+  overflow-x: hidden;
+  overflow-y: hidden;  
+}
+
+
+    #cityPage-background {
+      position: relative;
+      background-image: url(../img/city/city-background.jpg);
+      background-size: 100% 100%;
+      background-repeat: no-repeat;
+      width: 950px;
+      height: 540px;
+    }
+
+
+    	#cityPage-cityName {
+    		position: absolute;
+
+    		height: 70px;
+    		margin-top: 10px;
+    		margin-left: 380px;
+    		font-size: 45px;
+            font-family: cursive;
+            font-style: Italic;
+            color: black;
+            background-image: url(../img/messages/encounter_dialogue_background_400x500.png);
+            background-size: 100% 100%;
+     		background-repeat: no-repeat;
+            /* border: 1px dotted red; */
+
+    	}
+
+
+    	#cityPage-inventory-container {
+          position: absolute;
+          width: 750px;
+          height: 68px;
+          border: 1px dotted red;
+          margin-top: 450px;
+          margin-left: 100px;
+          overflow-x: auto;
+          overflow-y: hidden;
+          white-space: nowrap; 
+        }
