@@ -4,6 +4,46 @@
 		"selected_items":
 		[
 			[
+				"cit",
+				"cityName"
+			],
+			[
+				"city",
+				"cityNames"
+			],
+			[
+				"ci",
+				"cityName"
+			],
+			[
+				"til",
+				"tileBox"
+			],
+			[
+				"arr",
+				"arrayY"
+			],
+			[
+				"array",
+				"arrayX"
+			],
+			[
+				"map",
+				"mapMaxWidth"
+			],
+			[
+				"tile",
+				"tileBox"
+			],
+			[
+				"border",
+				"border-radius"
+			],
+			[
+				"back",
+				"background-color"
+			],
+			[
 				"open",
 				"openLearnSpellPage〔function〕"
 			],
@@ -78,10 +118,6 @@
 			[
 				"parse",
 				"parseFloat〔function〕"
-			],
-			[
-				"back",
-				"background"
 			],
 			[
 				"bonus",
@@ -214,10 +250,6 @@
 			[
 				"time",
 				"timeOfDay〔variable〕"
-			],
-			[
-				"tile",
-				"tileHasBonus〔variable〕"
 			],
 			[
 				"att",
@@ -360,10 +392,6 @@
 				"initiateEvent"
 			],
 			[
-				"til",
-				"tileHeight"
-			],
-			[
 				"create",
 				"createMap〔class〕"
 			],
@@ -399,7 +427,7 @@
 			"file": "/Users/instantbank/Documents/PERSONAL/programming/javascript/RPGgameGit/index.html",
 			"settings":
 			{
-				"buffer_size": 8272,
+				"buffer_size": 8453,
 				"line_ending": "Unix"
 			}
 		},
@@ -407,7 +435,7 @@
 			"file": "/Users/instantbank/Documents/PERSONAL/programming/javascript/RPGgameGit/code/gameObjects.js",
 			"settings":
 			{
-				"buffer_size": 17870,
+				"buffer_size": 17889,
 				"line_ending": "Unix"
 			}
 		},
@@ -431,7 +459,7 @@
 			"file": "/Users/instantbank/Documents/PERSONAL/programming/javascript/RPGgameGit/code/events.js",
 			"settings":
 			{
-				"buffer_size": 8214,
+				"buffer_size": 8371,
 				"line_ending": "Unix"
 			}
 		},
@@ -439,7 +467,7 @@
 			"file": "/Users/instantbank/Documents/PERSONAL/programming/javascript/RPGgameGit/code/messages.js",
 			"settings":
 			{
-				"buffer_size": 13228,
+				"buffer_size": 14098,
 				"line_ending": "Unix"
 			}
 		},
@@ -447,7 +475,7 @@
 			"file": "/Users/instantbank/Documents/PERSONAL/programming/javascript/RPGgameGit/code/map.js",
 			"settings":
 			{
-				"buffer_size": 5514,
+				"buffer_size": 6783,
 				"line_ending": "Unix"
 			}
 		},
@@ -463,7 +491,7 @@
 			"file": "/Users/instantbank/Documents/PERSONAL/programming/javascript/RPGgameGit/code/spellBook.js",
 			"settings":
 			{
-				"buffer_size": 12547,
+				"buffer_size": 12710,
 				"line_ending": "Unix"
 			}
 		},
@@ -479,7 +507,7 @@
 			"file": "/Users/instantbank/Documents/PERSONAL/programming/javascript/RPGgameGit/code/spells.js",
 			"settings":
 			{
-				"buffer_size": 7287,
+				"buffer_size": 6994,
 				"line_ending": "Unix"
 			}
 		},
@@ -487,7 +515,7 @@
 			"file": "/Users/instantbank/Documents/PERSONAL/programming/javascript/RPGgameGit/styles/style.css",
 			"settings":
 			{
-				"buffer_size": 25816,
+				"buffer_size": 26866,
 				"line_ending": "Unix"
 			}
 		}
@@ -571,6 +599,8 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"entered",
+			"purchasespell-spell-container",
 			"img/",
 			"legend",
 			"statsAttack",
@@ -640,7 +670,7 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 6,
 			"sheets":
 			[
 				{
@@ -648,15 +678,15 @@
 					"file": "/Users/instantbank/Documents/PERSONAL/programming/javascript/RPGgameGit/index.html",
 					"settings":
 					{
-						"buffer_size": 8272,
+						"buffer_size": 8453,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								4303,
-								4303
+								7027,
+								7027
 							]
 						],
 						"settings":
@@ -666,7 +696,7 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 1652.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -676,15 +706,15 @@
 					"file": "/Users/instantbank/Documents/PERSONAL/programming/javascript/RPGgameGit/code/gameObjects.js",
 					"settings":
 					{
-						"buffer_size": 17870,
+						"buffer_size": 17889,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								4257,
-								4257
+								5763,
+								5763
 							]
 						],
 						"settings":
@@ -695,7 +725,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 6565.0,
+						"translation.y": 2033.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -761,24 +791,25 @@
 					"file": "/Users/instantbank/Documents/PERSONAL/programming/javascript/RPGgameGit/code/events.js",
 					"settings":
 					{
-						"buffer_size": 8214,
+						"buffer_size": 8371,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1794,
-								1847
+								1165,
+								1165
 							]
 						],
 						"settings":
 						{
+							"auto_complete": false,
 							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 422.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -788,15 +819,15 @@
 					"file": "/Users/instantbank/Documents/PERSONAL/programming/javascript/RPGgameGit/code/messages.js",
 					"settings":
 					{
-						"buffer_size": 13228,
+						"buffer_size": 14098,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								670,
-								670
+								1024,
+								1024
 							]
 						],
 						"settings":
@@ -815,15 +846,15 @@
 					"file": "/Users/instantbank/Documents/PERSONAL/programming/javascript/RPGgameGit/code/map.js",
 					"settings":
 					{
-						"buffer_size": 5514,
+						"buffer_size": 6783,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								4843,
-								4843
+								6072,
+								6072
 							]
 						],
 						"settings":
@@ -834,7 +865,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 1204.0,
+						"translation.y": 1813.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -872,15 +903,15 @@
 					"file": "/Users/instantbank/Documents/PERSONAL/programming/javascript/RPGgameGit/code/spellBook.js",
 					"settings":
 					{
-						"buffer_size": 12547,
+						"buffer_size": 12710,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								8822,
-								8869
+								8971,
+								8971
 							]
 						],
 						"settings":
@@ -891,7 +922,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 878.0,
+						"translation.y": 4224.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -931,15 +962,15 @@
 					"file": "/Users/instantbank/Documents/PERSONAL/programming/javascript/RPGgameGit/code/spells.js",
 					"settings":
 					{
-						"buffer_size": 7287,
+						"buffer_size": 6994,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								6840,
-								6840
+								514,
+								514
 							]
 						],
 						"settings":
@@ -949,7 +980,7 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 3710.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -959,15 +990,15 @@
 					"file": "/Users/instantbank/Documents/PERSONAL/programming/javascript/RPGgameGit/styles/style.css",
 					"settings":
 					{
-						"buffer_size": 25816,
+						"buffer_size": 26866,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								9841,
-								9841
+								17152,
+								17152
 							]
 						],
 						"settings":
@@ -977,7 +1008,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 8601.0,
+						"translation.y": 13519.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"

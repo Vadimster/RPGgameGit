@@ -139,8 +139,8 @@ var Map = new function(){
 
     var setCities = function(){
 
-        var cityNames = ['Vadimgrad', 'Zhbongrad', 'Dragonmoor', 'Stonehall', 'Newmarsh'];
-        var cityLimit = 5; //make a config variable for diffculty level?
+        var cityNames = ['Vadimgrad', 'Zhbongrad', 'Dragonmoor', 'Stonehall', 'Newmarsh', 'Summerston', 'Sageshore', 'Crystalcastle', 'Faymoor', 'Whitehedge'];
+        var cityLimit = 10; //make a global config variable for diffculty level?
 
         for (i = 0; i < cityLimit; i++) {
             
@@ -153,7 +153,13 @@ var Map = new function(){
 
             tile.terrainType = 'city';
             tile.img = 'img/maptiles/'+ tile.terrainType +'.png';
-            tile.cityName =  cityNames[Math.floor(Math.random()*cityNames.length)]; // DEVELOP - check if name already taken
+
+            var nameFromArray = cityNames[Math.floor(Math.random()*cityNames.length)];
+            tile.cityName = nameFromArray;
+            
+            //will identify the used name and then remove it from the array.
+            var a  = cityNames.indexOf(nameFromArray);
+            cityNames.splice(a,1); 
         }
     };
 
