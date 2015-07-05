@@ -1,15 +1,12 @@
 
-
-
-
-var sword = {
+var woodenBow = {
     
-    name: 'sword', //also divID for jQuery
-    icon: 'img/inventory/sword.png', //image for the 
+    name: 'wooden bow', //also divID for jQuery
+    icon: 'img/items/weapons/range/woodenbow.png', //image for the 
     
     type: "weapon",
-    	melee: true,
-    	range: false,
+    	melee: false,
+    	range: true,
     	active: false, //determins if object needs to go into active items div
   
     consumable: false,
@@ -18,19 +15,36 @@ var sword = {
     
 
 
-    buyPrice: 50,
+    buyPrice: 70,
     get sellPrice(){
         return this.buyPrice/2
     },
 
 
-    attack: 2,
+    attack: 1,
     defense: 0,
 
     clicked: function(){
 
     	console.log(this.name + ' was clicked.');
     	//depending ont he class add to either active items array and change class with float left .css
+
+    },
+
+
+    getInfo: function(){
+        console.log('Mouse is over the ' + this.name);
+
+        showWeaponDetailsMessage(this);
+
+
+    },
+
+
+
+    mouseLeft: function(){
+        console.log('Mouse has left the ' + this.name);
+        $('.itemInfoContainer').hide();
 
     },
 
@@ -54,7 +68,7 @@ var sword = {
 
     equip: function(item){
 
-
+        //need to hide  #itemInfoContainer
 
 
     },
@@ -89,4 +103,3 @@ var sword = {
     //may be develop a stats update method for this object instead of using the playerStatsUpdateItem function?
 
 };
-sword.sellPrice = sword.price/2;

@@ -5,6 +5,7 @@
 		<TITLE>Adventures in Vadimaria</TITLE>
 		
 		<link rel="stylesheet" type="text/css" href="styles/map.css" />
+		<link rel="stylesheet" type="text/css" href="styles/items.css" />
 		<link rel="stylesheet" type="text/css" href="styles/mainPage.css" />
 		<link rel="stylesheet" type="text/css" href="styles/jquery-ui-config.css" />
 		<link rel="stylesheet" type="text/css" href="styles/spellbook.css" />
@@ -12,6 +13,7 @@
 		<link rel="stylesheet" type="text/css" href="styles/character-page.css" />
 		<link rel="stylesheet" type="text/css" href="styles/error-messages.css" />
 		<link rel="stylesheet" type="text/css" href="styles/city.css" />
+		<link rel="stylesheet" type="text/css" href="styles/iteminfo.css" />
 
 
 
@@ -202,6 +204,11 @@
 
  <div id="characterDetails" class= "dialog">
  	<div id="characterDetails-background"> 
+
+
+	<div class="itemInfoContainer"></div>
+
+
  		<div id="characterDetails-equippedItems-container">picture of a warrior + equipped items </div> <!-- Image of a warrior + aquipped items -->
  	 	<div id="characterDetails-activeItems-container">active items </div> <!-- contains slots for active auxilary  -->
  	 	<div id="characterDetails-inventory-container"></div> <!-- contains inactive items in inventory  -->
@@ -234,6 +241,9 @@
 
 <div id="cityPage" class= "dialog">
  	<div id="cityPage-background"> 
+
+ 		<div class="itemInfoContainer"></div>
+
  		<div id="cityPage-cityName"></div>
 
 
@@ -266,13 +276,18 @@
  </div>
 
 
+
+
+
 <script type="text/javascript" src="jquery-2.1.1.min.js"></script>
 <script type="text/javascript" src="ui/jquery-ui/jquery-ui.min.js"></script>
 
 <script type="text/javascript" src="code/messages.js"></script>
 <script type="text/javascript" src="code/city.js"></script>
 
-<script type="text/javascript" src="code/weapons.js"></script>
+<script type="text/javascript" src="code/melee-weapons.js"></script>
+<script type="text/javascript" src="code/range-weapons.js"></script>
+
 <script type="text/javascript" src="code/inventory.js"></script>
 <script type="text/javascript" src="code/spells.js"></script>
 <script type="text/javascript" src="code/gameObjects.js"></script>

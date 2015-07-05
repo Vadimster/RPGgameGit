@@ -105,7 +105,7 @@ var player = {
 
 
 
-    luck: 0, //  DO NOT MODIFY THIS MANUALLY BUT RUN THE METHOD INSTEAD!!!  (displayed in game and used for calculations)
+    luck: 1, //  DO NOT MODIFY THIS MANUALLY BUT RUN THE METHOD INSTEAD!!!  (displayed in game and used for calculations)
     luckLog: 0, //used to keep track of luck changes and account for value if over max limit
         minLuck: 0,
         maxLuck: 5,
@@ -143,7 +143,7 @@ var player = {
         maxExperience: null,
         expMult: 0.05, //multiplicator to calculate experience requirement for next level-up threshold 
 
-    level: 2,
+    level: 0,
         minLevel: 0,
         maxLevel: null,
         levelUp: function(){

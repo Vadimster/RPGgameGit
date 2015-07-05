@@ -5,6 +5,132 @@ url: "img/monsters/dragon.png"
 
 };
 
+
+
+showWeaponDetailsMessage = function(item) {
+
+        
+	
+
+        $('.itemInfoContainer').empty();
+
+        var itemName = $("<div class='itemInfoName'></div>");
+		itemName.html(item.name);
+        itemName.appendTo('.itemInfoContainer');
+
+        var itemAttack = $("<div class='itemInfoAttack'></div>");
+		itemAttack.html('attack: ' + item.attack);
+        itemAttack.appendTo('.itemInfoContainer');
+
+        var itemDefense = $("<div class='itemInfoDefense'></div>");
+		itemDefense.html('defense: ' + item.defense);
+        itemDefense.appendTo('.itemInfoContainer');
+
+
+        if (city.visited) {
+
+	        var itemBuyPrice = $("<div class='itemInfoBuyPrice'></div>");
+			itemBuyPrice.html('buy price: ' + item.buyPrice);
+	        itemBuyPrice.appendTo('.itemInfoContainer');
+
+	        var itemSellPrice = $("<div class='itemInfoSellPrice'></div>");
+			itemSellPrice.html('sell price: ' + item.sellPrice);
+	        itemSellPrice.appendTo('.itemInfoContainer');
+
+
+
+        } else {
+
+	        var itemBuyPrice = $("<div class='itemInfoBuyPrice'></div>");
+			itemBuyPrice.html('buy price: ?');
+	        itemBuyPrice.appendTo('.itemInfoContainer');
+
+	        var itemSellPrice = $("<div class='itemInfoSellPrice'></div>");
+			itemSellPrice.html('sell price: ?');
+	        itemSellPrice.appendTo('.itemInfoContainer');
+
+        }
+
+
+
+        //build contents of the div
+
+/*
+            var spellname = $("<div class='spellbook-spell-name'></div>");
+            var spelldescription = $("<div class='spellbook-spell-description'></div>");
+            var spellManaCost = $("<div class='spellbook-spell-manaCost'></div>");
+            var spellRange = $("<div class='spellbook-spell-range'></div>");
+            var spellDamage = $("<div class='spellbook-spell-damage'></div>");
+
+
+            var spellDuration = $("<div class='spellbook-spell-duration'></div>");
+            // div.css({"background":"url('"+spellBook.img+"')"});
+
+            container.appendTo('#spellbook-spell-all-spells-container');
+            
+            spellname.appendTo(container);
+            spellname.html(spellBook.spells[i].name);
+
+            spellManaCost.appendTo(container);
+            spellManaCost.html(spellBook.spells[i].manaCost);
+
+
+            spellRange.appendTo(container);
+            spellRange.html(spellBook.spells[i].range);
+
+            spellDamage.appendTo(container);
+            spellDamage.html(spellBook.spells[i].baseDamage);
+
+
+            spellDuration.appendTo(container);
+            spellDuration.html(spellBook.spells[i].duration);
+
+
+            spelldescription.appendTo(container);
+            spelldescription.html(spellBook.spells[i].description);
+
+
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+        	        	
+        //$('.itemInfoContainer').html('Attack: ' +item.attack);
+        
+
+
+
+
+
+        $('.itemInfoContainer').show();
+
+
+
+
+
+
+
+
+
+
+
+
+}
+
+
+
+
+
 insufficientFundsMessage = function(item){
 
 			

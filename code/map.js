@@ -139,7 +139,7 @@ var Map = new function(){
 
     var setCities = function(){
 
-        var cityNames = ['Vadimgrad', 'Zhbongrad', 'Dragonmoor', 'Stonehall', 'Newmarsh', 'Summerston', 'Sageshore', 'Crystalcastle', 'Faymoor', 'Whitehedge'];
+        var cityNames = ['Vadimgrad', 'Noobngrad', 'Dragonmoor', 'Stonehall', 'Zhbongrad', 'Summerston', 'Sageshore', 'Crystalcastle', 'Faymoor', 'Whitehedge'];
         var cityLimit = 10; //make a global config variable for diffculty level?
 
         for (i = 0; i < cityLimit; i++) {

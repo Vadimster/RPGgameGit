@@ -42,9 +42,22 @@ var characterDetailsPage = {
 
 	    	var item = inventory.inactive[i];
 	    	item.div = $("<div/>");
-			item.div.addClass("testClass");
+			item.div.addClass("inventoryItem");
+
+	    	if (item.melee) {
+	    		item.div.css({"background-color": "#9F000F"}); //red
+	    	} else if (item.range) {
+	    		item.div.css({"background-color": "#F87431"}); //orange
+
+	    	}
+
+
+			//use different background depending on item class melee, ranged, potions or artefacts
+
 
 			item.div.css({"background-image":"url('"+item.icon+"')"});
+
+
 
 
 	    	item.div.get(0).obj = item; //link DOM elemtn to an object
@@ -52,6 +65,15 @@ var characterDetailsPage = {
 	    		this.obj.clicked();
 
 	    	});
+
+	    	item.div.mouseover(function() {
+	    		this.obj.getInfo();
+	    	});
+
+	    	item.div.mouseout(function() {
+	    		this.obj.mouseLeft();
+	    	});
+
 	    	item.div.appendTo('#characterDetails-inventory-container');
 	    }
 
