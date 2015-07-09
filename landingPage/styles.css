@@ -1,0 +1,34 @@
+
+
+p {
+    font-family: cursive;
+    font-style: italic;
+    font-size: 26px;
+    color: #FF9900;
+    letter-spacing: 3px;
+}
+
+
+#gameName {
+
+width: 900px;
+display: block;
+margin-top: 20px;
+margin-left: auto;
+margin-right: auto;
+color: #FF9900;
+font-family: cursive;
+font-style: italic;
+font-size: 68px;
+letter-spacing: 5px;
+
+}
+
+
+
+#releaseBanner {
+
+position: fixed;
+top: 50px;
+
+}
