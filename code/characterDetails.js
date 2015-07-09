@@ -51,10 +51,6 @@ var characterDetailsPage = {
 
 	    	}
 
-
-			//use different background depending on item class melee, ranged, potions or artefacts
-
-
 			item.div.css({"background-image":"url('"+item.icon+"')"});
 
 

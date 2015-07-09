@@ -14,53 +14,53 @@
 }
 
 
-.itemInfoName {
-	position: absolute;
-	margin-top: 3px;
-	margin-left: 5px;
+		.itemInfoName {
+			position: absolute;
+			margin-top: 3px;
+			margin-left: 5px;
 
-	font-family: cursive;
-	font-style: italic;
-	font-size: 20px;
-}
+			font-family: cursive;
+			font-style: italic;
+			font-size: 20px;
+		}
 
-.itemInfoAttack {
-	position: absolute;
-	margin-top: 30px;
-	margin-left: 15px;
+		.itemInfoAttack {
+			position: absolute;
+			margin-top: 30px;
+			margin-left: 15px;
 
-	font-family: cursive;
-	font-style: italic;
-	font-size: 16px;
-}
+			font-family: cursive;
+			font-style: italic;
+			font-size: 16px;
+		}
 
-.itemInfoDefense {
-	position: absolute;
-	margin-top: 50px;
-	margin-left: 15px;
+		.itemInfoDefense {
+			position: absolute;
+			margin-top: 50px;
+			margin-left: 15px;
 
-	font-family: cursive;
-	font-style: italic;
-	font-size: 16px;
-}
+			font-family: cursive;
+			font-style: italic;
+			font-size: 16px;
+		}
 
 
-.itemInfoBuyPrice {
-	position: absolute;
-	margin-top: 70px;
-	margin-left: 15px;
+		.itemInfoBuyPrice {
+			position: absolute;
+			margin-top: 70px;
+			margin-left: 15px;
 
-	font-family: cursive;
-	font-style: italic;
-	font-size: 16px;
-}
+			font-family: cursive;
+			font-style: italic;
+			font-size: 16px;
+		}
 
-.itemInfoSellPrice {
-	position: absolute;
-	margin-top: 90px;
-	margin-left: 15px;
+		.itemInfoSellPrice {
+			position: absolute;
+			margin-top: 90px;
+			margin-left: 15px;
 
-	font-family: cursive;
-	font-style: italic;
-	font-size: 16px;
-}
+			font-family: cursive;
+			font-style: italic;
+			font-size: 16px;
+		}

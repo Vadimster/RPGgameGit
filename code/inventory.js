@@ -1,6 +1,6 @@
 var inventory = {
 
- inactive: [axe, woodenBow, knife],
+ inactive: [],
 
  active: [],
 

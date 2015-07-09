@@ -10,18 +10,34 @@ var player = {
         var characterIcon = 'img/statsIcons/characters/'+ player.type +'.png'
         $('#statsCharacterIcon').css({"background":"url('"+characterIcon+"')"});
 
+
+//set here bonuses for testing in the beginning of a game
+
         character.addBonusGold();
         character.addBonusBook();
         character.addBonusItems();
 
+        gold.increase(0);
+        experience.increase(0);
+
+        knife.addToInventory();
+        axe.addToInventory();
+        battleAxe.addToInventory();
+        dagger.addToInventory();
+        doubleSidedAxe.addToInventory();
+        halberd.addToInventory();
+        saber.addToInventory();
+        falx.addToInventory();
+        bladeSpear.addToInventory();
+        spear.addToInventory();
+
+
     },
 
-    type: null, //
+    type: null, 
 
     alive: true,
     canRetreat: true, //can retret before battle screen loads
-    bored: false, // used for slightly different event description if nothing happens 2 turns in a row. Reset to 0 by subsequent meaningful event.
-
 
     mana: 10,
         minMana: 0,
