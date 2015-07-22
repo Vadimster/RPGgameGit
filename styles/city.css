@@ -25,15 +25,30 @@
     		margin-top: 10px;
     		margin-left: 380px;
     		font-size: 45px;
-            font-family: cursive;
-            font-style: Italic;
-            color: black;
-            background-image: url(../img/messages/encounter_dialogue_background_400x500.png);
-            background-size: 100% 100%;
+        font-family: cursive;
+        font-style: Italic;
+        color: black;
+        background-image: url(../img/messages/encounter_dialogue_background_400x500.png);
+        background-size: 100% 100%;
      		background-repeat: no-repeat;
             /* border: 1px dotted red; */
 
     	}
+
+
+ 
+
+      #cityPage-newitems-container {
+          position: absolute;
+          width: 750px;
+          height: 205px;
+          border: 1px dotted blue;
+          margin-top: 200px;
+          margin-left: 100px;
+          overflow-x: hidden;
+          overflow-y: auto;
+          white-space: nowrap; 
+        }
 
 
     	#cityPage-inventory-container {

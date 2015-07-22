@@ -17,10 +17,22 @@ var player = {
         character.addBonusBook();
         character.addBonusItems();
 
-        gold.increase(0);
+        //gold.increase(0);
         experience.increase(0);
 
         knife.addToInventory();
+        spear.addToInventory();
+        axe.addToInventory();
+        battleAxe.addToInventory();
+        dagger.addToInventory();
+        doubleSidedAxe.addToInventory();
+        halberd.addToInventory();
+        saber.addToInventory();
+        falx.addToInventory();
+        bladeSpear.addToInventory();
+        spear.addToInventory();
+        knife.addToInventory();
+        spear.addToInventory();
         axe.addToInventory();
         battleAxe.addToInventory();
         dagger.addToInventory();

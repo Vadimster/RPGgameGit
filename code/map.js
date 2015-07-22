@@ -140,9 +140,8 @@ var Map = new function(){
     var setCities = function(){
 
         var cityNames = ['Vadimgrad', 'Noobngrad', 'Dragonmoor', 'Stonehall', 'Zhbongrad', 'Summerston', 'Sageshore', 'Crystalcastle', 'Faymoor', 'Whitehedge'];
-        var cityLimit = 10; //make a global config variable for diffculty level?
 
-        for (i = 0; i < cityLimit; i++) {
+        for (i = 0; i < gameConfig.map.cityLimit; i++) {
             
             var arrayX = Math.floor(Math.random()*(mapMaxHeight));
             var arrayY = Math.floor(Math.random()*(mapMaxWidth));

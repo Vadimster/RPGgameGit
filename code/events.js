@@ -1,34 +1,4 @@
 
-var mod = { //Modificators for various formulae
-
-    terrain: { //base event values for calculaiton of favorable/nonfavorable outcome
-        grass: 2.5,
-        forest: 2.5,
-        swamp: 1.5,
-        hills: 2,
-        mountains: 2
-    },
-
-    time: {
-    
-        day: 1,
-        night: 0
-    },
-    
-    terrainNothing: { //base event for calculation of "nothing" outcome for non-favorable event. More dangerous tiles are likely to produce less chance of "nothing happens"
-        grass: 1.3,
-        forest: 1.2,
-        swamp: 1,
-        hills: 0.7,
-        mountains: 0.5
-
-    }
-
-};
-
-
-
-
 var turnManager = {
 
 	turn: 1,
@@ -52,6 +22,13 @@ var turnManager = {
 
 
 var createEvent = function(tileID, terrainType, tileHasBonus, bonusType, cityName){
+
+
+	//1. detemine if event is favorable or unfavorable
+	//2. If favorable, then decide if it is i) wizard, ii) merchant, iii) chest
+	//3. If unfavorable, then decide if it is i) mob, ii) nothing
+
+
 
 	if (terrainType === 'city') {
 
@@ -84,59 +61,68 @@ var createEvent = function(tileID, terrainType, tileHasBonus, bonusType, cityNam
 
 		    console.log('Detemining threshold for favorable event');
 
-				var favorableEventThreshold = parseFloat(
-					(mod.terrain[terrainType] + mod.time[timeOfDay] + player.luck/2 - player.level/10)//formula goes in these brackets
-					.toFixed(2));
-
-			    console.log('Threshold is: ' + favorableEventThreshold);
+			    console.log('Threshold is: ' + gameConfig.mod.favorableEvent.chanceToHappen(terrainType, timeOfDay));
 			    console.log('Player rolls dice to see if threshld test is passed. If passed - favorable event happens');
 		    	var roll = parseFloat((Math.random()*10).toFixed(2)); //player base roll will generate a number between 0 and 10 with 2 decimal points
 	    		console.log('player roll is: ' + roll);
-	    		if (roll < favorableEventThreshold){
+	    		if (roll < gameConfig.mod.favorableEvent.chanceToHappen(terrainType, timeOfDay)){
 	    			console.log('event is favorable');
-	    			//code below 1. checks if wizard is met, if not then checks if merchant is met if not then event is chest.
+	    			
+	    			//WILL NOW RESOLVE FAVORABLE EVENT FURTHER
+
+	    			//code below checks if wizard is met, if not then checks if merchant is met and if not then event is "chest".
 
 		    		var roll = parseFloat((Math.random()*10).toFixed(2)); //player base roll will generate a number between 0 and 10 with 2 decimal points
-		    		console.log('Threshold to meet the wizard is: ' + wizard.chanceToMeet + '. Player rolled: ' + roll);
+		    		console.log('Threshold to meet the wizard is: ' + gameConfig.mod.wizard.chanceToMeet() + '. Player rolled: ' + roll);
 
-		    		if (roll >= wizard.chanceToMeet) {
+		    		if (roll >= gameConfig.mod.wizard.chanceToMeet()) {
 		    			console.log('It is a wizard! Will now run resolveWizard() to determine what player gets based on his stats'); 
 		    			wizard.defineOutcome();
 		    		} else {
 		    			console.log('It is NOT wizard. Will now check if player has sufficient money to take merchant test.');
 
-		    			if (player.gold >= 500) { //5 silver coins
+	    				//code below checks if merchant is met.
+
+
+		    			if (player.gold >= gameConfig.mod.merchant.minGoldToMeet) { 
 			    			
-			    			var thresholdMerchant = 9; 
 		    				var roll = parseFloat((Math.random()*10).toFixed(2)); //player base roll will generate a number between 0 and 10 with 2 decimal points
 
-		    				console.log('Threshold to meet merchant is ' + thresholdMerchant + '. Player rolled ' + roll);
+		    				console.log('Threshold to meet merchant is ' + gameConfig.mod.merchant.chanceToMeet() + '. Player rolled ' + roll);
 
-		    				if ( roll >= thresholdMerchant){
+		    				if ( roll >= gameConfig.mod.merchant.chanceToMeet()){
 		    					console.log('It is a merchant!');
 								//resolveMerchant();  opens the shop
+		    				
+
 		    				} else {
-		    					console.log('Player failed the merchant test. Event is a chest!');
+		    					console.log('Player failed the merchant test, therefore event is a chest!');
 		    					//exploreChest();
 		    				}
-
 		    			} else {
 		    				console.log('Player gold not sufficient to take merchant test. Event is a chest!');
 		    					//exploreChest();
 		    			}
 
 		    		}
-				    		
+				    
+
+
+
 	    		} else {
-	    			console.log('event is not favorable. Will now determine if encounter is a mob or nothing');
+					//EVENT IS NONFAVORABLE, WILL NOW RESOLVE UNFAVORABLE EVENT FURTHER
+	    			console.log('event is NOT favorable. Will now determine if encounter is a MOB or NOTHING');
 	    			
+	    	/*		
 					var nothingEventThreshold = parseFloat(
 						(mod.terrainNothing[terrainType] + mod.time[timeOfDay] - player.level/8)//formula goes in these brackets
 						.toFixed(2));
-			    	console.log('Threshold for "nothing" is: ' + nothingEventThreshold);
+
+			*/
+			    	console.log('Threshold for "nothing" is: ' + gameConfig.mod.unfavorableEvent.nothingHappensChance(terrainType, timeOfDay));
 		    		var roll = parseFloat((Math.random()*10).toFixed(2)); //player base roll will generate a number between 0 and 10 with 2 decimal points
 	    			console.log('player roll for "nothing" is: ' + roll);
-		    		if (roll < nothingEventThreshold) {
+		    		if (roll < gameConfig.mod.unfavorableEvent.nothingHappensChance(terrainType, timeOfDay)) {
 		    			console.log('nothing happens!');
 		    			experience.increase(1);
 

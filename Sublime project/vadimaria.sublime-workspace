@@ -4,6 +4,14 @@
 		"selected_items":
 		[
 			[
+				"tim",
+				"timeOfDay"
+			],
+			[
+				"ch",
+				"chanceValue"
+			],
+			[
 				"inv",
 				"inventory〔variable〕"
 			],
@@ -121,10 +129,6 @@
 			],
 			[
 				"char",
-				"characterDetails"
-			],
-			[
-				"ch",
 				"characterDetails"
 			],
 			[
@@ -451,31 +455,31 @@
 			"file": "/Users/instantbank/Documents/PERSONAL/programming/javascript/RPGgameGit/code/gameObjects.js",
 			"settings":
 			{
-				"buffer_size": 18097,
+				"buffer_size": 18602,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "/Users/instantbank/Documents/PERSONAL/programming/javascript/RPGgameGit/code/characters.js",
+			"file": "/Users/instantbank/Documents/PERSONAL/programming/javascript/RPGgameGit/code/gameConfig.js",
 			"settings":
 			{
-				"buffer_size": 9969,
+				"buffer_size": 2131,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "/Users/instantbank/Documents/PERSONAL/programming/javascript/RPGgameGit/code/melee-weapons.js",
+			"file": "/Users/instantbank/Documents/PERSONAL/programming/javascript/RPGgameGit/code/events.js",
 			"settings":
 			{
-				"buffer_size": 17891,
+				"buffer_size": 8536,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "/Users/instantbank/Documents/PERSONAL/programming/javascript/RPGgameGit/code/inventory.js",
+			"file": "/Users/instantbank/Documents/PERSONAL/programming/javascript/RPGgameGit/code/npc.js",
 			"settings":
 			{
-				"buffer_size": 286,
+				"buffer_size": 1650,
 				"line_ending": "Unix"
 			}
 		},
@@ -483,39 +487,7 @@
 			"file": "/Users/instantbank/Documents/PERSONAL/programming/javascript/RPGgameGit/index.html",
 			"settings":
 			{
-				"buffer_size": 9599,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "/Users/instantbank/Documents/PERSONAL/programming/javascript/RPGgameGit/code/spellBook.js",
-			"settings":
-			{
-				"buffer_size": 12710,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "/Users/instantbank/Documents/PERSONAL/programming/javascript/RPGgameGit/code/spells.js",
-			"settings":
-			{
-				"buffer_size": 6994,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "/Users/instantbank/Documents/PERSONAL/programming/javascript/RPGgameGit/code/city.js",
-			"settings":
-			{
-				"buffer_size": 1731,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "/Users/instantbank/Documents/PERSONAL/programming/javascript/RPGgameGit/code/characterDetails.js",
-			"settings":
-			{
-				"buffer_size": 1948,
+				"buffer_size": 9715,
 				"line_ending": "Unix"
 			}
 		}
@@ -552,28 +524,28 @@
 	},
 	"file_history":
 	[
+		"/Users/instantbank/Documents/PERSONAL/programming/javascript/RPGgameGit/code/characters.js",
+		"/Users/instantbank/Documents/PERSONAL/programming/javascript/RPGgameGit/code/map.js",
+		"/Users/instantbank/Documents/PERSONAL/programming/javascript/RPGgameGit/styles/city.css",
+		"/Users/instantbank/Documents/PERSONAL/programming/javascript/RPGgameGit/code/characterDetails.js",
+		"/Users/instantbank/Documents/PERSONAL/programming/javascript/RPGgameGit/code/city.js",
+		"/Users/instantbank/Documents/PERSONAL/programming/javascript/RPGgameGit/code/spells.js",
+		"/Users/instantbank/Documents/PERSONAL/programming/javascript/RPGgameGit/code/spellBook.js",
+		"/Users/instantbank/Documents/PERSONAL/programming/javascript/RPGgameGit/code/inventory.js",
+		"/Users/instantbank/Documents/PERSONAL/programming/javascript/RPGgameGit/code/melee-weapons.js",
+		"/Users/instantbank/Documents/PERSONAL/programming/javascript/RPGgameGit/index.html",
 		"/Users/instantbank/Documents/PERSONAL/programming/javascript/RPGgameGit/styles/character-page.css",
 		"/Users/instantbank/Documents/PERSONAL/programming/javascript/RPGgameGit/styles/all-style.css",
-		"/Users/instantbank/Documents/PERSONAL/programming/javascript/RPGgameGit/code/inventory.js",
 		"/Users/instantbank/Documents/PERSONAL/programming/javascript/RPGgameGit/styles/error-messages.css",
 		"/Users/instantbank/Documents/PERSONAL/programming/javascript/RPGgameGit/styles/mainPage.css",
-		"/Users/instantbank/Documents/PERSONAL/programming/javascript/RPGgameGit/code/spellBook.js",
 		"/Users/instantbank/Documents/PERSONAL/programming/javascript/RPGgameGit/styles/items.css",
-		"/Users/instantbank/Documents/PERSONAL/programming/javascript/RPGgameGit/code/characterDetails.js",
-		"/Users/instantbank/Documents/PERSONAL/programming/javascript/RPGgameGit/code/map.js",
 		"/Users/instantbank/Documents/PERSONAL/programming/javascript/RPGgameGit/styles/iteminfo.css",
 		"/Users/instantbank/Documents/PERSONAL/programming/javascript/RPGgameGit/code/messages.js",
 		"/Users/instantbank/Documents/PERSONAL/programming/javascript/RPGgameGit/code/range-weapons.js",
-		"/Users/instantbank/Documents/PERSONAL/programming/javascript/RPGgameGit/code/melee-weapons.js",
 		"/Users/instantbank/Documents/PERSONAL/programming/javascript/RPGgameGit/code/gameObjects.js",
 		"/Users/instantbank/Documents/PERSONAL/programming/javascript/RPGgameGit/code/events.js",
-		"/Users/instantbank/Documents/PERSONAL/programming/javascript/RPGgameGit/styles/city.css",
-		"/Users/instantbank/Documents/PERSONAL/programming/javascript/RPGgameGit/code/city.js",
-		"/Users/instantbank/Documents/PERSONAL/programming/javascript/RPGgameGit/index.html",
-		"/Users/instantbank/Documents/PERSONAL/programming/javascript/RPGgameGit/code/characters.js",
 		"/Users/instantbank/Documents/PERSONAL/programming/javascript/RPGgameGit/styles/map.css",
 		"/Users/instantbank/Documents/PERSONAL/programming/javascript/RPGgameGit/code/weapons.js",
-		"/Users/instantbank/Documents/PERSONAL/programming/javascript/RPGgameGit/code/spells.js",
 		"/Users/instantbank/Documents/PERSONAL/programming/javascript/RPGgameGit/styles/style.css",
 		"/Users/instantbank/Documents/PERSONAL/programming/javascript/RPGgameGit/styles/styles - untouched.css",
 		"/Users/instantbank/Documents/PERSONAL/programming/javascript/RPGgameGit/styles/select-character-page.css",
@@ -622,6 +594,10 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"timeOfDay",
+			"data",
+			"helb",
+			"hel",
 			"splic",
 			"inactive",
 			"stats",
@@ -698,7 +674,7 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 1,
 			"sheets":
 			[
 				{
@@ -706,15 +682,15 @@
 					"file": "/Users/instantbank/Documents/PERSONAL/programming/javascript/RPGgameGit/code/gameObjects.js",
 					"settings":
 					{
-						"buffer_size": 18097,
+						"buffer_size": 18602,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								752,
-								752
+								982,
+								982
 							]
 						],
 						"settings":
@@ -725,88 +701,88 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 180.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 1,
-					"file": "/Users/instantbank/Documents/PERSONAL/programming/javascript/RPGgameGit/code/characters.js",
+					"file": "/Users/instantbank/Documents/PERSONAL/programming/javascript/RPGgameGit/code/gameConfig.js",
 					"settings":
 					{
-						"buffer_size": 9969,
+						"buffer_size": 2131,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								0
+								1317,
+								1317
 							]
 						],
 						"settings":
 						{
+							"auto_complete": false,
 							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 2051.0,
+						"translation.y": 430.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 2,
-					"file": "/Users/instantbank/Documents/PERSONAL/programming/javascript/RPGgameGit/code/melee-weapons.js",
+					"file": "/Users/instantbank/Documents/PERSONAL/programming/javascript/RPGgameGit/code/events.js",
 					"settings":
 					{
-						"buffer_size": 17891,
+						"buffer_size": 8536,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								16013,
-								16013
+								665,
+								665
 							]
 						],
 						"settings":
 						{
 							"auto_complete": false,
 							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 7245.0,
+						"translation.y": 1479.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 3,
-					"file": "/Users/instantbank/Documents/PERSONAL/programming/javascript/RPGgameGit/code/inventory.js",
+					"file": "/Users/instantbank/Documents/PERSONAL/programming/javascript/RPGgameGit/code/npc.js",
 					"settings":
 					{
-						"buffer_size": 286,
+						"buffer_size": 1650,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								31,
-								31
+								1630,
+								1630
 							]
 						],
 						"settings":
 						{
 							"auto_complete": false,
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -819,134 +795,24 @@
 					"file": "/Users/instantbank/Documents/PERSONAL/programming/javascript/RPGgameGit/index.html",
 					"settings":
 					{
-						"buffer_size": 9599,
+						"buffer_size": 9715,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								8673,
-								8673
+								0,
+								0
 							]
 						],
 						"settings":
 						{
-							"auto_complete": false,
 							"syntax": "Packages/HTML/HTML.tmLanguage",
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 3803.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 5,
-					"file": "/Users/instantbank/Documents/PERSONAL/programming/javascript/RPGgameGit/code/spellBook.js",
-					"settings":
-					{
-						"buffer_size": 12710,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 3818.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 6,
-					"file": "/Users/instantbank/Documents/PERSONAL/programming/javascript/RPGgameGit/code/spells.js",
-					"settings":
-					{
-						"buffer_size": 6994,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								308,
-								308
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 7,
-					"file": "/Users/instantbank/Documents/PERSONAL/programming/javascript/RPGgameGit/code/city.js",
-					"settings":
-					{
-						"buffer_size": 1731,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 327.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 8,
-					"file": "/Users/instantbank/Documents/PERSONAL/programming/javascript/RPGgameGit/code/characterDetails.js",
-					"settings":
-					{
-						"buffer_size": 1948,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 4115.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
