@@ -1,39 +1,41 @@
-var sword = {
+
+var Sword = function(){
+
+    this.name = 'sword'; //also divID for jQuery
+    this.icon = 'img/items/weapons/melee/sword.png'; //image for the 
     
-    name: 'sword', //also divID for jQuery
-    icon: 'img/items/weapons/melee/sword.png', //image for the 
-    
-    type: "weapon",
-        melee: true,
-        range: false,
-        active: false, //determins if object needs to go into active items div
+    this.type = "weapon";
+        
+        this.melee = true;
+        this.range = false;
+        this.active = false; //determins if object needs to go into active items div
   
-    consumable: false,
-    equippable: true,
-        equipped: false,
+    this.consumable = false;
+    this.equippable = true;
+    this.equipped = false;
     
-    inInactiveInventory: false,
+    this.inInactiveInventory = true; 
 
-    buyPrice: 50,
-    get sellPrice(){
-        return this.buyPrice/2
-    },
+    this.buyPrice = 50;
+    
+    this.sellPrice = this.buyPrice/2;
 
+    this.attack = 1;
+    this.defense = 0;
 
-    attack: 1,
-    defense: 0,
+    this.remove = function(){
 
-    remove: function(){
+        //move this to another inventory first (e.g equipped)
 
         var a = inventory.inactive.indexOf(this); //get index of the item in question in inactive inventory
         inventory.inactive.splice(a,1);
         city.createPage();
         $('.itemInfoContainer').hide();
 
-    },
+    };
 
 
-    clicked: function(){
+    this.clicked = function(){
 
         if(city.visited) {
 
@@ -42,72 +44,73 @@ var sword = {
             }
         } else {
             console.log('not in city, will try to equip item');
+            this.equip();
         }
         //depending ont he class add to either active items array and change class with float left .css
 
-    },
+    };
 
 
-    getInfo: function(){
+   this.getInfo = function(){ //will display item stats in div .itemInfoContainer
         showWeaponDetailsMessage(this);
 
 
-    },
+    };
 
 
 
-    mouseLeft: function(){
+    this.mouseLeft = function(){
         $('.itemInfoContainer').hide();
 
-    },
+    };
 
 
 
-    purchase: function(item){
+    this.purchase = function(item){
 
 
 
-    },
+    };
 
 
 
-    addToInventory: function() {
+    this.addToInventory = function() {
 
         inventory.inactive.push(this);
         this.inInactiveInventory = true;
 
 
-    },
+    };
 
 
 
-    equip: function(item){
+    this.equip = function(){
 
+        console.log(this.name + ' will be equipped now');
         //need to hide  #itemInfoContainer
 
 
-    },
+    };
 
 
-    unequip: function(item){
-
-
-
-    },
-
-
-    sell: function() {
-
-    
-    this.remove();
-    gold.increase(this.sellPrice);
+    this.unequip = function(item){
 
 
 
-    },
+    };
 
 
-    trade: function(){ 
+    this.sell = function() {
+
+        this.remove();
+        gold.increase(this.sellPrice);
+
+
+
+    };
+
+
+    this.trade = function(){ 
         if (this.equipped) {
             if (confirm("You already have the " + this.objectName + ". Do you want to sell it for " + this.sellPrice + " gold?")){
                 tradeItem(this, "sell");
@@ -116,50 +119,50 @@ var sword = {
                     alert("Not equipped, will attempt to buy now");
                     tradeItem(this, "buy");
                 }
-    }
+    };
         
     //may be develop a stats update method for this object instead of using the playerStatsUpdateItem function?
+
+
 
 };
 
 
 
-var knife = {
+var Knife = function(){
     
-    name: 'knife', //also divID for jQuery
-    icon: 'img/items/weapons/melee/knife.png', //image for the 
+    this.name = 'knife'; //also divID for jQuery
+    this.icon = 'img/items/weapons/melee/knife.png'; //image for the 
     
-    type: "weapon",
-        melee: true,
-        range: false,
-        active: false, //determins if object needs to go into active items div
+    this.type = "weapon";
+        this.melee = true;
+        this.range = false;
+        this.active = false; //determins if object needs to go into active items div
   
-    consumable: false,
-    equippable: true,
-        equipped: false,
+    this.consumable = false;
+    this.equippable = true;
+        this.equipped = false;
     
-    inInactiveInventory: false,
+    this.inInactiveInventory = true;
 
-    buyPrice: 20,
-    get sellPrice(){
-        return this.buyPrice/2
-    },
+    this.buyPrice = 20;
 
+    this.sellPrice = this.buyPrice/2;
 
-    attack: 1,
-    defense: 0,
+    this.attack = 1;
+    this.defense = 0;
 
-    remove: function(){
+    this.remove = function(){
 
         var a = inventory.inactive.indexOf(this); //get index of the item in question in inactive inventory
         inventory.inactive.splice(a,1);
         city.createPage();
         $('.itemInfoContainer').hide();
 
-    },
+    };
 
 
-    clicked: function(){
+    this.clicked = function(){
 
         if(city.visited) {
 
@@ -171,58 +174,58 @@ var knife = {
         }
         //depending ont he class add to either active items array and change class with float left .css
 
-    },
+    };
 
 
-    getInfo: function(){
+    this.getInfo = function(){
         showWeaponDetailsMessage(this);
 
 
-    },
+    };
 
 
 
-    mouseLeft: function(){
+    this.mouseLeft = function(){
         $('.itemInfoContainer').hide();
 
-    },
+    };
 
 
 
-    purchase: function(item){
+    this.purchase = function(item){
 
 
 
-    },
+    };
 
 
 
-    addToInventory: function() {
+    this.addToInventory = function() {
 
         inventory.inactive.push(this);
         this.inInactiveInventory = true;
 
 
-    },
+    };
 
 
 
-    equip: function(item){
+    this.equip = function(item){
 
         //need to hide  #itemInfoContainer
 
 
-    },
+    };
 
 
-    unequip: function(item){
+    this.unequip = function(item){
 
 
 
-    },
+    };
 
 
-    sell: function() {
+    this.sell = function() {
 
     
     this.remove();
@@ -230,10 +233,10 @@ var knife = {
 
 
 
-    },
+    };
 
 
-    trade: function(){ 
+    this.trade = function(){ 
         if (this.equipped) {
             if (confirm("You already have the " + this.objectName + ". Do you want to sell it for " + this.sellPrice + " gold?")){
                 tradeItem(this, "sell");

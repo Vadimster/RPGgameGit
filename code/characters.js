@@ -165,8 +165,9 @@ var warrior = {
 
     bonusItems: true,
       addBonusItems: function(){
-        if (warrior.bonusItems) {
-          sword.addToInventory();
+        if (warrior.bonusItems) {       
+          inventory.inactive.push(new Sword);
+ 
         } else {
           console.log('Player does not get bonus item');
         }

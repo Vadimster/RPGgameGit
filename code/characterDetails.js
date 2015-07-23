@@ -49,6 +49,9 @@ var characterDetailsPage = {
 	    	} else if (item.range) {
 	    		item.div.css({"background-color": "#F87431"}); //orange
 
+	    	} else if (item.artefact) {
+	    		item.div.css({"background-color": "#9900CC"}); //purple
+
 	    	}
 
 			item.div.css({"background-image":"url('"+item.icon+"')"});
@@ -75,7 +78,43 @@ var characterDetailsPage = {
 
 		
 	    //populate active inventory
+	    $('#characterDetails-activeItems-container').empty();
+	    for(i=0; i<inventory.active.length; i++) {
+
+	    	var item = inventory.active[i];
+	    	item.div = $("<div/>");
+			item.div.addClass("inventoryItem");
+
+	    	if (item.melee) {
+	    		item.div.css({"background-color": "#9F000F"}); //red
+	    	} else if (item.range) {
+	    		item.div.css({"background-color": "#F87431"}); //orange
+
+	    	} else if (item.artefact) {
+	    		item.div.css({"background-color": "#9900CC"}); //purple
+
+	    	}
+
+			item.div.css({"background-image":"url('"+item.icon+"')"});
 
 
+
+
+	    	item.div.get(0).obj = item; //link DOM elemtn to an object
+	    	item.div.click(function(){
+	    		this.obj.clicked();
+
+	    	});
+
+	    	item.div.mouseover(function() {
+	    		this.obj.getInfo();
+	    	});
+
+	    	item.div.mouseout(function() {
+	    		this.obj.mouseLeft();
+	    	});
+
+	    	item.div.appendTo('#characterDetails-activeItems-container');
+	    }
 	}
 };

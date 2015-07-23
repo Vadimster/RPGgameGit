@@ -10,38 +10,25 @@ var player = {
         var characterIcon = 'img/statsIcons/characters/'+ player.type +'.png'
         $('#statsCharacterIcon').css({"background":"url('"+characterIcon+"')"});
 
-
-//set here bonuses for testing in the beginning of a game
+        //will update character with starting bonuses, if any.
 
         character.addBonusGold();
         character.addBonusBook();
         character.addBonusItems();
 
+
+        //set here bonuses for testing in the beginning of a game
+
         //gold.increase(0);
         experience.increase(0);
-
-        knife.addToInventory();
-        spear.addToInventory();
-        axe.addToInventory();
-        battleAxe.addToInventory();
-        dagger.addToInventory();
-        doubleSidedAxe.addToInventory();
-        halberd.addToInventory();
-        saber.addToInventory();
-        falx.addToInventory();
-        bladeSpear.addToInventory();
-        spear.addToInventory();
-        knife.addToInventory();
-        spear.addToInventory();
-        axe.addToInventory();
-        battleAxe.addToInventory();
-        dagger.addToInventory();
-        doubleSidedAxe.addToInventory();
-        halberd.addToInventory();
-        saber.addToInventory();
-        falx.addToInventory();
-        bladeSpear.addToInventory();
-        spear.addToInventory();
+        inventory.inactive.push(new Knife);
+        inventory.inactive.push(new Sword);
+        inventory.inactive.push(new Knife);
+        inventory.inactive.push(new Ring);
+        inventory.inactive.push(new Ring);
+        inventory.inactive.push(new Ring);
+        inventory.inactive.push(new Ring); 
+        inventory.inactive.push(new Ring);
 
 
     },
@@ -133,7 +120,7 @@ var player = {
 
 
 
-    luck: 1, //  DO NOT MODIFY THIS MANUALLY BUT RUN THE METHOD INSTEAD!!!  (displayed in game and used for calculations)
+    luck: 0, //  DO NOT MODIFY THIS MANUALLY BUT RUN THE METHOD INSTEAD!!!  (displayed in game and used for calculations)
     luckLog: 0, //used to keep track of luck changes and account for value if over max limit
         minLuck: 0,
         maxLuck: 5,

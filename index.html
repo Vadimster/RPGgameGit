@@ -209,9 +209,34 @@
 	<div class="itemInfoContainer"></div>
 
 
- 		<div id="characterDetails-equippedItems-container">picture of a warrior + equipped items </div> <!-- Image of a warrior + aquipped items -->
- 	 	<div id="characterDetails-activeItems-container">active items </div> <!-- contains slots for active auxilary  -->
+ 		<div id="characterDetails-equippedItems-container">
+ 			<div id="character-silhouette"></div>
+ 			<div id="weapon-slot-helmet" class="weapon-slot" title="click on a helmet in your bagpack to equip"></div>
+ 			<div id="weapon-slot-shield" class="weapon-slot" title="click on a shield in your bagpack to equip"></div>
+ 			<div id="weapon-slot-armor" class="weapon-slot" title="click on armor in your bagpack to equip"></div>
+ 			<div id="weapon-slot-melee" class="weapon-slot" title="click on a melee weapon in your bagpack to equip"></div>
+ 			<div id="weapon-slot-range" class="weapon-slot" title="click on a range weapon in your bagpack to equip"></div>
+ 	 	
+ 	 		
+
+ 			<div id="characterDetails-arrows-container-description" title="If you have a bow and enough arrows you can shoot in combat">5 x arrows</div>
+ 	 		<div id="characterDetails-arrows-container"></div> <!-- contains slots for arrows  -->
+ 	 		
+
+ 			<div id="characterDetails-activeItems-container-description" title="Items equipped here will add to your stats and/or may be used in combat">5 x items</div>
+ 	 		<div id="characterDetails-activeItems-container"></div> <!-- contains slots for active auxilary  -->
+
+
+
+
+
+ 		</div> <!-- Image of a warrior + aquipped items -->
+ 	 	
+
+ 		<div id="characterDetails-inventory-container-description" title="Your bagpack contains unlimited numer of items, but all of them will have an effect on your character or may be used in battle if equipped. Click on an item to equip or start an action">Bagpack:</div>
  	 	<div id="characterDetails-inventory-container"></div> <!-- contains inactive items in inventory  -->
+ 	 	
+
  	 	<div id="characterDetails-stats-container"> <!-- contains inactive items in inventory  -->
 			<div id="statsAttack">
 				<div id="statsAttackIcon" title="Your base attack value"></div>
@@ -287,6 +312,7 @@
 <script type="text/javascript" src="code/gameConfig.js"></script>
 
 <script type="text/javascript" src="code/melee-weapons.js"></script>
+<script type="text/javascript" src="code/artefacts.js"></script>
 <script type="text/javascript" src="code/messages.js"></script>
 <script type="text/javascript" src="code/city.js"></script>
 

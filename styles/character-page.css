@@ -1,4 +1,11 @@
 
+.weapon-slot:hover{
+  background-color: #FF3300;
+  opacity: 0.5;
+}
+
+
+
 #characterDetails {
   display: none;
   position: relative;
@@ -17,21 +24,136 @@
 
         #characterDetails-equippedItems-container {
           position: absolute;
-          width: 350px;
+          width: 360px;
           height: 340px;
-          border: 1px dotted blue;
+          border-radius: 10px;
+          border: 1px solid grey;
           margin-top: 25px;
           margin-left: 65px;
         }
 
+                 #character-silhouette {
+                    position: absolute;
+                    width: 150px;
+                    height: 300px;
+                    /* border: 1px dotted red; */
+                    margin-top: 45px;
+                    margin-left: 35px;
+                    background-image: url(../img/statsIcons/character.png);
+                    background-repeat: no-repeat;
+                  }
 
-        #characterDetails-activeItems-container {
+                #weapon-slot-helmet {
+
+                    position: absolute;
+                    width: 50px;
+                    height: 50px;
+                    border: 1px dotted red;
+                    margin-top: 10px;
+                    margin-left: 85px;
+                }
+
+                #weapon-slot-armor {
+
+                    position: absolute;
+                    width: 50px;
+                    height: 50px;
+                    border: 1px dotted red;
+                    margin-top: 110px;
+                    margin-left: 85px;
+                }
+
+                #weapon-slot-shield {
+
+                    position: absolute;
+                    width: 50px;
+                    height: 50px;
+                    border: 1px dotted red;
+                    margin-top: 180px;
+                    margin-left: 125px;
+                }
+
+
+                #weapon-slot-melee {
+
+                    position: absolute;
+                    width: 50px;
+                    height: 50px;
+                    border: 1px dotted red;
+                    margin-top: 45px;
+                    margin-left: 25px;
+                }
+
+                #weapon-slot-range {
+
+                    position: absolute;
+                    width: 50px;
+                    height: 50px;
+                    border: 1px dotted red;
+                    margin-top: 160px;
+                    margin-left: 15px;
+                }
+
+
+              #characterDetails-activeItems-container {
+                position: absolute;
+                width: 52px;
+                height: 260px;
+                border: 1px dotted green;
+                margin-top: 50px;
+                margin-left: 270px;
+              }
+              
+              #characterDetails-activeItems-container-description {
+                position: absolute;
+                width: 50px;
+                height: 15px;
+                /* border: 1px dotted blue; */
+                margin-top: 30px;
+                margin-left: 270px;
+                font-size: 12px;
+                font-family: cursive;
+                font-style: Italic;
+                color: black;
+
+              }
+
+
+
+              #characterDetails-arrows-container {
+                position: absolute;
+                width: 52px;
+                height: 260px;
+                border: 1px dotted green;
+                margin-top: 50px;
+                margin-left: 200px;
+              }
+              
+              #characterDetails-arrows-container-description {
+                position: absolute;
+                width: 55px;
+                height: 15px;
+                /* border: 1px dotted blue; */
+                margin-top: 30px;
+                margin-left: 200px;
+                font-size: 12px;
+                font-family: cursive;
+                font-style: Italic;
+                color: black;
+
+              }
+
+       #characterDetails-inventory-container-description {
           position: absolute;
-          width: 255px;
-          height: 50px;
-          border: 1px dotted green;
-          margin-top: 380px;
-          margin-left: 350px;
+          width: 80px;
+          height: 35px;
+          /* border: 1px dotted blue; */
+          margin-top: 450px;
+          margin-left: 40px;
+          font-size: 20px;
+          font-family: cursive;
+          font-style: Italic;
+          color: black;
         }
 
 
@@ -41,12 +163,18 @@
           width: 750px;
           height: 68px;
           border: 1px dotted red;
-          margin-top: 450px;
-          margin-left: 100px;
+          margin-top: 440px;
+          margin-left: 140px;
           overflow-x: auto;
           overflow-y: hidden;
           white-space: nowrap; 
         }
+
+
+
+
+
+
 
 
      #characterDetails-stats-container {
