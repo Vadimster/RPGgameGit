@@ -38,27 +38,280 @@
 
  
 
-      #cityPage-newitems-container {
+      #cityPage-market-container {
           position: absolute;
           width: 750px;
           height: 205px;
           border: 1px dotted blue;
-          margin-top: 200px;
-          margin-left: 100px;
+          margin-top: 100px;
+          margin-left: 140px;
           overflow-x: hidden;
           overflow-y: auto;
           white-space: nowrap; 
         }
 
+            #cityPage-market-filters-container {
+                position: relative;
+                left: 150px;
+                top: 310px;  
+                height: 40px;
+                width: 750px;
+                background-color: none;
+                border: 1px dotted green;
+                white-space: nowrap;       
 
-    	#cityPage-inventory-container {
+            }
+
+
+                    #cityPage-market-filters-budget {
+                        position: absolute;
+                        height: 25px;
+                        background-color: none;
+                        border-radius: 5px;
+                        font-size: 16px;
+                        font-family: cursive;
+                        font-style: Italic;
+                        color: black;
+                        background-color: #FFFF00;
+                      }
+
+
+
+                      #cityPage-market-filters-all {
+                        position: absolute;
+                        margin-left: 70px;
+                        height: 25px;
+                        background-color: none;
+                        border-radius: 5px;
+                        font-size: 16px;
+                        font-family: cursive;
+                        font-style: Italic;
+                        color: black;
+                        background-color: #707070;
+                      }
+
+                      #cityPage-market-filters-melee {
+                        position: absolute;
+                        margin-left: 150px;
+                        height: 25px;
+                        background-color: none;
+                        border-radius: 5px;
+                        font-size: 16px;
+                        font-family: cursive;
+                        font-style: Italic;
+                        color: black;
+                        background-color: #9F000F;
+                      }
+                      
+                      #cityPage-market-filters-range {
+                        position: absolute;
+                        margin-left: 270px;
+                        height: 25px;
+                        background-color: none;
+                        border-radius: 5px;
+                        font-size: 16px;
+                        font-family: cursive;
+                        font-style: Italic;
+                        color: black;
+                        background-color: #F87431;
+                      }
+
+                      #cityPage-market-filters-armor {
+                        position: absolute;
+                        margin-left: 395px;
+                        height: 25px;
+                        background-color: none;
+                        border-radius: 5px;
+                        font-size: 16px;
+                        font-family: cursive;
+                        font-style: Italic;
+                        color: black;
+                        background-color: #009933;
+                      }
+                      
+                      #cityPage-market-filters-shields {
+                        position: absolute;
+                        margin-left: 465px;
+                        height: 25px;
+                        background-color: none;
+                        border-radius: 5px;
+                        font-size: 16px;
+                        font-family: cursive;
+                        font-style: Italic;
+                        color: black;
+                        background-color: #3366CC;
+                      }
+
+                      #cityPage-market-filters-arrows {
+                        position: absolute;
+                        margin-left: 535px;
+                        height: 25px;
+                        background-color: none;
+                        border-radius: 5px;
+                        font-size: 16px;
+                        font-family: cursive;
+                        font-style: Italic;
+                        color: black;
+                        background-color: #F87431;
+                      }
+
+                      #cityPage-market-filters-potions {
+                        position: absolute;
+                        margin-left: 610px;
+                        height: 25px;
+                        background-color: none;
+                        border-radius: 5px;
+                        font-size: 16px;
+                        font-family: cursive;
+                        font-style: Italic;
+                        color: black;
+                        background-color: #FFFF66;
+                      }
+
+                      #cityPage-market-filters-artefacts {
+                        position: absolute;
+                        margin-left: 685px;
+                        height: 25px;
+                        background-color: none;
+                        border-radius: 5px;
+                        font-size: 16px;
+                        font-family: cursive;
+                        font-style: Italic;
+                        color: black;
+                        background-color: #9900CC;
+                      }
+
+
+
+
+    	#cityPage-bagpack-container {
           position: absolute;
           width: 750px;
           height: 68px;
           border: 1px dotted red;
-          margin-top: 450px;
+          margin-top: 370px;
           margin-left: 100px;
           overflow-x: auto;
           overflow-y: hidden;
           white-space: nowrap; 
         }
+
+
+        #cityPage-filters-container {
+          position: relative;
+          left: 150px;
+          top: 455px;  
+          height: 40px;
+          width: 750px;
+          background-color: none;
+          border: 1px dotted yellow;
+          white-space: nowrap;
+
+   
+
+      }
+
+                #cityPage-filters-all {
+                  position: absolute;
+                  height: 25px;
+                  background-color: none;
+                  border-radius: 5px;
+                  font-size: 16px;
+                  font-family: cursive;
+                  font-style: Italic;
+                  color: black;
+                  background-color: #707070;
+                }
+
+                #cityPage-filters-melee {
+                  position: absolute;
+                  margin-left: 80px;
+                  height: 25px;
+                  background-color: none;
+                  border-radius: 5px;
+                  font-size: 16px;
+                  font-family: cursive;
+                  font-style: Italic;
+                  color: black;
+                  background-color: #9F000F;
+                }
+                
+                #cityPage-filters-range {
+                  position: absolute;
+                  margin-left: 195px;
+                  height: 25px;
+                  background-color: none;
+                  border-radius: 5px;
+                  font-size: 16px;
+                  font-family: cursive;
+                  font-style: Italic;
+                  color: black;
+                  background-color: #F87431;
+                }
+
+                #cityPage-filters-armor {
+                  position: absolute;
+                  margin-left: 320px;
+                  height: 25px;
+                  background-color: none;
+                  border-radius: 5px;
+                  font-size: 16px;
+                  font-family: cursive;
+                  font-style: Italic;
+                  color: black;
+                  background-color: #009933;
+                }
+                
+                #cityPage-filters-shields {
+                  position: absolute;
+                  margin-left: 385px;
+                  height: 25px;
+                  background-color: none;
+                  border-radius: 5px;
+                  font-size: 16px;
+                  font-family: cursive;
+                  font-style: Italic;
+                  color: black;
+                  background-color: #3366CC;
+                }
+
+                #cityPage-filters-arrows {
+                  position: absolute;
+                  margin-left: 455px;
+                  height: 25px;
+                  background-color: none;
+                  border-radius: 5px;
+                  font-size: 16px;
+                  font-family: cursive;
+                  font-style: Italic;
+                  color: black;
+                  background-color: #F87431;
+                }
+
+                #cityPage-filters-potions {
+                  position: absolute;
+                  margin-left: 525px;
+                  height: 25px;
+                  background-color: none;
+                  border-radius: 5px;
+                  font-size: 16px;
+                  font-family: cursive;
+                  font-style: Italic;
+                  color: black;
+                  background-color: #FFFF66;
+                }
+
+                #cityPage-filters-artefacts {
+                  position: absolute;
+                  margin-left: 600px;
+                  height: 25px;
+                  background-color: none;
+                  border-radius: 5px;
+                  font-size: 16px;
+                  font-family: cursive;
+                  font-style: Italic;
+                  color: black;
+                  background-color: #9900CC;
+                }
+
+

@@ -21,21 +21,43 @@ var player = {
 
         //gold.increase(0);
         experience.increase(0);
-        inventory.inactive.push(new Knife);
-        inventory.inactive.push(new Sword);
-        inventory.inactive.push(new Knife);
-        inventory.inactive.push(new Ring);
-        inventory.inactive.push(new Ring);
-        inventory.inactive.push(new Ring);
-        inventory.inactive.push(new Ring); 
-        inventory.inactive.push(new Ring);
+        inventory.active.push(new Manapotion);
 
+
+        inventory.arrows.push(new Arrow);
+        inventory.arrows.push(new Arrow);
+
+
+
+
+        inventory.bagpack.push(new Helmet);
+
+
+        inventory.shieldSlot.push(new Shield);
+        inventory.helmetSlot.push(new Helmet);
+        inventory.breastplateSlot.push(new Breastplate);
+        inventory.meleeSlot.push(new Sword);
+        inventory.rangeSlot.push(new Bow);
+        //inventory.bagpack.push(new Arrow);
+        city.market.push(new Stone);
+        city.market.push(new Stick);
+        city.market.push(new Stone);
+        city.market.push(new Stone);
+        city.market.push(new Sword);
+        city.market.push(new Shield);
+        city.market.push(new Helmet);
+        city.market.push(new Breastplate);
+        city.market.push(new Bow);
+        city.market.push(new Arrow);
+        city.market.push(new Manapotion);
+        city.market.push(new Ring);
 
     },
 
     type: null, 
 
     alive: true,
+    inCombat: false,
     canRetreat: true, //can retret before battle screen loads
 
     mana: 10,

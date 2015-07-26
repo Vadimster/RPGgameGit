@@ -3,9 +3,12 @@ var city = {
 
 
 	visited: false, //indicates if player is currently on a city tile
+	pageOpened: false, //city page is opened
+
+	market: [], //contains all items available for purchase by player
 
 	
-	playerArrivedonTile : function(cityName){
+	playerArrivedonTile : function(cityName){ //player arrives on city tile
 		
 		$('#cityPage-cityName').empty();
 		$('#cityPage-cityName').html(cityName);
@@ -15,7 +18,7 @@ var city = {
 	},
 
 
-	onClick: function(){
+	onClick: function(){ //city icon clicked
 
 		if (city.visited) {
 			this.createPage();
@@ -27,44 +30,13 @@ var city = {
 
 	createPage: function(){
 
-	    $('#cityPage-inventory-container').empty();
-	    for(i=0; i<inventory.inactive.length; i++) {
+        $('.bagpack').empty();
+        $('#cityPage-market-container').empty();
 
-	    	var item = inventory.inactive[i];
-	    	item.div = $("<div/>");
+	    city.pageOpened = true;
 
-			item.div.addClass("inventoryItem");
-
-	    	if (item.melee) {
-	    		item.div.css({"background-color": "#9F000F"}); //red
-	    	} else if (item.range) {
-	    		item.div.css({"background-color": "#F87431"}); //orange
-
-	    	}
-
-
-
-			item.div.css({"background-image":"url('"+item.icon+"')"});
-
-
-	    	item.div.get(0).obj = item; //link DOM elemtn to an object
-	    	item.div.click(function(){
-	    		this.obj.clicked();
-
-	    	});
-
-	    	item.div.mouseover(function() {
-	    		this.obj.getInfo();
-	    	});
-
-	    	item.div.mouseout(function() {
-	    		this.obj.mouseLeft();
-	    	});
-
-	    	
-	    	item.div.appendTo('#cityPage-inventory-container');
-	    }
-
+	   	inventory.filterAndDraw('bagpack', 'all'); //draws bagpack
+	   	inventory.filterAndDraw('market', 'all'); //draws market
 
 
 			$('#cityPage')
@@ -72,6 +44,7 @@ var city = {
 	      			{buttons: 
 	         			{
 	         			 'Leave city' :function(){
+	            			city.pageOpened  = false;
 	            			$(this).dialog('close');
             		 
 	               		}

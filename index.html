@@ -213,7 +213,7 @@
  			<div id="character-silhouette"></div>
  			<div id="weapon-slot-helmet" class="weapon-slot" title="click on a helmet in your bagpack to equip"></div>
  			<div id="weapon-slot-shield" class="weapon-slot" title="click on a shield in your bagpack to equip"></div>
- 			<div id="weapon-slot-armor" class="weapon-slot" title="click on armor in your bagpack to equip"></div>
+ 			<div id="weapon-slot-breastplate" class="weapon-slot" title="click on armor in your bagpack to equip"></div>
  			<div id="weapon-slot-melee" class="weapon-slot" title="click on a melee weapon in your bagpack to equip"></div>
  			<div id="weapon-slot-range" class="weapon-slot" title="click on a range weapon in your bagpack to equip"></div>
  	 	
@@ -234,10 +234,10 @@
  	 	
 
  		<div id="characterDetails-inventory-container-description" title="Your bagpack contains unlimited numer of items, but all of them will have an effect on your character or may be used in battle if equipped. Click on an item to equip or start an action">Bagpack:</div>
- 	 	<div id="characterDetails-inventory-container"></div> <!-- contains inactive items in inventory  -->
+ 	 	<div class="bagpack"></div> <!-- contains inactive items in inventory  former characterDetails-inventory-container -->
  	 	
 
- 	 	<div id="characterDetails-stats-container"> <!-- contains inactive items in inventory  -->
+ 	 	<div id="characterDetails-stats-container"> <!-- contains inactive items in inventory. former id=""  -->
 			<div id="statsAttack">
 				<div id="statsAttackIcon" title="Your base attack value"></div>
 				<div id="attackCounter"></div>
@@ -260,6 +260,17 @@
 			</div>
 		</div>
 
+ 		<div id="characterDetails-filters-container">
+ 			<div class="filterItem" id="characterDetails-filters-all" onclick="inventory.filterAndDraw('bagpack', 'all')">All items</div>
+ 			<div class="filterItem" id="characterDetails-filters-melee" onclick="inventory.filterAndDraw('bagpack', 'melee')">Melee weapons</div>
+ 			<div class="filterItem" id="characterDetails-filters-range" onclick="inventory.filterAndDraw('bagpack', 'range')">Range weapons</div>
+ 			<div class="filterItem" id="characterDetails-filters-armor" onclick="inventory.filterAndDraw('bagpack', 'armor')">Armor</div>
+ 			<div class="filterItem" id="characterDetails-filters-shields" onclick="inventory.filterAndDraw('bagpack', 'shield')">Shields</div>
+ 			<div class="filterItem" id="characterDetails-filters-arrows" onclick="inventory.filterAndDraw('bagpack', 'arrow')">Arrows</div>
+ 			<div class="filterItem" id="characterDetails-filters-potions" onclick="inventory.filterAndDraw('bagpack', 'potion')">Potions</div>
+ 			<div class="filterItem" id="characterDetails-filters-artefacts" onclick="inventory.filterAndDraw('bagpack', 'artefact')">Artefacts</div>
+ 		</div>
+
  	</div>
  </div>
 
@@ -271,10 +282,43 @@
 
  		<div id="cityPage-cityName"></div>
 
- 		<div id="cityPage-newitems-container"></div>
+ 		<div id="cityPage-market-container"></div>
+
+		<div id="cityPage-market-filters-container">
+ 			
+ 			<div class="cityFilterItem" id="cityPage-market-filters-budget" onclick="inventory.filterAndDraw('market', 'budget')" title="Filter by size of your purse">Budget</div>
+ 			<div class="cityFilterItem" id="cityPage-market-filters-all" onclick="inventory.filterAndDraw('market', 'all')">All items</div>
+ 			<div class="cityFilterItem" id="cityPage-market-filters-melee" onclick="inventory.filterAndDraw('market', 'melee')">Melee weapons</div>
+ 			<div class="cityFilterItem" id="cityPage-market-filters-range" onclick="inventory.filterAndDraw('market', 'range')">Range weapons</div>
+ 			<div class="cityFilterItem" id="cityPage-market-filters-armor" onclick="inventory.filterAndDraw('market', 'armor')">Armor</div>
+ 			<div class="cityFilterItem" id="cityPage-market-filters-shields" onclick="inventory.filterAndDraw('market', 'shield')">Shields</div>
+ 			<div class="cityFilterItem" id="cityPage-market-filters-arrows" onclick="inventory.filterAndDraw('market', 'arrow')">Arrows</div>
+ 			<div class="cityFilterItem" id="cityPage-market-filters-potions" onclick="inventory.filterAndDraw('market', 'potion')">Potions</div>
+ 			<div class="cityFilterItem" id="cityPage-market-filters-artefacts" onclick="inventory.filterAndDraw('market', 'artefact')">Artefacts</div>
+ 		</div>
+
+ 		<div id="cityPage-bagpack-container"></div> <!-- contains items which are available for trade former id="cityPage-bagpack-container" -->
+ 	
+ 		<div id="cityPage-filters-container">
+ 			<div class="cityFilterItem" id="cityPage-filters-all" onclick="inventory.filterAndDraw('bagpack', 'all')">All items</div>
+ 			<div class="cityFilterItem" id="cityPage-filters-melee" onclick="inventory.filterAndDraw('bagpack', 'melee')">Melee weapons</div>
+ 			<div class="cityFilterItem" id="cityPage-filters-range" onclick="inventory.filterAndDraw('bagpack', 'range')">Range weapons</div>
+ 			<div class="cityFilterItem" id="cityPage-filters-armor" onclick="inventory.filterAndDraw('bagpack', 'armor')">Armor</div>
+ 			<div class="cityFilterItem" id="cityPage-filters-shields" onclick="inventory.filterAndDraw('bagpack', 'shield')">Shields</div>
+ 			<div class="cityFilterItem" id="cityPage-filters-arrows" onclick="inventory.filterAndDraw('bagpack', 'arrow')">Arrows</div>
+ 			<div class="cityFilterItem" id="cityPage-filters-potions" onclick="inventory.filterAndDraw('bagpack', 'potion')">Potions</div>
+ 			<div class="cityFilterItem" id="cityPage-filters-artefacts" onclick="inventory.filterAndDraw('bagpack', 'artefact')">Artefacts</div>
+ 		</div>
 
 
- 		<div id="cityPage-inventory-container"></div> <!-- contains inactive items in inventory which are available for trade -->
+
+
+
+
+
+
+
+
  	</div>
  </div>
 
@@ -310,8 +354,13 @@
 <script type="text/javascript" src="ui/jquery-ui/jquery-ui.min.js"></script>
 
 <script type="text/javascript" src="code/gameConfig.js"></script>
-
+<script type="text/javascript" src="code/gameObjects.js"></script>
 <script type="text/javascript" src="code/melee-weapons.js"></script>
+<script type="text/javascript" src="code/arrows.js"></script>
+<script type="text/javascript" src="code/armor.js"></script>
+<script type="text/javascript" src="code/shields.js"></script>
+<script type="text/javascript" src="code/potions.js"></script>
+
 <script type="text/javascript" src="code/artefacts.js"></script>
 <script type="text/javascript" src="code/messages.js"></script>
 <script type="text/javascript" src="code/city.js"></script>
@@ -321,7 +370,6 @@
 
 <script type="text/javascript" src="code/inventory.js"></script>
 <script type="text/javascript" src="code/spells.js"></script>
-<script type="text/javascript" src="code/gameObjects.js"></script>
 
 <script type="text/javascript" src="code/spellBook.js"></script>
 

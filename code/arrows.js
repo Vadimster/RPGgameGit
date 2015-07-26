@@ -1,19 +1,20 @@
+var Arrow = function(){
 
-var Sword = function(){
+    this.name = 'metal arrow'; //also divID for jQuery
+    this.icon = 'img/items/weapons/range/arrows/arrow_2.png'; //image for the 
+    this.backgroundColor = '#F87431';
+    this.type = "arrow";
 
-    this.name = 'sword'; //also divID for jQuery
-    this.icon = 'img/items/weapons/melee/sword.png'; //image for the 
-    this.backgroundColor = '#9F000F';
-    
-    this.type = "melee";
-        
-        this.melee = true;
-        this.range = false;
-        this.active = false; //determins if object needs to go into active items div
+    this.melee = false; //used for item div background color and placing into weapon slot
+    this.range = false; //used for item div background color and placing into weapon slot
+    this.artefact = false; //used for item div background color
+    this.active = false; //determins if object needs to go into active items div
+    this.arrow  = true; //determins if object needs to go into arrows div
   
     this.consumable = false;
-
-    this.buyPrice = 50;   
+    
+    this.buyPrice = 5;
+    
     this.sellPrice = this.buyPrice/2;
 
     this.attack = 1;
@@ -89,21 +90,25 @@ var Sword = function(){
 
 
 
-var Stick = function(){
 
-    this.name = 'pointy stick'; //also divID for jQuery
-    this.icon = 'img/items/weapons/melee/stick.png'; //image for the 
-    this.backgroundColor = '#9F000F';
-    
-    this.type = "melee";
-        
-        this.melee = true;
-        this.range = false;
-        this.active = false; //determins if object needs to go into active items div
+
+var Stone = function(){
+
+    this.name = 'stone'; //also divID for jQuery
+    this.icon = 'img/items/weapons/range/arrows/stone.png'; //image for the 
+    this.backgroundColor = '#F87431';
+    this.type = "arrow";
+
+    this.melee = false; //used for item div background color and placing into weapon slot
+    this.range = false; //used for item div background color and placing into weapon slot
+    this.artefact = false; //used for item div background color
+    this.active = false; //determins if object needs to go into active items div
+    this.arrow  = true; //determins if object needs to go into arrows div
   
     this.consumable = false;
-
-    this.buyPrice = 0;   
+    
+    this.buyPrice = 0;
+    
     this.sellPrice = this.buyPrice/2;
 
     this.attack = 1;
@@ -176,4 +181,17 @@ var Stick = function(){
 
 
 };
+
+
+
+
+
+
+
+
+
+
+
+
+
 

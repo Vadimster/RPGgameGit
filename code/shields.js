@@ -1,28 +1,24 @@
+var Shield = function(){
 
-
-var Ring = function(){
-
-    this.name = 'ring'; //also divID for jQuery
-    this.icon = 'img/items/artefacts/ring.png'; //image for the 
-    this.backgroundColor = '#9900CC';
-    this.type = 'artefact';
+    this.name = 'shield'; //also divID for jQuery
+    this.icon = 'img/items/shields/shield_1.png'; //image for the 
+    this.backgroundColor = '#3366CC';
+    
+    this.type = "shield";
         
-        this.melee = false; //used for item div background color and placing into weapon slot
-        this.range = false; //used for item div background color and placing into weapon slot
-        this.artefact = true; //used for item div background color
+        this.melee = false;
+        this.range = false;
         this.active = false; //determins if object needs to go into active items div
-  
+
     this.consumable = false;
 
     this.buyPrice = 50;   
     this.sellPrice = this.buyPrice/2;
 
-    this.attack = 0;
+    this.attack = 1;
     this.defense = 0;
 
-
     this.clicked = function(){
-
         inventory.handleItem(this);
 
     };
@@ -41,6 +37,16 @@ var Ring = function(){
 
     };
 
+
+
+    this.purchase = function(item){
+
+
+
+    };
+
+
+
     this.addToInventory = function() {
 
         inventory.inactive.push(this);
@@ -54,7 +60,6 @@ var Ring = function(){
     this.equip = function(){
 
 
-
     };
 
 
@@ -63,7 +68,6 @@ var Ring = function(){
 
 
     };
-
 
     this.trade = function(){ 
         if (this.equipped) {
@@ -78,6 +82,8 @@ var Ring = function(){
         
     //may be develop a stats update method for this object instead of using the playerStatsUpdateItem function?
 
-
-
 };
+
+
+
+
