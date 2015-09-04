@@ -26,7 +26,15 @@ var map =  {
             for(l = 0; l < map.tileBox[k].length; l++){
                 map.tileBox[k][l].draw();
             }
-        }      
+        }
+
+        player.map.render(player.map.positionY, player.map.positionX);
+
+
+
+
+        //apply dragon on map based on coordinates
+
     }
 };
 
@@ -124,10 +132,8 @@ var getDivIDfromTilesCoordinates = function(y,x){ //needed to changing/updating 
 
     var tile = map.tileBox[y][x];
 
-    //var divID  = ;
+    var divID  = tile.divID;
     return divID;
-
-
 };
 
 

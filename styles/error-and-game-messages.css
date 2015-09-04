@@ -6,7 +6,7 @@
 }
     #insufficientFundsPage-background {
       position: absolute;
-      background-image: url(../img/dialogue_background.png);
+      background-image: url(../img/dialogs/dialogue_background.png);
       background-size: 100% 100%;
       background-repeat: no-repeat;
       width: 350px;
@@ -40,7 +40,7 @@
 }
       #insufficientExperiencePage-background {
         position: absolute;
-        background-image: url(../img/dialogue_background.png);
+        background-image: url(../img/dialogs/dialogue_background.png);
         background-size: 100% 100%;
         background-repeat: no-repeat;
         width: 350px;
@@ -67,6 +67,17 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
 #cityEntranceErrorPage { 
  display: none;
  width: 350px;
@@ -74,7 +85,7 @@
 }
     #cityEntranceErrorPage-background {
       position: absolute;
-      background-image: url(../img/dialogue_background.png);
+      background-image: url(../img/dialogs/dialogue_background.png);
       background-size: 100% 100%;
       background-repeat: no-repeat;
       width: 350px;
@@ -100,34 +111,129 @@
 
 
 
-#saveGamePage { 
+
+#insufficientSomethingPage { 
  display: none;
  width: 350px;
  height: 270px;
 }
+      #insufficientSomethingPage-background {
+        position: relative;
+        background-image: url(../img/dialogs/dialogue_background.png);
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+        width: 340px;
+        height: 285px;
+        margin-left: -10px;
+        margin-top: 0px; 
+        border: 0px dotted blue;
+      }
+            #insufficientSomethingPage-message {
 
+              position: relative;
+              width: 280px;
+              font-family: cursive;
+              font-style: italic;
+              font-size: 18px;
+              /* text-align: center; */
+              display: block;
+              margin-left: auto;
+              margin-right: auto;
+              top: 30px;
+              border: 0px dotted green;
+            }
+
+#successSomethingPage { 
+ display: none;
+ width: 350px;
+ height: 270px;
+}
+      #successSomethingPage-background {
+        position: relative;
+        background-image: url(../img/dialogs/dialogue_background.png);
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+        width: 340px;
+        height: 285px;
+        margin-left: -10px;
+        margin-top: 0px; 
+        border: 0px dotted blue;
+      }
+            #successSomethingPage-message {
+
+              position: relative;
+              width: 280px;
+              font-family: cursive;
+              font-style: italic;
+              font-size: 18px;
+              /* text-align: center; */
+              display: block;
+              margin-left: auto;
+              margin-right: auto;
+              top: 30px;
+              border: 0px dotted green;
+            }
+
+              #successSomethingPage-seal {
+
+                position: absolute;
+                width: 150px;
+                height: 80px;
+                background-image: url(../img/dialogs/seal.png);
+                background-size: 100% 100%;
+                background-repeat: no-repeat;
+                top: 190px;
+                left: 200px;
+
+          }
+
+
+
+
+#saveGamePage { 
+ display: none;
+ width: 350px;
+ height: 420px;
+ border: 0px dotted red;
+
+}
     #saveGamePage-background {
-      position: absolute;
-      background-image: url(../img/dialogue_background.png);
+      position: relative;
+      background-image: url(../img/dialogs/dialogue_background.png);
       background-size: 100% 100%;
       background-repeat: no-repeat;
-      width: 350px;
-      height: 270px;
-      margin-left: 0px;
+      width: 340px;
+      height: 285px;
+      margin-left: -10px;
       margin-top: 0px; 
+      border: 0px dotted blue;
     }
-
         #saveGamePage-message {
 
-                width: 300px;
-                font-family: cursive;
-                font-style: italic;
-                font-size: 18px;
-                text-align: center;
-                display: block;
-                margin-left: auto;
-                margin-right: auto;
-                margin-top: 50px;
-                border: 0px dotted blue;
+            position: relative;
+            width: 280px;
+            font-family: cursive;
+            font-style: italic;
+            font-size: 18px;
+            /* text-align: center; */
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            top: 30px;
+            border: 0px dotted green;
         }
+
+        #saveGamePage-seal {
+
+                position: absolute;
+                width: 150px;
+                height: 80px;
+                background-image: url(../img/dialogs/seal.png);
+                background-size: 100% 100%;
+                background-repeat: no-repeat;
+                top: 190px;
+                left: 200px;
+
+        }
+
 

@@ -41,12 +41,74 @@ var gameConfig = {
 		map.render();   	
     }
 
-
 };
 
 
+function saveGamePage(){
 
+	if (localStorage) {
 
+		if (player.stats.save.counter > player.stats.save.min) {
+			$("#saveGamePage-message").text('Saving the game will consume one ink point and will overwrite your last save. This action cannot be undone.');  
+
+			$('#saveGamePage')//making a global div to be created dynamically instead of describing every dialogue in html
+			.dialog(
+	  			{buttons: 
+	     			{
+	     			 'Save' :function(){
+	        			$(this).dialog('close');
+	        			saveGame();
+
+	        		 
+	           		},
+	           		'Cancel' :function(){
+	        			$(this).dialog('close');
+
+	           		},
+	   			},
+	   		draggable: false,
+	   		resizable: false,
+	   		modal: true,
+	  		width: 360,
+	   		height: 420,
+	   		closeOnEscape: true,
+	   		dialogClass: "no-close"
+	   		}
+	   	); //creates the dialog
+
+		} else {
+
+			$("#insufficientSomethingPage-message").empty();
+			$("#insufficientSomethingPage-message").text('Looks like you have run out of ink... You need 1 ink point to save, but you currently have ' + player.stats.save.counter + ' to spare. Get more ink by exploring Vadimaria.');  
+
+			$('#insufficientSomethingPage')//making a global div to be created dynamically instead of describing every dialogue in html
+			.dialog(
+	  			{buttons: 
+	     			{
+	     			 'Oh...' :function(){
+	        			$(this).dialog('close');
+
+	        		 
+	           		},
+	   			},
+	   		draggable: false,
+	   		resizable: false,
+	   		modal: true,
+	  		width: 360,
+	   		height: 420,
+	   		closeOnEscape: true,
+	   		dialogClass: "no-close"
+	   		}
+	   	); //creates the dialog
+
+		}
+
+	} else {
+
+		alert('Your browser does not support localStorage, please upgrade to latest version.');
+	}
+
+}
 
 
 function startGame() {
@@ -60,37 +122,49 @@ function startGame() {
 
 function saveGame() {
 
-	if (localStorage) {
+	player.stats.save.counter--;
+    $('#statsSaveCounter').html(player.stats.save.counter);
 
-		if (player.stats.save.counter > player.stats.save.min) {
-			alert('Game saved. Previous progress overwritten');
-			
-			player.stats.save.counter--;
-	        $('#statsSaveCounter').html(player.stats.save.counter);
+	localStorage.removeItem('save');
+	var save = {};
+	save.player = player;
+	save.map = map;
+	save.gameConfig = gameConfig;
+	//save mobs on map (dragon)
+	//save player inventory
+	//save city market
+	//save day & turn
+	//save spellBook equipped and spells
+
+	localStorage.setItem('save', JSON.stringify(save));
 
 
-			localStorage.removeItem('save');
-			var save = {};
-			save.player = player;
-			save.map = map;
-			save.gameConfig = gameConfig;
-			//save mobs on map (dragon)
-			//save player inventory
-			//save city market
-			//save day & turn
-			//save spellBook equipped and spells
 
-			localStorage.setItem('save', JSON.stringify(save));
+	$("#successSomethingPage-message").empty();
+	$("#successSomethingPage-message").text('Game saved. You have ' + player.stats.save.counter + ' ink points left.');  
 
-		} else {
-			alert('cannot save - insufficient credit');
+	$('#successSomethingPage')//making a global div to be created dynamically instead of describing every dialogue in html
+	.dialog(
+			{buttons: 
+ 			{
+ 			 'OK' :function(){
+    			$(this).dialog('close');
 
+    		 
+       		},
+			},
+		draggable: false,
+		resizable: false,
+		modal: true,
+		width: 360,
+		height: 420,
+		closeOnEscape: true,
+		dialogClass: "no-close"
 		}
+	); //creates the dialog
 
-	} else {
-		alert('Local storage not supported');
-	}
 
+	//launch a function to build dialog game saved OK
 }
 
 
@@ -107,6 +181,7 @@ function continueGame() {
 		//updated player object with saved data
 		player.class.name = save.player.class.name;
 		player.class.image = save.player.class.image;
+		player.stats.save.counter = save.player.stats.save.counter
 		gameConfig.turn.counter = save.gameConfig.turn.counter;
 		gameConfig.turn.day = save.gameConfig.turn.day;
 		//add spelbook.equipped value

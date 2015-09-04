@@ -12,7 +12,11 @@ var player = {
 	map: {
 		positionX: 0,
 		positionY: 0,
-		image: "img/map/units/player.png"
+		image: "img/map/units/player.png",
+		
+		render: function(y, x){ //draws player on map using the X and Y cordinates
+			$('#tile'+getDivIDfromTilesCoordinates(y, x)+'').append('<img id="player" src="'+player.map.image+'" />');
+		}
 	},
 
 
@@ -24,12 +28,14 @@ var player = {
 	},
 
 
+
+
 	stats: {
 
 		save: {
 
 			counter: 5,
-			min: 1,
+			min: 0,
 			max: 999
 		},
 
@@ -66,7 +72,7 @@ var player = {
 	            statsSave.appendTo('#stats-container');
 		            var statsSaveIcon = $('<div id="statsSaveIcon"></div>');
 		            statsSaveIcon.appendTo('#statsSave');
-		            document.getElementById("statsSaveIcon").addEventListener("click", saveGame, false);
+		            document.getElementById("statsSaveIcon").addEventListener("click", saveGamePage, false);
 		            statsSaveIcon.attr("title","Save current progress. It will overwrite your previous save.");
 		            	var statsSaveCounter = $('<div id="statsSaveCounter"></div>');
 	            		statsSaveCounter.appendTo('#statsSaveIcon');

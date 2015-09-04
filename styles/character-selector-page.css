@@ -7,7 +7,7 @@
 
       #character-selector-Page-background {
         position: absolute;
-        background-image: url(../img/dialogue_background.png);
+        background-image: url(../img/dialogs/dialogue_background.png);
         background-size: 100% 100%;
         background-repeat: no-repeat;
         width: 760;
