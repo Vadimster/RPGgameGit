@@ -1,0 +1,317 @@
+
+#start-game-button { /*image of a dragon on thebvmap */
+
+    width: 150px;
+    height: 60px;
+    position: relative;
+    top: 100px;
+    margin: auto;
+    border: 1px solid green;
+    font-family: cursive;
+    font-size: 17px;
+    border-radius: 13px;
+    background-color: #82E11D;
+    color: black;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 60px;
+}
+
+#start-game-button:hover{
+   background-color:#84FF00;
+}
+
+#continue-game-button { /*image of a dragon on thebvmap */
+
+    width: 150px;
+    height: 60px;
+    position: relative;
+    top: 150px;
+    margin: auto;
+
+    border: 1px solid #BB8C00;
+    font-family: cursive;
+    font-size: 17px;
+    border-radius:13px;
+    background-color: #FFC000;
+    color:black;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 60px;
+}
+
+
+#continue-game-button:hover{
+   background-color:#FFE200;
+}
+
+
+#stats-container{
+  position: absolute;
+  height: 60px;
+  border: 0px dotted blue;
+}
+
+
+        #statsSave{
+          height: 60px;
+          float: left;
+          width: 60px;
+          background-color: none;
+          border: 1px dotted grey;
+ 
+        }
+
+            #statsSaveIcon{
+              position: relative;
+              width: 50px;
+              height: 50px;
+              margin-left: 5px;
+              background-image: url("../img/stats/save_icon.png");
+              background-size: contain;
+              background-repeat: no-repeat;         
+            }
+
+            #statsSaveCounter{
+              position: absolute;
+              bottom: 0;
+              right: 0;
+              font-size: 14px;
+            }
+
+
+
+        #statsLevel{
+          position: relative;
+          height: 60px;
+          width: 60px;
+          float: left;
+          margin-left: 10px;
+          background-color: none;
+          border: 1px dotted grey;   
+        }
+            #statsLevelIcon{
+              width: 40px;
+              height: 30px;
+              background-image: url("../img/stats/level_icon.png");
+              margin-left: 10px;
+              background-size: contain;
+              background-repeat: no-repeat;
+            }
+
+            #statsLevelCounter{
+                margin-top: 5px;
+                text-align: center;
+            }
+
+
+
+        #statsHealth{
+          float: left;
+          height: 60px;
+          width: 60px;
+          margin-left: 10px;
+          background-color: none;
+          border: 1px dotted grey;   
+        }
+            #statsHealthIcon{
+              width: 40px;
+              height: 30px;
+              background-image: url("../img/stats/health_icon.png");
+              margin-left: 10px;
+              background-size: contain;
+              background-repeat: no-repeat;
+            }
+
+            #statsHealthCounter{
+                margin-top: 5px;
+                text-align: center;
+            }
+
+
+
+        #statsGold{
+          float: left;
+          height: 60px;
+          width: 60px;
+          margin-left: 10px;
+          background-color: none;
+          border: 1px dotted grey; 
+        }
+            #statsGoldIcon{
+              width: 30px;
+              height: 30px;
+              background-image: url("../img/stats/gold_icon.png");
+              margin-left: 15px;
+              background-size: contain;
+              background-repeat: no-repeat;
+            }
+
+            #statsGoldCounter{
+                margin-top: 5px;
+                text-align: center;
+            }
+
+
+
+        #statsExperience{
+          float: left;
+          height: 60px;
+          width: 80px;
+          margin-left: 10px;
+          background-color: none;
+          border: 1px dotted grey; 
+        }
+            #statsExperienceIcon{
+              width: 80px;
+              height: 25px;
+              background-image: url("../img/stats/experience_icon.png");
+              background-size: contain;
+              
+            }
+
+            #experienceWrapper {
+              margin-top: 10px;
+              margin-left: 5px;
+              text-align: center;
+              display: inline-block;
+            }
+
+              #experienceCounter{
+                  display: inline-block;
+                  float: left;
+                  padding-right: 5px;
+              }
+
+
+              #experienceSeparator {
+                display: inline-block;
+                margin: 0 auto;
+              }
+
+              #experienceNextLevel{
+                  display: inline-block;
+                  float: right;
+                  padding-left: 5px;
+              }
+
+
+
+        #statsSpellBook{
+          float: left;
+          height: 60px;
+          width: 60px;
+          margin-left: 10px;
+          background-color: none;
+          border: 1px dotted grey; 
+        }
+            #statsSpellBookIcon{
+              width: 50px;
+              height: 50px;
+              background-image: url("../img/stats/spellbook_icon.png");
+              margin-left: 5px;
+              background-size: contain;
+              background-repeat: no-repeat;
+            }
+
+                #spellBookEquipIndicator{
+                  position: absolute;
+                  margin-top: 26px;
+                  margin-left: 22px;
+                  width: 30px;
+                  height: 30px;
+                  background-image: url("../img/stats/redcross.png");
+                }
+
+
+
+
+        #statsCharacter{
+          float: left;
+          height: 60px;
+          width: 60px;
+          margin-left: 10px;
+          background-color: none;
+          border: 1px dotted grey; 
+
+        }
+            #statsCharacterIcon{
+              width: 50px;
+              height: 50px;
+              margin-left: 5px;
+              margin-top: 5px;
+              background-size: contain;
+              background-repeat: no-repeat;
+            }
+
+
+        #statsCity{
+          float: left;
+          height: 60px;
+          width: 60px;
+          margin-left: 10px;
+          background-color: none;
+          border: 1px dotted grey; 
+        }
+            #statsCityIcon{
+              width: 50px;
+              height: 50px;
+              margin-left: 5px;
+              margin-top: 5px;
+              background-image: url("../img/stats/city_icon.png");
+              background-size: contain;
+              background-repeat: no-repeat;
+            }
+
+                #cityEntranceIndicator{
+                  position: absolute;
+                  margin-top: 25px;
+                  margin-left: 20px;
+                  width: 30px;
+                  height: 30px;
+                  background-image: url("../img/statsIcons/redcross.png");
+                }
+
+
+        #statsTurn{
+          position: relative;
+          float: left;
+          height: 60px;
+          width: 60px;
+          margin-left: 10px;
+          background-color: none;
+          border: 1px dotted grey; 
+        }
+
+
+            #statsTurnIcon{
+              position: relative;
+              width: 50px;
+              height: 50px;
+              margin-left: 5px;
+              margin-top: 5px;
+              /* background-image: url("../img/stats/day_icon.png"); */
+              background-size: contain;
+              background-repeat: no-repeat;
+            }
+
+          #statsTurnCounter {
+              position: absolute;
+              right: 0px;
+              bottom: 0px;
+              color: grey;           
+          }
+
+
+
+
+
+#version {
+     position: fixed;
+     bottom: 10px;
+     right: 10px;
+     font-size: 10;
+     color: grey; 
+}
+
+

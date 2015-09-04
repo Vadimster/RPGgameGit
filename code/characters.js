@@ -4,6 +4,7 @@
 var shaman = {
   
   name: "Shaman",
+  imgName: "shaman",
   img: 'img/characterselectorpage/avatars/shaman.png',
   description: 'Highly spiritual, shamans speak to nature and communicate with ghosts. While not particularly strong in combat, they can summon supernatural forces to assist them.',
   bonus: ['* Start the game with a Book of Spells and a random spell',
@@ -40,16 +41,13 @@ var shaman = {
         }
 
       }
-
-
-
-
 };
 
 
 var scribe = {
 
   name: "Scribe",
+  imgName: "scribe",
   img: 'img/characterselectorpage/avatars/scribe.png', 
   description: 'People of science and books, scribes belong more to a library than a battlefield. But do not be mislead, for knowledge is power and these lads will not hesitate in taking their advantage against less scholared enemies.',
   bonus: ['* Start the game with a Book of Spells',
@@ -88,13 +86,13 @@ var scribe = {
         }
 
       }
-
 };
 
 
 var hunter = {
 
   name: "Hunter",
+  imgName: "hunter",
   img: 'img/characterselectorpage/avatars/hunter.jpg',
   description: 'Many years spent hunting in woods and meadows taught to be patient, attentive and lightning-quick. You will hardly find anyone who is better with a bow and arrows than this folk.',
   bonus: ['* Get the Book of Spells on level 3',
@@ -129,16 +127,13 @@ var hunter = {
         }
 
       }
-
-
-
-
 };
 
 
 var warrior = {
 
   name: "Warrior",
+  imgName: "warrior",
   img: 'img/characterselectorpage/avatars/warrior.png',
   description: 'Born and trained with only one purpose - to fight and be victorious - warriors spread terror on a battlefield. Crude in their manners but extremely efficient in melee they make an unstoppable force.',
   bonus: ['* Get the Book of Spells on level 5',
@@ -173,10 +168,7 @@ var warrior = {
         }
 
       }
-
-
 };
-
 
 
 var characters = {
@@ -184,7 +176,7 @@ var characters = {
   choices: [shaman, scribe, hunter, warrior],
   indekz: 0,
 
-  page: function(){
+  newCharacterSelectorDialog: function(){
 
       document.getElementById("character-selector-Page-left-arrow").addEventListener("click", characters.selectLeft, false);
       document.getElementById("character-selector-Page-right-arrow").addEventListener("click", characters.selectRight, false);
@@ -201,15 +193,16 @@ var characters = {
 
       }
        
-
-
-        $('#character-selector-Page')
+      $('#character-selector-Page')
             .dialog(
                 {buttons: 
                     {'Start!' : function(){
                         $(this).dialog('close');
-                        Map.initiate();
-                        player.update(characters.choices[characters.indekz]); //adjusts player in accordance with selected class
+                          $("#bookClosed").get(0).play();
+                          player.update(characters.choices[characters.indekz]);
+                          player.stats.render(); 
+                          gameConfig.createMap();
+                       
                         }
                     },
             draggable: false,
@@ -221,7 +214,8 @@ var characters = {
             dialogClass: "no-close"
             //position: ["right", "center"]
             }
-        ); //creates the dialog page
+      ); //creates the dialog page
+      return true;
   },
 
   selectRight: function(){

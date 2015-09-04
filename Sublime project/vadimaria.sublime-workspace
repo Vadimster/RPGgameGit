@@ -4,6 +4,46 @@
 		"selected_items":
 		[
 			[
+				"it",
+				"itemType"
+			],
+			[
+				"ma",
+				"market"
+			],
+			[
+				"pad",
+				"padding-left"
+			],
+			[
+				"brea",
+				"breastplateSlot"
+			],
+			[
+				"item",
+				"itemType〔variable〕"
+			],
+			[
+				"ba",
+				"bagpack"
+			],
+			[
+				"ind",
+				"indexInActive"
+			],
+			[
+				"indexIn",
+				"indexInBagpack"
+			],
+			[
+				"pu",
+				"purchaseItem"
+			],
+			[
+				"index",
+				"indexInCityMarket〔variable〕"
+			],
+			[
 				"bor",
 				"border-radius"
 			],
@@ -244,10 +284,6 @@
 				"objectName"
 			],
 			[
-				"ma",
-				"margin-top"
-			],
-			[
 				"level",
 				"levelCounter"
 			],
@@ -376,10 +412,6 @@
 				"testFunction〔function〕"
 			],
 			[
-				"ba",
-				"background-color"
-			],
-			[
 				"evet",
 				"eventResult"
 			],
@@ -459,6 +491,30 @@
 	},
 	"buffers":
 	[
+		{
+			"file": "/Users/instantbank/Documents/PERSONAL/programming/javascript/RPGgameGit/code/melee-weapons.js",
+			"settings":
+			{
+				"buffer_size": 3353,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/Users/instantbank/Documents/PERSONAL/programming/javascript/RPGgameGit/code/map.js",
+			"settings":
+			{
+				"buffer_size": 6982,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/Users/instantbank/Documents/PERSONAL/programming/javascript/NEW GAME/styles/map.css",
+			"settings":
+			{
+				"buffer_size": 734,
+				"line_ending": "Unix"
+			}
+		}
 	],
 	"build_system": "",
 	"command_palette":
@@ -492,29 +548,33 @@
 	},
 	"file_history":
 	[
-		"/Users/instantbank/Documents/PERSONAL/programming/javascript/RPGgameGit/code/gameObjects.js",
-		"/Users/instantbank/Documents/PERSONAL/programming/javascript/RPGgameGit/styles/character-page.css",
-		"/Users/instantbank/Documents/PERSONAL/programming/javascript/RPGgameGit/index.html",
-		"/Users/instantbank/Documents/PERSONAL/programming/javascript/RPGgameGit/code/characterDetails.js",
-		"/Users/instantbank/Documents/PERSONAL/programming/javascript/RPGgameGit/code/city.js",
-		"/Users/instantbank/Documents/PERSONAL/programming/javascript/RPGgameGit/code/characters.js",
-		"/Users/instantbank/Documents/PERSONAL/programming/javascript/RPGgameGit/code/inventory.js",
 		"/Users/instantbank/Documents/PERSONAL/programming/javascript/RPGgameGit/code/artefacts.js",
 		"/Users/instantbank/Documents/PERSONAL/programming/javascript/RPGgameGit/code/melee-weapons.js",
+		"/Users/instantbank/Documents/PERSONAL/programming/javascript/RPGgameGit/code/gameObjects.js",
+		"/Users/instantbank/Documents/PERSONAL/programming/javascript/RPGgameGit/code/arrows.js",
+		"/Users/instantbank/Documents/PERSONAL/programming/javascript/RPGgameGit/styles/items.css",
+		"/Users/instantbank/Documents/PERSONAL/programming/javascript/RPGgameGit/code/inventory.js",
+		"/Users/instantbank/Documents/PERSONAL/programming/javascript/RPGgameGit/styles/character-page.css",
+		"/Users/instantbank/Documents/PERSONAL/programming/javascript/RPGgameGit/styles/city.css",
+		"/Users/instantbank/Documents/PERSONAL/programming/javascript/RPGgameGit/code/characterDetails.js",
+		"/Users/instantbank/Documents/PERSONAL/programming/javascript/RPGgameGit/code/city.js",
+		"/Users/instantbank/Documents/PERSONAL/programming/javascript/RPGgameGit/index.html",
+		"/Users/instantbank/Documents/PERSONAL/programming/javascript/RPGgameGit/code/range-weapons.js",
+		"/Users/instantbank/Documents/PERSONAL/programming/javascript/RPGgameGit/code/shields.js",
+		"/Users/instantbank/Documents/PERSONAL/programming/javascript/RPGgameGit/code/armor.js",
+		"/Users/instantbank/Documents/PERSONAL/programming/javascript/RPGgameGit/code/potions.js",
+		"/Users/instantbank/Documents/PERSONAL/programming/javascript/RPGgameGit/code/messages.js",
+		"/Users/instantbank/Documents/PERSONAL/programming/javascript/RPGgameGit/code/characters.js",
 		"/Users/instantbank/Documents/PERSONAL/programming/javascript/RPGgameGit/code/npc.js",
 		"/Users/instantbank/Documents/PERSONAL/programming/javascript/RPGgameGit/code/events.js",
 		"/Users/instantbank/Documents/PERSONAL/programming/javascript/RPGgameGit/code/gameConfig.js",
 		"/Users/instantbank/Documents/PERSONAL/programming/javascript/RPGgameGit/code/map.js",
-		"/Users/instantbank/Documents/PERSONAL/programming/javascript/RPGgameGit/styles/city.css",
 		"/Users/instantbank/Documents/PERSONAL/programming/javascript/RPGgameGit/code/spells.js",
 		"/Users/instantbank/Documents/PERSONAL/programming/javascript/RPGgameGit/code/spellBook.js",
 		"/Users/instantbank/Documents/PERSONAL/programming/javascript/RPGgameGit/styles/all-style.css",
 		"/Users/instantbank/Documents/PERSONAL/programming/javascript/RPGgameGit/styles/error-messages.css",
 		"/Users/instantbank/Documents/PERSONAL/programming/javascript/RPGgameGit/styles/mainPage.css",
-		"/Users/instantbank/Documents/PERSONAL/programming/javascript/RPGgameGit/styles/items.css",
 		"/Users/instantbank/Documents/PERSONAL/programming/javascript/RPGgameGit/styles/iteminfo.css",
-		"/Users/instantbank/Documents/PERSONAL/programming/javascript/RPGgameGit/code/messages.js",
-		"/Users/instantbank/Documents/PERSONAL/programming/javascript/RPGgameGit/code/range-weapons.js",
 		"/Users/instantbank/Documents/PERSONAL/programming/javascript/RPGgameGit/styles/map.css",
 		"/Users/instantbank/Documents/PERSONAL/programming/javascript/RPGgameGit/code/weapons.js",
 		"/Users/instantbank/Documents/PERSONAL/programming/javascript/RPGgameGit/styles/style.css",
@@ -565,6 +625,8 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"comb",
+			"inactive",
 			"timeOfDay",
 			"data",
 			"helb",
@@ -645,8 +707,93 @@
 	"groups":
 	[
 		{
+			"selected": 2,
 			"sheets":
 			[
+				{
+					"buffer": 0,
+					"file": "/Users/instantbank/Documents/PERSONAL/programming/javascript/RPGgameGit/code/melee-weapons.js",
+					"settings":
+					{
+						"buffer_size": 3353,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "/Users/instantbank/Documents/PERSONAL/programming/javascript/RPGgameGit/code/map.js",
+					"settings":
+					{
+						"buffer_size": 6982,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								447,
+								507
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 445.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "/Users/instantbank/Documents/PERSONAL/programming/javascript/NEW GAME/styles/map.css",
+					"settings":
+					{
+						"buffer_size": 734,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								194,
+								194
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/CSS/CSS.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
 			]
 		}
 	],

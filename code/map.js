@@ -1,195 +1,133 @@
 
-var Tile = function(TileCoordinateHor, TileCoordinateVert, tileNumericID){
+var map =  {
 
-    var self = this; //CRITICAL TO UNDERSTAND !!!
-    var tileHeight = 60; //image dimensions
-    var tileWidth = 60; //image dimensions
-    var tileID = tileNumericID;
-    var x = TileCoordinateHor;
-    var y = TileCoordinateVert;
-    var visitCount = 0;
-    
-    var terrainTypes = ["grass","forest","hills","swamp","forest", "mountains"];
-    
-    this.terrainType = terrainTypes[Math.floor(Math.random()*terrainTypes.length)];
-    this.cityName  = null;
-    //self.id = tileNumericID;
-    //self.terrainType = terrainType;
+    tileBox: [],
 
     
-    this.img = 'img/maptiles/'+ this.terrainType +'.png';
-
-
-/* Taking care of bonuses on each tile - start */
-    var bonusArray = [1,1,1,0,0,0,0,0,0,0,0,0,0,0]; //to increase chances of bonus being applied to a tile replace 0 with 1 and the other way round 
-    
-    var tileHasBonus = bonusArray[Math.floor(Math.random()*bonusArray.length)];
-
-    if(this.terrainType !== "grass" || "city"){ //grass/city tile cannot have a bonus on it
-        if (tileHasBonus > 0){
-            if (this.terrainType === "swamp" && tileID !== 1) {
-                var bonusType = "gold";
+    prepare: function(){
         
-            } else if (this.terrainType === "hills" && tileID !== 1) {
-                var bonusType = "chest";
+        var divID = 1; //ID of first div to be used later by jquery
+
+        for(var i = 0; i < gameConfig.map.yHeight; i++){
+            map.tileBox[i] = [];
+            for(var j =0; j < gameConfig.map.hWidth; j++){
+                map.tileBox[i][j] = new Tile(0, i, j, divID++);                
+            }        
+        } 
+    },
+    
+    
+    render: function(){
+        $('map-container').empty();
+        var mapContainer = $('<div id="map-container"></div>');     
+        mapContainer.appendTo('#page-wrap');
         
-            } else if (this.terrainType === "mountains" && tileID !== 1) {
-                var bonusType = "artefact";
-        
-            } else if (this.terrainType === "forest" && tileID !== 1){
-                var bonusType = "experience";
+        for(k = 0; k < map.tileBox.length; k++){
+            for(l = 0; l < map.tileBox[k].length; l++){
+                map.tileBox[k][l].draw();
             }
+        }      
+    }
+};
+
+
+
+var Tile = function(tileFromSave, i, j, divID, terrainType, terrain){
+    
+
+    if (tileFromSave) {
+        console.log('Tile is loaded from a previous save game through continueGame function');
+
+        this.coordinateY = i;
+        this.coordinateX = j;
+        this.divID = divID;
+        this.terrainType = terrainType;
+        this.terrain = terrain;
+        this.image = 'img/map/tiles/'+ this.terrain +'.png';
+
+
+
+
+    } else {
+        console.log('Tile is created for the first time');
+
+        this.coordinateY = i;
+        this.coordinateX = j;
+        this.divID = divID;
+
+        var grassTypes = ['grass1', 'grass2'];
+        var forestTypes = ['forest1', 'forest2'];
+        var swampTypes = ['swamp1', 'swamp2'];
+        var hillTypes = ['hills1'];
+        var mountainTypes = ['mountains1'];
+
+
+        this.terrainType = gameConfig.map.terrainTypes[Math.floor(Math.random()*gameConfig.map.terrainTypes.length)];
+
+        if (this.terrainType === 'grass') {
+            this.terrain = grassTypes[Math.floor(Math.random()*grassTypes.length)];
+        } else if (this.terrainType === 'forest'){
+            this.terrain = forestTypes[Math.floor(Math.random()*forestTypes.length)];
+        } else if (this.terrainType === 'swamp'){
+            this.terrain = swampTypes[Math.floor(Math.random()*swampTypes.length)];
+        } else if (this.terrainType === 'hills'){
+            this.terrain = hillTypes[Math.floor(Math.random()*hillTypes.length)];
+        } else if (this.terrainType === 'mountains'){
+            this.terrain = mountainTypes[Math.floor(Math.random()*mountainTypes.length)];
         }
+
+
+        this.image = 'img/map/tiles/'+ this.terrain +'.png';
+
+    }
+
+    this.clicked = function(){
+        console.log('clicked! X coordinate: ' + this.coordinateX + '. Y coordinate: ' + this.coordinateY);
+    }
+
+
+    this.mouseOver = function(){
+        console.log('Mouse over!');
+    }    
+
+
+    this.mouseOut = function(){
+        console.log('Mouse out!');
     } 
 
 
-    var bonusImage = 'img/maptiles/bonuses/'+ bonusType +'.png';
-
-/* Bonus config end*/
-
-
-
-
-    this.draw = function(){ 
-
-        var div = $("<div class='tile'></div>");
-
-        div.attr('id',tileID).data('type',this.terrainType).data('x',x).data('y',y);
-        div.get(0).Tile = self;// CRITICAL TO UNDERSTAND!!!!
-        div.css({top:tileHeight*y, left:tileWidth*x});
-        div.css({"background":"url('"+this.img+"')"});
-        div.appendTo('#map-content');
-            if (this.terrainType === "swamp" && tileHasBonus > 0 && tileID !== 1) {
-                div.append('<img id="bonus'+tileID+'" class="bonus" src="'+bonusImage+'" title = "Gold" />');
-           
-            } else if (this.terrainType === "hills" && tileHasBonus > 0 && tileID !== 1) {
-                div.append('<img id="bonus'+tileID+'" class="bonus" src="'+bonusImage+'" title = "Chest" />');
-           
-            } else if (this.terrainType === "mountains" && tileHasBonus > 0 && tileID !== 1) {
-                div.append('<img id="bonus'+tileID+'" class="bonus" src="'+bonusImage+'" title = "Artefact"/>');
-           
-            } else if (this.terrainType === "forest" && tileHasBonus > 0 && tileID !== 1) {
-                div.append('<img id="bonus'+tileID+'" class="bonus" src="'+bonusImage+'" title = "Experience"/>');
-            }
-
-        if (this.terrainType === 'city') {
-            div.prop('title', this.cityName);
-        } else {
-            div.prop('title', this.terrainType);
-
-
-        }
-
-
-    };
-
-      
-
-    this.initiateEvent = function(mapMaxWidth){  //TILE IS CLICKED
-       bonusCollected = player.move(tileID, visitCount, this.terrainType, tileHasBonus, bonusType, x, y, mapMaxWidth, this.cityName); //Since I do not know how to return back to this Tile, I pass important info as arguments to an external function.
-       
-       if (bonusCollected){ // result of bonus handling procedure. If bonus was collected, it is removed. 
-            tileHasBonus = false;
-
-       }
-
-       visitCount++; // this will update the counted whether the move is possible or not => on EVERY click. Can I add moving logic here and possible save player coordinates by addressing player. object properties directly?
-
-    };
-};
-
-var Map = new function(){
-
-    var tileBox = [];
-    var mapMaxHeight = 9;
-    var mapMaxWidth = 20;
-    var firstTileID = 1; //ID of first tile on map, tileID to be used for div ID later on.
-
-    this.initiate = function() { // create 2D array ...
-        $('#map-content div').remove(); //clears map field (it might have existed from previous game)
-        for(var i = 0; i < mapMaxHeight; i++){
-            tileBox[i] = [];
-            for(var j = 0; j < mapMaxWidth; j++) {
-                
-                tileBox[i][j] = new Tile(j, i, firstTileID++); // ... and create and place instances of object Tile into the array
-            }
-        }
+    this.draw = function(){
         
-
-
-        setCities();
-
-        renderMap();
-
-        $('#map-content').on('click','div.tile', function(e){ //click handler
-            this.Tile.initiateEvent(mapMaxWidth);
+        var div = $('<div class="tile"></div>');
+        div.css({"background":"url('"+this.image+"')"});
+        div.attr('id', 'tile' + divID);
+        div.get(0).obj = this;
+        div.click(function(){
+            this.obj.clicked();
         });
-};
+        div.mouseover(function() {
+            this.obj.mouseOver();
+        });
+        div.mouseout(function() {
+            this.obj.mouseOut();
+        });
+        div.appendTo('#map-container');      
+        
+    }
     
-    var renderMap = function() { //loop through array and call .draw method on each instance of Tile in the array. This will place elements on the page (DOM)
-            $.each(tileBox, function(index,value){
-                $.each(value, function(index,value){
-                    value.draw();
-                });
-            });
-        $('#map-content').children().last().append('<img id="dragon" src="img/maptiles/dragon.png" />'); //adds dragon to the last tile in the map
-        $('#map-content').children().first().append('<img id="player" src="'+player.image+'" />'); //adds player to the first tile in the map
-    }; 
-
-
-    var setCities = function(){
-
-        var cityNames = ['Vadimgrad', 'Noobngrad', 'Dragonmoor', 'Stonehall', 'Zhbongrad', 'Summerston', 'Sageshore', 'Crystalcastle', 'Faymoor', 'Whitehedge'];
-
-        for (i = 0; i < gameConfig.map.cityLimit; i++) {
-            
-            var arrayX = Math.floor(Math.random()*(mapMaxHeight));
-            var arrayY = Math.floor(Math.random()*(mapMaxWidth));
-
-            var tile = tileBox[arrayX][arrayY];
-
-            console.log('TileID: ' + tile.id + '. Terrain: ' + tile.terrainType);
-
-            tile.terrainType = 'city';
-            tile.img = 'img/maptiles/'+ tile.terrainType +'.png';
-
-            var nameFromArray = cityNames[Math.floor(Math.random()*cityNames.length)];
-            tile.cityName = nameFromArray;
-            
-            //will identify the used name and then remove it from the array.
-            var a  = cityNames.indexOf(nameFromArray);
-            cityNames.splice(a,1); 
-        }
-    };
-
+    
+    
 };
 
 
+var getDivIDfromTilesCoordinates = function(y,x){ //needed to changing/updating existing tiles in the array
+
+    var tile = map.tileBox[y][x];
+
+    //var divID  = ;
+    return divID;
 
 
-
-$( document ).ready(function() {
-    //$("#backgroundMusic").get(0).play();
-
-    //gold.increase(100); //FOR TESTING PURPOSES - gives gold straight away
-    //experience.increase(300); //FOR TESTING PURPOSES - gives experience straight away
-
-
-    
-    characters.page();
-
-    $('#healthCounter').html(player.health);
-    $('#goldCounter').html(player.gold);
-    $('#experienceCounter').html(player.experience);
-    $('#experienceNextLevel').html(experience.lvlUpThreshold);                                             
-    $('#levelCounter').html(player.level);
-
-    //NEED TO HAVE AN INIT FUNCTION, WHICH CREATES MAP AND PUTS STARTING VALUES IN THE INTERFACE. THIS WILL BE USED FOR GAMEOVER TOO
-});
-
-
-
-   
-
+};
 
 

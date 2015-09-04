@@ -1,7 +1,5 @@
 
 
-//document.getElementById('statsSpellBookIcon').onclick = testFunction();
-
 var spellBook = {
 	
     name: 'Book of Spells', //display in messages

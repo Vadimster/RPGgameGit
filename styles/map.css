@@ -10,21 +10,23 @@
 }
 
 .tile {
-    position: absolute; 
+    position: relative; 
     width: 60px; 
     height: 60px;
+    float: left;
+
 }
 
-#map-content { /* div which contains maptiles */
+#map-container { /* div which contains maptiles */
     margin: 0 auto;
     position: relative;
-    top: 25px;
+    top: 80px;
     border: 1px solid black;
     width: 1200px;
     height: 540px;
     text-align: center;
-    /* overflow: auto; */
-    /* overflow-y: scroll; */
+    overflow-y: none;
+    overflow-x: none; 
 }
 
 #player { /*image of a player on the map */

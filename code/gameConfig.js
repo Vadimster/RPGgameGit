@@ -1,77 +1,138 @@
-
 var gameConfig = {
 
 
-	map: {
+	turn: {
 
-		cityLimit: 5 //number of cities on map. Max 10
+		counter: 1,
+		day: true,
+
+		nextTurn: function(){
+			if(this.day){
+				this.day = false;
+				$("#dayOrNightIcon").attr("src", "img/statusicons/night.png");
+				$("#dayOrNightCounter").html("night");
+
+			} else {
+				this.day = true;
+				$("#dayOrNightIcon").attr("src", "img/statusicons/day.png");
+				$("#dayOrNightCounter").html("day");
+			}
+			
+			this.turn++;
+		    $('#turnCounter').html(this.turn);
+		}
 
 	},
 
-	mod: { //various modifiers
-
-	    terrain: { //base values for deciding if encounter is favorable/nonfavorable. The higher the more chances that event is favorable (player needs to roll < threshdold)
-	        grass: 2.5,
-	        forest: 2.5,
-	        swamp: 1.5,
-	        hills: 2,
-	        mountains: 2
-	    },
-
-	    time: { 
-	    
-	        day: 1,
-	        night: 0
-	    },
-	    
-	    terrainNothing: { // base values for calculation of "nothing" outcome for non-favorable event. More dangerous tiles are likely to produce less chance of "nothing happens"
-	        grass: 1.3,
-	        forest: 1.2,
-	        swamp: 1,
-	        hills: 0.7,
-	        mountains: 0.5
-	    },
 
 
-	    favorableEvent: { //the higher the value the better (more chances that event is favorable)
-	    	chanceToHappen: function(terrainType, timeOfDay){
-	    		var chanceValue = parseFloat(
-					(gameConfig.mod.terrain[terrainType] + gameConfig.mod.time[timeOfDay] + player.luck/2 - player.level/10)//formula goes in these brackets
-					.toFixed(2));
-	    		return chanceValue;
-	    	}
-	    },
+    map: {     
+            yHeight: 9,
+            hWidth: 20,
+            
+            terrainTypes: ['grass', 'forest', 'forest', 'swamp','hills','mountains'], //can adjust terrainType probability by blending the array with same terrainTypes
+
+            cities: 5
+         },
 
 
+    createMap: function() {
+		map.prepare();
+		map.render();   	
+    }
 
-	    unfavorableEvent: {
-	    	nothingHappensChance: function(terrainType, timeOfDay){ //chance that player is not attacked by mob. The larger the value is the better.
-	    		var chanceValue = parseFloat(
-					(gameConfig.mod.terrainNothing[terrainType] + gameConfig.mod.time[timeOfDay] - player.level/8)//formula goes in these brackets
-					.toFixed(2));
-				return chanceValue;
-	    	}
-	    },
-
-
-	    wizard: {
-	    	chanceToMeet: function(){
-	    		var chanceValue = parseFloat((1 - player.level/5).toFixed(2)); //the lower the value the higher chance to meet the wizard. Player;s chances increase with higher level.
-	    		return chanceValue;
-	    	}
-	    },
-
-	    merchant: {
-	    	
-	    	minGoldToMeet: 10, //player balance needs to be sufficient first
-
-	    	chanceToMeet: function(){
-	    		var chanceValue = parseFloat((0.5 - player.level/5).toFixed(2)); //the lower the value the higher chance to meet the wizard
-	    		return chanceValue;
-	    	}
-	    }
-
-
-	}
 
 };
+
+
+
+
+
+
+function startGame() {
+
+	$("#buttonClick").get(0).play();
+	$('#page-wrap').empty();
+	characters.newCharacterSelectorDialog() //choose character dialog. Choosing character will call 
+}
+
+
+
+function saveGame() {
+
+	if (localStorage) {
+
+		if (player.stats.save.counter > player.stats.save.min) {
+			alert('Game saved. Previous progress overwritten');
+			
+			player.stats.save.counter--;
+	        $('#statsSaveCounter').html(player.stats.save.counter);
+
+
+			localStorage.removeItem('save');
+			var save = {};
+			save.player = player;
+			save.map = map;
+			save.gameConfig = gameConfig;
+			//save mobs on map (dragon)
+			//save player inventory
+			//save city market
+			//save day & turn
+			//save spellBook equipped and spells
+
+			localStorage.setItem('save', JSON.stringify(save));
+
+		} else {
+			alert('cannot save - insufficient credit');
+
+		}
+
+	} else {
+		alert('Local storage not supported');
+	}
+
+}
+
+
+function continueGame() {
+
+     $("#bookClosed").get(0).play();
+	 $('#page-wrap').empty();
+
+
+	 var load = localStorage.getItem('save');
+	 if (load !== null) {
+		var save = JSON.parse(load);
+
+		//updated player object with saved data
+		player.class.name = save.player.class.name;
+		player.class.image = save.player.class.image;
+		gameConfig.turn.counter = save.gameConfig.turn.counter;
+		gameConfig.turn.day = save.gameConfig.turn.day;
+		//add spelbook.equipped value
+		player.stats.render();	
+       
+       	// rebuild map using saved data
+        for(var i = 0; i < save.gameConfig.map.yHeight; i++){
+            map.tileBox[i] = [];
+            for(var j = 0; j < save.gameConfig.map.hWidth; j++){
+                map.tileBox[i][j] = new Tile(1, i, j, save.map.tileBox[i][j].divID, save.map.tileBox[i][j].terrainType, save.map.tileBox[i][j].terrain); //extracting information from save object and adding new tiles to map array.
+            }        
+        } 
+       	map.render();
+
+	 } else {
+	 	alert('No saved game found!');
+
+	 }
+
+
+}
+
+
+
+function test(){
+
+	alert('it works!');
+
+}
