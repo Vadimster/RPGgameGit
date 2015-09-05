@@ -10,12 +10,12 @@ var player = {
 	},
 
 	map: {
-		positionX: 0,
+		positionX: 1,
 		positionY: 0,
 		image: "img/map/units/player.png",
 		
-		render: function(y, x){ //draws player on map using the X and Y cordinates
-			$('#tile'+getDivIDfromTilesCoordinates(y, x)+'').append('<img id="player" src="'+player.map.image+'" />');
+		render: function(y, x){ //draws player on map using the X and Y cordinates when map created/loads
+			$('#tile'+map.getDivIDfromTilesCoordinates(y, x)+'').append('<img id="player" src="'+player.map.image+'" />');
 		}
 	},
 
@@ -23,10 +23,15 @@ var player = {
 	update: function(character) { //updates player stats/bonuses according to character selected at game start
 		player.class.name = character.name;
 		player.class.image = 'img/stats/characters/'+ character.imgName +'.png'
-
-
 	},
 
+
+	move: function(targetTile) {
+		$('#player').detach().appendTo($('#tile'+targetTile.divID));
+		player.map.positionX = targetTile.coordinateX;
+		player.map.positionY = targetTile.coordinateY;
+		gameConfig.turn.nextTurn();
+	},
 
 
 
@@ -158,8 +163,6 @@ var player = {
 					var statsTurnCounter = $('<div id="statsTurnCounter"></div>');
 			        statsTurnCounter.appendTo('#statsTurn');
 			      	statsTurnCounter.html(gameConfig.turn.counter);
-
-
 		},
 	}
 

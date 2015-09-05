@@ -7,6 +7,11 @@ var gameConfig = {
 		day: true,
 
 		nextTurn: function(){
+			
+			console.log('Next turn');
+
+			/* 
+
 			if(this.day){
 				this.day = false;
 				$("#dayOrNightIcon").attr("src", "img/statusicons/night.png");
@@ -20,6 +25,9 @@ var gameConfig = {
 			
 			this.turn++;
 		    $('#turnCounter').html(this.turn);
+			*/
+
+
 		}
 
 	},
@@ -31,6 +39,7 @@ var gameConfig = {
             hWidth: 20,
             
             terrainTypes: ['grass', 'forest', 'forest', 'swamp','hills','mountains'], //can adjust terrainType probability by blending the array with same terrainTypes
+			bonusArray: [1,1,1,0,0,0,0,0,0,0,0,0,0,0], //to increase chances of bonus being applied to a tile replace 0 with 1 in the array.
 
             cities: 5
          },
@@ -39,7 +48,28 @@ var gameConfig = {
     createMap: function() {
 		map.prepare();
 		map.render();   	
-    }
+    },
+
+
+    targetTileEvent: function(targetTile){   	
+    	if (targetTile.hasBonus) {
+    		console.log('Tile has bonus. Will generate mob');
+
+    	} else {
+    		console.log('tile has no bonus. Need to determine event');
+
+    	}
+
+
+    	//determine event
+    		//if targetTile has bonus, then it will be ab enemy
+    	//handle event
+
+
+    } 
+
+
+
 
 };
 
@@ -112,7 +142,6 @@ function saveGamePage(){
 
 
 function startGame() {
-
 	$("#buttonClick").get(0).play();
 	$('#page-wrap').empty();
 	characters.newCharacterSelectorDialog() //choose character dialog. Choosing character will call 
@@ -121,7 +150,6 @@ function startGame() {
 
 
 function saveGame() {
-
 	player.stats.save.counter--;
     $('#statsSaveCounter').html(player.stats.save.counter);
 
@@ -169,7 +197,6 @@ function saveGame() {
 
 
 function continueGame() {
-
      $("#bookClosed").get(0).play();
 	 $('#page-wrap').empty();
 
@@ -182,6 +209,8 @@ function continueGame() {
 		player.class.name = save.player.class.name;
 		player.class.image = save.player.class.image;
 		player.stats.save.counter = save.player.stats.save.counter
+		player.map.positionX = save.player.map.positionX;
+		player.map.positionY = save.player.map.positionY;
 		gameConfig.turn.counter = save.gameConfig.turn.counter;
 		gameConfig.turn.day = save.gameConfig.turn.day;
 		//add spelbook.equipped value
@@ -191,7 +220,7 @@ function continueGame() {
         for(var i = 0; i < save.gameConfig.map.yHeight; i++){
             map.tileBox[i] = [];
             for(var j = 0; j < save.gameConfig.map.hWidth; j++){
-                map.tileBox[i][j] = new Tile(1, i, j, save.map.tileBox[i][j].divID, save.map.tileBox[i][j].terrainType, save.map.tileBox[i][j].terrain); //extracting information from save object and adding new tiles to map array.
+                map.tileBox[i][j] = new Tile(1, i, j, save.map.tileBox[i][j].divID, save.map.tileBox[i][j].terrainType, save.map.tileBox[i][j].terrain, save.map.tileBox[i][j].hasBonus); //extracting information from save object and adding new tiles to map array.
             }        
         } 
        	map.render();
@@ -207,7 +236,6 @@ function continueGame() {
 
 
 function test(){
-
 	alert('it works!');
 
 }

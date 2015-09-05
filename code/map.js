@@ -30,17 +30,46 @@ var map =  {
 
         player.map.render(player.map.positionY, player.map.positionX);
 
-
-
-
         //apply dragon on map based on coordinates
 
+    },
+
+
+    getDivIDfromTilesCoordinates: function(y,x){ //needed to changing/updating existing tiles in the array
+        var divID = map.tileBox[y][x].divID;
+        return divID;
+    },
+
+
+    checkIfMoveLegal: function(targetTile){
+        if (targetTile.coordinateX - player.map.positionX === 1 && targetTile.coordinateY === player.map.positionY) {
+            console.log('move legal. Move East');
+            return true;
+
+        } else if (player.map.positionX - targetTile.coordinateX === 1 && targetTile.coordinateY === player.map.positionY) {
+            console.log('move legal. Move West');
+            return true;
+
+        } else if (player.map.positionY - targetTile.coordinateY === 1 && targetTile.coordinateX === player.map.positionX) {
+            console.log('move legal. Move North');
+            return true;
+
+        } else if (targetTile.coordinateY - player.map.positionY === 1 && targetTile.coordinateX === player.map.positionX) {
+            console.log('move legal. Move South');
+            return true;
+
+        } else {
+            console.log('move not legal');
+            return false;
+
+        }
     }
+
 };
 
 
 
-var Tile = function(tileFromSave, i, j, divID, terrainType, terrain){
+var Tile = function(tileFromSave, i, j, divID, terrainType, terrain, hasBonus){
     
 
     if (tileFromSave) {
@@ -52,6 +81,8 @@ var Tile = function(tileFromSave, i, j, divID, terrainType, terrain){
         this.terrainType = terrainType;
         this.terrain = terrain;
         this.image = 'img/map/tiles/'+ this.terrain +'.png';
+        this.hasBonus = hasBonus;
+
 
 
 
@@ -62,6 +93,8 @@ var Tile = function(tileFromSave, i, j, divID, terrainType, terrain){
         this.coordinateY = i;
         this.coordinateX = j;
         this.divID = divID;
+        this.hasBonus =  gameConfig.map.bonusArray[Math.floor(Math.random()*gameConfig.map.bonusArray.length)];
+
 
         var grassTypes = ['grass1', 'grass2'];
         var forestTypes = ['forest1', 'forest2'];
@@ -87,10 +120,19 @@ var Tile = function(tileFromSave, i, j, divID, terrainType, terrain){
 
         this.image = 'img/map/tiles/'+ this.terrain +'.png';
 
+        //assign bonus types based on hasbonus true/false
+
     }
 
     this.clicked = function(){
-        console.log('clicked! X coordinate: ' + this.coordinateX + '. Y coordinate: ' + this.coordinateY);
+        if (map.checkIfMoveLegal(this)){
+            console.log('Move is legal')
+            gameConfig.targetTileEvent(this);
+            player.move(this);
+        } else {
+            //do nothing
+        }
+        
     }
 
 
@@ -128,12 +170,8 @@ var Tile = function(tileFromSave, i, j, divID, terrainType, terrain){
 };
 
 
-var getDivIDfromTilesCoordinates = function(y,x){ //needed to changing/updating existing tiles in the array
 
-    var tile = map.tileBox[y][x];
 
-    var divID  = tile.divID;
-    return divID;
-};
+
 
 
