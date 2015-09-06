@@ -6,30 +6,19 @@ var gameConfig = {
 		counter: 1,
 		day: true,
 
-		nextTurn: function(){
-			
-			console.log('Next turn');
-
-			/* 
-
-			if(this.day){
+		nextTurn: function(){		
+			if (this.day) {
 				this.day = false;
-				$("#dayOrNightIcon").attr("src", "img/statusicons/night.png");
-				$("#dayOrNightCounter").html("night");
-
+		        $('#statsTurnIcon').css({"background":"url(img/stats/night_icon.png)"});
+			
 			} else {
 				this.day = true;
-				$("#dayOrNightIcon").attr("src", "img/statusicons/day.png");
-				$("#dayOrNightCounter").html("day");
+		        $('#statsTurnIcon').css({"background":"url(img/stats/day_icon.png)"});
 			}
-			
-			this.turn++;
-		    $('#turnCounter').html(this.turn);
-			*/
 
-
+			this.counter++;
+			$('#statsTurnCounter').html(this.counter);
 		}
-
 	},
 
 

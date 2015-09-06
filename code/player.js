@@ -10,7 +10,7 @@ var player = {
 	},
 
 	map: {
-		positionX: 1,
+		positionX: 0,
 		positionY: 0,
 		image: "img/map/units/player.png",
 		
