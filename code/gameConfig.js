@@ -38,7 +38,7 @@ var gameConfig = {
             yHeight: 9,
             hWidth: 20,
             
-            terrainTypes: ['grass', 'forest', 'forest', 'swamp','hills','mountains'], //can adjust terrainType probability by blending the array with same terrainTypes
+            terrainTypes: ['grass', 'forest', 'forest', 'swamp', 'hills', 'mountains'], //can adjust terrainType probability by blending the array with same terrainTypes
 			bonusArray: [1,1,1,0,0,0,0,0,0,0,0,0,0,0], //to increase chances of bonus being applied to a tile replace 0 with 1 in the array.
 
             cities: 5
@@ -53,7 +53,7 @@ var gameConfig = {
 
     targetTileEvent: function(targetTile){   	
     	if (targetTile.hasBonus) {
-    		console.log('Tile has bonus. Will generate mob');
+    		console.log('Tile has bonus. Bonus is: ' + targetTile.bonusType);
 
     	} else {
     		console.log('tile has no bonus. Need to determine event');
@@ -220,7 +220,7 @@ function continueGame() {
         for(var i = 0; i < save.gameConfig.map.yHeight; i++){
             map.tileBox[i] = [];
             for(var j = 0; j < save.gameConfig.map.hWidth; j++){
-                map.tileBox[i][j] = new Tile(1, i, j, save.map.tileBox[i][j].divID, save.map.tileBox[i][j].terrainType, save.map.tileBox[i][j].terrain, save.map.tileBox[i][j].hasBonus); //extracting information from save object and adding new tiles to map array.
+                map.tileBox[i][j] = new Tile(1, i, j, save.map.tileBox[i][j].divID, save.map.tileBox[i][j].terrainType, save.map.tileBox[i][j].terrain, save.map.tileBox[i][j].hasBonus, save.map.tileBox[i][j].bonusType); //extracting information from save object and adding new tiles to map array.
             }        
         } 
        	map.render();

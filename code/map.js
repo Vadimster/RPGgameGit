@@ -28,9 +28,10 @@ var map =  {
             }
         }
 
+        //console.log(map.tileBox);
         player.map.render(player.map.positionY, player.map.positionX);
-
         //apply dragon on map based on coordinates
+
 
     },
 
@@ -69,7 +70,7 @@ var map =  {
 
 
 
-var Tile = function(tileFromSave, i, j, divID, terrainType, terrain, hasBonus){
+var Tile = function(tileFromSave, i, j, divID, terrainType, terrain, hasBonus, bonusType){
     
 
     if (tileFromSave) {
@@ -82,6 +83,7 @@ var Tile = function(tileFromSave, i, j, divID, terrainType, terrain, hasBonus){
         this.terrain = terrain;
         this.image = 'img/map/tiles/'+ this.terrain +'.png';
         this.hasBonus = hasBonus;
+        this.bonusType = bonusType;
 
 
 
@@ -93,8 +95,6 @@ var Tile = function(tileFromSave, i, j, divID, terrainType, terrain, hasBonus){
         this.coordinateY = i;
         this.coordinateX = j;
         this.divID = divID;
-        this.hasBonus =  gameConfig.map.bonusArray[Math.floor(Math.random()*gameConfig.map.bonusArray.length)];
-
 
         var grassTypes = ['grass1', 'grass2'];
         var forestTypes = ['forest1', 'forest2'];
@@ -117,10 +117,68 @@ var Tile = function(tileFromSave, i, j, divID, terrainType, terrain, hasBonus){
             this.terrain = mountainTypes[Math.floor(Math.random()*mountainTypes.length)];
         }
 
-
         this.image = 'img/map/tiles/'+ this.terrain +'.png';
 
-        //assign bonus types based on hasbonus true/false
+
+       this.tileHasBonus = function(){
+             var tileHasBonus = gameConfig.map.bonusArray[Math.floor(Math.random()*gameConfig.map.bonusArray.length)];
+             return tileHasBonus; //return 1 or 0
+        }
+
+        if(this.terrainType === 'grass'){ //!== 'grass' || 'city'
+            this.hasBonus = false;
+        } else {
+            if(this.tileHasBonus()) {
+                this.hasBonus = true;
+
+                if (this.terrainType === "swamp") {
+                    this.bonusType = "gold";
+        
+                } else if (this.terrainType === "hills") {
+                    this.bonusType = "chest";
+        
+                } else if (this.terrainType === "mountains") {
+                    this.bonusType = "artefact";
+        
+                } else if (this.terrainType === "forest"){
+                    this.bonusType = "experience";
+                }
+
+            } else {
+                this.hasBonus = false;
+
+            }
+        }
+            
+/*
+        if(this.terrainType !== "grass" || "city"){ //grass/city tile cannot have a bonus on it
+            
+            if (this.tileHasBonus()){
+                this.hasBonus = true;
+
+                if (this.terrainType === "swamp") {
+                this.bonusType = "gold";
+        
+                } else if (this.terrainType === "hills") {
+                    this.bonusType = "chest";
+        
+                } else if (this.terrainType === "mountains") {
+                    this.bonusType = "artefact";
+        
+                } else if (this.terrainType === "forest"){
+                    this.bonusType = "experience";
+                }
+            }
+        } 
+
+        this.bonusImage = 'img/map/bonus/'+ this.bonusType +'.png';
+
+*/
+
+
+
+        
+
 
     }
 
@@ -151,7 +209,13 @@ var Tile = function(tileFromSave, i, j, divID, terrainType, terrain, hasBonus){
         var div = $('<div class="tile"></div>');
         div.css({"background":"url('"+this.image+"')"});
         div.attr('id', 'tile' + divID);
+        
+        if(this.hasBonus){
+            div.append('<img id="bonus'+this.divID+'" class="bonus" src="img/map/bonus/'+ this.bonusType +'.png" title = "'+this.bonusType+'" />');
+        }
+
         div.get(0).obj = this;
+
         div.click(function(){
             this.obj.clicked();
         });
