@@ -18,6 +18,7 @@ var gameConfig = {
 
 			this.counter++;
 			$('#statsTurnCounter').html(this.counter);
+			console.log('Next turn');
 		}
 	},
 
@@ -30,7 +31,9 @@ var gameConfig = {
             terrainTypes: ['grass', 'forest', 'forest', 'swamp', 'hills', 'mountains'], //can adjust terrainType probability by blending the array with same terrainTypes
 			bonusArray: [1,1,1,0,0,0,0,0,0,0,0,0,0,0], //to increase chances of bonus being applied to a tile replace 0 with 1 in the array.
 
-            cities: 5
+            cities: 5,
+            cityNames: ['Vadimgrad', 'Noobngrad', 'Dragonmoor', 'Stonehall', 'Zhbongrad', 'Summerston', 'Sageshore', 'Crystalcastle', 'Faymoor', 'Whitehedge']
+
          },
 
 
@@ -41,21 +44,19 @@ var gameConfig = {
 
 
     targetTileEvent: function(targetTile){   	
-    	if (targetTile.hasBonus) {
-    		console.log('Tile has bonus. Bonus is: ' + targetTile.bonusType);
-
-    	} else {
-    		console.log('tile has no bonus. Need to determine event');
-
-    	}
-
-
-    	//determine event
-    		//if targetTile has bonus, then it will be ab enemy
-    	//handle event
-
-
-    } 
+		if(targetTile.terrainType === 'city'){
+			console.log('Entered the city: ' +targetTile.cityName);
+			player.move(targetTile);
+		} else {
+	    	if (targetTile.hasBonus) {
+	    		console.log('Tile has bonus. Bonus is: ' + targetTile.bonusType + ' Will need to generate enemy');
+				player.move(targetTile);
+	    	} else {
+	    		console.log('tile has no bonus. Need to determine event');
+				player.move(targetTile);
+	    	}
+	    } 
+	}
 
 
 
@@ -209,7 +210,7 @@ function continueGame() {
         for(var i = 0; i < save.gameConfig.map.yHeight; i++){
             map.tileBox[i] = [];
             for(var j = 0; j < save.gameConfig.map.hWidth; j++){
-                map.tileBox[i][j] = new Tile(1, i, j, save.map.tileBox[i][j].divID, save.map.tileBox[i][j].terrainType, save.map.tileBox[i][j].terrain, save.map.tileBox[i][j].hasBonus, save.map.tileBox[i][j].bonusType); //extracting information from save object and adding new tiles to map array.
+                map.tileBox[i][j] = new Tile(1, i, j, save.map.tileBox[i][j].divID, save.map.tileBox[i][j].terrainType, save.map.tileBox[i][j].terrain, save.map.tileBox[i][j].hasBonus, save.map.tileBox[i][j].bonusType, save.map.tileBox[i][j].cityName); //extracting information from save object and adding new tiles to map array.
             }        
         } 
        	map.render();

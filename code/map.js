@@ -13,7 +13,23 @@ var map =  {
             for(var j =0; j < gameConfig.map.hWidth; j++){
                 map.tileBox[i][j] = new Tile(0, i, j, divID++);                
             }        
-        } 
+        }
+
+        for (i = 0; i < gameConfig.map.cities; i++) {
+            var arrayX = Math.floor(Math.random()*(gameConfig.map.yHeight));
+            var arrayY = Math.floor(Math.random()*(gameConfig.map.hWidth));
+            var tile = map.tileBox[arrayX][arrayY];
+            tile.hasBonus = false;
+            tile.terrain = 'city';
+            tile.terrainType = 'city';
+            tile.image = 'img/map/tiles/'+ tile.terrainType +'.png';
+            tile.cityName = gameConfig.map.cityNames[Math.floor(Math.random()*gameConfig.map.cityNames.length)]; //pass it to savegame funciton and retrieve later.
+            //will identify the used name and then remove it from the array.
+            var a = gameConfig.map.cityNames.indexOf(tile.cityName);
+            gameConfig.map.cityNames.splice(a,1); 
+        }
+    
+
     },
     
     
@@ -28,7 +44,7 @@ var map =  {
             }
         }
 
-        //console.log(map.tileBox);
+        console.log(map.tileBox);
         player.map.render(player.map.positionY, player.map.positionX);
         //apply dragon on map based on coordinates
 
@@ -70,7 +86,7 @@ var map =  {
 
 
 
-var Tile = function(tileFromSave, i, j, divID, terrainType, terrain, hasBonus, bonusType){
+var Tile = function(tileFromSave, i, j, divID, terrainType, terrain, hasBonus, bonusType, cityName){
     
 
     if (tileFromSave) {
@@ -84,6 +100,9 @@ var Tile = function(tileFromSave, i, j, divID, terrainType, terrain, hasBonus, b
         this.image = 'img/map/tiles/'+ this.terrain +'.png';
         this.hasBonus = hasBonus;
         this.bonusType = bonusType;
+        if(cityName !== null){
+            this.cityName = cityName;
+        }
 
 
 
@@ -125,7 +144,7 @@ var Tile = function(tileFromSave, i, j, divID, terrainType, terrain, hasBonus, b
              return tileHasBonus; //return 1 or 0
         }
 
-        if(this.terrainType === 'grass'){ //!== 'grass' || 'city'
+        if(this.terrainType === 'grass' || this.terrainType === 'city'){
             this.hasBonus = false;
         } else {
             if(this.tileHasBonus()) {
@@ -148,45 +167,13 @@ var Tile = function(tileFromSave, i, j, divID, terrainType, terrain, hasBonus, b
                 this.hasBonus = false;
 
             }
-        }
-            
-/*
-        if(this.terrainType !== "grass" || "city"){ //grass/city tile cannot have a bonus on it
-            
-            if (this.tileHasBonus()){
-                this.hasBonus = true;
-
-                if (this.terrainType === "swamp") {
-                this.bonusType = "gold";
-        
-                } else if (this.terrainType === "hills") {
-                    this.bonusType = "chest";
-        
-                } else if (this.terrainType === "mountains") {
-                    this.bonusType = "artefact";
-        
-                } else if (this.terrainType === "forest"){
-                    this.bonusType = "experience";
-                }
-            }
-        } 
-
-        this.bonusImage = 'img/map/bonus/'+ this.bonusType +'.png';
-
-*/
-
-
-
-        
-
-
+        }          
+     
     }
 
     this.clicked = function(){
         if (map.checkIfMoveLegal(this)){
-            console.log('Move is legal')
             gameConfig.targetTileEvent(this);
-            player.move(this);
         } else {
             //do nothing
         }

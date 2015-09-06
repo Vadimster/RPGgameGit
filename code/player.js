@@ -30,6 +30,7 @@ var player = {
 		$('#player').detach().appendTo($('#tile'+targetTile.divID));
 		player.map.positionX = targetTile.coordinateX;
 		player.map.positionY = targetTile.coordinateY;
+		console.log('player moved');
 		gameConfig.turn.nextTurn();
 	},
 
@@ -56,7 +57,7 @@ var player = {
 
 		health: {
 
-			counter: 0,
+			counter: 100,
 			min: 0,
 			max: 100
 		},
