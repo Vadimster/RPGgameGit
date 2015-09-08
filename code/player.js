@@ -26,11 +26,25 @@ var player = {
 	},
 
 
+	isOnCityTile: function(){
+		if (map.tileBox[player.map.positionY][player.map.positionX].terrain === 'city'){
+			return true;
+		} else {
+			return false;
+		}
+	},
+
 	move: function(targetTile) {
 		$('#player').detach().appendTo($('#tile'+targetTile.divID));
 		player.map.positionX = targetTile.coordinateX;
 		player.map.positionY = targetTile.coordinateY;
 		console.log('player moved');
+		if (player.isOnCityTile()){
+        	$('#cityEntranceIndicator').css('background', '0');
+		} else {
+        	$('#cityEntranceIndicator').css({"background":"url(img/stats/redcross.png)"});
+		}
+
 		gameConfig.turn.nextTurn();
 	},
 
@@ -149,6 +163,14 @@ var player = {
 		        document.getElementById("statsCity").addEventListener("click", test, false);
 				    var statsCityIcon = $('<div id="statsCityIcon"></div>');
 		            statsCityIcon.appendTo('#statsCity');
+					   	var cityEntranceIndicator = $('<div id="cityEntranceIndicator"></div>');
+			            cityEntranceIndicator.appendTo('#statsCityIcon'); 		            
+						if (player.isOnCityTile()){
+				        	$('#cityEntranceIndicator').css('background', '0');
+						} else {
+				        	$('#cityEntranceIndicator').css({"background":"url(img/stats/redcross.png)"});
+						}
+
 
 			    var statsTurn = $('<div id="statsTurn"></div>');
 	            statsTurn.appendTo('#stats-container');

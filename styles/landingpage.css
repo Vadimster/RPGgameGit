@@ -265,11 +265,11 @@
 
                 #cityEntranceIndicator{
                   position: absolute;
-                  margin-top: 25px;
-                  margin-left: 20px;
+                  margin-top: 22px;
+                  margin-left: 22px;
                   width: 30px;
                   height: 30px;
-                  background-image: url("../img/statsIcons/redcross.png");
+                  /* background-image: url("../img/stats/redcross.png"); */
                 }
 
 

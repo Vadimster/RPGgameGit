@@ -199,10 +199,11 @@ var characters = {
                     {'Start!' : function(){
                         $(this).dialog('close');
                           $("#bookClosed").get(0).play();
+                          map.prepare();
                           player.update(characters.choices[characters.indekz]);
-                          player.stats.render(); 
-                          gameConfig.createMap();
-                       
+                          player.stats.render();
+                          map.render();
+                          //gameConfig.createMap();                       
                         }
                     },
             draggable: false,
