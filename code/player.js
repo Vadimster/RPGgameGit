@@ -23,16 +23,35 @@ var player = {
 	update: function(character) { //updates player stats/bonuses according to character selected at game start
 		player.class.name = character.name;
 		player.class.image = 'img/stats/characters/'+ character.imgName +'.png'
+
+        //will update character with starting bonuses, if any.
+        character.addBonusGold();
+        character.addBonusSave();
+        character.addBonusBook();
+        character.addBonusItems();
+
+        //set here bonuses for testing here
+
+
+		//gameConfig.health.increase(player, 10);
+		//gameConfig.health.decrease(player, 70);
+		//gameConfig.gold.increase(player, 10000);
+		//gameConfig.gold.decrease(player, 1000000);
+		//gameConfig.save.increase(1);
+
+
 	},
 
 
-	isOnCityTile: function(){
+	isOnCityTile: function(){	
 		if (map.tileBox[player.map.positionY][player.map.positionX].terrain === 'city'){
 			return true;
 		} else {
 			return false;
 		}
 	},
+
+
 
 	move: function(targetTile) {
 		$('#player').detach().appendTo($('#tile'+targetTile.divID));
@@ -51,36 +70,29 @@ var player = {
 
 
 	stats: {
-
 		save: {
-
 			counter: 5,
 			min: 0,
 			max: 999
 		},
 
-
 		level: {
-
 			counter: 0,
 			min: 0,
 			max: 99
 
 		},
 
-
 		health: {
-
 			counter: 100,
 			min: 0,
 			max: 100
 		},
 
 		gold: {
-
 			counter: 0,
 			min: 0,
-			max: 99999
+			max: 9999
 		},		
 
 
@@ -164,12 +176,13 @@ var player = {
 				    var statsCityIcon = $('<div id="statsCityIcon"></div>');
 		            statsCityIcon.appendTo('#statsCity');
 					   	var cityEntranceIndicator = $('<div id="cityEntranceIndicator"></div>');
-			            cityEntranceIndicator.appendTo('#statsCityIcon'); 		            
+			            cityEntranceIndicator.appendTo('#statsCityIcon');            
 						if (player.isOnCityTile()){
 				        	$('#cityEntranceIndicator').css('background', '0');
 						} else {
 				        	$('#cityEntranceIndicator').css({"background":"url(img/stats/redcross.png)"});
 						}
+				
 
 
 			    var statsTurn = $('<div id="statsTurn"></div>');

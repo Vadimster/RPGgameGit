@@ -8,6 +8,7 @@ var shaman = {
   img: 'img/characterselectorpage/avatars/shaman.png',
   description: 'Highly spiritual, shamans speak to nature and communicate with ghosts. While not particularly strong in combat, they can summon supernatural forces to assist them.',
   bonus: ['* Start the game with a Book of Spells and a random spell',
+          '* Start the game with an extra ink point',
           '* Choose a free spell every 3 levels',
           '* Spells cost 20% less mana to cast'
           ],
@@ -15,17 +16,29 @@ var shaman = {
   bonusGold: 0,
     addBonusGold: function(){
       if (shaman.bonusGold) {
-        gold.increase(shaman.bonusGold);
+        gameConfig.gold.increase(player, this.bonusGold)      
+      
       } else {
         console.log('character class does not have bonus gold at start');
       }
     },
 
+  bonusSave: 1,
+    addBonusSave: function(){
+      if (shaman.bonusSave) {
+        gameConfig.save.increase(this.bonusSave)      
+      
+      } else {
+        console.log('character class does not have bonus save at start');
+      }
+    },
+
+
   bonusBook: true,
     addBonusBook: function(){
       if (shaman.bonusBook) {
         spellBook.equip();
-        spellBook.giveRandomSpell();
+        //spellBook.giveRandomSpell();
         console.log('Player gets a free spellbook and a random spell');
       } else {
         console.log('Player does not get a free spellbook');
@@ -51,6 +64,7 @@ var scribe = {
   img: 'img/characterselectorpage/avatars/scribe.png', 
   description: 'People of science and books, scribes belong more to a library than a battlefield. But do not be mislead, for knowledge is power and these lads will not hesitate in taking their advantage against less scholared enemies.',
   bonus: ['* Start the game with a Book of Spells',
+          '* Start the game with an extra ink point',
           '* Get a random free spell every 3 levels',
           '* Spells cost 20% less experience to learn',
           '* Start game with 2 gold coins'
@@ -59,16 +73,28 @@ var scribe = {
   bonusGold: 2,
     addBonusGold: function(){
       if (scribe.bonusGold) {
-        gold.increase(scribe.bonusGold);
+        gameConfig.gold.increase(player, this.bonusGold)      
       } else {
         console.log('character class does not have bonus gold at start');
       }
     },
 
+  
+  bonusSave: 1,
+    addBonusSave: function(){
+      if (scribe.bonusSave) {
+        gameConfig.save.increase(this.bonusSave)      
+      
+      } else {
+        console.log('character class does not have bonus save at start');
+      }
+    },
+
+
   bonusBook: true,
     addBonusBook: function(){
       if (scribe.bonusBook) {
-      spellBook.equip();
+        spellBook.equip();
 
         console.log('Player gets a free spellbook');
       } else {
@@ -100,14 +126,26 @@ var hunter = {
           '* Accuracy bonus for ranged weapons'
           ],
   
-  bonusGold: 10,
+  bonusGold: 0,
     addBonusGold: function(){
       if (hunter.bonusGold) {
-        gold.increase(hunter.bonusGold);
+        gameConfig.gold.increase(player, this.bonusGold)      
       } else {
         console.log('character class does not have bonus gold at start');
       }
     },
+
+
+  bonusSave: 0,
+    addBonusSave: function(){
+      if (hunter.bonusSave) {
+        gameConfig.save.increase(this.bonusSave)      
+      
+      } else {
+        console.log('character class does not have bonus save at start');
+      }
+    },
+
 
   bonusBook: false,
     addBonusBook: function(){
@@ -137,17 +175,30 @@ var warrior = {
   img: 'img/characterselectorpage/avatars/warrior.png',
   description: 'Born and trained with only one purpose - to fight and be victorious - warriors spread terror on a battlefield. Crude in their manners but extremely efficient in melee they make an unstoppable force.',
   bonus: ['* Get the Book of Spells on level 5',
-          '* Start game with a sword in inventory'
+          '* Start the game with a sword in inventory',
+          '* Start the game with one ink point less'
           ],
 
   bonusGold: 0,
     addBonusGold: function(){
       if (warrior.bonusGold) {
-        gold.increase(warrior.bonusGold);
+        gameConfig.gold.increase(player, this.bonusGold)      
       } else {
         console.log('character class does not have bonus gold at start');
       }
     },
+
+
+  bonusSave: -1,
+    addBonusSave: function(){
+      if (warrior.bonusSave) {
+        gameConfig.save.increase(this.bonusSave)      
+      
+      } else {
+        console.log('character class does not have bonus save at start');
+      }
+    },
+
 
   bonusBook: false,
     addBonusBook: function(){
@@ -161,7 +212,7 @@ var warrior = {
     bonusItems: true,
       addBonusItems: function(){
         if (warrior.bonusItems) {       
-          inventory.inactive.push(new Sword);
+          //inventory.inactive.push(new Sword);
  
         } else {
           console.log('Player does not get bonus item');
