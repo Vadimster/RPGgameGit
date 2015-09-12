@@ -66,6 +66,8 @@ var player = {
 
 		gameConfig.experience.increase(500);
 		gameConfig.turn.nextTurn();
+
+		console.log(spells[0]);
 	},
 
 

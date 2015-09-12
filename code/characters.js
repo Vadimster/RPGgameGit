@@ -38,7 +38,7 @@ var shaman = {
     addBonusBook: function(){
       if (shaman.bonusBook) {
         spellBook.equip();
-        //spellBook.giveRandomSpell();
+        spellBook.giveRandomSpell();
         console.log('Player gets a free spellbook and a random spell');
       } else {
         console.log('Player does not get a free spellbook');
