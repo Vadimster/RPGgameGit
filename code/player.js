@@ -159,6 +159,8 @@ var player = {
 
 
 		render: function(){ //creates stats div on the page and populates values
+            $('#stats-container').empty();
+
             var statsContainer = $('<div id="stats-container"></div>');
             	statsContainer.appendTo('#page-wrap');
 	            
@@ -218,7 +220,7 @@ var player = {
 
 			    var statsSpellBook = $('<div id="statsSpellBook"></div>');
 		            statsSpellBook.appendTo('#stats-container');
-			        document.getElementById("statsSpellBook").addEventListener("click", test, false);
+			        document.getElementById("statsSpellBook").addEventListener("click", spellBook.iconClicked, false);
 					    var statsSpellBookIcon = $('<div id="statsSpellBookIcon"></div>');
 			            	statsSpellBookIcon.appendTo('#statsSpellBook');
 						    	var spellBookEquipIndicator = $('<div id="spellBookEquipIndicator"></div>');

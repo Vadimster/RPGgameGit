@@ -24,17 +24,12 @@ var spellBook = {
 
 
     purchase: function(){
-
-            if (gold.checkBalance(this)) {
-
-                gold.decrease(this.buyPrice);
-                spellBook.equip();
-
-            } else {
-
-                //alert('insufficient funds!');
-                insufficientFundsMessage(this);
-            } 
+        if (gameConfig.gold.checkBalance(this)) {
+            gameConfig.gold.decrease(player, this.buyPrice);
+            spellBook.equip();
+        } else {
+            gameConfig.messages.insufficientFunds(this);
+        } 
     },
 
 
@@ -48,22 +43,19 @@ var spellBook = {
 
     drawPage: function(){ //opens book if equipped, attempts to buy if not equipped
 
-       
-
         console.log('number of spells known to player: ' +spellBook.spells.length);
 
 
         if (this.equipped) {
 
-            $("#pageTurn").get(0).play();
-
+            //$("#pageTurn").get(0).play();
 
                 $('#spellBookPage')
                     .dialog(
                         {buttons: 
                             {'Close Book' : function(){
                                 $(this).dialog('close');
-                                $("#spellBookClosed").get(0).play();
+                                $("#bookClosed").get(0).play();
 
 
 
@@ -134,6 +126,8 @@ var spellBook = {
                     }
                 } else { //if player does not have any spells known to him
                     
+                    console.log('no spells known');
+
                     $('#spellbook-spell-all-spells-container').empty();
 
                     var container = $("<div class='spellbook-spell-container'></div>");
@@ -145,38 +139,30 @@ var spellBook = {
 
                 }
         
-        } else {
+        } else { //spellbook not equipped
 
-                $("#spellbook-buy-message").text('All the spells known to you are kept in the ' +spellBook.name+  '. You do not seem to have such item, would you like to buy it for ' +spellBook.buyPrice+' coins?'); //calling a function which will generate event title using the argument   
-
-
-                $('#spellBookBuyPage')
-                    .dialog(
-                        {buttons: 
-                            {'Purchase' : function(){
-                                
-                                    spellBook.purchase(); 
-                                    $(this).dialog('close');
-
-                                },
-                        
-                             'Not now' : function(){
-                                $(this).dialog('close'); 
-
-                                }
-                        }, //buttons added
-
-                    draggable: false,
-                    resizable: false,
-                    modal: true,
-                    width: 400,
-                    height: 400, 
-                    closeOnEscape: false,
-                    dialogClass: "no-close"
-                    //position: ["right", "center"]
-                    }
-                ); //creates the dialog
-            
+            $("#spellbook-buy-message").text('All the spells known to you are kept in the ' +spellBook.name+  '. You do not seem to have this book, would you like to buy it for ' +spellBook.buyPrice+' gold coins?'); //calling a function which will generate event title using the argument   
+            $('#spellBookBuyPage')
+                .dialog(
+                    {buttons: 
+                        {'Purchase' : function(){
+                            spellBook.purchase(); 
+                            $(this).dialog('close');
+                            },
+                         'Not now' : function(){
+                            $(this).dialog('close');
+                            }
+                    }, //buttons added
+                draggable: false,
+                resizable: false,
+                modal: true,
+                width: 400,
+                height: 400, 
+                closeOnEscape: false,
+                dialogClass: "no-close"
+                }
+            ); //creates the dialog
+        
         }
 
     },

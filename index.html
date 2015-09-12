@@ -10,6 +10,8 @@
 		<link rel="stylesheet" type="text/css" href="styles/landingpage.css" />
 		<link rel="stylesheet" type="text/css" href="styles/character-selector-page.css" />
 		<link rel="stylesheet" type="text/css" href="styles/levelup-dialog.css" />
+		<link rel="stylesheet" type="text/css" href="styles/spellbook.css" />
+
 
 	</HEAD>
 
@@ -32,6 +34,8 @@
 	<audio id="onecoinfound" src="sounds/interface/onecoinfound.mp3"></audio>
 	<audio id="savegame" src="sounds/interface/savegame.mp3"></audio>
 	<audio id="levelup" src="sounds/interface/levelup.wav"></audio>
+	<audio id="spellBookOpen" src="sounds/interface/spellbook_open.mp3"></audio>
+
 
 
 <!-- sounds end -->
@@ -43,7 +47,7 @@
 
 
 
-	<div id ="version">version 4.0.10</div>
+	<div id ="version">version 4.0.12</div>
 
 <!-- Dialogues -->
 	  <div id="character-selector-Page" class="dialog"> 
@@ -87,6 +91,26 @@
 		</div>
 	</div>
 
+ <div id="spellBookPage" class="dialog"> 
+ 	 <div id="spellbook-dialog-background">
+ 	 	<div id="spellbook-spell-legend-container">
+ 	 		<div id="spellbook-spell-legend-name"> Spell Name</div>
+ 	 		<div id="spellbook-spell-legend-manacost" title="Mana points required to cast a spell">Mana</div>
+ 	 		<div id="spellbook-spell-legend-range">Range</div>
+ 	 		<div id="spellbook-spell-legend-damage">Damage</div>
+  	 		<div id="spellbook-spell-legend-duration" title="Number of rounds the spell is active during combat">Duration</div>
+  	 		<div id="spellbook-spell-legend-description" title="Effects in combat">Description</div>
+ 	 	</div>
+ 	 	<div id="spellbook-spell-all-spells-container"></div>
+ 	 </div>
+ </div>
+
+  <div id="spellBookBuyPage" class= "dialog">
+ 	<div id="spellbook-buy-dialog-background"> 
+		<div id="spellbook-buy-message"></div>
+		<div id="spellBookPage-seal"></div>>
+ 	</div>
+ </div>
 
 <!-- Dialogues end -->
 

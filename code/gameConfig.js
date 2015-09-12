@@ -94,7 +94,7 @@ var gameConfig = {
 
     gold: {
 	    checkBalance : function(item) {
-	        if (player.stas.gold.counter >= item.buyPrice) {
+	        if (player.stats.gold.counter >= item.buyPrice) {
 	            return true;
 	        } else {
 	            return false;
@@ -121,6 +121,7 @@ var gameConfig = {
 			
 	        target.stats.gold.counter = parseFloat(target.stats.gold.counter.toFixed(2));
 	        console.log("player gold after transaction: " + target.stats.gold.counter);
+		    player.stats.render();
 
 
 	    },
@@ -145,6 +146,7 @@ var gameConfig = {
 			
 	        target.stats.gold.counter = parseFloat(target.stats.gold.counter.toFixed(2));
 	        console.log("player gold after transaction: " + target.stats.gold.counter);
+		    player.stats.render();
 
 	    },
     },
@@ -158,7 +160,7 @@ var gameConfig = {
 	    		$("#levelup").get(0).play();
 	    		$('#statsLevelCounter').html(player.stats.level.counter);
 	    		$('#experienceNextLevel').html(gameConfig.experience.getNextLevelThreshold());
-	    		this.startLevelUpDialog(); 
+	    		this.startLevelUpDialog();
     		} else {
     			//do nothing - max player level reached - introduce this check in expericne.increase()
     		}
@@ -231,7 +233,7 @@ var gameConfig = {
         	var archeryWrapper = $('<div id="levelUpDialog-archeryWrapper"></div>');
             	archeryWrapper.appendTo('#levelUpDialog-bonusoptions');
 	        	var archeryBonus = $('<div id="levelUpDialog-archeryBonus"></div>');
-				    archeryBonus.attr("title","Improve your handling of range weapons: qualify for better weapons, hit more precisely and at longer distances as wel as inflict more critical hits!");
+				    archeryBonus.attr("title","Improve your handling of range weapons: qualify for better weapons, hit more precisely and at longer distances as well as inflict more critical hits!");
 	            	archeryBonus.appendTo('#levelUpDialog-archeryWrapper');
 					document.getElementById("levelUpDialog-archeryBonus").addEventListener("click", this.getBonusArchery, false);
 						var archerySkill = $('<div id="levelUpDialog-archerySkill"></div>');
@@ -273,7 +275,7 @@ var gameConfig = {
         	var stealthWrapper = $('<div id="levelUpDialog-stealthWrapper"></div>');
             	stealthWrapper.appendTo('#levelUpDialog-bonusoptions');
 	        	var stealthBonus = $('<div id="levelUpDialog-stealthBonus"></div>');
-				    stealthBonus.attr("title","Improving stealth will help you to detect enemies and avoid them or strike first in combat");
+				    stealthBonus.attr("title","Improving stealth will help you to detect enemies and avoid them or act first in combat");
 	            	stealthBonus.appendTo('#levelUpDialog-stealthWrapper');
 					document.getElementById("levelUpDialog-stealthBonus").addEventListener("click", this.getBonusStealth, false);
 						var stealthSkill = $('<div id="levelUpDialog-stealthSkill"></div>');
@@ -299,12 +301,6 @@ var gameConfig = {
 	       		//position: ["right", "center"]
 	       		}
 	       	); //creates the dialog
-
-
-
-        	//call experience.increase(0) when dialog is closed to start process once again and see if player qualifies for next level up.
-
-
     	}
     },
 
@@ -383,7 +379,36 @@ var gameConfig = {
 	    } 
 	},
 
+	messages: {
 
+		insufficientFunds: function(item){
+			$("#insufficientSomethingPage-message").empty();
+
+			if (player.stats.gold.counter < 1){
+				$("#insufficientSomethingPage-message").text('Looks like you are a real bomzh. You do not have enough gold to purchase ' +item.name+ '. It costs ' +item.buyPrice+ ' gold coins, but you are absolutely broke!');  
+			} else {
+				$("#insufficientSomethingPage-message").text('You do not have enough gold to purchase ' +item.name+ '. It costs ' +item.buyPrice+ ' gold coins, but you have only ' +player.stats.gold.counter+ ' in your purse. Vadimaria is full of treasures, claim them if you dare!');  
+			}
+
+			$('#insufficientSomethingPage')//making a global div to be created dynamically instead of describing every dialogue in html
+				.dialog(
+		  			{buttons: 
+		     			{
+		     			 'Oh...' :function(){
+		        			$(this).dialog('close');	        		 
+		           		},
+		   			},
+		   		draggable: false,
+		   		resizable: false,
+		   		modal: true,
+		  		width: 360,
+		   		height: 420,
+		   		closeOnEscape: true,
+		   		dialogClass: "no-close"
+		   		}
+	   		); //creates the dialog
+		}
+	}
 
 };
 
@@ -448,7 +473,6 @@ function saveGamePage(){
 		}
 
 	} else {
-
 		alert('Your browser does not support localStorage, please upgrade to latest version.');
 	}
 
@@ -517,11 +541,13 @@ function continueGame() {
 	//update player object with saved data
 		player.class.name = save.player.class.name;
 		player.class.image = save.player.class.image;
+
 		player.stats.save.counter = save.player.stats.save.counter;
 		player.stats.health.counter = save.player.stats.health.counter;
 		player.stats.gold.counter = save.player.stats.gold.counter;
-		player.stats.experience.counter = save.player.stats.experience.counter;
+		player.stats.experience.counter = save.player.stats.experience.counter; 
 		player.stats.level.counter = save.player.stats.level.counter;
+		
 		player.skills.archery.counter = save.player.skills.archery.counter;
 		player.skills.melee.counter = save.player.skills.melee.counter;
 		player.skills.magic.counter = save.player.skills.magic.counter;
@@ -562,6 +588,6 @@ function continueGame() {
 
 
 function test(element){
-	alert('element passed is ' +element);
+	alert('It works!');
 
 }
