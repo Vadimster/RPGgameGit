@@ -165,14 +165,121 @@ var gameConfig = {
     	},
 
     	startLevelUpDialog: function(){
+
+    		this.getBonusArchery  = function(){			    
+			    if(player.skills.archery.counter < player.skills.archery.max){
+			    	player.skills.archery.counter++;
+			    	$(this).closest('.ui-dialog-content').dialog('close');
+	            	gameConfig.experience.increase(0);	 
+
+			    } else {
+			    	player.skills.cannotLevelUp('archery');
+			    }
+    		}
+
+    		this.getBonusMelee  = function(){
+			    if(player.skills.melee.counter < player.skills.melee.max){
+			    	player.skills.melee.counter++;
+			    	$(this).closest('.ui-dialog-content').dialog('close');
+	            	gameConfig.experience.increase(0);	 
+
+			    } else {
+			    	player.skills.cannotLevelUp('melee');
+			    }
+    		}
+    		
+    		this.getBonusMagic  = function(){
+			    if(player.skills.magic.counter < player.skills.magic.max){
+			    	player.skills.magic.counter++;
+			    	$(this).closest('.ui-dialog-content').dialog('close');
+	            	gameConfig.experience.increase(0);	 
+
+			    } else {
+			    	player.skills.cannotLevelUp('magic');
+			    }
+    		}
+
+    		this.getBonusDefence  = function(){
+			    if(player.skills.defence.counter < player.skills.defence.max){
+			    	player.skills.defence.counter++;
+			    	$(this).closest('.ui-dialog-content').dialog('close');
+	            	gameConfig.experience.increase(0);	 
+
+			    } else {
+			    	player.skills.cannotLevelUp('defence');
+			    }
+    		}
+
+    		this.getBonusStealth  = function(){
+			    if(player.skills.stealth.counter < player.skills.stealth.max){
+			    	player.skills.stealth.counter++;
+			    	$(this).closest('.ui-dialog-content').dialog('close');
+	            	gameConfig.experience.increase(0);	 
+
+			    } else {
+			    	player.skills.cannotLevelUp('stealth');
+			    } 
+    		}
+
         	console.log('startLevelUpDialog() launched');
         	
-        	$("#levelUpDialog-header").text('Welcome to level ' + player.stats.level.counter); //calling a function which will generate event title using the argument   
-        	$("#levelUpDialog-intro").text('You can now improve one of your skills. Which one shall it be?'); //calling a function which will generate event title using the argument   
+        	$("#levelUpDialog-header").text('Welcome to level ' + player.stats.level.counter); 
+        	$("#levelUpDialog-intro").text('You can now improve one of your skills. Which one shall it be?'); 
+        	$('#levelUpDialog-bonusoptions').empty();
+
+      	
+        	var archeryWrapper = $('<div id="levelUpDialog-archeryWrapper"></div>');
+            	archeryWrapper.appendTo('#levelUpDialog-bonusoptions');
+	        	var archeryBonus = $('<div id="levelUpDialog-archeryBonus"></div>');
+				    archeryBonus.attr("title","Improve your handling of range weapons: qualify for better weapons, hit more precisely and at longer distances as wel as inflict more critical hits!");
+	            	archeryBonus.appendTo('#levelUpDialog-archeryWrapper');
+					document.getElementById("levelUpDialog-archeryBonus").addEventListener("click", this.getBonusArchery, false);
+						var archerySkill = $('<div id="levelUpDialog-archerySkill"></div>');
+							archerySkill.appendTo('#levelUpDialog-archeryWrapper');
+        					$("#levelUpDialog-archerySkill").text(player.skills.archery.counter+ ' / ' + player.skills.archery.max); 
+
+        	var meleeWrapper = $('<div id="levelUpDialog-meleeWrapper"></div>');
+            	meleeWrapper.appendTo('#levelUpDialog-bonusoptions');
+	        	var meleeBonus = $('<div id="levelUpDialog-meleeBonus"></div>');
+				    meleeBonus.attr("title","Improve your handling of melee weapons: qualify for better weapons, hit more often and inflict more critical hits!");
+	            	meleeBonus.appendTo('#levelUpDialog-meleeWrapper');
+					document.getElementById("levelUpDialog-meleeBonus").addEventListener("click", this.getBonusMelee, false);
+						var meleeSkill = $('<div id="levelUpDialog-meleeSkill"></div>');
+							meleeSkill.appendTo('#levelUpDialog-meleeWrapper');
+        					$("#levelUpDialog-meleeSkill").text(player.skills.melee.counter+ ' / ' + player.skills.melee.max); 
 
 
+        	var magicWrapper = $('<div id="levelUpDialog-magicWrapper"></div>');
+            	magicWrapper.appendTo('#levelUpDialog-bonusoptions');
+	        	var magicBonus = $('<div id="levelUpDialog-magicBonus"></div>');
+				    magicBonus.attr("title","Improve in magic: qualify for more powerful spells, your spells will become stronger and consume less mana!");
+	            	magicBonus.appendTo('#levelUpDialog-magicWrapper');
+					document.getElementById("levelUpDialog-magicBonus").addEventListener("click", this.getBonusMagic, false);
+						var magicSkill = $('<div id="levelUpDialog-magicSkill"></div>');
+							magicSkill.appendTo('#levelUpDialog-magicWrapper');
+        					$("#levelUpDialog-magicSkill").text(player.skills.magic.counter+ ' / ' + player.skills.magic.max); 
 
-        	
+        	var defenceWrapper = $('<div id="levelUpDialog-defenceWrapper"></div>');
+            	defenceWrapper.appendTo('#levelUpDialog-bonusoptions');
+	        	var defenceBonus = $('<div id="levelUpDialog-defenceBonus"></div>');
+				    defenceBonus.attr("title","Learn how to handle your shield better (if you have it equipped) - enemies will have lower chances to hit you in melee");
+	            	defenceBonus.appendTo('#levelUpDialog-defenceWrapper');
+					document.getElementById("levelUpDialog-defenceBonus").addEventListener("click", this.getBonusDefence, false);
+						var defenceSkill = $('<div id="levelUpDialog-defenceSkill"></div>');
+							defenceSkill.appendTo('#levelUpDialog-defenceWrapper');
+        					$("#levelUpDialog-defenceSkill").text(player.skills.defence.counter+ ' / ' + player.skills.defence.max); 
+
+
+        	var stealthWrapper = $('<div id="levelUpDialog-stealthWrapper"></div>');
+            	stealthWrapper.appendTo('#levelUpDialog-bonusoptions');
+	        	var stealthBonus = $('<div id="levelUpDialog-stealthBonus"></div>');
+				    stealthBonus.attr("title","Improving stealth will help you to detect enemies and avoid them or strike first in combat");
+	            	stealthBonus.appendTo('#levelUpDialog-stealthWrapper');
+					document.getElementById("levelUpDialog-stealthBonus").addEventListener("click", this.getBonusStealth, false);
+						var stealthSkill = $('<div id="levelUpDialog-stealthSkill"></div>');
+							stealthSkill.appendTo('#levelUpDialog-stealthWrapper');
+        					$("#levelUpDialog-stealthSkill").text(player.skills.stealth.counter+ ' / ' + player.skills.stealth.max); 
+
         	$('#levelUpDialog')
 	    		.dialog(
 	      			{buttons: 
@@ -185,26 +292,13 @@ var gameConfig = {
 		   		draggable: false,
 	       		resizable: false,
 	       		modal: true,
-	      		width: 600,
-	       		height: 630,
+	      		width: 610,
+	       		height: 550,
 	       		closeOnEscape: false,
 	       		dialogClass: "no-close"
 	       		//position: ["right", "center"]
 	       		}
 	       	); //creates the dialog
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -287,7 +381,10 @@ var gameConfig = {
 				player.move(targetTile);
 	    	}
 	    } 
-	}
+	},
+
+
+
 };
 
 
@@ -425,6 +522,14 @@ function continueGame() {
 		player.stats.gold.counter = save.player.stats.gold.counter;
 		player.stats.experience.counter = save.player.stats.experience.counter;
 		player.stats.level.counter = save.player.stats.level.counter;
+		player.skills.archery.counter = save.player.skills.archery.counter;
+		player.skills.melee.counter = save.player.skills.melee.counter;
+		player.skills.magic.counter = save.player.skills.magic.counter;
+		player.skills.defence.counter = save.player.skills.defence.counter;
+		player.skills.stealth.counter = save.player.skills.stealth.counter;
+
+
+
 		player.map.positionX = save.player.map.positionX;
 		player.map.positionY = save.player.map.positionY;
 		
@@ -456,7 +561,7 @@ function continueGame() {
 
 
 
-function test(){
-	alert('it works!');
+function test(element){
+	alert('element passed is ' +element);
 
 }

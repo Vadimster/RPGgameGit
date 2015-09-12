@@ -69,6 +69,63 @@ var player = {
 	},
 
 
+	skills: {
+		archery: {
+			counter: 0,
+			min: 0,
+			max: 10
+		},
+
+		melee: {
+			counter: 9,
+			min: 0,
+			max: 10
+		},
+
+		magic: {
+			counter: 0,
+			min: 0,
+			max: 10
+		},
+
+		defence: {
+			counter: 0,
+			min: 0,
+			max: 10
+		},
+
+		stealth: {
+			counter: 0,
+			min: 0,
+			max: 10
+		},
+
+
+		cannotLevelUp: function(skill){
+	    	$("#insufficientSomethingPage-message").empty();
+			$("#insufficientSomethingPage-message").text('You have reached your maximum proficiency in ' + skill +' which is ' + player.skills[skill].max + '. You need to either allocate bonus points to another skill or skip this upgrade entirely.');  
+			$('#insufficientSomethingPage')//making a global div to be created dynamically instead of describing every dialogue in html
+			.dialog(
+					{buttons: 
+		 			{
+		 			 'OK' :function(){
+		    			$(this).dialog('close');				    		 
+		       		},
+					},
+				draggable: false,
+				resizable: false,
+				modal: true,
+				width: 360,
+				height: 420,
+				closeOnEscape: true,
+				dialogClass: "no-close"
+				}
+			); //creates the dialog
+		}
+
+	},
+
+
 
 	stats: {
 		save: {
