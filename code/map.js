@@ -44,7 +44,6 @@ var map =  {
             }
         }
 
-        console.log(map.tileBox);
         player.map.render(player.map.positionY, player.map.positionX);
         //apply dragon on map based on coordinates
 
@@ -90,8 +89,6 @@ var Tile = function(tileFromSave, i, j, divID, terrainType, terrain, hasBonus, b
     
 
     if (tileFromSave) {
-        console.log('Tile is loaded from a previous save game through continueGame function');
-
         this.coordinateY = i;
         this.coordinateX = j;
         this.divID = divID;
@@ -104,13 +101,7 @@ var Tile = function(tileFromSave, i, j, divID, terrainType, terrain, hasBonus, b
             this.cityName = cityName;
         }
 
-
-
-
-
     } else {
-        console.log('Tile is created for the first time');
-
         this.coordinateY = i;
         this.coordinateX = j;
         this.divID = divID;
@@ -120,7 +111,6 @@ var Tile = function(tileFromSave, i, j, divID, terrainType, terrain, hasBonus, b
         var swampTypes = ['swamp1', 'swamp2'];
         var hillTypes = ['hills1'];
         var mountainTypes = ['mountains1'];
-
 
         this.terrainType = gameConfig.map.terrainTypes[Math.floor(Math.random()*gameConfig.map.terrainTypes.length)];
 
@@ -137,7 +127,6 @@ var Tile = function(tileFromSave, i, j, divID, terrainType, terrain, hasBonus, b
         }
 
         this.image = 'img/map/tiles/'+ this.terrain +'.png';
-
 
        this.tileHasBonus = function(){
              var tileHasBonus = gameConfig.map.bonusArray[Math.floor(Math.random()*gameConfig.map.bonusArray.length)];
@@ -180,16 +169,13 @@ var Tile = function(tileFromSave, i, j, divID, terrainType, terrain, hasBonus, b
         
     }
 
-
     this.mouseOver = function(){
-        console.log('Mouse over!');
+        //console.log('Mouse over!');
     }    
 
-
     this.mouseOut = function(){
-        console.log('Mouse out!');
+        //console.log('Mouse out!');
     } 
-
 
     this.draw = function(){
         
@@ -215,7 +201,6 @@ var Tile = function(tileFromSave, i, j, divID, terrainType, terrain, hasBonus, b
         div.appendTo('#map-container');      
         
     }
-    
     
     
 };

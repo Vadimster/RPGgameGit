@@ -1,0 +1,71 @@
+
+#levelUpDialog{
+  display: none;
+  position: relative;
+  border: 0px dotted green;
+}
+
+	#levelUpDialog-background {
+        position: absolute;
+        background-image: url(../img/dialogs/dialogue_background.png);
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+        width: 600;
+        height: 500; 
+        border: 0px dotted red;
+        left: -5px;
+      }
+
+            #levelUpDialog-header {
+              position: relative;
+              margin: auto;
+              top: 20px;
+              height: 40px;
+              width: 275px; 
+              border: 0px dotted blue;
+              font-size: 35px;
+              font-family: cursive;
+              font-style: Italic;
+              color: black;
+            }
+
+                #levelUpDialog-header-image {
+                  position: relative;
+             	  margin: auto;
+             	  top: 30px;
+                  height: 135px;
+                  width: 200px;
+                  border: 0px dotted green;
+                  background-image: url(../img/dialogs/crown.png);
+                  background-size: 100% 100%;
+                  background-repeat: no-repeat;
+                }
+
+	            #levelUpDialog-intro {
+	              position: relative;
+	              margin: auto;
+	              top: 50px;
+	              height: 35px;
+	              width: 460px; 
+	              border: 0px dotted blue;
+	              font-size: 18px;
+	              font-family: cursive;
+	              font-style: Italic;
+	              color: black;
+	            }
+
+	            #levelUpDialog-bonusoptions {
+	              position: relative;
+	              margin: auto;
+	              top: 50px;
+	              height: 200px;
+	              width: 510px; 
+	              border: 1px dotted blue;
+
+	            }
+
+
+
+
+
+

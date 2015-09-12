@@ -64,6 +64,7 @@ var player = {
         	$('#cityEntranceIndicator').css({"background":"url(img/stats/redcross.png)"});
 		}
 
+		gameConfig.experience.increase(500);
 		gameConfig.turn.nextTurn();
 	},
 
@@ -93,96 +94,104 @@ var player = {
 			counter: 0,
 			min: 0,
 			max: 9999
+		},
+
+		experience: {
+			counter: 0
 		},		
 
 
 		render: function(){ //creates stats div on the page and populates values
             var statsContainer = $('<div id="stats-container"></div>');
-            statsContainer.appendTo('#page-wrap');
+            	statsContainer.appendTo('#page-wrap');
 	            
 	            var statsSave = $('<div id="statsSave"></div>');
-	            statsSave.appendTo('#stats-container');
-		            var statsSaveIcon = $('<div id="statsSaveIcon"></div>');
-		            statsSaveIcon.appendTo('#statsSave');
-		            document.getElementById("statsSaveIcon").addEventListener("click", saveGamePage, false);
-		            statsSaveIcon.attr("title","Save current progress. It will overwrite your previous save.");
-		            	var statsSaveCounter = $('<div id="statsSaveCounter"></div>');
-	            		statsSaveCounter.appendTo('#statsSaveIcon');
-	            		statsSaveCounter.html(player.stats.save.counter);
+		            statsSave.appendTo('#stats-container');
+			            var statsSaveIcon = $('<div id="statsSaveIcon"></div>');
+			            	statsSaveIcon.appendTo('#statsSave');
+			            	document.getElementById("statsSaveIcon").addEventListener("click", saveGamePage, false);
+			            	statsSaveIcon.attr("title","Save current progress. It will overwrite your previous save.");
+			            		var statsSaveCounter = $('<div id="statsSaveCounter"></div>');
+		            				statsSaveCounter.appendTo('#statsSaveIcon');
+		            				statsSaveCounter.html(player.stats.save.counter);
 
 	            var statsLevel = $('<div id="statsLevel"></div>');
-	            statsLevel.appendTo('#stats-container');
-	            	var statsLevelIcon = $('<div id="statsLevelIcon"></div>');
-	            	statsLevelIcon.appendTo('#statsLevel');
-	            	var statsLevelCounter = $('<div id="statsLevelCounter"></div>');
-	            	statsLevelCounter.appendTo('#statsLevel');
-	            	statsLevelCounter.html(player.stats.level.counter);
+		            statsLevel.appendTo('#stats-container');
+		            	var statsLevelIcon = $('<div id="statsLevelIcon"></div>');
+		            		statsLevelIcon.appendTo('#statsLevel');
+		            	var statsLevelCounter = $('<div id="statsLevelCounter"></div>');
+		            		statsLevelCounter.appendTo('#statsLevel');
+		            		statsLevelCounter.html(player.stats.level.counter);
 
 	            var statsHealth = $('<div id="statsHealth"></div>');
-	            statsHealth.appendTo('#stats-container');
-	            	var statsHealthIcon = $('<div id="statsHealthIcon"></div>');
-	            	statsHealthIcon.appendTo('#statsHealth');
-	            	var statsHealthCounter = $('<div id="statsHealthCounter"></div>');
-	            	statsHealthCounter.appendTo('#statsHealth');
-	            	statsHealthCounter.html(player.stats.health.counter);
+		            statsHealth.appendTo('#stats-container');
+		            	var statsHealthIcon = $('<div id="statsHealthIcon"></div>');
+		            		statsHealthIcon.appendTo('#statsHealth');
+		            	var statsHealthCounter = $('<div id="statsHealthCounter"></div>');
+		            		statsHealthCounter.appendTo('#statsHealth');
+		            		statsHealthCounter.html(player.stats.health.counter);
 
 
 
 	            var statsGold = $('<div id="statsGold"></div>');
-	            statsGold.appendTo('#stats-container');
-	            	var statsGoldIcon = $('<div id="statsGoldIcon"></div>');
-	            	statsGoldIcon.appendTo('#statsGold');
-	            	var statsGoldCounter = $('<div id="statsGoldCounter"></div>');
-	            	statsGoldCounter.appendTo('#statsGold');
-	            	statsGoldCounter.html(player.stats.gold.counter);
+		            statsGold.appendTo('#stats-container');
+		            	var statsGoldIcon = $('<div id="statsGoldIcon"></div>');
+		            		statsGoldIcon.appendTo('#statsGold');
+		            	var statsGoldCounter = $('<div id="statsGoldCounter"></div>');
+		            		statsGoldCounter.appendTo('#statsGold');
+		            		statsGoldCounter.html(player.stats.gold.counter);
 
 
 			    var statsExperience = $('<div id="statsExperience"></div>');
-	            statsExperience.appendTo('#stats-container');
-	            	var statsExperienceIcon = $('<div id="statsExperienceIcon"></div>');
-	            	statsExperienceIcon.appendTo('#statsExperience');
-	            	var experienceWrapper = $('<div id="experienceWrapper"></div>');
-	            	experienceWrapper.appendTo('#statsExperience');
-		            	var experienceCounter = $('<div id="experienceCounter"></div>');
-		            	experienceCounter.appendTo('#experienceWrapper');
-		            	var experienceSeparator = $('<div id="experienceSeparator">/</div>');
-		            	experienceSeparator.appendTo('#experienceWrapper');
-		            	var experienceNextLevel = $('<div id="experienceNextLevel"></div>');
-		            	experienceNextLevel.appendTo('#experienceWrapper');
+	            	statsExperience.appendTo('#stats-container');
+		            	var statsExperienceIcon = $('<div id="statsExperienceIcon"></div>');
+		            		statsExperienceIcon.appendTo('#statsExperience');
+		            	var experienceWrapper = $('<div id="experienceWrapper"></div>');
+		            		experienceWrapper.appendTo('#statsExperience');
+				            	var experienceCounter = $('<div id="experienceCounter"></div>');
+				            		experienceCounter.html(player.stats.experience.counter);
+			            			experienceCounter.attr("title","Experience you have accumulated so far");
+				            		experienceCounter.appendTo('#experienceWrapper');
+				            	var experienceSeparator = $('<div id="experienceSeparator">/</div>');
+				            		experienceSeparator.appendTo('#experienceWrapper');
+				            	var experienceNextLevel = $('<div id="experienceNextLevel"></div>');
+				            		experienceNextLevel.appendTo('#experienceWrapper');
+			            			experienceNextLevel.attr("title","Experience required for next level");
+		            				experienceNextLevel.html(gameConfig.experience.getNextLevelThreshold());
 
 			    var statsSpellBook = $('<div id="statsSpellBook"></div>');
-	            statsSpellBook.appendTo('#stats-container');
-		        document.getElementById("statsSpellBook").addEventListener("click", test, false);
-				    var statsSpellBookIcon = $('<div id="statsSpellBookIcon"></div>');
-		            statsSpellBookIcon.appendTo('#statsSpellBook');
-					    var spellBookEquipIndicator = $('<div id="spellBookEquipIndicator"></div>');
-			            spellBookEquipIndicator.appendTo('#statsSpellBookIcon'); 
-					    if (spellBook.equipped) {
-        					$('#spellBookEquipIndicator').css('background', '0');
-					    } else {
-					    	//do nothing
-					    }         
+		            statsSpellBook.appendTo('#stats-container');
+			        document.getElementById("statsSpellBook").addEventListener("click", test, false);
+					    var statsSpellBookIcon = $('<div id="statsSpellBookIcon"></div>');
+			            	statsSpellBookIcon.appendTo('#statsSpellBook');
+						    	var spellBookEquipIndicator = $('<div id="spellBookEquipIndicator"></div>');
+				            		spellBookEquipIndicator.appendTo('#statsSpellBookIcon'); 
+								    if (spellBook.equipped) {
+			        					$('#spellBookEquipIndicator').css('background', '0');
+								    } else {
+								    	//do nothing
+								    }         
 
 	            var statsCharacter = $('<div id="statsCharacter"></div>');
-	            statsCharacter.appendTo('#stats-container');
-		            var statsCharacterIcon = $('<div id="statsCharacterIcon"></div>');
-        			statsCharacterIcon.css({"background":"url('"+player.class.image+"')"});
-		            statsCharacterIcon.appendTo('#statsCharacter');
-		            document.getElementById("statsCharacterIcon").addEventListener("click", test, false);
+		            statsCharacter.appendTo('#stats-container');
+			            var statsCharacterIcon = $('<div id="statsCharacterIcon"></div>');
+	        				statsCharacterIcon.css({"background":"url('"+player.class.image+"')"});
+			            	statsCharacterIcon.appendTo('#statsCharacter');
+			            	document.getElementById("statsCharacterIcon").addEventListener("click", test, false);
 
 			    var statsCity = $('<div id="statsCity"></div>');
-	            statsCity.appendTo('#stats-container');
-		        document.getElementById("statsCity").addEventListener("click", test, false);
-				    var statsCityIcon = $('<div id="statsCityIcon"></div>');
-		            statsCityIcon.appendTo('#statsCity');
-					   	var cityEntranceIndicator = $('<div id="cityEntranceIndicator"></div>');
-			            cityEntranceIndicator.appendTo('#statsCityIcon');            
-						if (player.isOnCityTile()){
-				        	$('#cityEntranceIndicator').css('background', '0');
-						} else {
-				        	$('#cityEntranceIndicator').css({"background":"url(img/stats/redcross.png)"});
-						}
-				
+		            statsCity.appendTo('#stats-container');
+			        document.getElementById("statsCity").addEventListener("click", test, false);
+					    var statsCityIcon = $('<div id="statsCityIcon"></div>');
+			            	statsCityIcon.appendTo('#statsCity');
+						   		var cityEntranceIndicator = $('<div id="cityEntranceIndicator"></div>');
+						            cityEntranceIndicator.appendTo('#statsCityIcon');            
+									if (player.isOnCityTile()){
+							        	$('#cityEntranceIndicator').css('background', '0');
+									} else {
+							        	$('#cityEntranceIndicator').css({"background":"url(img/stats/redcross.png)"});
+									}
+					
 
 
 			    var statsTurn = $('<div id="statsTurn"></div>');

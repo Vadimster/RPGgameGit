@@ -9,11 +9,13 @@
 		<link rel="stylesheet" type="text/css" href="styles/error-and-game-messages.css" />
 		<link rel="stylesheet" type="text/css" href="styles/landingpage.css" />
 		<link rel="stylesheet" type="text/css" href="styles/character-selector-page.css" />
+		<link rel="stylesheet" type="text/css" href="styles/levelup-dialog.css" />
+
 	</HEAD>
 
 	<style>
 		body {background-image:url(img/background.jpg);}
-		body {background-size: 100% 100%;}
+		body {background-size: 100% cover;}
 		body {background-repeat: no-repeat;}
 	</style>
 
@@ -29,6 +31,7 @@
 	<audio id="coinsfound" src="sounds/interface/coinsfound.mp3"></audio>
 	<audio id="onecoinfound" src="sounds/interface/onecoinfound.mp3"></audio>
 	<audio id="savegame" src="sounds/interface/savegame.mp3"></audio>
+	<audio id="levelup" src="sounds/interface/levelup.wav"></audio>
 
 
 <!-- sounds end -->
@@ -75,6 +78,14 @@
 		</div>
 	</div>
 
+	<div id="levelUpDialog">
+		<div id="levelUpDialog-background">
+			<div id="levelUpDialog-header"></div>
+			<div id="levelUpDialog-header-image"></div>
+			<div id="levelUpDialog-intro"></div>
+			<div id="levelUpDialog-bonusoptions"></div>
+		</div>
+	</div>
 
 
 <!-- Dialogues end -->

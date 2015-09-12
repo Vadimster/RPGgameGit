@@ -36,7 +36,6 @@ var gameConfig = {
     },
 
 
-
     save: {
     	checkBalance: function(value){
 	        if (player.stats.save.counter >= value) {
@@ -148,6 +147,130 @@ var gameConfig = {
 	        console.log("player gold after transaction: " + target.stats.gold.counter);
 
 	    },
+    },
+
+
+    level: {
+
+    	increase: function(value){
+    		if (player.stats.level.counter < player.stats.level.max){
+	    		player.stats.level.counter += value;
+	    		$("#levelup").get(0).play();
+	    		$('#statsLevelCounter').html(player.stats.level.counter);
+	    		$('#experienceNextLevel').html(gameConfig.experience.getNextLevelThreshold());
+	    		this.startLevelUpDialog(); 
+    		} else {
+    			//do nothing - max player level reached - introduce this check in expericne.increase()
+    		}
+    	},
+
+    	startLevelUpDialog: function(){
+        	console.log('startLevelUpDialog() launched');
+        	
+        	$("#levelUpDialog-header").text('Welcome to level ' + player.stats.level.counter); //calling a function which will generate event title using the argument   
+        	$("#levelUpDialog-intro").text('You can now improve one of your skills. Which one shall it be?'); //calling a function which will generate event title using the argument   
+
+
+
+        	
+        	$('#levelUpDialog')
+	    		.dialog(
+	      			{buttons: 
+	         			{
+	         			 'No, thanks' :function(){
+	            			$(this).dialog('close');
+	            			gameConfig.experience.increase(0);	 
+	               		},
+	       			},
+		   		draggable: false,
+	       		resizable: false,
+	       		modal: true,
+	      		width: 600,
+	       		height: 630,
+	       		closeOnEscape: false,
+	       		dialogClass: "no-close"
+	       		//position: ["right", "center"]
+	       		}
+	       	); //creates the dialog
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        	//call experience.increase(0) when dialog is closed to start process once again and see if player qualifies for next level up.
+
+
+    	}
+    },
+
+
+    experience: {
+
+    	multiplicator: 0.05, //multiplicator to calculate experience threshold for next level-up 
+
+    	getPlayerNextLevel: function(){
+    		var playerNextlevel = player.stats.level.counter+1;
+    		return playerNextlevel;
+    	},
+
+    	getNextLevelThreshold: function(){
+    		var nextLevelThreshold = Math.pow((gameConfig.experience.getPlayerNextLevel()),2)/gameConfig.experience.multiplicator; //defines experience requirement for next level-up
+    		return nextLevelThreshold;
+    	},
+
+    	increase: function(value){
+
+
+    		console.log('starting player level for this test: ' + player.stats.level.counter);
+			console.log("for next player level (" + gameConfig.experience.getPlayerNextLevel() + ") you need " + gameConfig.experience.getNextLevelThreshold() + " experience.");
+
+        	console.log('  Step 1 - player exp before update: ' + player.stats.experience.counter);
+    		console.log('  Step 2 - amount of exp to add: ' + value);
+			player.stats.experience.counter += value;
+        	console.log('  Step 1 - player exp after update: ' + player.stats.experience.counter);
+
+        	if (player.stats.experience.counter >= gameConfig.experience.getNextLevelThreshold()){
+        		
+        		player.stats.experience.counter -= gameConfig.experience.getNextLevelThreshold();
+        		console.log('Level up!');
+            	console.log('  Step 4 - reminder carried forward after adjustment is now ' + player.stats.experience.counter);
+        		gameConfig.level.increase(1);       	
+
+        	} else {
+        		console.log('threshold not reached');
+        	}
+
+
+			$('#experienceCounter').html(player.stats.experience.counter);
+
+
+    	},
+
+    	checkBalance: function(value){
+    		console.log('balance check launched');
+
+
+
+
+    	},
+
+    	decrease: function(value){
+    		console.log('balance decrease launched');
+
+
+
+    	}
     },
 
 
@@ -282,9 +405,6 @@ function saveGame() {
 		dialogClass: "no-close"
 		}
 	); //creates the dialog
-
-
-	//launch a function to build dialog game saved OK
 }
 
 
@@ -297,19 +417,24 @@ function continueGame() {
 	 if (load !== null) {
 		var save = JSON.parse(load);
 
-		//updated player object with saved data
+	//update player object with saved data
 		player.class.name = save.player.class.name;
 		player.class.image = save.player.class.image;
 		player.stats.save.counter = save.player.stats.save.counter;
 		player.stats.health.counter = save.player.stats.health.counter;
 		player.stats.gold.counter = save.player.stats.gold.counter;
+		player.stats.experience.counter = save.player.stats.experience.counter;
+		player.stats.level.counter = save.player.stats.level.counter;
 		player.map.positionX = save.player.map.positionX;
 		player.map.positionY = save.player.map.positionY;
+		
 		gameConfig.turn.counter = save.gameConfig.turn.counter;
 		gameConfig.turn.day = save.gameConfig.turn.day;
+		
 		spellBook.equipped = save.spellBook.equipped;
 
-		// prepare map using saved data
+
+	// prepare map using saved data
         for(var i = 0; i < save.gameConfig.map.yHeight; i++){
             map.tileBox[i] = [];
             for(var j = 0; j < save.gameConfig.map.hWidth; j++){
@@ -319,6 +444,7 @@ function continueGame() {
 		player.stats.render();	
        	map.render();
 
+       	console.log('Game loaded successfully');
 
 	 } else {
 	 	alert('No saved game found!');
