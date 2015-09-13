@@ -35,6 +35,7 @@
 	<audio id="savegame" src="sounds/interface/savegame.mp3"></audio>
 	<audio id="levelup" src="sounds/interface/levelup.wav"></audio>
 	<audio id="spellBookOpen" src="sounds/interface/spellbook_open.mp3"></audio>
+	<audio id="spellLearnt" src="sounds/interface/spell_learnt.mp3"></audio>
 
 
 
@@ -47,7 +48,7 @@
 
 
 
-	<div id ="version">version 4.0.13</div>
+	<div id ="version">version 4.0.14</div>
 
 <!-- Dialogues -->
 	  <div id="character-selector-Page" class="dialog"> 
@@ -110,6 +111,21 @@
 		<div id="spellbook-buy-message"></div>
 		<div id="spellBookPage-seal"></div>>
  	</div>
+ </div>
+
+  <div id="spellPurchasePage" class="dialog"> 
+ 	 <div id="purchasespell-dialog-background">
+ 	 	<div id="spellbook-purchasespell-legend-container">
+ 	 		<div id="spellbook-purchasespell-legend-name"> Spell Name</div>
+ 	 		<div id="spellbook-purchasespell-legend-price" title="Experience points to pay for learning a spell"> Price</div>
+ 	 		<div id="spellbook-purchasespell-legend-manacost" title="Mana points required to cast a spell">Mana</div>
+ 	 		<div id="spellbook-purchasespell-legend-range">Range</div>
+ 	 		<div id="spellbook-purchasespell-legend-damage">Damage</div>
+  	 		<div id="spellbook-purchasespell-legend-duration" title="Number of rounds the spell is active during combat">Duration</div>
+  	 		<div id="spellbook-purchasespell-legend-description" title="Effects in combat">Description</div>
+ 	 	</div>
+ 	 	<div id="spellbook-purchasespell-all-spells-container"></div>
+ 	 </div>
  </div>
 
 <!-- Dialogues end -->

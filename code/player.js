@@ -32,7 +32,7 @@ var player = {
 
         //set here bonuses for testing here
 
-
+		gameConfig.experience.increase(10);
 		//gameConfig.health.increase(player, 10);
 		//gameConfig.health.decrease(player, 70);
 		//gameConfig.gold.increase(player, 10000);

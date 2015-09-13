@@ -13,15 +13,9 @@ var spells = [
 		duration: null,
 
 		learn: function(){
-			if (experience.checkBalance(this)){
-				experience.decrease(this.price);
-				spellBook.spells.push(this);
-				$("#spellLearnt").get(0).play();
-				spellBook.drawLearnSpellPage();
-			} else {
-				insufficientExperienceMessage(this);
-			}		
-		}		
+			gameConfig.experience.learnSpell(this);
+		}
+
 	},
 
 	{
@@ -37,15 +31,7 @@ var spells = [
 		duration: 2,
 
 		learn: function(){
-			if (experience.checkBalance(this)){
-				console.log('experience is enough to  learn the spell');
-				experience.decrease(this.price);
-				$("#spellLearnt").get(0).play();
-				spellBook.spells.push(this);
-				spellBook.drawLearnSpellPage();
-			} else {
-				insufficientExperienceMessage(this);
-			}
+			gameConfig.experience.learnSpell(this);
 		}
 	},
 
@@ -60,14 +46,7 @@ var spells = [
 		range: 1,
 		duration: null,
 		learn: function(){
-			if (experience.checkBalance(this)){
-				experience.decrease(this.price);
-				$("#spellLearnt").get(0).play();
-				spellBook.spells.push(this);
-				spellBook.drawLearnSpellPage();
-			} else {
-				insufficientExperienceMessage(this);
-			}
+			gameConfig.experience.learnSpell(this);
 		}
 	}
 

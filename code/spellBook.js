@@ -186,83 +186,89 @@ var spellBook = {
 
     drawLearnSpellPage: function() {
         $('#spellPurchasePage')
-                    .dialog(
-                        {buttons: 
-                            {'Close' : function(){
-                                $(this).dialog('close');
-                                spellBook.drawPage(); 
+            .dialog(
+                {buttons: 
+                    {'Close' : function(){
+                        $(this).dialog('close');
+                        $("#pageTurn").get(0).play();
+                        spellBook.drawPage(); 
 
 
-                                }
-                        }, //buttons added
+                        }
+                }, //buttons added
 
-                    draggable: false,
-                    resizable: false,
-                    modal: true,
-                    width: 1100,
-                    height: 630, 
-                    closeOnEscape: false,
-                    dialogClass: "no-close"
-                    //position: ["right", "center"]
-                    }
-                ); //creates the dialog
+            draggable: false,
+            resizable: false,
+            modal: true,
+            width: 1100,
+            height: 630, 
+            closeOnEscape: false,
+            dialogClass: "no-close"
+            //position: ["right", "center"]
+            }
+        ); //creates the dialog
 
         $('#spellbook-purchasespell-all-spells-container').empty(); // originally emptied spellbook-dialog-background
 
 
-                    for (i = 0; i < allSpells.length; i++) {
+        this.myIndexOf = function(object){ //checks if spell is known to player already. My custom indexOf function because I am comparing object liters directly, and not references to them.
+            for (i=0; i < spellBook.spells.length; i++){
+                if (spellBook.spells[i].name === object.name){
+                    return i;
+                } 
+            }
+            return -1;
+        }
 
-                        var n = spellBook.spells.indexOf(allSpells[i]); //checks if a spell is already known to player in order to not to display it in all spells list on purchase page
+        for (j=0; j<spells.length; j++){ //looping through all spealls to see if they are known to player
+        
+            var n = this.myIndexOf(spells[j]);
 
-                            if (n < 0) { //if spell is not known
-                             
-                                var container = $("<div class='purchasespell-spell-container'></div>");
-                                var spellname = $("<div class='purchasespell-spell-name'></div>");
-                                var spellprice = $("<div class='purchasespell-spell-price'></div>");
-                                var spelldescription = $("<div class='purchasespell-spell-description'></div>");
-                                var spellManaCost = $("<div class='purchasespell-spell-manaCost'></div>");
-                                var spellRange = $("<div class='purchasespell-spell-range'></div>");
-                                var spellDamage = $("<div class='purchasespell-spell-damage'></div>");
-                                var spellDuration = $("<div class='purchasespell-spell-duration'></div>");
+            if (n < 0) { // spell is not known
+                var container = $("<div class='purchasespell-spell-container'></div>");
+                var spellname = $("<div class='purchasespell-spell-name'></div>");
+                var spellprice = $("<div class='purchasespell-spell-price'></div>");
+                var spelldescription = $("<div class='purchasespell-spell-description'></div>");
+                var spellManaCost = $("<div class='purchasespell-spell-manaCost'></div>");
+                var spellRange = $("<div class='purchasespell-spell-range'></div>");
+                var spellDamage = $("<div class='purchasespell-spell-damage'></div>");
+                var spellDuration = $("<div class='purchasespell-spell-duration'></div>");
 
-                                
-                                container.prop('title', 'Click on this spell to learn it');
-                                container.appendTo('#spellbook-purchasespell-all-spells-container');
-                                container.get(0).obj = allSpells[i]; //link DOM element to an object
-                                container.click(function(){
-                                    this.obj.learn();
+                container.prop('title', 'Click on this spell to learn it');
+                container.appendTo('#spellbook-purchasespell-all-spells-container');
+                container.get(0).obj = spells[j]; //link DOM element to an object
+                container.click(function(){
+                    this.obj.learn();
+                }); 
 
-                                }); 
+                spellname.appendTo(container);
+                spellname.html(spells[j].name);                                                         
 
-                                spellname.appendTo(container);
-                                spellname.html(allSpells[i].name);                                                         
+                spellprice.appendTo(container);
+                spellprice.html(spells[j].price);
 
-                                spellprice.appendTo(container);
-                                spellprice.html(allSpells[i].price);
+                spellManaCost.appendTo(container);
+                spellManaCost.html(spells[j].manaCost);
 
-                                spellManaCost.appendTo(container);
-                                spellManaCost.html(allSpells[i].manaCost);
+                spellRange.appendTo(container);
+                spellRange.html(spells[j].range);
 
-                                spellRange.appendTo(container);
-                                spellRange.html(allSpells[i].range);
+                spellDamage.appendTo(container);
+                spellDamage.html(spells[j].baseDamage);
 
-                                spellDamage.appendTo(container);
-                                spellDamage.html(allSpells[i].baseDamage);
+                spellDuration.appendTo(container);
+                spellDuration.html(spells[j].duration);
 
-                                spellDuration.appendTo(container);
-                                spellDuration.html(allSpells[i].duration);
+                spelldescription.appendTo(container);
+                spelldescription.html(spells[j].description);
 
-                                spelldescription.appendTo(container);
-                                spelldescription.html(allSpells[i].description);
+            } else {
+                console.log(spells[j].name + ' is already known to player');
+
+            }            
 
 
-                            } else {
-
-                                console.log(allSpells[i].name + ' is already known to player');
-
-                            }
-
-                    }
+        }
 
     }
 

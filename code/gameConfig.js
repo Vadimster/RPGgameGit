@@ -348,8 +348,11 @@ var gameConfig = {
     	},
 
     	checkBalance: function(value){
-    		console.log('balance check launched');
-
+	        if (player.stats.experience.counter >= value) {
+	            return true;
+	        } else {
+	            return false;
+	        }
 
 
 
@@ -357,11 +360,28 @@ var gameConfig = {
 
     	decrease: function(value){
     		console.log('balance decrease launched');
+    		player.stats.experience.counter -= value;
+    		player.stats.render();
 
 
+    	},
 
-    	}
+
+    	learnSpell: function(spell){
+			if (gameConfig.experience.checkBalance(spell.price)){
+				console.log('sufficient experience');
+				gameConfig.experience.decrease(spell.price);
+				spellBook.spells.push(spell);
+				$("#spellLearnt").get(0).play();
+				spellBook.drawLearnSpellPage();
+			} else {
+				gameConfig.messages.insufficientExp(spell);				
+			}		
+		}		
+
+
     },
+
 
 
     targetTileEvent: function(targetTile){   	
@@ -407,8 +427,33 @@ var gameConfig = {
 		   		dialogClass: "no-close"
 		   		}
 	   		); //creates the dialog
+		},
+
+
+		insufficientExp: function(item){
+			$("#insufficientSomethingPage-message").empty();
+			$("#insufficientSomethingPage-message").text('You do not have enough experience to learn the ' +item.name+ ' spell. You need to have ' +item.price+ ' experience points to master it.');  
+			$('#insufficientSomethingPage')//making a global div to be created dynamically instead of describing every dialogue in html
+				.dialog(
+		  			{buttons: 
+		     			{
+		     			 'Oh...' :function(){
+		        			$(this).dialog('close');	        		 
+		           		},
+		   			},
+		   		draggable: false,
+		   		resizable: false,
+		   		modal: true,
+		  		width: 360,
+		   		height: 420,
+		   		closeOnEscape: true,
+		   		dialogClass: "no-close"
+		   		}
+	   		); //creates the dialog
 		}
+	
 	}
+
 
 };
 
@@ -554,8 +599,6 @@ function continueGame() {
 		player.skills.defence.counter = save.player.skills.defence.counter;
 		player.skills.stealth.counter = save.player.skills.stealth.counter;
 
-
-
 		player.map.positionX = save.player.map.positionX;
 		player.map.positionY = save.player.map.positionY;
 		
@@ -563,6 +606,7 @@ function continueGame() {
 		gameConfig.turn.day = save.gameConfig.turn.day;
 		
 		spellBook.equipped = save.spellBook.equipped;
+		spellBook.spells = save.spellBook.spells;
 
 
 	// prepare map using saved data
