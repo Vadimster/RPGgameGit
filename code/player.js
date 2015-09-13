@@ -1,9 +1,16 @@
 
 var player = {
 
+	character: {
+
+
+	},
+
+
 	alive: true,
 
 	class: {
+		id: null,
 		name: null,
 		image: null, //avatar image in stats 
 
@@ -21,6 +28,9 @@ var player = {
 
 
 	update: function(character) { //updates player stats/bonuses according to character selected at game start
+		
+		player.character = character;
+		player.class.id = character.id;
 		player.class.name = character.name;
 		player.class.image = 'img/stats/characters/'+ character.imgName +'.png'
 
@@ -32,7 +42,7 @@ var player = {
 
         //set here bonuses for testing here
 
-		gameConfig.experience.increase(10);
+		//gameConfig.experience.increase(10);
 		//gameConfig.health.increase(player, 10);
 		//gameConfig.health.decrease(player, 70);
 		//gameConfig.gold.increase(player, 10000);
@@ -66,8 +76,6 @@ var player = {
 
 		gameConfig.experience.increase(500);
 		gameConfig.turn.nextTurn();
-
-		console.log(spells[0]);
 	},
 
 

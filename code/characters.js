@@ -4,6 +4,7 @@
 var shaman = {
   
   name: "Shaman",
+  id: 'shaman',
   imgName: "shaman",
   img: 'img/characterselectorpage/avatars/shaman.png',
   description: 'Highly spiritual, shamans speak to nature and communicate with ghosts. While not particularly strong in combat, they can summon supernatural forces to assist them.',
@@ -44,6 +45,9 @@ var shaman = {
         console.log('Player does not get a free spellbook');
       }
     },
+  getsBonusBookOnLevel: 0,
+  getFreeSpellEveryNLevel: 3,
+  getFreeRndSpellEveryNLevel: 0,
 
   bonusItems: false,
       addBonusItems: function(){
@@ -60,6 +64,7 @@ var shaman = {
 var scribe = {
 
   name: "Scribe",
+  id: 'scribe',
   imgName: "scribe",
   img: 'img/characterselectorpage/avatars/scribe.png', 
   description: 'People of science and books, scribes belong more to a library than a battlefield. But do not be mislead, for knowledge is power and these lads will not hesitate in taking their advantage against less scholared enemies.',
@@ -101,7 +106,9 @@ var scribe = {
         console.log('Player does not get a free spellbook');
       }
     },
-
+  getsBonusBookOnLevel: 0,
+  getFreeSpellEveryNLevel: 0,
+  getFreeRndSpellEveryNLevel: 3,
 
   bonusItems: false,
       addBonusItems: function(){
@@ -118,6 +125,7 @@ var scribe = {
 var hunter = {
 
   name: "Hunter",
+  id: 'hunter',
   imgName: "hunter",
   img: 'img/characterselectorpage/avatars/hunter.jpg',
   description: 'Many years spent hunting in woods and meadows taught to be patient, attentive and lightning-quick. You will hardly find anyone who is better with a bow and arrows than this folk.',
@@ -155,7 +163,10 @@ var hunter = {
         console.log('Player does not get a free spellbook');
       }
     },
-  
+  getsBonusBookOnLevel: 3,
+  getFreeSpellEveryNLevel: 0,
+  getFreeRndSpellEveryNLevel: 0,
+
   bonusItems: false,
       addBonusItems: function(){
         if (hunter.bonusItems) {
@@ -171,6 +182,7 @@ var hunter = {
 var warrior = {
 
   name: "Warrior",
+  id: 'warrior',
   imgName: "warrior",
   img: 'img/characterselectorpage/avatars/warrior.png',
   description: 'Born and trained with only one purpose - to fight and be victorious - warriors spread terror on a battlefield. Crude in their manners but extremely efficient in melee they make an unstoppable force.',
@@ -208,17 +220,20 @@ var warrior = {
         console.log('Player does not get a free spellbook');
       }
     },
+  getsBonusBookOnLevel: 5,
+  getFreeSpellEveryNLevel: 0,
+  getFreeRndSpellEveryNLevel: 0,
 
-    bonusItems: true,
-      addBonusItems: function(){
-        if (warrior.bonusItems) {       
-          //inventory.inactive.push(new Sword);
- 
-        } else {
-          console.log('Player does not get bonus item');
-        }
+  bonusItems: true,
+    addBonusItems: function(){
+      if (warrior.bonusItems) {       
+        //inventory.inactive.push(new Sword);
 
+      } else {
+        console.log('Player does not get bonus item');
       }
+
+    }
 };
 
 
@@ -229,55 +244,10 @@ var characters = {
 
   newCharacterSelectorDialog: function(){
 
-      document.getElementById("character-selector-Page-left-arrow").addEventListener("click", characters.selectLeft, false);
-      document.getElementById("character-selector-Page-right-arrow").addEventListener("click", characters.selectRight, false);
-
-      $('#character-selector-Page-avatar-name').html(characters.choices[characters.indekz].name);
-      $('#character-selector-Page-avatar').css({"background":"url('"+characters.choices[characters.indekz].img+"')"});
-      $('#character-selector-Page-avatar-description').html(characters.choices[characters.indekz].description);
-
-      for (i = 0; i < characters.choices[characters.indekz].bonus.length; i++) {
-
-        var div =  $("<div class='character-selector-Page-bonus-description'></div>");
-        div.appendTo('#character-selector-Page-bonus-container');
-        div.html(characters.choices[characters.indekz].bonus[i]);
-
-      }
-       
-      $('#character-selector-Page')
-            .dialog(
-                {buttons: 
-                    {'Start!' : function(){
-                        $(this).dialog('close');
-                          $("#bookClosed").get(0).play();
-                          map.prepare();
-                          player.update(characters.choices[characters.indekz]);
-                          player.stats.render();
-                          map.render();
-                          //gameConfig.createMap();                       
-                        }
-                    },
-            draggable: false,
-            resizable: false,
-            modal: true,
-            width: 800,
-            height: 650, 
-            closeOnEscape: false,
-            dialogClass: "no-close"
-            //position: ["right", "center"]
-            }
-      ); //creates the dialog page
-      return true;
-  },
-
-  selectRight: function(){
-     
-        $("#pageTurn").get(0).play();
-
-     characters.indekz++;
-
+    this.selectRight = function(){
+      $("#pageTurn").get(0).play();
+      characters.indekz++;
       if (typeof(characters.choices[characters.indekz])=='undefined') {
-
           characters.indekz = 0;         
           $('#character-selector-Page-avatar-name').html(characters.choices[characters.indekz].name);
           $('#character-selector-Page-avatar').css({"background":"url('"+characters.choices[characters.indekz].img+"')"});
@@ -290,47 +260,34 @@ var characters = {
             var div =  $("<div class='character-selector-Page-bonus-description'></div>");
             div.appendTo('#character-selector-Page-bonus-container');
             div.html(characters.choices[characters.indekz].bonus[i]);
-
           }
-            
-      
+
       } else {
           $('#character-selector-Page-avatar-name').html(characters.choices[characters.indekz].name);
           $('#character-selector-Page-avatar').css({"background":"url('"+characters.choices[characters.indekz].img+"')"});
           $('#character-selector-Page-avatar-description').html(characters.choices[characters.indekz].description);
-
           $('#character-selector-Page-bonus-container').empty();
-
           for (i = 0; i < characters.choices[characters.indekz].bonus.length; i++) {
-
             var div =  $("<div class='character-selector-Page-bonus-description'></div>");
             div.appendTo('#character-selector-Page-bonus-container');
             div.html(characters.choices[characters.indekz].bonus[i]);
-
           }
       }
-  },
+    } 
 
-  selectLeft: function(){
-    
-    $("#pageTurn").get(0).play();
-
-    characters.indekz--;
-
+    this.selectLeft = function(){
+      $("#pageTurn").get(0).play();
+      characters.indekz--;
       if (typeof(characters.choices[characters.indekz])=='undefined') { 
           characters.indekz = characters.choices.length - 1;  
           $('#character-selector-Page-avatar-name').html(characters.choices[characters.indekz].name);
           $('#character-selector-Page-avatar').css({"background":"url('"+characters.choices[characters.indekz].img+"')"});
           $('#character-selector-Page-avatar-description').html(characters.choices[characters.indekz].description);
-
           $('#character-selector-Page-bonus-container').empty();
-           
           for (i = 0; i < characters.choices[characters.indekz].bonus.length; i++) {
-
             var div =  $("<div class='character-selector-Page-bonus-description'></div>");
             div.appendTo('#character-selector-Page-bonus-container');
             div.html(characters.choices[characters.indekz].bonus[i]);
-
           }
 
       } else {
@@ -338,16 +295,75 @@ var characters = {
           $('#character-selector-Page-avatar').css({"background":"url('"+characters.choices[characters.indekz].img+"')"});
           $('#character-selector-Page-avatar-description').html(characters.choices[characters.indekz].description);
           $('#character-selector-Page-bonus-container').empty();
-           
           for (i = 0; i < characters.choices[characters.indekz].bonus.length; i++) {
-
             var div =  $("<div class='character-selector-Page-bonus-description'></div>");
             div.appendTo('#character-selector-Page-bonus-container');
             div.html(characters.choices[characters.indekz].bonus[i]);
-
           }
       }
+    }
+
+    document.getElementById("character-selector-Page-left-arrow").addEventListener("click", characters.selectLeft, false);
+    document.getElementById("character-selector-Page-right-arrow").addEventListener("click", characters.selectRight, false);
+
+    $('#character-selector-Page-avatar-name').html(characters.choices[characters.indekz].name);
+    $('#character-selector-Page-avatar').css({"background":"url('"+characters.choices[characters.indekz].img+"')"});
+    $('#character-selector-Page-avatar-description').html(characters.choices[characters.indekz].description);
+
+    for (i = 0; i < characters.choices[characters.indekz].bonus.length; i++) {
+      var div =  $("<div class='character-selector-Page-bonus-description'></div>");
+      div.appendTo('#character-selector-Page-bonus-container');
+      div.html(characters.choices[characters.indekz].bonus[i]);
+    }
+     
+    $('#character-selector-Page')
+          .dialog(
+              {buttons: 
+                  {'Start!' : function(){
+                      $(this).dialog('close');
+                        $("#bookClosed").get(0).play();
+                        map.prepare();
+                        player.update(characters.choices[characters.indekz]);
+                        player.stats.render();
+                        map.render();
+                        //gameConfig.createMap();                       
+                      }
+                  },
+          draggable: false,
+          resizable: false,
+          modal: true,
+          width: 800,
+          height: 650, 
+          closeOnEscape: false,
+          dialogClass: "no-close"
+          //position: ["right", "center"]
+          }
+    ); //creates the dialog page
+    return true;
+  },
+
+  checkForMagicBonus: function(){ //check if player is elibile for a magic related bonus at level up.
+    console.log('checkForMagicBonus() launched');
+    if (player.character.getsBonusBookOnLevel > 0){
+      return true;
+    
+    } else if (player.character.getFreeRndSpellEveryNLevel > 0) {  
+      return true;
+    
+    } else if (player.character.getFreeSpellEveryNLevel > 0) {
+      return true;
+    
+    }else {
+      console.log('player will not be getting bonus book as a bonus some time in the game');
+      return false;
+    }
+
+
+  
   }
+
+
+
 
 };
 
