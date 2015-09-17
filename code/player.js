@@ -1,8 +1,7 @@
 
 var player = {
 
-	character: {
-
+	character: { //attributes of a selected character saved here
 
 	},
 
@@ -74,7 +73,7 @@ var player = {
         	$('#cityEntranceIndicator').css({"background":"url(img/stats/redcross.png)"});
 		}
 
-		gameConfig.experience.increase(500);
+		gameConfig.experience.increase(200);
 		gameConfig.turn.nextTurn();
 	},
 

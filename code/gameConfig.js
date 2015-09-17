@@ -156,49 +156,35 @@ var gameConfig = {
 
     	increase: function(value){
 	    		console.log('gameConfig.level.increase() launched');
+    		
     		if (player.stats.level.counter < player.stats.level.max){
 	    		player.stats.level.counter += value;
 	    		$('#statsLevelCounter').html(player.stats.level.counter);
 	    		$('#experienceNextLevel').html(gameConfig.experience.getNextLevelThreshold());
-	    		
-	    		if (characters.checkForMagicBonus()){
-	    			console.log('Player may be eligible for a magic bonus');	//start magic bonus dialogue(). In the end of the dialogie call startLevelUpDialog();
-	    			this.startMagicBonusAtLvlUpDialog();
+
+	    		if (player.stats.level.counter === player.character.getsBonusBookOnLevel) {
+	    			spellBook.getAsBonus();
+
+	    		} else if (player.stats.level.counter % player.character.getFreeRndSpellEveryNLevel === 0){
+	    			console.log('start dialog - player gets a random unknown spell for free'); //launch gameConfig.startLevelSkillDialog(); when dialog is closed
+					spellBook.getBonusSpell();
+	    			//console.log(spellBook.giveRandomSpell());
+
+	    		} else if (player.stats.level.counter % player.character.getFreeSpellEveryNLevel === 0) {
+	    			console.log('start dialog - player gets to choose a free spell'); //launch purchase spel page with attribute 0 (fee). Modify existing function!. launch gameConfig.startLevelSkillDialog(); when dialog closed
 
 	    		} else {
-					console.log('Player not eligible for a magic bonus');
-	    			this.startLevelUpDialog();
-	    		}
-	    	
+	    			console.log('player does not qualify for any magic bonuses just yet');
+	    			gameConfig.level.startLevelSkillDialog();
+	    		}		
 
     		} else {
-    			//do nothing - max player level reached - introduce this check in expericne.increase()
+    			//do nothing - max player level reached.
     		}
     	},
 
 
-    	startMagicBonusAtLvlUpDialog: function(){
-    		console.log('startMagicBonusAtLvlUpDialog() started');
-    		
-    		if (player.stats.level.counter === player.character.getsBonusBookOnLevel) {
-    			console.log('start dialog - player gets free spellbook dialog'); //launch gameConfig.level.startLevelUpDialog(); when dialog is closed
-    			spellBook.equip();
-
-    		} else if (player.stats.level.counter % player.character.getFreeRndSpellEveryNLevel === 0){
-    			console.log('start dialog - player gets a random free spell'); //launch gameConfig.level.startLevelUpDialog(); when dialog is closed
-
-    		} else if (player.stats.level.counter % player.character.getFreeSpellEveryNLevel === 0) {
-    			console.log('start dialog - player gets to choose a free spell'); //launch purchase spel page with attribute 0 (fee). Modify existing function!. launch gameConfig.level.startLevelUpDialog(); when dialog closed
-
-    		} else {
-    			console.log('player does not qualify for any magic bonuses just yet');
-    			gameConfig.level.startLevelUpDialog();
-    		}		
-
-    	},
-
-
-    	startLevelUpDialog: function(){
+    	startLevelSkillDialog: function(){
     		$("#levelup").get(0).play();
 
     		this.getBonusArchery  = function(){			    

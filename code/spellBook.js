@@ -31,6 +31,84 @@ var spellBook = {
         } 
     },
 
+
+    getBonusSpell: function(){
+
+        $("#chant1").get(0).play();
+
+
+        var spellToGive = spellBook.giveRandomSpell();
+        var name = spellToGive.name;
+        var known = spellToGive.known;
+        console.log(name);
+        console.log(known);
+
+        if (known) {
+            $("#getBonusItemPage-message").text('It looks like you already know the ' +name+ ' spell, you have not learnt anything new this time.'); 
+
+        } else if (known != true) {
+            $("#getBonusItemPage-message").text('A new spell - ' +name+ ' - was added to your Spell Book.'); 
+        
+        } else {
+            $("#getBonusItemPage-message").text('There are no spells available for learning for you this time.'); 
+        
+        }
+        $("#getBonusItemPage-header").text('Time to learn a spell!'); 
+        $('#getBonusItemPage-image').css("background-image", "url(img/dialogs/spellbook.png)"); 
+
+        $('#getBonusItemPage')
+            .dialog(
+                {buttons: 
+                    {
+                     'Right' :function(){
+                        $(this).dialog('close');
+                        gameConfig.level.startLevelSkillDialog();
+                    },
+                },
+            draggable: false,
+            resizable: false,
+            modal: true,
+            width: 550,
+            height: 530,
+            closeOnEscape: false,
+            dialogClass: "no-close"
+            //position: ["right", "center"]
+            }
+        ); //creates the dialog
+
+
+    },
+
+
+    getAsBonus: function(){
+        console.log('spellbook.receiveAsBonus() launched');
+        spellBook.equip();
+        $("#chant1").get(0).play();
+        $("#getBonusItemPage-header").text('You get ' +spellBook.name+  '!'); 
+        $('#getBonusItemPage-image').css("background-image", "url(img/dialogs/spellbook.png)");  
+        $("#getBonusItemPage-message").text('You have reached level ' + player.stats.level.counter + ' and receive it as a bonus.'); //calling a function which will generate event title using the argument   
+
+        $('#getBonusItemPage')
+            .dialog(
+                {buttons: 
+                    {
+                     'Great!' :function(){
+                        $(this).dialog('close');
+                        gameConfig.level.startLevelSkillDialog();
+                    },
+                },
+            draggable: false,
+            resizable: false,
+            modal: true,
+            width: 550,
+            height: 530,
+            closeOnEscape: false,
+            dialogClass: "no-close"
+            //position: ["right", "center"]
+            }
+        ); //creates the dialog
+    },
+
     iconClicked: function(){
          $("#spellBookOpen").get(0).play();
          spellBook.drawPage();
@@ -142,7 +220,11 @@ var spellBook = {
     },
 
 
+    //randomSpellName: null,
+
     giveRandomSpell: function(){
+        
+
         var availableSpells = [];
         
         for (i=0; i<spells.length; i++){
@@ -166,15 +248,33 @@ var spellBook = {
                 }
             }
 
-            if (n > 0) {
-                console.log('player knows ' +randomSpell.name);                
-            } else {
+            if (n > 0) { //chosen spell is already known to player
+                console.log('player knows ' +randomSpell.name);
+                var name = randomSpell.name;
+                var known = 1;
+                
+                return {
+                    name: name,
+                    known: known
+                };
+
+
+            } else { //chosen spell is not known to player
                 console.log('player does not know ' +randomSpell.name);
                 spellBook.spells.push(randomSpell);
                 console.log('Random spell is: ' + randomSpell.name + '! Player now has ' + spellBook.spells.length + ' spell(s) in the book');
+                spellBook.randomSpellName = randomSpell.name;
+                var name = randomSpell.name;
+                var known = 0;
+
+                return {
+                    name: name,
+                    known: known
+                };
             }
         }  else {
-            console.log('Player does not qualify for any spells');
+            console.log('Player currently does not qualify for any spells'); 
+            return false;
         }   
     },
 

@@ -237,3 +237,72 @@
         }
 
 
+#getBonusItemPage { 
+ display: none;
+ width: 500px;
+ height: 400px;
+ border: 0px dotted red;
+ overflow-y: hidden; 
+
+
+}
+    #getBonusItemPage-dialog-background {
+      position: relative;
+      background-image: url(../img/dialogs/dialogue_background.png);
+      background-size: 100% 100%;
+      background-repeat: no-repeat;
+      width: 530px;
+      height: 400px;
+      margin-left: -10px;
+      margin-top: 0px; 
+      border: 0px dotted blue;
+    }
+        
+        #getBonusItemPage-header {
+            position: relative;
+            width: 350px;
+            font-family: cursive;
+            font-style: italic;
+            font-size: 32px;
+            text-align: center; 
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            top: 20px;
+            border: 0px dotted red;
+        }
+
+        #getBonusItemPage-image {
+                position: relative;
+                width: 200px;
+                height: 200px;
+                background-image: 0;
+                background-size: 100% 100%;
+                background-repeat: no-repeat;
+                margin-left: auto;
+                margin-right: auto;
+                border: 0px solid green;
+                top: 30px;
+       }
+
+
+        #getBonusItemPage-message {
+            position: relative;
+            width: 420px;
+            font-family: cursive;
+            font-style: italic;
+            font-size: 18px;
+            /* text-align: center; */
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            top: 50px;
+            border: 0px dotted blue;
+        }
+
+
+
+      
+
+
+

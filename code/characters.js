@@ -342,28 +342,5 @@ var characters = {
     return true;
   },
 
-  checkForMagicBonus: function(){ //check if player is elibile for a magic related bonus at level up.
-    console.log('checkForMagicBonus() launched');
-    if (player.character.getsBonusBookOnLevel > 0){
-      return true;
-    
-    } else if (player.character.getFreeRndSpellEveryNLevel > 0) {  
-      return true;
-    
-    } else if (player.character.getFreeSpellEveryNLevel > 0) {
-      return true;
-    
-    }else {
-      console.log('player will not be getting bonus book as a bonus some time in the game');
-      return false;
-    }
-
-
-  
-  }
-
-
-
-
 };
 
