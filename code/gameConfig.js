@@ -166,12 +166,12 @@ var gameConfig = {
 	    			spellBook.getAsBonus();
 
 	    		} else if (player.stats.level.counter % player.character.getFreeRndSpellEveryNLevel === 0){
-	    			console.log('start dialog - player gets a random unknown spell for free'); //launch gameConfig.startLevelSkillDialog(); when dialog is closed
+	    			console.log('start dialog - player gets a random unknown spell for free'); 
 					spellBook.getBonusSpell();
-	    			//console.log(spellBook.giveRandomSpell());
 
 	    		} else if (player.stats.level.counter % player.character.getFreeSpellEveryNLevel === 0) {
 	    			console.log('start dialog - player gets to choose a free spell'); //launch purchase spel page with attribute 0 (fee). Modify existing function!. launch gameConfig.startLevelSkillDialog(); when dialog closed
+					spellBook.chooseBonusSpell();
 
 	    		} else {
 	    			console.log('player does not qualify for any magic bonuses just yet');
@@ -385,20 +385,49 @@ var gameConfig = {
 
     	},
 
-
-    	learnSpell: function(spell){
-			if (gameConfig.experience.checkBalance(spell.price)){
-				console.log('sufficient experience');
-				gameConfig.experience.decrease(spell.price);
+    	learnSpell: function(spell, isFree){
+    		if (isFree) {
+				console.log('spell is free');
 				spellBook.spells.push(spell);
 				$("#spellLearnt").get(0).play();
-				spellBook.drawLearnSpellPage();
-			} else {
-				gameConfig.messages.insufficientExp(spell);				
-			}		
+				$("#spellPurchasePage").dialog('close');
+
+				$("#successSomethingPage-message").empty();
+				$("#successSomethingPage-message").text('The ' + spell.name + ' spell was added to your Book of Spells for free.');  
+				$('#successSomethingPage')
+				.dialog(
+						{buttons: 
+			 			{
+			 			 'OK' :function(){
+			    			$(this).dialog('close');
+
+			    		 
+			       		},
+					},
+					draggable: false,
+					resizable: false,
+					modal: true,
+					width: 360,
+					height: 420,
+					closeOnEscape: true,
+					dialogClass: "no-close"
+					}
+				); //creates the dialog
+
+    		} else {
+				console.log('spelbook is not free to learn');
+				if (gameConfig.experience.checkBalance(spell.price)){
+					console.log('sufficient experience');
+					gameConfig.experience.decrease(spell.price);
+					spellBook.spells.push(spell);
+					$("#spellLearnt").get(0).play();
+					spellBook.drawLearnSpellPage(0);				
+				} else {
+					gameConfig.messages.insufficientExp(spell);				
+				}		
+    		}
 		}		
-
-
+    
     },
 
 

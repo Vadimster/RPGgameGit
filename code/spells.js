@@ -12,8 +12,9 @@ var spells = [
 		range: 2,
 		duration: null,
 
-		learn: function(){
-			gameConfig.experience.learnSpell(this);
+		learn: function(isFree){
+			gameConfig.experience.learnSpell(this, isFree);
+
 		}
 
 	},
@@ -30,8 +31,8 @@ var spells = [
 		range: null,
 		duration: 2,
 
-		learn: function(){
-			gameConfig.experience.learnSpell(this);
+		learn: function(isFree){
+			gameConfig.experience.learnSpell(this, isFree);
 		}
 	},
 
@@ -45,8 +46,8 @@ var spells = [
 		baseDamage: 3,
 		range: 1,
 		duration: null,
-		learn: function(){
-			gameConfig.experience.learnSpell(this);
+		learn: function(isFree){
+			gameConfig.experience.learnSpell(this, isFree);
 		}
 	}
 

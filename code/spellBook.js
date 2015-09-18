@@ -32,10 +32,43 @@ var spellBook = {
     },
 
 
-    getBonusSpell: function(){
-
+    chooseBonusSpell: function(){ //choose a free spell
         $("#chant1").get(0).play();
 
+        $('#getBonusItemPage-image').css("background-image", "url(img/dialogs/spellbook.png)"); 
+        $("#getBonusItemPage-header").text('Time to learn a spell!'); 
+        $("#getBonusItemPage-message").text('You have reached level ' + player.stats.level.counter + ' . You now can choose any spell available to you for free.'); 
+
+        $('#getBonusItemPage')
+            .dialog(
+                {buttons: 
+                    {
+                     'Choose a spell' :function(){
+                        $(this).dialog('close');
+                        spellBook.drawLearnSpellPage(1);
+                    },
+                    'Skip bonus' : function(){
+                        $(this).dialog('close');
+                        gameConfig.level.startLevelSkillDialog();
+                    }
+                },
+            draggable: false,
+            resizable: false,
+            modal: true,
+            width: 550,
+            height: 530,
+            closeOnEscape: false,
+            dialogClass: "no-close"
+            //position: ["right", "center"]
+            }
+        ); //creates the dialog
+
+    },
+
+
+
+    getBonusSpell: function(){ //get a random spell
+        $("#chant1").get(0).play();
 
         var spellToGive = spellBook.giveRandomSpell();
         var name = spellToGive.name;
@@ -280,11 +313,12 @@ var spellBook = {
 
     learnSpellPageClicked: function(){
             $("#spellBookOpen").get(0).play();
-            spellBook.drawLearnSpellPage();
+            spellBook.drawLearnSpellPage(0);
     },
 
 
-    drawLearnSpellPage: function() {
+    drawLearnSpellPage: function(spellsAreFree) {
+
         $('#spellPurchasePage')
             .dialog(
                 {buttons: 
@@ -337,9 +371,19 @@ var spellBook = {
                 container.prop('title', 'Click on this spell to learn it');
                 container.appendTo('#spellbook-purchasespell-all-spells-container');
                 container.get(0).obj = spells[j]; //link DOM element to an object
-                container.click(function(){
-                    this.obj.learn();
-                }); 
+                
+                if(spellsAreFree){
+                    container.click(function(){
+                        this.obj.learn(1);
+                    });                 
+                } else {
+                    container.click(function(){
+                        this.obj.learn(0);
+                    });                 
+                }
+
+
+
 
                 spellname.appendTo(container);
                 spellname.html(spells[j].name);                                                         
