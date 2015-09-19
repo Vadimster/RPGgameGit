@@ -36,6 +36,13 @@ var gameConfig = {
     },
 
 
+    bonus: {
+
+    	spellLevel: player.stats.level.counter + Math.floor(player.skills.magic.counter/2) //determines which spells are available for learning. Player magic skill is rounded down
+
+    },
+
+
     save: {
     	checkBalance: function(value){
 	        if (player.stats.save.counter >= value) {

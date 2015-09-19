@@ -252,16 +252,13 @@ var spellBook = {
         }
     },
 
-
-    //randomSpellName: null,
-
     giveRandomSpell: function(){
         
 
         var availableSpells = [];
         
         for (i=0; i<spells.length; i++){
-            if (spells[i].level <= player.stats.level.counter){ //check for qualifying spells
+            if (spells[i].level <= gameConfig.bonus.spellLevel){ //check for qualifying spells
                 availableSpells.push(spells[i]);
             }       
         }
@@ -358,7 +355,7 @@ var spellBook = {
         
             var n = this.myIndexOf(spells[j]);
 
-            if (n < 0) { // spell is not known
+            if (n < 0 && spells[j].level <= gameConfig.bonus.spellLevel) { // spell is not known and player;s level sufficient to learn it 
                 var container = $("<div class='purchasespell-spell-container'></div>");
                 var spellname = $("<div class='purchasespell-spell-name'></div>");
                 var spellprice = $("<div class='purchasespell-spell-price'></div>");
@@ -407,7 +404,7 @@ var spellBook = {
                 spelldescription.html(spells[j].description);
 
             } else {
-                console.log(spells[j].name + ' is already known to player');
+                console.log(spells[j].name + ' is either already known to player or not available yet due to its high level');
 
             }            
 
