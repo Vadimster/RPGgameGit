@@ -20,23 +20,26 @@ var city = {
 
 	onClick: function(){ //city icon clicked
 
-		if (city.visited) {
-			this.createPage();
+		if (player.isOnCityTile()){
+			city.drawPage();	
 		} else {
-			cityEntranceErrorPage();
+			console.log('Player is NOT on city tile');
 		}
 	},
 
 
-	createPage: function(){
+	drawPage: function(){
 
-        $('.bagpack').empty();
-        $('#cityPage-market-container').empty();
+       $('#backgroundmusic').get(0).pause();  //alternatively var audio = $('#backgroundmusic')[0];  audio.pause();
+	   $('#city-backgroundmusic').get(0).play();
 
-	    city.pageOpened = true;
+        //$('.bagpack').empty();
+        //$('#cityPage-market-container').empty();
 
-	   	inventory.filterAndDraw('bagpack', 'all'); //draws bagpack
-	   	inventory.filterAndDraw('market', 'all'); //draws market
+	    //city.pageOpened = true;
+
+	   	//inventory.filterAndDraw('bagpack', 'all'); //draws bagpack
+	   	//inventory.filterAndDraw('market', 'all'); //draws market
 
 
 			$('#cityPage')
@@ -44,7 +47,9 @@ var city = {
 	      			{buttons: 
 	         			{
 	         			 'Leave city' :function(){
-	            			city.pageOpened  = false;
+	            			//city.pageOpened  = false;
+	            			$('#city-backgroundmusic').get(0).pause();
+	            			$('#backgroundmusic').get(0).play();
 	            			$(this).dialog('close');
             		 
 	               		}
@@ -54,7 +59,7 @@ var city = {
 	       		resizable: false,
 	       		modal: true,
 	      		width: 1000,
-	       		height:650,
+	       		height:670,
 	       		closeOnEscape: true,
 	       		dialogClass: "no-close"
 	       		//position: ["right", "center"]

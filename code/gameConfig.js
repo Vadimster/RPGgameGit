@@ -22,6 +22,14 @@ var gameConfig = {
 	},
 
 
+	music: {
+		playBGroundMusic: function(){
+			console.log('music to start');
+			$("#backgroundmusic").get(0).play();		
+		}
+	},
+
+
 
     map: {     
         yHeight: 9,
@@ -196,6 +204,7 @@ var gameConfig = {
 
     		this.getBonusArchery  = function(){			    
 			    if(player.skills.archery.counter < player.skills.archery.max){
+    				$("#spellLearnt").get(0).play();
 			    	player.skills.archery.counter++;
 			    	$(this).closest('.ui-dialog-content').dialog('close');
 	            	gameConfig.experience.increase(0);	 
@@ -207,6 +216,7 @@ var gameConfig = {
 
     		this.getBonusMelee  = function(){
 			    if(player.skills.melee.counter < player.skills.melee.max){
+    				$("#spellLearnt").get(0).play();
 			    	player.skills.melee.counter++;
 			    	$(this).closest('.ui-dialog-content').dialog('close');
 	            	gameConfig.experience.increase(0);	 
@@ -218,6 +228,7 @@ var gameConfig = {
     		
     		this.getBonusMagic  = function(){
 			    if(player.skills.magic.counter < player.skills.magic.max){
+    				$("#spellLearnt").get(0).play();
 			    	player.skills.magic.counter++;
 			    	$(this).closest('.ui-dialog-content').dialog('close');
 	            	gameConfig.experience.increase(0);	 
@@ -229,6 +240,7 @@ var gameConfig = {
 
     		this.getBonusDefence  = function(){
 			    if(player.skills.defence.counter < player.skills.defence.max){
+    				$("#spellLearnt").get(0).play();
 			    	player.skills.defence.counter++;
 			    	$(this).closest('.ui-dialog-content').dialog('close');
 	            	gameConfig.experience.increase(0);	 
@@ -240,6 +252,7 @@ var gameConfig = {
 
     		this.getBonusStealth  = function(){
 			    if(player.skills.stealth.counter < player.skills.stealth.max){
+    				$("#spellLearnt").get(0).play();
 			    	player.skills.stealth.counter++;
 			    	$(this).closest('.ui-dialog-content').dialog('close');
 	            	gameConfig.experience.increase(0);	 
@@ -443,6 +456,8 @@ var gameConfig = {
 		if(targetTile.terrainType === 'city'){
 			console.log('Entered the city: ' +targetTile.cityName);
 			player.move(targetTile);
+			city.drawPage();
+		
 		} else {
 	    	if (targetTile.hasBonus) {
 	    		console.log('Tile has bonus. Bonus is: ' + targetTile.bonusType + ' Will need to generate enemy');
@@ -678,6 +693,7 @@ function continueGame() {
         } 
 		player.stats.render();	
        	map.render();
+       	gameConfig.music.playBGroundMusic();
 
        	console.log('Game loaded successfully');
 

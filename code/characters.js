@@ -326,7 +326,7 @@ var characters = {
                         player.update(characters.choices[characters.indekz]);
                         player.stats.render();
                         map.render();
-                        //gameConfig.createMap();                       
+                        gameConfig.music.playBGroundMusic();
                       }
                   },
           draggable: false,

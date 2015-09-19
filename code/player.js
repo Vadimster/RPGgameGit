@@ -73,7 +73,7 @@ var player = {
         	$('#cityEntranceIndicator').css({"background":"url(img/stats/redcross.png)"});
 		}
 
-		gameConfig.experience.increase(200);
+		//gameConfig.experience.increase(0);
 		gameConfig.turn.nextTurn();
 	},
 
@@ -249,7 +249,7 @@ var player = {
 
 			    var statsCity = $('<div id="statsCity"></div>');
 		            statsCity.appendTo('#stats-container');
-			        document.getElementById("statsCity").addEventListener("click", test, false);
+			        document.getElementById("statsCity").addEventListener("click", city.onClick, false);
 					    var statsCityIcon = $('<div id="statsCityIcon"></div>');
 			            	statsCityIcon.appendTo('#statsCity');
 						   		var cityEntranceIndicator = $('<div id="cityEntranceIndicator"></div>');

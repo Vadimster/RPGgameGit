@@ -11,6 +11,7 @@
 		<link rel="stylesheet" type="text/css" href="styles/character-selector-page.css" />
 		<link rel="stylesheet" type="text/css" href="styles/levelup-dialog.css" />
 		<link rel="stylesheet" type="text/css" href="styles/spellbook.css" />
+		<link rel="stylesheet" type="text/css" href="styles/city.css" />
 
 
 	</HEAD>
@@ -27,6 +28,8 @@
 
 <!-- sounds -->
 <!-- interface -->
+	<audio id="backgroundmusic" src="sounds/interface/backgroundmusic.mp3"></audio>
+	<audio id="city-backgroundmusic" src="sounds/interface/city-background.mp3"></audio>
 	<audio id="pageTurn" src="sounds/interface/pageturn.mp3"></audio>
 	<audio id="buttonClick" src="sounds/interface/button_clicked.mp3"></audio>
 	<audio id="bookClosed" src="sounds/interface/book_closed.mp3"></audio>
@@ -49,7 +52,7 @@
 
 
 
-	<div id ="version">version 0.4.18</div>
+	<div id ="version">version 0.4.19</div>
 
 <!-- Dialogues -->
 	  <div id="character-selector-Page" class="dialog"> 
@@ -140,6 +143,60 @@
  	 	<div id="spellbook-purchasespell-all-spells-container"></div>
  	 </div>
  </div>
+
+
+
+<div id="cityPage" class= "dialog">
+ 	<div id="cityPage-background"> 
+
+ 		<div class="itemInfoContainer"></div>
+
+ 		<div id="cityPage-cityName"></div>
+
+ 		<div id="cityPage-market-container"></div>
+
+		<div id="cityPage-market-filters-container">
+ 			
+ 		<!-- 
+ 			<div class="cityFilterItem" id="cityPage-market-filters-budget" onclick="inventory.filterAndDraw('market', 'budget')" title="Filter by size of your purse">Budget</div>
+ 			<div class="cityFilterItem" id="cityPage-market-filters-all" onclick="inventory.filterAndDraw('market', 'all')">All items</div>
+ 			<div class="cityFilterItem" id="cityPage-market-filters-melee" onclick="inventory.filterAndDraw('market', 'melee')">Melee weapons</div>
+ 			<div class="cityFilterItem" id="cityPage-market-filters-range" onclick="inventory.filterAndDraw('market', 'range')">Range weapons</div>
+ 			<div class="cityFilterItem" id="cityPage-market-filters-armor" onclick="inventory.filterAndDraw('market', 'armor')">Armor</div>
+ 			<div class="cityFilterItem" id="cityPage-market-filters-shields" onclick="inventory.filterAndDraw('market', 'shield')">Shields</div>
+ 			<div class="cityFilterItem" id="cityPage-market-filters-arrows" onclick="inventory.filterAndDraw('market', 'arrow')">Arrows</div>
+ 			<div class="cityFilterItem" id="cityPage-market-filters-potions" onclick="inventory.filterAndDraw('market', 'potion')">Potions</div>
+ 			<div class="cityFilterItem" id="cityPage-market-filters-artefacts" onclick="inventory.filterAndDraw('market', 'artefact')">Artefacts</div>
+ 		
+		-->
+ 		</div>
+
+ 		<div id="cityPage-bagpack-container"></div> <!-- contains items which are available for trade former id="cityPage-bagpack-container" -->
+ 	
+ 		<div id="cityPage-filters-container">
+ 			
+ 		<!-- 
+ 			<div class="cityFilterItem" id="cityPage-filters-all" onclick="inventory.filterAndDraw('bagpack', 'all')">All items</div>
+ 			<div class="cityFilterItem" id="cityPage-filters-melee" onclick="inventory.filterAndDraw('bagpack', 'melee')">Melee weapons</div>
+ 			<div class="cityFilterItem" id="cityPage-filters-range" onclick="inventory.filterAndDraw('bagpack', 'range')">Range weapons</div>
+ 			<div class="cityFilterItem" id="cityPage-filters-armor" onclick="inventory.filterAndDraw('bagpack', 'armor')">Armor</div>
+ 			<div class="cityFilterItem" id="cityPage-filters-shields" onclick="inventory.filterAndDraw('bagpack', 'shield')">Shields</div>
+ 			<div class="cityFilterItem" id="cityPage-filters-arrows" onclick="inventory.filterAndDraw('bagpack', 'arrow')">Arrows</div>
+ 			<div class="cityFilterItem" id="cityPage-filters-potions" onclick="inventory.filterAndDraw('bagpack', 'potion')">Potions</div>
+ 			<div class="cityFilterItem" id="cityPage-filters-artefacts" onclick="inventory.filterAndDraw('bagpack', 'artefact')">Artefacts</div>
+ 		-->
+
+ 		</div>
+
+ 	</div>
+ </div>
+
+
+
+
+
+
+
 
 <!-- Dialogues end -->
 

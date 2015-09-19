@@ -31,7 +31,6 @@ var spellBook = {
         } 
     },
 
-
     chooseBonusSpell: function(){ //choose a free spell
         $("#chant1").get(0).play();
 
