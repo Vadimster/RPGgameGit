@@ -32,6 +32,8 @@ var city = {
 
        $('#backgroundmusic').get(0).pause();  //alternatively var audio = $('#backgroundmusic')[0];  audio.pause();
 	   $('#city-backgroundmusic').get(0).play();
+	   $('#cityPage-cityName').text(map.tileBox[player.map.positionY][player.map.positionX].cityName);
+	   $('#cityPage-cityBanner').css("background-image", "url(img/dialogs/city/banners/" +map.tileBox[player.map.positionY][player.map.positionX].cityBanner+ ".png)");
 
         //$('.bagpack').empty();
         //$('#cityPage-market-container').empty();

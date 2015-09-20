@@ -39,14 +39,13 @@ var gameConfig = {
 		bonusArray: [1,1,1,0,0,0,0,0,0,0,0,0,0,0], //to increase chances of bonus being applied to a tile replace 0 with 1 in the array.
 
         cities: 5,
-        cityNames: ['Vadimgrad', 'Noobngrad', 'Dragonmoor', 'Stonehall', 'Zhbongrad', 'Summerston', 'Sageshore', 'Crystalcastle', 'Faymoor', 'Whitehedge']
-
+        cityNames: ['Vadimgrad', 'Noobngrad', 'Dragonmoor', 'Stonehall', 'Zhbongrad', 'Summerston', 'Sageshore', 'Crystalcastle', 'Faymoor', 'Whitehedge'],
+        cityBanners: ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j']
     },
 
 
     bonus: {
-
-    	spellLevel: player.stats.level.counter + Math.floor(player.skills.magic.counter/2) //determines which spells are available for learning. Player magic skill is rounded down
+    	spellLevel: player.stats.level.counter + Math.floor(player.skills.magic.counter/2) //determines which spells are available for learning. Player magic skill is rounded down!
 
     },
 
@@ -688,7 +687,7 @@ function continueGame() {
         for(var i = 0; i < save.gameConfig.map.yHeight; i++){
             map.tileBox[i] = [];
             for(var j = 0; j < save.gameConfig.map.hWidth; j++){
-                map.tileBox[i][j] = new Tile(1, i, j, save.map.tileBox[i][j].divID, save.map.tileBox[i][j].terrainType, save.map.tileBox[i][j].terrain, save.map.tileBox[i][j].hasBonus, save.map.tileBox[i][j].bonusType, save.map.tileBox[i][j].cityName); //extracting information from save object and adding new tiles to map array.
+                map.tileBox[i][j] = new Tile(1, i, j, save.map.tileBox[i][j].divID, save.map.tileBox[i][j].terrainType, save.map.tileBox[i][j].terrain, save.map.tileBox[i][j].hasBonus, save.map.tileBox[i][j].bonusType, save.map.tileBox[i][j].cityName, save.map.tileBox[i][j].cityBanner ); //extracting information from save object and adding new tiles to map array.
             }        
         } 
 		player.stats.render();	

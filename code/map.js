@@ -23,10 +23,14 @@ var map =  {
             tile.terrain = 'city';
             tile.terrainType = 'city';
             tile.image = 'img/map/tiles/'+ tile.terrainType +'.png';
-            tile.cityName = gameConfig.map.cityNames[Math.floor(Math.random()*gameConfig.map.cityNames.length)]; //pass it to savegame funciton and retrieve later.
+            tile.cityName = gameConfig.map.cityNames[Math.floor(Math.random()*gameConfig.map.cityNames.length)]; 
             //will identify the used name and then remove it from the array.
             var a = gameConfig.map.cityNames.indexOf(tile.cityName);
-            gameConfig.map.cityNames.splice(a,1); 
+            gameConfig.map.cityNames.splice(a,1);
+
+            tile.cityBanner = gameConfig.map.cityBanners[Math.floor(Math.random()*gameConfig.map.cityBanners.length)]; //pass it to savegame funciton and retrieve later.
+            var b = gameConfig.map.cityBanners.indexOf(tile.cityBanner);
+            gameConfig.map.cityBanners.splice(b,1);
         }
     
 
@@ -85,7 +89,7 @@ var map =  {
 
 
 
-var Tile = function(tileFromSave, i, j, divID, terrainType, terrain, hasBonus, bonusType, cityName){
+var Tile = function(tileFromSave, i, j, divID, terrainType, terrain, hasBonus, bonusType, cityName, cityBanner){
     
 
     if (tileFromSave) {
@@ -99,6 +103,7 @@ var Tile = function(tileFromSave, i, j, divID, terrainType, terrain, hasBonus, b
         this.bonusType = bonusType;
         if(cityName !== null){
             this.cityName = cityName;
+            this.cityBanner = cityBanner;
         }
 
     } else {

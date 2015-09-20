@@ -21,23 +21,33 @@
 
     	#cityPage-cityName {
     		position: absolute;
-
     		height: 70px;
     		margin-top: 10px;
-    		margin-left: 380px;
-    		font-size: 45px;
+    		margin-left: 310px; /* 380px  */
+        font-size: 45px;
+        padding-left: 50px;
+        padding-right: 50px;
         font-family: cursive;
         font-style: Italic;
         color: black;
-        background-image: url(../img/messages/encounter_dialogue_background_400x500.png);
+        background-image: url(../img/dialogs/city/city-name-background.png);
         background-size: 100% 100%;
      		background-repeat: no-repeat;
-        border: 1px dotted red;
+        border: 0px dotted red;
 
     	}
 
+      #cityPage-cityBanner {
+          position: absolute;
+          width: 91px;
+          height: 150px;
+          border: 0px dotted yellow;
+          margin-top: 0px;
+          margin-left: 4px;
+          background-image: url(../img/dialogs/city/banners/b.png);
+          background-repeat: no-repeat;
 
- 
+        } 
 
       #cityPage-market-container {
           position: absolute;
@@ -45,7 +55,7 @@
           height: 205px;
           border: 1px dotted blue;
           margin-top: 100px;
-          margin-left: 140px;
+          margin-left: 100px;
           overflow-x: hidden;
           overflow-y: auto;
           white-space: nowrap; 
