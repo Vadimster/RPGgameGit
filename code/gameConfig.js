@@ -751,6 +751,7 @@ function continueGame() {
 		
 		gameConfig.turn.counter = save.gameConfig.turn.counter;
 		gameConfig.turn.day = save.gameConfig.turn.day;
+		gameConfig.inventory.bagpack = save.gameConfig.inventory.bagpack;
 		
 		spellBook.equipped = save.spellBook.equipped;
 		spellBook.spells = save.spellBook.spells;
