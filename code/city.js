@@ -2,47 +2,54 @@
 var city = {
 
 
-	visited: false, //indicates if player is currently on a city tile
-	pageOpened: false, //city page is opened
-
-	market: [], //contains all items available for purchase by player
-
-	
-	playerArrivedonTile : function(cityName){ //player arrives on city tile
-		
-		$('#cityPage-cityName').empty();
-		$('#cityPage-cityName').html(cityName);
-		
-		city.visited = true;
-		this.createPage();
-	},
+	//for MARKET see GameConfig.inventory
+	visited: false, //indicates if city page is opened to ensure proper handling of items in inventory
 
 
 	onClick: function(){ //city icon clicked
-
 		if (player.isOnCityTile()){
 			city.drawPage();	
+		
 		} else {
-			console.log('Player is NOT on city tile');
+			$('#insufficientSomethingPage-message').text('Your character has to be on a city tile in order to enter a city. You can trade items in cities.')
+			$('#insufficientSomethingPage')
+	    		.dialog(
+	      			{buttons: 
+	         			{
+	         			 'I see...' :function(){
+	            			$(this).dialog('close');           		 
+	               		}
+	           		},
+		   		draggable: false,
+	       		resizable: false,
+	       		modal: true,
+	      		width: 360,
+	       		height:420,
+	       		closeOnEscape: true,
+	       		dialogClass: "no-close"
+	       		}
+	       	); //creates dialog			
 		}
 	},
 
 
 	drawPage: function(){
 
+       city.visited = true;
+
        $('#backgroundmusic').get(0).pause();  //alternatively var audio = $('#backgroundmusic')[0];  audio.pause();
 	   $('#city-backgroundmusic').get(0).play();
 	   $('#cityPage-cityName').text(map.tileBox[player.map.positionY][player.map.positionX].cityName);
 	   $('#cityPage-cityBanner').css("background-image", "url(img/dialogs/city/banners/" +map.tileBox[player.map.positionY][player.map.positionX].cityBanner+ ".png)");
 
-        //$('.bagpack').empty();
+	   gameConfig.inventory.draw('bagpack');
+
+
         //$('#cityPage-market-container').empty();
 
-	    //city.pageOpened = true;
 
 	   	//inventory.filterAndDraw('bagpack', 'all'); //draws bagpack
 	   	//inventory.filterAndDraw('market', 'all'); //draws market
-
 
 			$('#cityPage')
 	    		.dialog(
@@ -52,6 +59,7 @@ var city = {
 	            			//city.pageOpened  = false;
 	            			$('#city-backgroundmusic').get(0).pause();
 	            			$('#backgroundmusic').get(0).play();
+	            			city.visited = false;
 	            			$(this).dialog('close');
             		 
 	               		}
@@ -62,14 +70,11 @@ var city = {
 	       		modal: true,
 	      		width: 1000,
 	       		height:670,
-	       		closeOnEscape: true,
+	       		closeOnEscape: false,
 	       		dialogClass: "no-close"
-	       		//position: ["right", "center"]
 	       		}
 	       	); //creates dialog
 	}
-
-
 
 
 };

@@ -24,8 +24,8 @@ var gameConfig = {
 
 	music: {
 		playBGroundMusic: function(){
-			console.log('music to start');
-			$("#backgroundmusic").get(0).play();		
+			console.log('music to start: gameConfig.music.playBGroundMusic()');
+			//$("#backgroundmusic").get(0).play();		
 		}
 	},
 
@@ -39,7 +39,7 @@ var gameConfig = {
 		bonusArray: [1,1,1,0,0,0,0,0,0,0,0,0,0,0], //to increase chances of bonus being applied to a tile replace 0 with 1 in the array.
 
         cities: 5,
-        cityNames: ['Vadimgrad', 'Noobngrad', 'Dragonmoor', 'Stonehall', 'Zhbongrad', 'Summerston', 'Sageshore', 'Crystalcastle', 'Faymoor', 'Whitehedge'],
+        cityNames: ['Vadimgrad', 'Glassrock', 'Dragonmoor', 'Stonehall', 'Greyfort', 'Summerston', 'Sageshore', 'Crystalcastle', 'Faymoor', 'Whitehedge'],
         cityBanners: ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j']
     },
 
@@ -521,6 +521,68 @@ var gameConfig = {
 	   		); //creates the dialog
 		}
 	
+	},
+
+
+	inventory: {
+
+		market: [],
+		bagpack: [],
+		active: [],
+		arrows: [],
+		helmetSlot: [],
+		shieldSlot: [],
+		breastplateSlot: [],
+		meleeSlot: [],
+		rangeSlot: [],
+	
+		draw: function(inventoryArray, itemType){
+			$('.'+inventoryArray).empty();
+            
+            gameConfig.inventory[inventoryArray].sort(function(a, b){ //sort array alphabetically
+              var nameA=a.name.toLowerCase(), nameB=b.name.toLowerCase()
+              if (nameA < nameB) //sort string ascending
+                  return -1 
+                  if (nameA > nameB)
+                      return 1
+                      return 0 //default return value (no sorting)
+             });    
+
+			if (itemType === undefined){ //array items will not be filtered
+	            for(i=0; i<gameConfig.inventory[inventoryArray].length; i++) {
+	              var item = gameConfig.inventory[inventoryArray][i];
+	              item.div = $("<div/>");
+	              item.div.addClass("inventoryItem");
+	              item.div.css({"background-color": item.backgroundColor});          
+	              item.div.css({"background-image":"url('"+item.icon+"')"});
+	              item.div.get(0).obj = item; //link DOM elemtn to an object
+	                item.div.click(function(){
+	                  console.log(this.obj);
+	                  this.obj.clicked();
+	                });
+	                item.div.mouseover(function() {
+	                  console.log(this.obj);
+	                  this.obj.getInfo();
+	                });
+	                item.div.mouseout(function() {
+	                  console.log(this.obj);
+	                  this.obj.mouseLeft();
+	                });
+
+	              item.div.appendTo('.'+inventoryArray);
+	            }
+
+
+			} else { //array items will be filtered
+
+
+
+			}
+
+
+		}
+
+
 	}
 
 

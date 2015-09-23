@@ -12,6 +12,9 @@
 		<link rel="stylesheet" type="text/css" href="styles/levelup-dialog.css" />
 		<link rel="stylesheet" type="text/css" href="styles/spellbook.css" />
 		<link rel="stylesheet" type="text/css" href="styles/city.css" />
+		<link rel="stylesheet" type="text/css" href="styles/character-page.css" />
+		<link rel="stylesheet" type="text/css" href="styles/items.css" />
+
 
 
 	</HEAD>
@@ -29,7 +32,7 @@
 <!-- sounds -->
 <!-- interface -->
 	<audio loop id="backgroundmusic" src="sounds/interface/backgroundmusic.mp3"></audio> <!-- add controls attribute to show audio player -->
-	<audio id="city-backgroundmusic" src="sounds/interface/city-background.mp3"></audio>
+	<audio loop id="city-backgroundmusic" src="sounds/interface/city-background.mp3"></audio>
 	<audio id="pageTurn" src="sounds/interface/pageturn.mp3"></audio>
 	<audio id="buttonClick" src="sounds/interface/button_clicked.mp3"></audio>
 	<audio id="bookClosed" src="sounds/interface/book_closed.mp3"></audio>
@@ -166,7 +169,7 @@
  			<div class="cityFilterItem" id="cityPage-market-filters-artefacts" onclick="inventory.filterAndDraw('market', 'artefact')">Artefacts</div>
 		-->
  		</div>
- 		<div id="cityPage-bagpack-container"></div> <!-- contains items which are available for trade former id="cityPage-bagpack-container" -->
+ 		<div id="cityPage-bagpack-container" class="bagpack"></div> <!-- contains items which are available for trade former id="cityPage-bagpack-container" -->
  		<div id="cityPage-filters-container">
  		<!-- 
  			<div class="cityFilterItem" id="cityPage-filters-all" onclick="inventory.filterAndDraw('bagpack', 'all')">All items</div>
@@ -183,14 +186,89 @@
  </div>
 
 
+<div id="characterDetails" class= "dialog">
+ 	<div id="characterDetails-background"> 
+
+	<div class="itemInfoContainer"></div>
 
 
+ 		<div id="characterDetails-equippedItems-container">
+ 			<div id="character-silhouette"></div>
+ 			<div id="weapon-slot-helmet" class="weapon-slot" title="click on a helmet in your bagpack to equip"></div>
+ 			<div id="weapon-slot-shield" class="weapon-slot" title="click on a shield in your bagpack to equip"></div>
+ 			<div id="weapon-slot-breastplate" class="weapon-slot" title="click on armor in your bagpack to equip"></div>
+ 			<div id="weapon-slot-melee" class="weapon-slot" title="click on a melee weapon in your bagpack to equip"></div>
+ 			<div id="weapon-slot-range" class="weapon-slot" title="click on a range weapon in your bagpack to equip"></div>
+ 	 	
+ 	 		
 
+ 			<div id="characterDetails-arrows-container-description" title="If you have a bow and enough arrows you can shoot in combat">5 x arrows</div>
+ 	 		<div id="characterDetails-arrows-container"></div> <!-- contains slots for arrows  -->
+ 	 		
 
+ 			<div id="characterDetails-activeItems-container-description" title="Items equipped here will add to your stats and/or may be used in combat">5 x items</div>
+ 	 		<div id="characterDetails-activeItems-container"></div> <!-- contains slots for active auxilary  -->
+
+		</div> <!-- Image of a warrior + aquipped items -->
+ 	 	
+
+ 	 	<div id="characterDetails-stats-container"> <!-- character stats & skills container  -->
+			<div id="statsLuck">
+				<div id="statsLuckIcon" title="Luck increases chances of favorable events happening to you, including dealing critical hits to enemies"></div>
+				<div id="luckCounter"></div>
+			</div>
+
+			<div id="statsMana">
+				<div id="statsManaIcon" title="Mana is used to cast spells in battle"></div>
+				<div id="manaCounter"></div>	
+			</div>
+			
+			<div id="skillsArchery">
+				<div id="skillsArcheryIcon" title="Qualify for better range weapons, hit more precisely and at longer distances as well as inflict more critical hits."></div>
+				<div id="skillsArcheryCounter"></div>	
+			</div>
+
+			<div id="skillsMelee">
+				<div id="skillsMeleeIcon" title="Qualify for better melee weapons, hit more often and inflict more critical hits."></div>
+				<div id="skillsMeleeCounter"></div>	
+			</div>
+
+			<div id="skillsMagic">
+				<div id="skillsMagicIcon" title="Qualify for more powerful spells; your spells will become stronger and consume less mana."></div>
+				<div id="skillsMagicCounter"></div>	
+			</div>
+
+			<div id="skillsDefence">
+				<div id="skillsDefenceIcon" title="If you have a sheld equipped the enemies will have lower chances to hit you in melee"></div>
+				<div id="skillsDefenceCounter"></div>	
+			</div>
+
+			<div id="skillsStealth">
+				<div id="skillsStealthIcon" title=" Stealth will help you to detect enemies and avoid them or act first in combat."></div>
+				<div id="skillsStealthCounter"></div>	
+			</div>
+		</div> <!-- character stats & skills container  -->
+
+ 		<div id="characterDetails-inventory-container-description" title="Your bagpack contains unlimited numer of items, but all of them will have an effect on your character or may be used in battle if equipped. Click on an item to equip or start an action">Bagpack:</div>
+ 	 	<div id="characterDetails-bagpack-container" class="bagpack"></div> <!-- contains inactive items in inventory  former characterDetails-inventory-container -->
+
+ 		<div id="characterDetails-filters-container">
+ 			<div class="filterItem" id="characterDetails-filters-all" onclick="inventory.filterAndDraw('bagpack', 'all')">All items</div>
+ 			<div class="filterItem" id="characterDetails-filters-melee" onclick="inventory.filterAndDraw('bagpack', 'melee')">Melee weapons</div>
+ 			<div class="filterItem" id="characterDetails-filters-range" onclick="inventory.filterAndDraw('bagpack', 'range')">Range weapons</div>
+ 			<div class="filterItem" id="characterDetails-filters-armor" onclick="inventory.filterAndDraw('bagpack', 'armor')">Armor</div>
+ 			<div class="filterItem" id="characterDetails-filters-shields" onclick="inventory.filterAndDraw('bagpack', 'shield')">Shields</div>
+ 			<div class="filterItem" id="characterDetails-filters-arrows" onclick="inventory.filterAndDraw('bagpack', 'arrow')">Arrows</div>
+ 			<div class="filterItem" id="characterDetails-filters-potions" onclick="inventory.filterAndDraw('bagpack', 'potion')">Potions</div>
+ 			<div class="filterItem" id="characterDetails-filters-artefacts" onclick="inventory.filterAndDraw('bagpack', 'artefact')">Artefacts</div>
+ 		</div>
+
+ 	</div>
+ </div>
 
 
 <!-- Dialogues end -->
-
+	<script type="text/javascript" src="code/weapons.js"></script>
 	<script type="text/javascript" src="code/player.js"></script>
 	<script type="text/javascript" src="code/gameconfig.js"></script>
 	<script type="text/javascript" src="code/spells.js"></script>
@@ -200,5 +278,7 @@
 	<script type="text/javascript" src="jquery-2.1.1.min.js"></script>
 	<script type="text/javascript" src="ui/jquery-ui/jquery-ui.min.js"></script>
 	<script type="text/javascript" src="code/map.js"></script>
+	<script type="text/javascript" src="code/characterprofile.js"></script>
+
 </BODY>
 </HTML>

@@ -48,6 +48,11 @@ var player = {
 		//gameConfig.gold.decrease(player, 1000000);
 		//gameConfig.save.increase(1);
 
+		gameConfig.inventory.bagpack.push(new Sword);
+		//gameConfig.inventory.bagpack.push(new Stick);
+		gameConfig.inventory.bagpack.push(new Sword);
+
+
 
 	},
 
@@ -164,8 +169,19 @@ var player = {
 
 		experience: {
 			counter: 0
-		},		
+		},
 
+		luck: {
+			counter: 0,
+			min: 0,
+			max: 5
+		},
+
+		mana: {
+			counter: 0,
+			min: 0,
+			max: 10
+		},
 
 		render: function(){ //creates stats div on the page and populates values
             $('#stats-container').empty();
@@ -245,7 +261,7 @@ var player = {
 			            var statsCharacterIcon = $('<div id="statsCharacterIcon"></div>');
 	        				statsCharacterIcon.css({"background":"url('"+player.class.image+"')"});
 			            	statsCharacterIcon.appendTo('#statsCharacter');
-			            	document.getElementById("statsCharacterIcon").addEventListener("click", test, false);
+			            	document.getElementById("statsCharacterIcon").addEventListener("click", characterProfile.drawPage, false);
 
 			    var statsCity = $('<div id="statsCity"></div>');
 		            statsCity.appendTo('#stats-container');

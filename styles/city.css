@@ -10,11 +10,12 @@
 
     #cityPage-background {
       position: relative;
+      top: 10px;
       background-image: url(../img/dialogs/city/city-background.jpg);
       background-size: 100% 100%;
       background-repeat: no-repeat;
       width: 950px;
-      height: 540px;
+      height: 530px;
       border-radius: 10px;
     }
 

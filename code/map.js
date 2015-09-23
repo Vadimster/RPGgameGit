@@ -188,6 +188,11 @@ var Tile = function(tileFromSave, i, j, divID, terrainType, terrain, hasBonus, b
         div.css({"background":"url('"+this.image+"')"});
         div.attr('id', 'tile' + divID);
         
+        if(this.terrain === 'city'){
+            div.prop('title', this.cityName);
+
+        }
+
         if(this.hasBonus){
             div.append('<img id="bonus'+this.divID+'" class="bonus" src="img/map/bonus/'+ this.bonusType +'.png" title = "'+this.bonusType+'" />');
         }

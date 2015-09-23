@@ -1,0 +1,476 @@
+
+.weapon-slot:hover{
+  background-color: #FF3300;
+  opacity: 1;
+}
+
+
+.bagpack {
+  
+}
+
+
+#characterDetails {
+  display: none;
+  position: relative;
+}
+
+
+    #characterDetails-background {
+      position: relative;
+      background-image: url(../img/dialogs/dialogue_background.png);
+      background-size: 100% 100%;
+      background-repeat: no-repeat;
+      width: 950px;
+      height: 540px;
+    }
+
+
+        #characterDetails-equippedItems-container {
+          position: absolute;
+          width: 360px;
+          height: 340px;
+          border-radius: 10px;
+          border: 1px solid grey;
+          margin-top: 25px;
+          margin-left: 65px;
+        }
+
+                 #character-silhouette {
+                    position: absolute;
+                    width: 150px;
+                    height: 300px;
+                    /* border: 1px dotted red; */
+                    margin-top: 45px;
+                    margin-left: 35px;
+                    background-image: url(../img/dialogs/characterprofile/character.png);
+                    background-repeat: no-repeat;
+                  }
+
+                #weapon-slot-helmet {
+
+                    position: absolute;
+                    width: 50px;
+                    height: 50px;
+                    border: 1px dotted red;
+                    margin-top: 10px;
+                    margin-left: 85px;
+                }
+
+                #weapon-slot-breastplate {
+
+                    position: absolute;
+                    width: 50px;
+                    height: 50px;
+                    border: 1px dotted red;
+                    margin-top: 110px;
+                    margin-left: 85px;
+                }
+
+                #weapon-slot-shield {
+
+                    position: absolute;
+                    width: 50px;
+                    height: 50px;
+                    border: 1px dotted red;
+                    margin-top: 180px;
+                    margin-left: 125px;
+                }
+
+
+                #weapon-slot-melee {
+
+                    position: absolute;
+                    width: 50px;
+                    height: 50px;
+                    border: 1px dotted red;
+                    margin-top: 45px;
+                    margin-left: 25px;
+                }
+
+                #weapon-slot-range {
+
+                    position: absolute;
+                    width: 50px;
+                    height: 50px;
+                    border: 1px dotted red;
+                    margin-top: 160px;
+                    margin-left: 15px;
+                }
+
+
+              #characterDetails-activeItems-container {
+                position: absolute;
+                width: 52px;
+                height: 260px;
+                border: 1px dotted green;
+                margin-top: 50px;
+                margin-left: 270px;
+              }
+              
+              #characterDetails-activeItems-container-description {
+                position: absolute;
+                width: 50px;
+                height: 15px;
+                /* border: 1px dotted blue; */
+                margin-top: 30px;
+                margin-left: 270px;
+                font-size: 12px;
+                font-family: cursive;
+                font-style: Italic;
+                color: black;
+
+              }
+
+
+
+              #characterDetails-arrows-container {
+                position: absolute;
+                width: 52px;
+                height: 260px;
+                border: 1px dotted green;
+                margin-top: 50px;
+                margin-left: 200px;
+              }
+              
+              #characterDetails-arrows-container-description {
+                position: absolute;
+                width: 55px;
+                height: 15px;
+                /* border: 1px dotted blue; */
+                margin-top: 30px;
+                margin-left: 200px;
+                font-size: 12px;
+                font-family: cursive;
+                font-style: Italic;
+                color: black;
+
+              }
+
+       #characterDetails-inventory-container-description {
+          position: absolute;
+          width: 80px;
+          height: 35px;
+          /* border: 1px dotted blue; */
+          margin-top: 400px;
+          margin-left: 40px;
+          font-size: 22px;
+          font-family: cursive;
+          font-style: Italic;
+          color: black;
+        }
+
+
+
+       #characterDetails-bagpack-container { /* originally characterDetails-inventory-container */
+          position: absolute;
+          width: 750px;
+          height: 68px;
+          border: 1px dotted red;
+          margin-top: 380px;
+          margin-left: 140px;
+          overflow-x: auto;
+          overflow-y: hidden;
+          white-space: nowrap; 
+        }
+
+
+
+
+
+
+
+
+     #characterDetails-stats-container {
+        position: absolute;
+        width: 400px;
+        height: 340px;
+        border: 1px dotted black;
+        margin-top: 25px;
+        margin-left: 450px;
+      }
+
+            #statsLuck{
+              position: relative;
+              left: 15px;
+              top: 10px;  
+              height: 60px;
+              width: 60px;
+              background-color: none;
+              border: 1px dotted grey;   
+            }
+                #statsLuckIcon{
+                  width: 40px;
+                  height: 30px;
+                  background-image: url("../img/dialogs/characterprofile/luck.png");
+                  margin-left: 15px;
+                  background-size: contain;
+                  background-repeat: no-repeat;
+                }
+
+                #luckCounter{
+                    margin-top: 5px;
+                    text-align: center;
+                }
+
+
+            #statsMana{
+              position: absolute;
+              left: 90px;  
+              top: 10px;
+              height: 60px;
+              width: 60px;
+              border: 1px dotted grey;   
+            }
+                #statsManaIcon{
+                  width: 35px;
+                  height: 30px;
+                  background-image: url("../img/dialogs/characterprofile/mana.png");
+                  margin-left: 15px;
+                  background-size: contain;
+                  background-repeat: no-repeat;
+                }
+
+               #manaCounter{
+                    margin-top: 5px;
+                    text-align: center;
+                }
+
+
+
+
+            #skillsArchery{
+              position: absolute;
+              left: 10px;  
+              top: 100px;
+              height: 80px;
+              width: 70px;
+              border: 1px dotted grey;   
+            }
+                #skillsArcheryIcon{
+                  width: 50px;
+                  height: 50px;
+                  background-image: url("../img/dialogs/characterprofile/skills/small_archery_skill.png");
+                  margin-left: 15px;
+                  background-size: contain;
+                  background-repeat: no-repeat;
+                }
+
+               #skillsArcheryCounter{
+                    margin-top: 5px;
+                    text-align: center;
+                }
+
+
+            #skillsMelee{
+              position: absolute;
+              left: 90px;  
+              top: 100px;
+              height: 80px;
+              width: 70px;
+              border: 1px dotted grey;   
+            }
+                #skillsMeleeIcon{
+                  width: 50px;
+                  height: 50px;
+                  background-image: url("../img/dialogs/characterprofile/skills/small_melee_skill.png");
+                  margin-left: 15px;
+                  background-size: contain;
+                  background-repeat: no-repeat;
+                }
+
+               #skillsMeleeCounter{
+                    margin-top: 5px;
+                    text-align: center;
+                }
+
+            #skillsMagic{
+              position: absolute;
+              left: 170px;  
+              top: 100px;
+              height: 80px;
+              width: 70px;
+              border: 1px dotted grey;   
+            }
+                #skillsMagicIcon{
+                  width: 50px;
+                  height: 50px;
+                  background-image: url("../img/dialogs/characterprofile/skills/small_magic_skill.png");
+                  margin-left: 15px;
+                  background-size: contain;
+                  background-repeat: no-repeat;
+                }
+
+               #skillsMagicCounter{
+                    margin-top: 5px;
+                    text-align: center;
+                }
+
+
+            #skillsDefence{
+              position: absolute;
+              left: 250px;  
+              top: 100px;
+              height: 80px;
+              width: 70px;
+              border: 1px dotted grey;   
+            }
+                #skillsDefenceIcon{
+                  width: 60px;
+                  height: 55px;
+                  background-image: url("../img/dialogs/characterprofile/skills/small_defence_skill.png");
+                  margin-left: 5px;
+                  background-size: contain;
+                  background-repeat: no-repeat;
+                }
+
+               #skillsDefenceCounter{
+                    margin-top: 5px;
+                    text-align: center;
+                }
+
+
+            #skillsStealth{
+              position: absolute;
+              left: 330px;  
+              top: 100px;
+              height: 80px;
+              width: 70px;
+              border: 1px dotted grey;   
+            }
+                #skillsStealthIcon{
+                  width: 50px;
+                  height: 50px;
+                  background-image: url("../img/dialogs/characterprofile/skills/small_stealth_skill.png");
+                  margin-left: 15px;
+                  background-size: contain;
+                  background-repeat: no-repeat;
+                }
+
+               #skillsStealthCounter{
+                    margin-top: 5px;
+                    text-align: center;
+                }
+
+
+
+      #characterDetails-filters-container {
+          position: relative;
+          left: 150px;
+          top: 460px;  
+          height: 40px;
+          width: 750px;
+          background-color: none;
+          border: 1px dotted yellow;
+          white-space: nowrap;
+
+   
+
+      }
+
+                #characterDetails-filters-all {
+                  position: absolute;
+                  height: 25px;
+                  background-color: none;
+                  border-radius: 5px;
+                  font-size: 16px;
+                  font-family: cursive;
+                  font-style: Italic;
+                  color: black;
+                  background-color: #707070;
+                }
+
+                #characterDetails-filters-melee {
+                  position: absolute;
+                  margin-left: 80px;
+                  height: 25px;
+                  background-color: none;
+                  border-radius: 5px;
+                  font-size: 16px;
+                  font-family: cursive;
+                  font-style: Italic;
+                  color: black;
+                  background-color: #9F000F;
+                }
+                
+                #characterDetails-filters-range {
+                  position: absolute;
+                  margin-left: 195px;
+                  height: 25px;
+                  background-color: none;
+                  border-radius: 5px;
+                  font-size: 16px;
+                  font-family: cursive;
+                  font-style: Italic;
+                  color: black;
+                  background-color: #F87431;
+                }
+
+                #characterDetails-filters-armor {
+                  position: absolute;
+                  margin-left: 320px;
+                  height: 25px;
+                  background-color: none;
+                  border-radius: 5px;
+                  font-size: 16px;
+                  font-family: cursive;
+                  font-style: Italic;
+                  color: black;
+                  background-color: #009933;
+                }
+                
+                #characterDetails-filters-shields {
+                  position: absolute;
+                  margin-left: 385px;
+                  height: 25px;
+                  background-color: none;
+                  border-radius: 5px;
+                  font-size: 16px;
+                  font-family: cursive;
+                  font-style: Italic;
+                  color: black;
+                  background-color: #3366CC;
+                }
+
+                #characterDetails-filters-arrows {
+                  position: absolute;
+                  margin-left: 455px;
+                  height: 25px;
+                  background-color: none;
+                  border-radius: 5px;
+                  font-size: 16px;
+                  font-family: cursive;
+                  font-style: Italic;
+                  color: black;
+                  background-color: #F87431;
+                }
+
+                #characterDetails-filters-potions {
+                  position: absolute;
+                  margin-left: 525px;
+                  height: 25px;
+                  background-color: none;
+                  border-radius: 5px;
+                  font-size: 16px;
+                  font-family: cursive;
+                  font-style: Italic;
+                  color: black;
+                  background-color: #FFFF66;
+                }
+
+                #characterDetails-filters-artefacts {
+                  position: absolute;
+                  margin-left: 600px;
+                  height: 25px;
+                  background-color: none;
+                  border-radius: 5px;
+                  font-size: 16px;
+                  font-family: cursive;
+                  font-style: Italic;
+                  color: black;
+                  background-color: #9900CC;
+                }
+
+
+
+
