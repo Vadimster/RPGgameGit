@@ -49,8 +49,17 @@ var player = {
 		//gameConfig.save.increase(1);
 
 		gameConfig.inventory.bagpack.push(new Sword);
-		//gameConfig.inventory.bagpack.push(new Stick);
+		gameConfig.inventory.bagpack.push(new Stick);
 		gameConfig.inventory.bagpack.push(new Sword);
+		gameConfig.inventory.bagpack.push(new Bow);
+		gameConfig.inventory.bagpack.push(new Arrow);
+		gameConfig.inventory.bagpack.push(new Stone);
+		gameConfig.inventory.bagpack.push(new Breastplate);
+		gameConfig.inventory.bagpack.push(new Ring);
+		gameConfig.inventory.bagpack.push(new Manapotion);
+		gameConfig.inventory.bagpack.push(new Shield);
+		gameConfig.inventory.bagpack.push(new Helmet);
+
 
 
 

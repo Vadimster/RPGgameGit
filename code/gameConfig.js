@@ -555,37 +555,48 @@ var gameConfig = {
 	              item.div.addClass("inventoryItem");
 	              item.div.css({"background-color": item.backgroundColor});          
 	              item.div.css({"background-image":"url('"+item.icon+"')"});
-	              item.div.get(0).obj = item; //link DOM elemtn to an object
-	                item.div.click(function(){
-	                  console.log(this.obj);
-	                  this.obj.clicked();
-	                });
-	                item.div.mouseover(function() {
-	                  console.log(this.obj);
-	                  this.obj.getInfo();
-	                });
-	                item.div.mouseout(function() {
-	                  console.log(this.obj);
-	                  this.obj.mouseLeft();
-	                });
+	              
+	              item.div.data('obj', item);
+	              item.div.click(function(){
+	              	$(this).data('obj').clicked();
+	              });
+	              item.div.mouseover(function() {
+	              	$(this).data('obj').getInfo();
+	              });
+	              item.div.mouseout(function() {
+	              	$(this).data('obj').mouseLeft();
+	              });
 
 	              item.div.appendTo('.'+inventoryArray);
 	            }
 
-
 			} else { //array items will be filtered
+	            for(i=0; i<gameConfig.inventory[inventoryArray].length; i++) {
+	            	
+	            	if (gameConfig.inventory[inventoryArray][i].type === itemType) {
+		              var item = gameConfig.inventory[inventoryArray][i];
+		              item.div = $("<div/>");
+		              item.div.addClass("inventoryItem");
+		              item.div.css({"background-color": item.backgroundColor});          
+		              item.div.css({"background-image":"url('"+item.icon+"')"});
+		              
+		              item.div.data('obj', item);
+		              item.div.click(function(){
+		              	$(this).data('obj').clicked();
+		              });
+		              item.div.mouseover(function() {
+		              	$(this).data('obj').getInfo();
+		              });
+		              item.div.mouseout(function() {
+		              	$(this).data('obj').mouseLeft();
+		              });
 
-
-
+		              item.div.appendTo('.'+inventoryArray);
+		            }
+		        }			
 			}
-
-
 		}
-
-
 	}
-
-
 };
 
 
