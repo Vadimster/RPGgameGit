@@ -23,7 +23,7 @@ var spellBook = {
 	},
 
     purchase: function(){
-        if (gameConfig.gold.checkBalance(this)) {
+        if (gameConfig.gold.checkBalance(this.buyPrice)) {
             gameConfig.gold.decrease(player, this.buyPrice);
             spellBook.equip();
         } else {

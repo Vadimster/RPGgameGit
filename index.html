@@ -45,6 +45,10 @@
 	<audio id="chant1" src="sounds/interface/chant1.wav"></audio>
 
 
+	<audio id="card_deal" src="sounds/interface/cardgame/card_deal.mp3"></audio>
+	<audio id="card_flip" src="sounds/interface/cardgame/card_flip.mp3"></audio>
+	<audio id="card_remove" src="sounds/interface/cardgame/card_remove.mp3"></audio>
+
 
 <!-- sounds end -->
 
@@ -153,33 +157,55 @@
  	<div id="cityPage-background"> 
  		<div class="itemInfoContainer"></div>
  		<div id="cityPage-cityName"></div>
- 		<div id="cityPage-cityBanner"></div> 		
- 		<div id="cityPage-market-container"></div>
-		<div id="cityPage-market-filters-container"> 			
+ 		<div id="cityPage-cityBanner"></div> 
+ 		<div id="cityPage-marketSign" onclick="gamingParlor.drawPage()">MARKET</div>  <!-- city.drawMarketPage() -->
+ 	</div>
+ </div>
+
+<div id="gamingParlorPage" class= "dialog">
+ 	<div id="gamingParlorPage-background"> 
+ 		<div id ="gamingParlorPage-purse"></div>
+ 		<div id = "gamingParlorPage-stakeBox">
+ 			
+ 		 	<input id="stake" type="range" min="1" max="5" step="1" value="1"  />
+ 			<!-- <input type="text" size="1" value="1" id="stake" /> -->
+ 		</div>
+ 		<div id ="gamingParlorPage-playButton" onclick="gamingParlor.playGame()">DEAL CARDS</div>
+ 		<div id ="gamingParlorPage-oponentCard"></div>
+ 		<div id ="gamingParlorPage-playerCard"></div>
+
+ 	</div>
+ </div>
+
+
+<div id="marketPage" class= "dialog">
+
+
+ 		<div id="marketPage-market-container"></div>
+		<div id="marketPage-market-filters-container"> 			
  		<!-- 
- 			<div class="cityFilterItem" id="cityPage-market-filters-budget" onclick="inventory.filterAndDraw('market', 'budget')" title="Filter by size of your purse">Budget</div>
- 			<div class="cityFilterItem" id="cityPage-market-filters-all" onclick="inventory.filterAndDraw('market', 'all')">All items</div>
- 			<div class="cityFilterItem" id="cityPage-market-filters-melee" onclick="inventory.filterAndDraw('market', 'melee')">Melee weapons</div>
- 			<div class="cityFilterItem" id="cityPage-market-filters-range" onclick="inventory.filterAndDraw('market', 'range')">Range weapons</div>
- 			<div class="cityFilterItem" id="cityPage-market-filters-armor" onclick="inventory.filterAndDraw('market', 'armor')">Armor</div>
- 			<div class="cityFilterItem" id="cityPage-market-filters-shields" onclick="inventory.filterAndDraw('market', 'shield')">Shields</div>
- 			<div class="cityFilterItem" id="cityPage-market-filters-arrows" onclick="inventory.filterAndDraw('market', 'arrow')">Arrows</div>
- 			<div class="cityFilterItem" id="cityPage-market-filters-potions" onclick="inventory.filterAndDraw('market', 'potion')">Potions</div>
- 			<div class="cityFilterItem" id="cityPage-market-filters-artefacts" onclick="inventory.filterAndDraw('market', 'artefact')">Artefacts</div>
+ 			<div class="marketFilterItem" id="cityPage-market-filters-budget" onclick="inventory.filterAndDraw('market', 'budget')" title="Filter by size of your purse">Budget</div>
+ 			<div class="marketFilterItem" id="cityPage-market-filters-all" onclick="inventory.filterAndDraw('market', 'all')">All items</div>
+ 			<div class="marketFilterItem" id="cityPage-market-filters-melee" onclick="inventory.filterAndDraw('market', 'melee')">Melee weapons</div>
+ 			<div class="marketFilterItem" id="cityPage-market-filters-range" onclick="inventory.filterAndDraw('market', 'range')">Range weapons</div>
+ 			<div class="marketFilterItem" id="cityPage-market-filters-armor" onclick="inventory.filterAndDraw('market', 'armor')">Armor</div>
+ 			<div class="marketFilterItem" id="cityPage-market-filters-shields" onclick="inventory.filterAndDraw('market', 'shield')">Shields</div>
+ 			<div class="marketFilterItem" id="cityPage-market-filters-arrows" onclick="inventory.filterAndDraw('market', 'arrow')">Arrows</div>
+ 			<div class="marketFilterItem" id="cityPage-market-filters-potions" onclick="inventory.filterAndDraw('market', 'potion')">Potions</div>
+ 			<div class="marketFilterItem" id="cityPage-market-filters-artefacts" onclick="inventory.filterAndDraw('market', 'artefact')">Artefacts</div>
 		-->
  		</div>
- 		<div id="cityPage-bagpack-container" class="bagpack"></div> <!-- contains items which are available for trade former id="cityPage-bagpack-container" -->
- 		<div id="cityPage-filters-container">
- 			<div class="cityFilterItem" id="cityPage-filters-all" onclick="gameConfig.inventory.draw('bagpack')">All items</div>
- 			<div class="cityFilterItem" id="cityPage-filters-melee" onclick="gameConfig.inventory.draw('bagpack', 'melee')">Melee weapons</div>
- 			<div class="cityFilterItem" id="cityPage-filters-range" onclick="gameConfig.inventory.draw('bagpack', 'range')">Range weapons</div>
- 			<div class="cityFilterItem" id="cityPage-filters-armor" onclick="gameConfig.inventory.draw('bagpack', 'armor')">Armor</div>
- 			<div class="cityFilterItem" id="cityPage-filters-shields" onclick="gameConfig.inventory.draw('bagpack', 'shield')">Shields</div>
- 			<div class="cityFilterItem" id="cityPage-filters-arrows" onclick="gameConfig.inventory.draw('bagpack', 'arrow')">Arrows</div>
- 			<div class="cityFilterItem" id="cityPage-filters-potions" onclick="gameConfig.inventory.draw('bagpack', 'potion')">Potions</div>
- 			<div class="cityFilterItem" id="cityPage-filters-artefacts" onclick="gameConfig.inventory.draw('bagpack', 'artefact')">Artefacts</div>
+ 		<div id="marketPage-bagpack-container" class="bagpack"></div> <!-- contains items which are available for trade former id="cityPage-bagpack-container" -->
+ 		<div id="marketPage-filters-container">
+ 			<div class="marketFilterItem" id="marketPage-filters-all" onclick="gameConfig.inventory.draw('bagpack')">All items</div>
+ 			<div class="marketFilterItem" id="marketPage-filters-melee" onclick="gameConfig.inventory.draw('bagpack', 'melee')">Melee weapons</div>
+ 			<div class="marketFilterItem" id="marketPage-filters-range" onclick="gameConfig.inventory.draw('bagpack', 'range')">Range weapons</div>
+ 			<div class="marketFilterItem" id="marketPage-filters-armor" onclick="gameConfig.inventory.draw('bagpack', 'armor')">Armor</div>
+ 			<div class="marketFilterItem" id="marketPage-filters-shields" onclick="gameConfig.inventory.draw('bagpack', 'shield')">Shields</div>
+ 			<div class="marketFilterItem" id="marketPage-filters-arrows" onclick="gameConfig.inventory.draw('bagpack', 'arrow')">Arrows</div>
+ 			<div class="marketFilterItem" id="marketPage-filters-potions" onclick="gameConfig.inventory.draw('bagpack', 'potion')">Potions</div>
+ 			<div class="marketFilterItem" id="marketPage-filters-artefacts" onclick="gameConfig.inventory.draw('bagpack', 'artefact')">Artefacts</div>
  		</div>
- 	</div>
  </div>
 
 

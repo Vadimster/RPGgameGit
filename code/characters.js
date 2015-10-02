@@ -130,7 +130,7 @@ var hunter = {
   img: 'img/characterselectorpage/avatars/hunter.jpg',
   description: 'Many years spent hunting in woods and meadows taught to be patient, attentive and lightning-quick. You will hardly find anyone who is better with a bow and arrows than this folk.',
   bonus: ['* Get the Book of Spells on level 3',
-          '* Bonus to camouflage',
+          '* Bonus to Stealth',
           '* Accuracy bonus for ranged weapons'
           ],
   

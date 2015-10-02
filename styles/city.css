@@ -43,14 +43,129 @@
           width: 91px;
           height: 150px;
           border: 0px dotted yellow;
-          margin-top: 0px;
-          margin-left: 4px;
+          margin-top: 85px;
+          margin-left: 280px;
           background-image: url(../img/dialogs/city/banners/b.png);
           background-repeat: no-repeat;
 
         } 
 
-      #cityPage-market-container {
+      #cityPage-marketSign {
+          position: absolute;
+          width: 170px;
+          height: 80px;
+          border: 0px dotted yellow;
+          margin-top: 340px;
+          margin-left: 30px;
+          background-image: url(../img/dialogs/city/market_sign.png);
+          background-repeat: no-repeat;
+          background-size: 100% 100%;
+          padding-top: 40px;
+          padding-left: 60px;
+          font-size: 22px;
+          font-family: cursive;
+          font-style: Italic;
+          color: black;
+          border: 0px solid green;
+          opacity:0.9;
+
+
+        } 
+
+      #cityPage-marketSign:hover {
+        opacity:1;
+      }
+
+
+
+#gamingParlorPage {
+  display: none;
+  position: relative;
+  overflow-x: hidden;
+  overflow-y: hidden;  
+}
+
+
+    #gamingParlorPage-background {
+      position: relative;
+      top: 10px;
+      background-image: url(../img/dialogs/city/parlor/table.jpg);
+      background-size: 100% 100%;
+      background-repeat: no-repeat;
+      width: 950px;
+      height: 530px;
+      border-radius: 10px;
+    }
+
+
+              #gamingParlorPage-stakeBox{
+                position: absolute;
+                width: 135px;
+                height: 20px;
+                top: 345px;
+                left: 70px;
+                border: 1px dotted blue;  
+              }
+
+              #gamingParlorPage-playButton{
+                position: absolute;
+                width: 120px;
+                height: 35px;
+                top: 460px;
+                left: 80px;
+                border-radius: 10px;
+                border: 2px solid blue;
+                background-color: yellow;  
+              }
+
+
+              #gamingParlorPage-purse{
+                position: absolute;
+                width: 262px;
+                height: 309px;
+                top: 40px;
+                left: 20px;
+                background-image: url(../img/dialogs/city/parlor/purse.png);
+                background-size: 100% 100%;
+                background-repeat: no-repeat;
+
+              }
+
+              #gamingParlorPage-oponentCard{
+                position: absolute;
+                border: 0px dotted green;
+                width: 111px;
+                height: 150px;
+                top: 60px;
+                left: 420px;
+                background-image: url();
+                background-size: 100% 100%;
+                background-repeat: no-repeat;
+              }
+
+              #gamingParlorPage-playerCard{
+                position: absolute;
+                border: 0px dotted red;
+                width: 111px;
+                height: 150px;
+                top: 320px;
+                left: 420px;
+                background-image: url();
+                background-size: 100% 100%;
+                background-repeat: no-repeat;
+              }
+
+
+
+
+#marketPage {
+  display: none;
+  position: relative;
+  overflow-x: hidden;
+  overflow-y: hidden;  
+}
+
+      #marketPage-market-container {
           position: absolute;
           width: 750px;
           height: 205px;
@@ -62,7 +177,7 @@
           white-space: nowrap; 
         }
 
-            #cityPage-market-filters-container {
+            #marketPage-market-filters-container {
                 position: relative;
                 left: 150px;
                 top: 310px;  
@@ -75,7 +190,7 @@
             }
 
 
-                    #cityPage-market-filters-budget {
+                    #marketPage-market-filters-budget {
                         position: absolute;
                         height: 25px;
                         background-color: none;
@@ -89,7 +204,7 @@
 
 
 
-                      #cityPage-market-filters-all {
+                      #marketPage-market-filters-all {
                         position: absolute;
                         margin-left: 70px;
                         height: 25px;
@@ -102,7 +217,7 @@
                         background-color: #707070;
                       }
 
-                      #cityPage-market-filters-melee {
+                      #marketPage-market-filters-melee {
                         position: absolute;
                         margin-left: 150px;
                         height: 25px;
@@ -115,7 +230,7 @@
                         background-color: #9F000F;
                       }
                       
-                      #cityPage-market-filters-range {
+                      #marketPage-market-filters-range {
                         position: absolute;
                         margin-left: 270px;
                         height: 25px;
@@ -128,7 +243,7 @@
                         background-color: #F87431;
                       }
 
-                      #cityPage-market-filters-armor {
+                      #marketPage-market-filters-armor {
                         position: absolute;
                         margin-left: 395px;
                         height: 25px;
@@ -141,7 +256,7 @@
                         background-color: #009933;
                       }
                       
-                      #cityPage-market-filters-shields {
+                      #marketPage-market-filters-shields {
                         position: absolute;
                         margin-left: 465px;
                         height: 25px;
@@ -154,7 +269,7 @@
                         background-color: #3366CC;
                       }
 
-                      #cityPage-market-filters-arrows {
+                      #marketPage-market-filters-arrows {
                         position: absolute;
                         margin-left: 535px;
                         height: 25px;
@@ -167,7 +282,7 @@
                         background-color: #F87431;
                       }
 
-                      #cityPage-market-filters-potions {
+                      #marketPage-market-filters-potions {
                         position: absolute;
                         margin-left: 610px;
                         height: 25px;
@@ -180,7 +295,7 @@
                         background-color: #FFFF66;
                       }
 
-                      #cityPage-market-filters-artefacts {
+                      #marketPage-market-filters-artefacts {
                         position: absolute;
                         margin-left: 685px;
                         height: 25px;
@@ -196,7 +311,7 @@
 
 
 
-    	#cityPage-bagpack-container {
+    	#marketPage-bagpack-container {
           position: absolute;
           width: 750px;
           height: 68px;
@@ -209,7 +324,7 @@
         }
 
 
-        #cityPage-filters-container {
+        #marketPage-filters-container {
           position: relative;
           left: 120px;
           top: 455px;  
@@ -223,7 +338,7 @@
 
       }
 
-                #cityPage-filters-all {
+                #marketPage-filters-all {
                   position: absolute;
                   height: 25px;
                   background-color: none;
@@ -235,7 +350,7 @@
                   background-color: #707070;
                 }
 
-                #cityPage-filters-melee {
+                #marketPage-filters-melee {
                   position: absolute;
                   margin-left: 80px;
                   height: 25px;
@@ -248,7 +363,7 @@
                   background-color: #9F000F;
                 }
                 
-                #cityPage-filters-range {
+                #marketPage-filters-range {
                   position: absolute;
                   margin-left: 195px;
                   height: 25px;
@@ -261,7 +376,7 @@
                   background-color: #F87431;
                 }
 
-                #cityPage-filters-armor {
+                #marketPage-filters-armor {
                   position: absolute;
                   margin-left: 320px;
                   height: 25px;
@@ -274,7 +389,7 @@
                   background-color: #009933;
                 }
                 
-                #cityPage-filters-shields {
+                #marketPage-filters-shields {
                   position: absolute;
                   margin-left: 385px;
                   height: 25px;
@@ -287,7 +402,7 @@
                   background-color: #3366CC;
                 }
 
-                #cityPage-filters-arrows {
+                #marketPage-filters-arrows {
                   position: absolute;
                   margin-left: 455px;
                   height: 25px;
@@ -300,7 +415,7 @@
                   background-color: #F87431;
                 }
 
-                #cityPage-filters-potions {
+                #marketPage-filters-potions {
                   position: absolute;
                   margin-left: 525px;
                   height: 25px;
@@ -313,7 +428,7 @@
                   background-color: #FFFF66;
                 }
 
-                #cityPage-filters-artefacts {
+                #marketPage-filters-artefacts {
                   position: absolute;
                   margin-left: 600px;
                   height: 25px;

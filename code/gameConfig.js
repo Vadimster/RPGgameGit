@@ -45,7 +45,9 @@ var gameConfig = {
 
 
     bonus: {
-    	spellLevel: player.stats.level.counter + Math.floor(player.skills.magic.counter/2) //determines which spells are available for learning. Player magic skill is rounded down!
+    	spellLevel: player.stats.level.counter + Math.floor(player.skills.magic.counter/2), //determines which spells are available for learning. Player magic skill is rounded down!
+    	maxCardRank: 10, //In card games Luck level will kick inly if card drawn is below this value (i.e. less than 10)
+    	cardRankIncrease: player.stats.luck.counter - 1 // value with which card rank will be adjusted in card gammes if Luck kicks in
 
     },
 
@@ -107,8 +109,8 @@ var gameConfig = {
     },
 
     gold: {
-	    checkBalance : function(item) {
-	        if (player.stats.gold.counter >= item.buyPrice) {
+	    checkBalance : function(amount) {
+	        if (player.stats.gold.counter >= amount) {
 	            return true;
 	        } else {
 	            return false;
