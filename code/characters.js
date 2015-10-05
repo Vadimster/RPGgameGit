@@ -14,7 +14,7 @@ var shaman = {
           '* Spells cost 20% less mana to cast'
           ],
 
-  bonusGold: 0,
+  bonusGold: 100000,
     addBonusGold: function(){
       if (shaman.bonusGold) {
         gameConfig.gold.increase(player, this.bonusGold)      

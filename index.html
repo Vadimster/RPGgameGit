@@ -158,20 +158,31 @@
  		<div class="itemInfoContainer"></div>
  		<div id="cityPage-cityName"></div>
  		<div id="cityPage-cityBanner"></div> 
- 		<div id="cityPage-marketSign" onclick="gamingParlor.drawPage()">MARKET</div>  <!-- city.drawMarketPage() -->
+ 		<div id="cityPage-marketSign" onclick="city.drawMarketPage()">MARKET</div> 
+ 		<div id ="cityPage-parlorSign" onclick="gamingParlor.drawPage()">GAMBLING PARLOR </div>
  	</div>
  </div>
 
 <div id="gamingParlorPage" class= "dialog">
  	<div id="gamingParlorPage-background"> 
  		<div id ="gamingParlorPage-purse"></div>
+ 		
+ 		<div id="gamingParlorPage-bet1">1</div>
+ 		<div id="gamingParlorPage-bet2">2</div>
+ 		<div id="gamingParlorPage-bet3">3</div>
+ 		<div id="gamingParlorPage-bet4">4</div>
+ 		<div id="gamingParlorPage-bet5">5</div>
+
+
  		<div id = "gamingParlorPage-stakeBox">
- 			
  		 	<input id="stake" type="range" min="1" max="5" step="1" value="1"  />
- 			<!-- <input type="text" size="1" value="1" id="stake" /> -->
  		</div>
+
+ 		<div id="gamingParlorPage-stakeLegend">Your bet</div>
+
  		<div id ="gamingParlorPage-playButton" onclick="gamingParlor.playGame()">DEAL CARDS</div>
  		<div id ="gamingParlorPage-oponentCard"></div>
+ 		<div id="gamingParlorPage-outcomeMessage"></div>
  		<div id ="gamingParlorPage-playerCard"></div>
 
  	</div>
@@ -180,6 +191,7 @@
 
 <div id="marketPage" class= "dialog">
 
+	<div id="marketPage-background">
 
  		<div id="marketPage-market-container"></div>
 		<div id="marketPage-market-filters-container"> 			
@@ -206,6 +218,8 @@
  			<div class="marketFilterItem" id="marketPage-filters-potions" onclick="gameConfig.inventory.draw('bagpack', 'potion')">Potions</div>
  			<div class="marketFilterItem" id="marketPage-filters-artefacts" onclick="gameConfig.inventory.draw('bagpack', 'artefact')">Artefacts</div>
  		</div>
+ 	</div>
+
  </div>
 
 

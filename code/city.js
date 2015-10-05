@@ -107,6 +107,7 @@ var gamingParlor = {
 
 drawPage: function(){
     
+    $('#gamingParlorPage-outcomeMessage').empty();
     $('#gamingParlorPage-playerCard').css('background-image', 'none'); 
     $('#gamingParlorPage-oponentCard').css('background-image', 'none');
     $('#backgroundmusic').get(0).pause();  //alternatively var audio = $('#backgroundmusic')[0];  audio.pause();
@@ -192,12 +193,7 @@ drawPage: function(){
       c12: {suit: 1, rank: 12, name: 'Queen of clubs', img: 'img/dialogs/city/parlor/deck/clubs/qc.png'},
       c13: {suit: 1, rank: 13, name: 'king of clubs', img: 'img/dialogs/city/parlor/deck/clubs/kc.png'},
       c14: {suit: 1, rank: 14, name: 'Ace of clubs', img: 'img/dialogs/city/parlor/deck/clubs/ac.png'}
-    
-
-
-
     },
-
 
     playerCard: {
       rank: null,
@@ -206,7 +202,6 @@ drawPage: function(){
       img: null
     },
 
-
     oponentCard: {
       rank: null,
       suit: null,
@@ -214,9 +209,8 @@ drawPage: function(){
       img: null
     },
 
-
     playGame: function(){
-      
+      $('#gamingParlorPage-outcomeMessage').empty();
       $('#gamingParlorPage-playerCard').css('background-image', 'none'); 
       $('#gamingParlorPage-oponentCard').css('background-image', 'none');
 
@@ -225,16 +219,12 @@ drawPage: function(){
 
       if (gameConfig.gold.checkBalance(stake)){
           if (gamingParlor.resolveGame()){
-            console.log('Returned PLAYER WINS');
             window.setTimeout(gamingParlor.dealPlayerCard, 1000);
             window.setTimeout(gamingParlor.dealOponentCard, 2000);
             window.setTimeout(gamingParlor.revealPlayerCard, 3000);
             window.setTimeout(gamingParlor.revealOponentCard, 4000);
-            window.setTimeout(gameConfig.gold.increase, 5000, player, stake*2);
-
-            //add WIN message
-            
-
+            window.setTimeout(gamingParlor.displayWinMessage,5000);
+            window.setTimeout(gameConfig.gold.increase, 5500, player, stake*2);
 
           } else {
             console.log('returned PLAYER LOSES');
@@ -242,9 +232,8 @@ drawPage: function(){
             window.setTimeout(gamingParlor.dealOponentCard, 2000);
             window.setTimeout(gamingParlor.revealPlayerCard, 3000);
             window.setTimeout(gamingParlor.revealOponentCard, 4000);
-            window.setTimeout(gameConfig.gold.decrease, 5000, player, stake);
-            //add LOSE message
-
+            window.setTimeout(gamingParlor.displayLostMessage,5000);
+            window.setTimeout(gameConfig.gold.decrease, 5500, player, stake);
           }
 
       } else {
@@ -274,6 +263,38 @@ drawPage: function(){
 
 
     resolveGame: function(){
+
+      /* ADJUST RULES
+        
+        if(player.stats.luck.counter === 0){ //opponent gets +2 to rank max 12
+          console.log('Player luck is 0');
+          
+
+        } else if (player.stats.luck.counter === 1){ //opponent gets +1 to rank max 11
+          console.log('Player luck is 1');
+          
+
+        } else if (player.stats.luck.counter === 2){ //game as normal
+          console.log('Player luck is 2');
+          
+
+        } else if (player.stats.luck.counter === 3){ //player wins all draws
+          console.log('Player luck is 3');
+          
+
+        } else if (player.stats.luck.counter === 4){ //player gets +1 to rank max 10
+          console.log('Player luck is 4');
+          
+
+        } else if (player.stats.luck.counter === 5){ //player gest +2 to rank max 10
+          console.log('Player luck is 5');
+
+        }
+          
+
+      */
+
+
       var cardDeck = [];
       for(var key in gamingParlor.cards){
         cardDeck.push(gamingParlor.cards[key]);
@@ -438,7 +459,16 @@ drawPage: function(){
       $('#card_flip').get(0).play();
       $('#gamingParlorPage-oponentCard').css("background-image", "url("+gamingParlor.oponentCard.img+")");
 
-    }
+    },
 
+    displayWinMessage: function(){
+      $('#gamingParlorPage-outcomeMessage').css('color','green');
+      $('#gamingParlorPage-outcomeMessage').text('YOU WON!');
+    },
+
+    displayLostMessage: function(){
+      $('#gamingParlorPage-outcomeMessage').css('color','red');
+      $('#gamingParlorPage-outcomeMessage').text('YOU LOST!');
+    }
 
 }; 
