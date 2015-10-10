@@ -158,7 +158,7 @@
  		<div class="itemInfoContainer"></div>
  		<div id="cityPage-cityName"></div>
  		<div id="cityPage-cityBanner"></div> 
- 		<div id="cityPage-marketSign" onclick="city.drawMarketPage()">MARKET</div> 
+ 		<div id="cityPage-marketSign" onclick="market.drawPage()">MARKET</div> 
  		<div id ="cityPage-parlorSign" onclick="gamingParlor.drawPage()">GAMBLING PARLOR </div>
  	</div>
  </div>
@@ -193,30 +193,28 @@
 
 	<div id="marketPage-background">
 
- 		<div id="marketPage-market-container"></div>
+ 		<div id="marketPage-market-container"  class="market"></div>
 		<div id="marketPage-market-filters-container"> 			
- 		<!-- 
- 			<div class="marketFilterItem" id="cityPage-market-filters-budget" onclick="inventory.filterAndDraw('market', 'budget')" title="Filter by size of your purse">Budget</div>
- 			<div class="marketFilterItem" id="cityPage-market-filters-all" onclick="inventory.filterAndDraw('market', 'all')">All items</div>
- 			<div class="marketFilterItem" id="cityPage-market-filters-melee" onclick="inventory.filterAndDraw('market', 'melee')">Melee weapons</div>
- 			<div class="marketFilterItem" id="cityPage-market-filters-range" onclick="inventory.filterAndDraw('market', 'range')">Range weapons</div>
- 			<div class="marketFilterItem" id="cityPage-market-filters-armor" onclick="inventory.filterAndDraw('market', 'armor')">Armor</div>
- 			<div class="marketFilterItem" id="cityPage-market-filters-shields" onclick="inventory.filterAndDraw('market', 'shield')">Shields</div>
- 			<div class="marketFilterItem" id="cityPage-market-filters-arrows" onclick="inventory.filterAndDraw('market', 'arrow')">Arrows</div>
- 			<div class="marketFilterItem" id="cityPage-market-filters-potions" onclick="inventory.filterAndDraw('market', 'potion')">Potions</div>
- 			<div class="marketFilterItem" id="cityPage-market-filters-artefacts" onclick="inventory.filterAndDraw('market', 'artefact')">Artefacts</div>
-		-->
+ 			<div class="filterItem" id="marketPage-market-filters-budget" onclick="gameConfig.inventory.draw('market', 'budget')" title="Filter by size of your purse">Budget</div>
+ 			<div class="filterItem" id="marketPage-market-filters-all" onclick="gameConfig.inventory.draw('market')">All items</div>
+ 			<div class="filterItem" id="marketPage-market-filters-melee" onclick="gameConfig.inventory.draw('market', 'melee')">Melee weapons</div>
+ 			<div class="filterItem" id="marketPage-market-filters-range" onclick="gameConfig.inventory.draw('market', 'range')">Range weapons</div>
+ 			<div class="filterItem" id="marketPage-market-filters-armor" onclick="gameConfig.inventory.draw('market', 'armor')">Armor</div>
+ 			<div class="filterItem" id="marketPage-market-filters-shields" onclick="gameConfig.inventory.draw('market', 'shield')">Shields</div>
+ 			<div class="filterItem" id="marketPage-market-filters-arrows" onclick="gameConfig.inventory.draw('market', 'arrow')">Arrows</div>
+ 			<div class="filterItem" id="marketPage-market-filters-potions" onclick="gameConfig.inventory.draw('market', 'potion')">Potions</div>
+ 			<div class="filterItem" id="marketPage-market-filters-artefacts" onclick="gameConfig.inventory.draw('market', 'artefact')">Artefacts</div>
  		</div>
- 		<div id="marketPage-bagpack-container" class="bagpack"></div> <!-- contains items which are available for trade former id="cityPage-bagpack-container" -->
+ 		<div id="marketPage-bagpack-container" class="bagpack"></div> 
  		<div id="marketPage-filters-container">
- 			<div class="marketFilterItem" id="marketPage-filters-all" onclick="gameConfig.inventory.draw('bagpack')">All items</div>
- 			<div class="marketFilterItem" id="marketPage-filters-melee" onclick="gameConfig.inventory.draw('bagpack', 'melee')">Melee weapons</div>
- 			<div class="marketFilterItem" id="marketPage-filters-range" onclick="gameConfig.inventory.draw('bagpack', 'range')">Range weapons</div>
- 			<div class="marketFilterItem" id="marketPage-filters-armor" onclick="gameConfig.inventory.draw('bagpack', 'armor')">Armor</div>
- 			<div class="marketFilterItem" id="marketPage-filters-shields" onclick="gameConfig.inventory.draw('bagpack', 'shield')">Shields</div>
- 			<div class="marketFilterItem" id="marketPage-filters-arrows" onclick="gameConfig.inventory.draw('bagpack', 'arrow')">Arrows</div>
- 			<div class="marketFilterItem" id="marketPage-filters-potions" onclick="gameConfig.inventory.draw('bagpack', 'potion')">Potions</div>
- 			<div class="marketFilterItem" id="marketPage-filters-artefacts" onclick="gameConfig.inventory.draw('bagpack', 'artefact')">Artefacts</div>
+ 			<div class="filterItem" id="marketPage-filters-all" onclick="gameConfig.inventory.draw('bagpack')">All items</div>
+ 			<div class="filterItem" id="marketPage-filters-melee" onclick="gameConfig.inventory.draw('bagpack', 'melee')">Melee weapons</div>
+ 			<div class="filterItem" id="marketPage-filters-range" onclick="gameConfig.inventory.draw('bagpack', 'range')">Range weapons</div>
+ 			<div class="filterItem" id="marketPage-filters-armor" onclick="gameConfig.inventory.draw('bagpack', 'armor')">Armor</div>
+ 			<div class="filterItem" id="marketPage-filters-shields" onclick="gameConfig.inventory.draw('bagpack', 'shield')">Shields</div>
+ 			<div class="filterItem" id="marketPage-filters-arrows" onclick="gameConfig.inventory.draw('bagpack', 'arrow')">Arrows</div>
+ 			<div class="filterItem" id="marketPage-filters-potions" onclick="gameConfig.inventory.draw('bagpack', 'potion')">Potions</div>
+ 			<div class="filterItem" id="marketPage-filters-artefacts" onclick="gameConfig.inventory.draw('bagpack', 'artefact')">Artefacts</div>
  		</div>
  	</div>
 
@@ -296,6 +294,7 @@
 
 
 <!-- Dialogues end -->
+	<script type="text/javascript" src="code/city.js"></script>
 	<script type="text/javascript" src="code/items/weapons.js"></script>
 	<script type="text/javascript" src="code/items/armor.js"></script>
 	<script type="text/javascript" src="code/items/artefacts.js"></script>
@@ -304,7 +303,6 @@
 	<script type="text/javascript" src="code/player.js"></script>
 	<script type="text/javascript" src="code/gameconfig.js"></script>
 	<script type="text/javascript" src="code/spells.js"></script>
-	<script type="text/javascript" src="code/city.js"></script>
 	<script type="text/javascript" src="code/characters.js"></script>
 	<script type="text/javascript" src="code/spellbook.js"></script>
 	<script type="text/javascript" src="jquery-2.1.1.min.js"></script>

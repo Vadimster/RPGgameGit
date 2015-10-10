@@ -273,7 +273,7 @@
     #marketPage-background {
       position: relative;
       top: 10px;
-      background-image: url(../img/dialogs/city/parlor/table.jpg);
+      background-image: url(../img/dialogs/city/market/market-background.jpg);
       background-size: 100% 100%;
       background-repeat: no-repeat;
       width: 950px;
@@ -287,9 +287,9 @@
       #marketPage-market-container {
           position: absolute;
           width: 750px;
-          height: 205px;
+          height: 255px;
           border: 1px dotted blue;
-          margin-top: 100px;
+          margin-top: 35px;
           margin-left: 100px;
           overflow-x: hidden;
           overflow-y: auto;
@@ -298,8 +298,8 @@
 
             #marketPage-market-filters-container {
                 position: relative;
-                left: 150px;
-                top: 310px;  
+                left: 100px;
+                top: 300px;  
                 height: 40px;
                 width: 750px;
                 background-color: none;
@@ -435,7 +435,7 @@
           width: 750px;
           height: 68px;
           border: 1px dotted red;
-          margin-top: 370px;
+          margin-top: 360px;
           margin-left: 100px;
           overflow-x: auto;
           overflow-y: hidden;
@@ -445,8 +445,8 @@
 
         #marketPage-filters-container {
           position: relative;
-          left: 120px;
-          top: 455px;  
+          left: 135px;
+          top: 450px;  
           height: 40px;
           width: 750px;
           background-color: none;

@@ -60,7 +60,8 @@ var player = {
 		gameConfig.inventory.bagpack.push(new Shield);
 		gameConfig.inventory.bagpack.push(new Helmet);
 
-
+		gameConfig.inventory.market.push(new Stick);
+		gameConfig.inventory.market.push(new Sword);
 
 
 	},

@@ -16,7 +16,7 @@
 
 
 .filterItem { /* USED TO DISPLAY FILTERS for characterpage */
-  opacity: 0.4;
+  opacity: 0.5;
   padding-left: 2px;
   padding-right: 2px;
 }

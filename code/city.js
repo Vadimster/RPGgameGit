@@ -1,10 +1,7 @@
 
 var city = {
 
-
-	//for MARKET see GameConfig.inventory
-	visited: false, //indicates if city page is opened to ensure proper handling of items in inventory
-
+  visited: false, //indicates if city page is opened to ensure proper handling of items in inventory
 
 	onClick: function(){ //city icon clicked
 		if (player.isOnCityTile()){
@@ -29,77 +26,84 @@ var city = {
 	       		dialogClass: "no-close"
 	       		}
 	       	); //creates dialog			
-		}
-	},
+	   }
+  },
 
 
 	drawPage: function(){
-
-       //city.visited = true;
-
-       $('#backgroundmusic').get(0).pause();  //alternatively var audio = $('#backgroundmusic')[0];  audio.pause();
+     $('#backgroundmusic').get(0).pause();  //alternatively var audio = $('#backgroundmusic')[0];  audio.pause();
 	   //$('#city-backgroundmusic').get(0).play();
 	   $('#cityPage-cityName').text(map.tileBox[player.map.positionY][player.map.positionX].cityName);
 	   $('#cityPage-cityBanner').css("background-image", "url(img/dialogs/city/banners/" +map.tileBox[player.map.positionY][player.map.positionX].cityBanner+ ".png)");
 
-		$('#cityPage')
-    		.dialog(
-      			{buttons: 
-         			{
-         			 'Leave city' :function(){
-            			//city.pageOpened  = false;
-            			//$('#city-backgroundmusic').get(0).pause();
-            			//$('#backgroundmusic').get(0).play();
-            			//city.visited = false;
-            			$(this).dialog('close');
-        		 
-               		}
-               		
-       			},
-	   		draggable: false,
-       		resizable: false,
-       		modal: true,
-      		width: 1000,
-       		height:670,
-       		closeOnEscape: false,
-       		dialogClass: "no-close"
-       		}
-       	); //creates dialog
-	},
+  		$('#cityPage')
+      		.dialog(
+        			{buttons: 
+           			{
+           			 'Leave city' :function(){
+              			//city.pageOpened  = false;
+              			//$('#city-backgroundmusic').get(0).pause();
+              			//$('#backgroundmusic').get(0).play();
+              			//city.visited = false;
+              			$(this).dialog('close');
+          		 
+                 		}
+                 		
+         			},
+  	   		draggable: false,
+         		resizable: false,
+         		modal: true,
+        		width: 1000,
+         		height:670,
+         		closeOnEscape: false,
+         		dialogClass: "no-close"
+         		}
+         	); //creates dialog
+  	}
+	
+};
 
 
-	drawMarketPage: function(){
-		console.log('city.drawMarketPage() launched');
-	   	gameConfig.inventory.draw('bagpack');
+var market = {    //for inventory see GameConfig.inventory
 
 
-		$('#marketPage')
-    		.dialog(
-      			{buttons: 
-         			{
-         			 'Leave market' :function(){
-            			//city.pageOpened  = false;
-            			//$('#city-backgroundmusic').get(0).pause();
-            			//$('#backgroundmusic').get(0).play();
-            			//city.visited = false;
-            			$(this).dialog('close');
-        		 
-               		}
-               		
-       			},
-	   		draggable: false,
-       		resizable: false,
-       		modal: true,
-      		width: 1000,
-       		height:670,
-       		closeOnEscape: false,
-       		dialogClass: "no-close"
-       		}
-       	); //creates dialog
+  drawPage: function(){
+      
+      console.log('market.drawPage() launched');
+      console.log(gameConfig.inventory.market.length);
+
+      gameConfig.inventory.draw('market');
+      gameConfig.inventory.draw('bagpack');
+
+      $('#marketPage')
+          .dialog(
+              {buttons: 
+                {
+                 'Leave market' :function(){
+                    //city.pageOpened  = false;
+                    //$('#city-backgroundmusic').get(0).pause();
+                    //$('#backgroundmusic').get(0).play();
+                    //city.visited = false;
+                    $(this).dialog('close');
+               
+                    }
+                    
+              },
+          draggable: false,
+            resizable: false,
+            modal: true,
+            width: 1000,
+            height:670,
+            closeOnEscape: false,
+            dialogClass: "no-close"
+            }
+          ); //creates dialog
 
 
 
-	}
+    }
+
+
 };
 
 

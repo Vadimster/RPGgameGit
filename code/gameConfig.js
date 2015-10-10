@@ -525,7 +525,6 @@ var gameConfig = {
 	
 	},
 
-
 	inventory: {
 
 		market: [],
@@ -538,7 +537,7 @@ var gameConfig = {
 		meleeSlot: [],
 		rangeSlot: [],
 	
-		draw: function(inventoryArray, itemType){
+		draw: function(inventoryArray, itemType){ //from where to draw and what to draw
 			$('.'+inventoryArray).empty();
             
             gameConfig.inventory[inventoryArray].sort(function(a, b){ //sort array alphabetically
@@ -571,6 +570,32 @@ var gameConfig = {
 
 	              item.div.appendTo('.'+inventoryArray);
 	            }
+	        } else if (itemType === 'budget') { //filtering happens in the market
+				for(i=0; i<gameConfig.inventory.market.length; i++) {
+					if (gameConfig.inventory.market[i].buyPrice <= player.stats.gold.counter){
+		              var item = gameConfig.inventory.market[i];
+		              item.div = $("<div/>");
+		              item.div.addClass("inventoryItem");
+		              item.div.css({"background-color": item.backgroundColor});          
+		              item.div.css({"background-image":"url('"+item.icon+"')"});
+		              
+		              item.div.data('obj', item);
+		              item.div.click(function(){
+		              	$(this).data('obj').clicked();
+		              });
+		              item.div.mouseover(function() {
+		              	$(this).data('obj').getInfo();
+		              });
+		              item.div.mouseout(function() {
+		              	$(this).data('obj').mouseLeft();
+		              });
+
+		              item.div.appendTo('.market');
+
+					} else {
+						//do  nothing
+					}
+				}
 
 			} else { //array items will be filtered
 	            for(i=0; i<gameConfig.inventory[inventoryArray].length; i++) {
