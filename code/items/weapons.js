@@ -2,6 +2,7 @@
 //-----------MELEE-----------------------------------
 
 var Sword = function(){
+    this.id = gameConfig.inventory.getItemID();
     this.name = 'sword'; //also divID for jQuery
     this.icon = 'img/items/weapons/melee/sword.png'; //image for the 
     this.backgroundColor = '#9F000F';
@@ -21,8 +22,7 @@ var Sword = function(){
 
     this.clicked = function(){
         console.log('clicked');
-        //inventory.handleItem(this);
-
+        gameConfig.inventory.handleItem(this);
     };
 
 
@@ -85,7 +85,7 @@ var Sword = function(){
 };
 
 var Stick = function(){
-
+    this.id = gameConfig.inventory.getItemID();
     this.name = 'pointy stick'; //also divID for jQuery
     this.icon = 'img/items/weapons/melee/stick.png'; //image for the 
     this.backgroundColor = '#9F000F';
@@ -105,7 +105,7 @@ var Stick = function(){
     this.defense = 0;
 
     this.clicked = function(){
-        inventory.handleItem(this);
+        gameConfig.inventory.handleItem(this);
 
     };
 
@@ -173,7 +173,7 @@ var Stick = function(){
 //-----------RANGE-----------------------------------
 
 var Bow = function(){
-
+    this.id = gameConfig.inventory.getItemID();
     this.name = 'wooden bow'; //also divID for jQuery
     this.icon = 'img/items/weapons/range/woodenbow.png'; //image for the 
     this.backgroundColor = '#F87431';
@@ -194,7 +194,7 @@ var Bow = function(){
     this.defense = 0;
 
     this.clicked = function(){
-        inventory.handleItem(this);
+        gameConfig.inventory.handleItem(this);
 
     };
 
@@ -262,7 +262,7 @@ var Bow = function(){
 //-----------ARROWS-----------------------------------
 
 var Arrow = function(){
-
+    this.id = gameConfig.inventory.getItemID();
     this.name = 'metal arrow'; //also divID for jQuery
     this.icon = 'img/items/weapons/range/arrows/arrow_2.png'; //image for the 
     this.backgroundColor = '#F87431';
@@ -284,7 +284,7 @@ var Arrow = function(){
     this.defense = 0;
 
     this.clicked = function(){
-        inventory.handleItem(this);
+        gameConfig.inventory.handleItem(this);
 
     };
 
@@ -349,7 +349,7 @@ var Arrow = function(){
 };
 
 var Stone = function(){
-
+    this.id = gameConfig.inventory.getItemID();
     this.name = 'stone'; //also divID for jQuery
     this.icon = 'img/items/weapons/range/arrows/stone.png'; //image for the 
     this.backgroundColor = '#F87431';
@@ -371,7 +371,7 @@ var Stone = function(){
     this.defense = 0;
 
     this.clicked = function(){
-        inventory.handleItem(this);
+        gameConfig.inventory.handleItem(this);
 
     };
 

@@ -1,9 +1,7 @@
 
 var city = {
 
-  visited: false, //indicates if city page is opened to ensure proper handling of items in inventory
-
-	onClick: function(){ //city icon clicked
+  onClick: function(){ //city icon clicked
 		if (player.isOnCityTile()){
 			city.drawPage();	
 		
@@ -44,7 +42,7 @@ var city = {
               			//city.pageOpened  = false;
               			//$('#city-backgroundmusic').get(0).pause();
               			//$('#backgroundmusic').get(0).play();
-              			//city.visited = false;
+              			city.visited = false;
               			$(this).dialog('close');
           		 
                  		}
@@ -66,12 +64,10 @@ var city = {
 
 var market = {    //for inventory see GameConfig.inventory
 
+  visited: false, //indicates if city page is opened to ensure proper handling of items in inventory
 
   drawPage: function(){
-      
-      console.log('market.drawPage() launched');
-      console.log(gameConfig.inventory.market.length);
-
+      market.visited = true;
       gameConfig.inventory.draw('market');
       gameConfig.inventory.draw('bagpack');
 
@@ -80,10 +76,9 @@ var market = {    //for inventory see GameConfig.inventory
               {buttons: 
                 {
                  'Leave market' :function(){
-                    //city.pageOpened  = false;
                     //$('#city-backgroundmusic').get(0).pause();
                     //$('#backgroundmusic').get(0).play();
-                    //city.visited = false;
+                    market.visited = false;
                     $(this).dialog('close');
                
                     }

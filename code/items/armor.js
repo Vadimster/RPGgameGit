@@ -1,5 +1,5 @@
 var Breastplate = function(){
-
+    this.id = gameConfig.inventory.getItemID();
     this.name = 'breastplate'; //also divID for jQuery
     this.icon = 'img/items/armor/breastplates/breastplate_1.png'; //image for the 
     this.backgroundColor = '#009933';

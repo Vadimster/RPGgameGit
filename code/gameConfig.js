@@ -536,6 +536,24 @@ var gameConfig = {
 		breastplateSlot: [],
 		meleeSlot: [],
 		rangeSlot: [],
+
+		itemID: 1, //global valriable in an object used a unique ID for every new item created. All further actions with this item are based on this ID.
+
+		getItemID: function(){
+			var itemID = gameConfig.inventory.itemID++
+			return itemID;
+		},
+
+
+		handleItem: function(item){
+			console.log('gameConfig.inventory.handleItem() launched');
+
+			//1 determine which array the item  with the ID in question is stored in and what is the item's index in that array
+			console.log('Object ID is: ' + item.id);
+
+
+		},
+
 	
 		draw: function(inventoryArray, itemType){ //from where to draw and what to draw
 			$('.'+inventoryArray).empty();
@@ -712,9 +730,6 @@ function saveGame() {
 		save.gameConfig = gameConfig;
 		save.spellBook = spellBook;
 		//save mobs on map (dragon)
-		//save player inventory
-		//save city market
-		//save day & turn
 
 	localStorage.setItem('save', JSON.stringify(save));
 
@@ -778,8 +793,26 @@ function continueGame() {
 		
 		gameConfig.turn.counter = save.gameConfig.turn.counter;
 		gameConfig.turn.day = save.gameConfig.turn.day;
-		gameConfig.inventory.bagpack = save.gameConfig.inventory.bagpack;
 		
+		gameConfig.inventory.bagpack = save.gameConfig.inventory.bagpack;
+		//re-attach lost methods to every item in the bagpack
+			for(i= 0; i < gameConfig.inventory.bagpack.length; i++){
+				gameConfig.inventory.bagpack[i].clicked = function(){
+													        console.log('clicked');
+													        gameConfig.inventory.handleItem(this);
+													    	};
+			}
+		gameConfig.inventory.market = save.gameConfig.inventory.market;
+		//re-attach lost methods to every item in the market
+			for(i= 0; i < gameConfig.inventory.market.length; i++){
+				gameConfig.inventory.market[i].clicked = function(){
+													        console.log('clicked');
+													        gameConfig.inventory.handleItem(this);
+													    	};
+			}		
+
+
+
 		spellBook.equipped = save.spellBook.equipped;
 		spellBook.spells = save.spellBook.spells;
 

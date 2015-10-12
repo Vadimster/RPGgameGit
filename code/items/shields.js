@@ -1,5 +1,5 @@
 var Shield = function(){
-
+    this.id = gameConfig.inventory.getItemID();
     this.name = 'shield'; //also divID for jQuery
     this.icon = 'img/items/shields/shield_1.png'; //image for the 
     this.backgroundColor = '#3366CC';

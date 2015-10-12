@@ -1,5 +1,5 @@
 var Manapotion = function(){
-
+    this.id = gameConfig.inventory.getItemID();
     this.name = 'Mana potion'; //also divID for jQuery
     this.icon = 'img/items/potions/manapotion.png'; //image for the 
     this.backgroundColor = '#FFFF66';

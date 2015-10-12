@@ -1,7 +1,7 @@
 
 
 var Ring = function(){
-
+    this.id = gameConfig.inventory.getItemID();
     this.name = 'ring'; //also divID for jQuery
     this.icon = 'img/items/artefacts/ring.png'; //image for the 
     this.backgroundColor = '#9900CC';
