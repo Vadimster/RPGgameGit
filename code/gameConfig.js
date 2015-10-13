@@ -542,6 +542,10 @@ var gameConfig = {
 		getItemID: function(){
 			var itemID = gameConfig.inventory.itemID++
 			return itemID;
+			 //var count = 1;
+			//return function(){
+				//return count++;
+			//}
 		},
 
 
@@ -794,6 +798,9 @@ function continueGame() {
 		gameConfig.turn.counter = save.gameConfig.turn.counter;
 		gameConfig.turn.day = save.gameConfig.turn.day;
 		
+		gameConfig.inventory.itemID = save.gameConfig.inventory.itemID;
+		console.log(gameConfig.inventory.itemID);
+
 		gameConfig.inventory.bagpack = save.gameConfig.inventory.bagpack;
 		//re-attach lost methods to every item in the bagpack
 			for(i= 0; i < gameConfig.inventory.bagpack.length; i++){
