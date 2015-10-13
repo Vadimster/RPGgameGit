@@ -1,4 +1,5 @@
-var Breastplate = function(){
+var Breastplate = function(array){
+    this.location = array;
     this.id = gameConfig.inventory.getItemID();
     this.name = 'breastplate'; //also divID for jQuery
     this.icon = 'img/items/armor/breastplates/breastplate_1.png'; //image for the 
@@ -19,7 +20,7 @@ var Breastplate = function(){
     this.defense = 0;
 
     this.clicked = function(){
-        inventory.handleItem(this);
+        gameConfig.inventory.handleItem(this);
 
     };
 
@@ -87,8 +88,8 @@ var Breastplate = function(){
 
 
 
-var Helmet = function(){
-
+var Helmet = function(array){
+    this.location = array;
     this.name = 'helmet'; //also divID for jQuery
     this.icon = 'img/items/armor/helmets/helmet_1.png'; //image for the 
     this.backgroundColor = '#009933';
@@ -108,7 +109,7 @@ var Helmet = function(){
     this.defense = 0;
 
     this.clicked = function(){
-        inventory.handleItem(this);
+        gameConfig.inventory.handleItem(this);
 
     };
 

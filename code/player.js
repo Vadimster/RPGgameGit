@@ -48,20 +48,20 @@ var player = {
 		//gameConfig.gold.decrease(player, 1000000);
 		//gameConfig.save.increase(1);
 
-		gameConfig.inventory.bagpack.push(new Sword);
-		gameConfig.inventory.bagpack.push(new Stick);
-		gameConfig.inventory.bagpack.push(new Sword);
-		gameConfig.inventory.bagpack.push(new Bow);
-		gameConfig.inventory.bagpack.push(new Arrow);
-		gameConfig.inventory.bagpack.push(new Stone);
-		gameConfig.inventory.bagpack.push(new Breastplate);
-		gameConfig.inventory.bagpack.push(new Ring);
-		gameConfig.inventory.bagpack.push(new Manapotion);
-		gameConfig.inventory.bagpack.push(new Shield);
-		gameConfig.inventory.bagpack.push(new Helmet);
+		gameConfig.inventory.bagpack.push(new Sword('bagpack'));
+		gameConfig.inventory.bagpack.push(new Stick('bagpack'));
+		gameConfig.inventory.bagpack.push(new Sword('bagpack'));
+		gameConfig.inventory.bagpack.push(new Bow('bagpack'));
+		gameConfig.inventory.bagpack.push(new Arrow('bagpack'));
+		gameConfig.inventory.bagpack.push(new Stone('bagpack'));
+		gameConfig.inventory.bagpack.push(new Breastplate('bagpack'));
+		gameConfig.inventory.bagpack.push(new Ring('bagpack'));
+		gameConfig.inventory.bagpack.push(new Manapotion('bagpack'));
+		gameConfig.inventory.bagpack.push(new Shield('bagpack'));
+		gameConfig.inventory.bagpack.push(new Helmet('bagpack'));
 
-		gameConfig.inventory.market.push(new Stick);
-		gameConfig.inventory.market.push(new Sword);
+		gameConfig.inventory.market.push(new Stick('market'));
+		gameConfig.inventory.market.push(new Sword('market'));
 
 
 	},

@@ -131,7 +131,7 @@ var gameConfig = {
 			if (value > 1) {
 				$("#coinsfound").get(0).play();
 			
-			} else {
+			} else if (value > 0) {
 				$("#onecoinfound").get(0).play();
 			}
 			
@@ -551,9 +551,47 @@ var gameConfig = {
 
 		handleItem: function(item){
 			console.log('gameConfig.inventory.handleItem() launched');
+			function getIndexByAttribute(array, attr, value) { //return idex of an object with specific proprty value in a specified array
+			    for(var i = 0; i < array.length; i++) {
+			        if(array[i][attr] === value) {
+			            return i;
+			        }
+			    }
+			}
+			var itemIndex = getIndexByAttribute(gameConfig.inventory[item.location], 'id', item.id); //1. get index of item in relevant array (item.location)
 
-			//1 determine which array the item  with the ID in question is stored in and what is the item's index in that array
-			console.log('Object ID is: ' + item.id);
+			if(market.visited){
+				if(item.location === 'bagpack'){
+					console.log('will now sell on the market');
+					gameConfig.gold.increase(player, item.sellPrice);
+					gameConfig.inventory.bagpack.splice(itemIndex, 1);
+					gameConfig.inventory.draw('bagpack');
+
+				} else { //item is located in the market
+					console.log('will now purchase on the market');
+					if(gameConfig.gold.checkBalance(item.buyPrice)){
+						console.log('sufficient funds');
+						gameConfig.gold.decrease(player, item.buyPrice);
+						gameConfig.inventory.bagpack.push(item);
+						gameConfig.inventory.market.splice(itemIndex, 1);
+						item.location = 'bagpack';
+						console.log('I am now in array: ' + item.location + 'My ID is: ' + item.id + ' My index in new array is: ' + getIndexByAttribute(gameConfig.inventory[item.location], 'id', item.id))
+						gameConfig.inventory.draw('bagpack');
+						gameConfig.inventory.draw('market');
+
+					} else {
+            			gameConfig.messages.insufficientFunds(item);
+					}
+				}
+			}
+
+
+			//else if on battle page...
+
+
+
+			//3. else no windows are opened (means that player is in character mode) - item to be equippeed
+
 
 
 		},
@@ -798,9 +836,7 @@ function continueGame() {
 		gameConfig.turn.counter = save.gameConfig.turn.counter;
 		gameConfig.turn.day = save.gameConfig.turn.day;
 		
-		gameConfig.inventory.itemID = save.gameConfig.inventory.itemID;
-		console.log(gameConfig.inventory.itemID);
-
+		gameConfig.inventory.itemID = save.gameConfig.inventory.itemID; //if not saved will be reset back to 1.
 		gameConfig.inventory.bagpack = save.gameConfig.inventory.bagpack;
 		//re-attach lost methods to every item in the bagpack
 			for(i= 0; i < gameConfig.inventory.bagpack.length; i++){
@@ -818,6 +854,7 @@ function continueGame() {
 													    	};
 			}		
 
+		console.log(gameConfig.inventory.bagpack);
 
 
 		spellBook.equipped = save.spellBook.equipped;

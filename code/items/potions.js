@@ -1,4 +1,5 @@
-var Manapotion = function(){
+var Manapotion = function(array){
+    this.location = array;
     this.id = gameConfig.inventory.getItemID();
     this.name = 'Mana potion'; //also divID for jQuery
     this.icon = 'img/items/potions/manapotion.png'; //image for the 
@@ -19,7 +20,7 @@ var Manapotion = function(){
     this.defense = 0;
 
     this.clicked = function(){
-        inventory.handleItem(this);
+        gameConfig.inventory.handleItem(this);
 
     };
 

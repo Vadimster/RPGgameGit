@@ -1,10 +1,11 @@
 
 //-----------MELEE-----------------------------------
 
-var Sword = function(){
+var Sword = function(array){ //argument denotes which array the item will be placed into
     this.id = gameConfig.inventory.getItemID();
-    this.name = 'sword'; //also divID for jQuery
-    this.icon = 'img/items/weapons/melee/sword.png'; //image for the 
+    this.location = array;
+    this.name = 'sword'; 
+    this.icon = 'img/items/weapons/melee/sword.png';
     this.backgroundColor = '#9F000F';
     
     this.type = "melee";
@@ -84,7 +85,8 @@ var Sword = function(){
     //may be develop a stats update method for this object instead of using the playerStatsUpdateItem function?
 };
 
-var Stick = function(){
+var Stick = function(array){
+    this.location = array;
     this.id = gameConfig.inventory.getItemID();
     this.name = 'pointy stick'; //also divID for jQuery
     this.icon = 'img/items/weapons/melee/stick.png'; //image for the 
@@ -172,7 +174,8 @@ var Stick = function(){
 
 //-----------RANGE-----------------------------------
 
-var Bow = function(){
+var Bow = function(array){
+    this.location = array;
     this.id = gameConfig.inventory.getItemID();
     this.name = 'wooden bow'; //also divID for jQuery
     this.icon = 'img/items/weapons/range/woodenbow.png'; //image for the 
@@ -261,7 +264,8 @@ var Bow = function(){
 
 //-----------ARROWS-----------------------------------
 
-var Arrow = function(){
+var Arrow = function(array){
+    this.location = array;
     this.id = gameConfig.inventory.getItemID();
     this.name = 'metal arrow'; //also divID for jQuery
     this.icon = 'img/items/weapons/range/arrows/arrow_2.png'; //image for the 
@@ -348,7 +352,8 @@ var Arrow = function(){
     //may be develop a stats update method for this object instead of using the playerStatsUpdateItem function?
 };
 
-var Stone = function(){
+var Stone = function(array){
+    this.location = array;
     this.id = gameConfig.inventory.getItemID();
     this.name = 'stone'; //also divID for jQuery
     this.icon = 'img/items/weapons/range/arrows/stone.png'; //image for the 

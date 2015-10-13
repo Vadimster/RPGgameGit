@@ -1,4 +1,5 @@
-var Shield = function(){
+var Shield = function(array){
+    this.location = array;
     this.id = gameConfig.inventory.getItemID();
     this.name = 'shield'; //also divID for jQuery
     this.icon = 'img/items/shields/shield_1.png'; //image for the 
@@ -19,7 +20,7 @@ var Shield = function(){
     this.defense = 0;
 
     this.clicked = function(){
-        inventory.handleItem(this);
+        gameConfig.inventory.handleItem(this);
 
     };
 

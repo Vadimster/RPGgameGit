@@ -1,6 +1,7 @@
 
 
-var Ring = function(){
+var Ring = function(array){
+    this.location = array;
     this.id = gameConfig.inventory.getItemID();
     this.name = 'ring'; //also divID for jQuery
     this.icon = 'img/items/artefacts/ring.png'; //image for the 
@@ -22,8 +23,7 @@ var Ring = function(){
 
 
     this.clicked = function(){
-
-        inventory.handleItem(this);
+        gameConfig.inventory.handleItem(this);
 
     };
 
