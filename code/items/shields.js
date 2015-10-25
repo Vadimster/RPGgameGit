@@ -4,7 +4,7 @@ var Shield = function(array){
     this.name = 'shield'; //also divID for jQuery
     this.icon = 'img/items/shields/shield_1.png'; //image for the 
     this.backgroundColor = '#3366CC';
-    
+    this.activeLocation = 'shieldSlot' //name of the array where item is to be placed to in order to become usable/affect stats.
     this.type = "shield";
         
         this.melee = false;

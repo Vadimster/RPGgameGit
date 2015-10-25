@@ -527,15 +527,48 @@ var gameConfig = {
 
 	inventory: {
 
-		market: [],
-		bagpack: [],
-		active: [],
-		arrows: [],
-		helmetSlot: [],
-		shieldSlot: [],
-		breastplateSlot: [],
-		meleeSlot: [],
-		rangeSlot: [],
+		market: {
+			array: []
+		},
+
+		bagpack: {
+			array: []
+		},
+
+		active: {
+			array: [],
+			limit: 5,
+		},
+
+		arrows: {
+			array: [],
+			limit: 5
+		},
+
+		helmetSlot: {
+			array: [],
+			limit: 1
+		},
+
+		shieldSlot: {
+			array: [],
+			limit: 1
+		},
+
+		breastplateSlot: {
+			array: [],
+			limit: 1
+		},
+
+		meleeSlot: {
+			array: [],
+			limit: 1
+		},
+
+		rangeSlot:{
+			array: [],
+			limit: 1			
+		},
 
 		itemID: 1, //global valriable in an object used a unique ID for every new item created. All further actions with this item are based on this ID.
 
@@ -558,13 +591,13 @@ var gameConfig = {
 			        }
 			    }
 			}
-			var itemIndex = getIndexByAttribute(gameConfig.inventory[item.location], 'id', item.id); //1. get index of item in relevant array (item.location)
+			var itemIndex = getIndexByAttribute(gameConfig.inventory[item.location].array, 'id', item.id); //1. get index of item in relevant array (item.location)
 
 			if(market.visited){
 				if(item.location === 'bagpack'){
 					console.log('will now sell on the market');
 					gameConfig.gold.increase(player, item.sellPrice);
-					gameConfig.inventory.bagpack.splice(itemIndex, 1);
+					gameConfig.inventory.bagpack.array.splice(itemIndex, 1);
 					gameConfig.inventory.draw('bagpack');
 
 				} else { //item is located in the market
@@ -572,10 +605,10 @@ var gameConfig = {
 					if(gameConfig.gold.checkBalance(item.buyPrice)){
 						console.log('sufficient funds');
 						gameConfig.gold.decrease(player, item.buyPrice);
-						gameConfig.inventory.bagpack.push(item);
-						gameConfig.inventory.market.splice(itemIndex, 1);
+						gameConfig.inventory.bagpack.array.push(item);
+						gameConfig.inventory.market.array.splice(itemIndex, 1);
 						item.location = 'bagpack';
-						console.log('I am now in array: ' + item.location + 'My ID is: ' + item.id + ' My index in new array is: ' + getIndexByAttribute(gameConfig.inventory[item.location], 'id', item.id))
+						console.log('I am now in array: ' + item.location + 'My ID is: ' + item.id + ' My index in new array is: ' +getIndexByAttribute(gameConfig.inventory[item.location].array, 'id', item.id))
 						gameConfig.inventory.draw('bagpack');
 						gameConfig.inventory.draw('market');
 
@@ -583,15 +616,61 @@ var gameConfig = {
             			gameConfig.messages.insufficientFunds(item);
 					}
 				}
-			}
+			} else { //no windows are opened (means that player is in character mode) - item to be equippeed
+				console.log('Item clicked, player is in character mode');
+				console.log('ItemID is ' + item.id);
+
+					if(item.location === 'bagpack'){
+						var activeLocationLength = gameConfig.inventory[item.activeLocation].array.length;
+						console.log('Active location for this item is ' +item.activeLocation+ '. Its length is ' +activeLocationLength);
+						console.log('ItemID is ' + item.id);
+						if(activeLocationLength < gameConfig.inventory[item.activeLocation].limit){ //target array where the item to be placed into can take more objects
+							console.log('target array is not full');
+							gameConfig.inventory[item.activeLocation].array.push(item);
+							item.location = item.activeLocation;
+							console.log('Item new location is now ' + item.location);
+							gameConfig.inventory.bagpack.array.splice(itemIndex, 1);
+						//-TO DO- adjust player stats
+
+						} else {  //If target array is full, will swap selected item with last item in the array.
+							console.log('target array is full');
+							console.log('ItemID is ' + item.id);
+							//preparation- get details about last active item in the target array (destination from backpack)
+							var lastActiveItem = gameConfig.inventory[item.activeLocation].array[gameConfig.inventory[item.activeLocation].array.length - 1]; 
+							console.log('Last element is: ' + lastActiveItem.name);
+							var lastActiveItemIndex = gameConfig.inventory[item.activeLocation].array.length - 1;
+							console.log('Last element index: ' + lastActiveItemIndex);
+							
+							//manipulating last active item in the target array
+							gameConfig.inventory[item.activeLocation].array[lastActiveItemIndex].location = 'bagpack'; //update location of the item which will be moved to bagpack
+							gameConfig.inventory.bagpack.array.push(gameConfig.inventory[item.activeLocation].array[lastActiveItemIndex]); //copy currently active item from activeArray to bagpack
+						//-TO DO- adjust player stats - active item is removed. Decrease affected stats - build separate function to which an object will be passed.
+							gameConfig.inventory[item.activeLocation].array.splice(lastActiveItemIndex, 1); //remove currently active item from activeArray
+							
+							//manipulate item which was clicked in bagpack
+							gameConfig.inventory[item.activeLocation].array.push(item);
+							item.location = item.activeLocation;
+							gameConfig.inventory.bagpack.array.splice(itemIndex, 1);
+						//-TO DO- adjust player stats - active item is removed. Decrease affected stats - build separate function to which an object will be passed.
+						}
+					
+					characterProfile.drawPage();
+					
+					} else { //item is not in bagback and is thus curently equipped
+
+						var itemIndex = getIndexByAttribute(gameConfig.inventory[item.activeLocation].array, 'id', item.id); //1. get index of item in relevant array (item.location)
+						console.log('my index is ' + itemIndex);
+
+						gameConfig.inventory.bagpack.array.push(gameConfig.inventory[item.activeLocation].array[itemIndex]);
+						item.location = 'bagpack';
+						gameConfig.inventory[item.activeLocation].array.splice(itemIndex, 1);
+					//-TO DO- adjust player stats (unequip)
+						characterProfile.drawPage();
+					}
 
 
-			//else if on battle page...
 
-
-
-			//3. else no windows are opened (means that player is in character mode) - item to be equippeed
-
+			}  //add else if on battle page and swap blocks of code...
 
 
 		},
@@ -600,7 +679,7 @@ var gameConfig = {
 		draw: function(inventoryArray, itemType){ //from where to draw and what to draw
 			$('.'+inventoryArray).empty();
             
-            gameConfig.inventory[inventoryArray].sort(function(a, b){ //sort array alphabetically
+            gameConfig.inventory[inventoryArray].array.sort(function(a, b){ //sort array alphabetically
               var nameA=a.name.toLowerCase(), nameB=b.name.toLowerCase()
               if (nameA < nameB) //sort string ascending
                   return -1 
@@ -610,8 +689,8 @@ var gameConfig = {
              });    
 
 			if (itemType === undefined){ //array items will not be filtered
-	            for(i=0; i<gameConfig.inventory[inventoryArray].length; i++) {
-	              var item = gameConfig.inventory[inventoryArray][i];
+	            for(i=0; i<gameConfig.inventory[inventoryArray].array.length; i++) {
+	              var item = gameConfig.inventory[inventoryArray].array[i];
 	              item.div = $("<div/>");
 	              item.div.addClass("inventoryItem");
 	              item.div.css({"background-color": item.backgroundColor});          
@@ -631,9 +710,9 @@ var gameConfig = {
 	              item.div.appendTo('.'+inventoryArray);
 	            }
 	        } else if (itemType === 'budget') { //filtering happens in the market
-				for(i=0; i<gameConfig.inventory.market.length; i++) {
-					if (gameConfig.inventory.market[i].buyPrice <= player.stats.gold.counter){
-		              var item = gameConfig.inventory.market[i];
+				for(i=0; i<gameConfig.inventory.market.array.length; i++) {
+					if (gameConfig.inventory.market.array[i].buyPrice <= player.stats.gold.counter){
+		              var item = gameConfig.inventory.market.array[i];
 		              item.div = $("<div/>");
 		              item.div.addClass("inventoryItem");
 		              item.div.css({"background-color": item.backgroundColor});          
@@ -658,10 +737,10 @@ var gameConfig = {
 				}
 
 			} else { //array items will be filtered
-	            for(i=0; i<gameConfig.inventory[inventoryArray].length; i++) {
+	            for(i=0; i<gameConfig.inventory[inventoryArray].array.length; i++) {
 	            	
-	            	if (gameConfig.inventory[inventoryArray][i].type === itemType) {
-		              var item = gameConfig.inventory[inventoryArray][i];
+	            	if (gameConfig.inventory[inventoryArray].array[i].type === itemType) {
+		              var item = gameConfig.inventory[inventoryArray].array[i];
 		              item.div = $("<div/>");
 		              item.div.addClass("inventoryItem");
 		              item.div.css({"background-color": item.backgroundColor});          
@@ -837,24 +916,80 @@ function continueGame() {
 		gameConfig.turn.day = save.gameConfig.turn.day;
 		
 		gameConfig.inventory.itemID = save.gameConfig.inventory.itemID; //if not saved will be reset back to 1.
-		gameConfig.inventory.bagpack = save.gameConfig.inventory.bagpack;
+		gameConfig.inventory.bagpack.array = save.gameConfig.inventory.bagpack.array;
 		//re-attach lost methods to every item in the bagpack
-			for(i= 0; i < gameConfig.inventory.bagpack.length; i++){
-				gameConfig.inventory.bagpack[i].clicked = function(){
+			for(i= 0; i < gameConfig.inventory.bagpack.array.length; i++){
+				gameConfig.inventory.bagpack.array[i].clicked = function(){
 													        console.log('clicked');
 													        gameConfig.inventory.handleItem(this);
 													    	};
 			}
-		gameConfig.inventory.market = save.gameConfig.inventory.market;
-		//re-attach lost methods to every item in the market
-			for(i= 0; i < gameConfig.inventory.market.length; i++){
-				gameConfig.inventory.market[i].clicked = function(){
+		gameConfig.inventory.market.array = save.gameConfig.inventory.market.array;
+			for(i= 0; i < gameConfig.inventory.market.array.length; i++){
+				gameConfig.inventory.market.array[i].clicked = function(){
+													        console.log('clicked');
+													        gameConfig.inventory.handleItem(this);
+													    	};
+			}		
+		
+		gameConfig.inventory.meleeSlot.array = save.gameConfig.inventory.meleeSlot.array;
+			for(i= 0; i < gameConfig.inventory.meleeSlot.array.length; i++){
+				gameConfig.inventory.meleeSlot.array[i].clicked = function(){
+													        console.log('clicked');
+													        gameConfig.inventory.handleItem(this);
+													    	};
+			}			
+
+		gameConfig.inventory.active.array = save.gameConfig.inventory.active.array;
+			for(i= 0; i < gameConfig.inventory.active.array.length; i++){
+				gameConfig.inventory.active.array[i].clicked = function(){
 													        console.log('clicked');
 													        gameConfig.inventory.handleItem(this);
 													    	};
 			}		
 
-		console.log(gameConfig.inventory.bagpack);
+		gameConfig.inventory.arrows.array = save.gameConfig.inventory.arrows.array;
+			for(i= 0; i < gameConfig.inventory.arrows.array.length; i++){
+				gameConfig.inventory.arrows.array[i].clicked = function(){
+													        console.log('clicked');
+													        gameConfig.inventory.handleItem(this);
+													    	};
+			}	
+
+
+		gameConfig.inventory.helmetSlot.array = save.gameConfig.inventory.helmetSlot.array;
+			for(i= 0; i < gameConfig.inventory.helmetSlot.array.length; i++){
+				gameConfig.inventory.helmetSlot.array[i].clicked = function(){
+													        console.log('clicked');
+													        gameConfig.inventory.handleItem(this);
+													    	};
+			}	
+
+		gameConfig.inventory.shieldSlot.array = save.gameConfig.inventory.shieldSlot.array;
+			for(i= 0; i < gameConfig.inventory.shieldSlot.array.length; i++){
+				gameConfig.inventory.shieldSlot.array[i].clicked = function(){
+													        console.log('clicked');
+													        gameConfig.inventory.handleItem(this);
+													    	};
+			}	
+
+		gameConfig.inventory.breastplateSlot.array = save.gameConfig.inventory.breastplateSlot.array;
+			for(i= 0; i < gameConfig.inventory.breastplateSlot.array.length; i++){
+				gameConfig.inventory.breastplateSlot.array[i].clicked = function(){
+													        console.log('clicked');
+													        gameConfig.inventory.handleItem(this);
+													    	};
+			}	
+
+		gameConfig.inventory.rangeSlot.array = save.gameConfig.inventory.rangeSlot.array;
+			for(i= 0; i < gameConfig.inventory.rangeSlot.array.length; i++){
+				gameConfig.inventory.rangeSlot.array[i].clicked = function(){
+													        console.log('clicked');
+													        gameConfig.inventory.handleItem(this);
+													    	};
+			}	
+
+
 
 
 		spellBook.equipped = save.spellBook.equipped;

@@ -6,6 +6,7 @@ var Ring = function(array){
     this.name = 'ring'; //also divID for jQuery
     this.icon = 'img/items/artefacts/ring.png'; //image for the 
     this.backgroundColor = '#9900CC';
+    this.activeLocation = 'active' //name of the array where item is to be placed to in order to become usable/affect stats.
     this.type = 'artefact';
         
         this.melee = false; //used for item div background color and placing into weapon slot

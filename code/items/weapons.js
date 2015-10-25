@@ -7,6 +7,7 @@ var Sword = function(array){ //argument denotes which array the item will be pla
     this.name = 'sword'; 
     this.icon = 'img/items/weapons/melee/sword.png';
     this.backgroundColor = '#9F000F';
+    this.activeLocation = 'meleeSlot' //name of the array where item is to be placed to in order to become usable/affect stats.
     
     this.type = "melee";
         this.melee = true;
@@ -86,12 +87,13 @@ var Sword = function(array){ //argument denotes which array the item will be pla
 };
 
 var Stick = function(array){
-    this.location = array;
     this.id = gameConfig.inventory.getItemID();
+    this.location = array;
     this.name = 'pointy stick'; //also divID for jQuery
     this.icon = 'img/items/weapons/melee/stick.png'; //image for the 
     this.backgroundColor = '#9F000F';
-    
+    this.activeLocation = 'meleeSlot' //name of the array where item is to be placed to in order to become usable/affect stats.
+
     this.type = "melee";
         
         this.melee = true;
@@ -180,6 +182,7 @@ var Bow = function(array){
     this.name = 'wooden bow'; //also divID for jQuery
     this.icon = 'img/items/weapons/range/woodenbow.png'; //image for the 
     this.backgroundColor = '#F87431';
+    this.activeLocation = 'rangeSlot' //name of the array where item is to be placed to in order to become usable/affect stats.
     this.type = "range";
         
         this.melee = false; //used for item div background color and placing into weapon slot
@@ -265,19 +268,14 @@ var Bow = function(array){
 //-----------ARROWS-----------------------------------
 
 var Arrow = function(array){
-    this.location = array;
     this.id = gameConfig.inventory.getItemID();
     this.name = 'metal arrow'; //also divID for jQuery
     this.icon = 'img/items/weapons/range/arrows/arrow_2.png'; //image for the 
     this.backgroundColor = '#F87431';
-    this.type = "arrow";
+    this.location = array;
+    this.activeLocation = 'arrows' //name of the array where item is to be placed to in order to become usable/affect stats.
 
-    this.melee = false; //used for item div background color and placing into weapon slot
-    this.range = false; //used for item div background color and placing into weapon slot
-    this.artefact = false; //used for item div background color
-    this.active = false; //determins if object needs to go into active items div
-    this.arrow  = true; //determins if object needs to go into arrows div
-  
+    this.type='arrow'
     this.consumable = false;
     
     this.buyPrice = 5;
@@ -353,11 +351,12 @@ var Arrow = function(array){
 };
 
 var Stone = function(array){
-    this.location = array;
     this.id = gameConfig.inventory.getItemID();
+    this.location = array;
     this.name = 'stone'; //also divID for jQuery
     this.icon = 'img/items/weapons/range/arrows/stone.png'; //image for the 
     this.backgroundColor = '#F87431';
+    this.activeLocation = 'arrows' //name of the array where item is to be placed to in order to become usable/affect stats.
     this.type = "arrow";
 
     this.melee = false; //used for item div background color and placing into weapon slot

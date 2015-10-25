@@ -48,20 +48,30 @@ var player = {
 		//gameConfig.gold.decrease(player, 1000000);
 		//gameConfig.save.increase(1);
 
-		gameConfig.inventory.bagpack.push(new Sword('bagpack'));
-		gameConfig.inventory.bagpack.push(new Stick('bagpack'));
-		gameConfig.inventory.bagpack.push(new Sword('bagpack'));
-		gameConfig.inventory.bagpack.push(new Bow('bagpack'));
-		gameConfig.inventory.bagpack.push(new Arrow('bagpack'));
-		gameConfig.inventory.bagpack.push(new Stone('bagpack'));
-		gameConfig.inventory.bagpack.push(new Breastplate('bagpack'));
-		gameConfig.inventory.bagpack.push(new Ring('bagpack'));
-		gameConfig.inventory.bagpack.push(new Manapotion('bagpack'));
-		gameConfig.inventory.bagpack.push(new Shield('bagpack'));
-		gameConfig.inventory.bagpack.push(new Helmet('bagpack'));
+		gameConfig.inventory.bagpack.array.push(new Sword('bagpack'));
+		gameConfig.inventory.bagpack.array.push(new Stick('bagpack'));
+		gameConfig.inventory.bagpack.array.push(new Sword('bagpack'));
+		gameConfig.inventory.bagpack.array.push(new Bow('bagpack'));
+		gameConfig.inventory.bagpack.array.push(new Arrow('bagpack'));
+		gameConfig.inventory.bagpack.array.push(new Arrow('bagpack'));
+		gameConfig.inventory.bagpack.array.push(new Arrow('bagpack'));
+		gameConfig.inventory.bagpack.array.push(new Arrow('bagpack'));
+		gameConfig.inventory.bagpack.array.push(new Arrow('bagpack'));
+		gameConfig.inventory.bagpack.array.push(new Arrow('bagpack'));
 
-		gameConfig.inventory.market.push(new Stick('market'));
-		gameConfig.inventory.market.push(new Sword('market'));
+		gameConfig.inventory.bagpack.array.push(new Stone('bagpack'));
+		gameConfig.inventory.bagpack.array.push(new Breastplate('bagpack'));
+		gameConfig.inventory.bagpack.array.push(new Ring('bagpack'));
+		gameConfig.inventory.bagpack.array.push(new Manapotion('bagpack'));
+		gameConfig.inventory.bagpack.array.push(new Shield('bagpack'));
+		gameConfig.inventory.bagpack.array.push(new Helmet('bagpack'));
+
+		gameConfig.inventory.market.array.push(new Stick('market'));
+		gameConfig.inventory.market.array.push(new Sword('market'));
+
+		//gameConfig.inventory.arrows.array.push(new Arrow('arrows')); //for testing
+		//gameConfig.inventory.meleeSlot.array.push(new Sword('meleeSlot'));
+
 
 
 	},
@@ -152,6 +162,7 @@ var player = {
 
 
 	stats: {
+		
 		save: {
 			counter: 5,
 			min: 0,
@@ -188,6 +199,18 @@ var player = {
 		},
 
 		mana: {
+			counter: 0,
+			min: 0,
+			max: 10
+		},
+
+		attack: { //current value of attack weapon
+			counter: 0,
+			min: 0,
+			max: 10
+		},
+
+		defence: { //current value of defence: helmet + breastplate. Shield is not counterd, as it is used as a separate bonus.
 			counter: 0,
 			min: 0,
 			max: 10

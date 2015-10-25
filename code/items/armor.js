@@ -4,7 +4,8 @@ var Breastplate = function(array){
     this.name = 'breastplate'; //also divID for jQuery
     this.icon = 'img/items/armor/breastplates/breastplate_1.png'; //image for the 
     this.backgroundColor = '#009933';
-    
+    this.activeLocation = 'breastplateSlot' //name of the array where item is to be placed to in order to become usable/affect stats.
+
     this.type = "armor";
         
         this.melee = false;
@@ -89,11 +90,13 @@ var Breastplate = function(array){
 
 
 var Helmet = function(array){
+    this.id = gameConfig.inventory.getItemID();
     this.location = array;
     this.name = 'helmet'; //also divID for jQuery
     this.icon = 'img/items/armor/helmets/helmet_1.png'; //image for the 
     this.backgroundColor = '#009933';
-    
+    this.activeLocation = 'helmetSlot' //name of the array where item is to be placed to in order to become usable/affect stats.
+
     this.type = "armor";
         
         this.melee = false;

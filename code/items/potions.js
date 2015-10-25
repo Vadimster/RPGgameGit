@@ -4,7 +4,7 @@ var Manapotion = function(array){
     this.name = 'Mana potion'; //also divID for jQuery
     this.icon = 'img/items/potions/manapotion.png'; //image for the 
     this.backgroundColor = '#FFFF66';
-    
+    this.activeLocation = 'active' //name of the array where item is to be placed to in order to become usable/affect stats.
     this.type = "potion";
         
         this.melee = false;
