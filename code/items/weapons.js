@@ -19,8 +19,11 @@ var Sword = function(array){ //argument denotes which array the item will be pla
     this.buyPrice = 50;   
     this.sellPrice = this.buyPrice/2;
 
-    this.attack = 1;
-    this.defense = 0;
+    this.bonuses = {
+        attack: 2,
+    };
+
+
 
     this.clicked = function(){
         console.log('clicked');
@@ -105,8 +108,9 @@ var Stick = function(array){
     this.buyPrice = 0;   
     this.sellPrice = this.buyPrice/2;
 
-    this.attack = 1;
-    this.defense = 0;
+    this.bonuses = {
+        attack: 1,
+    };
 
     this.clicked = function(){
         gameConfig.inventory.handleItem(this);

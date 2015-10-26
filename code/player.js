@@ -193,24 +193,28 @@ var player = {
 		},
 
 		luck: {
+			tracker: 0, //background counter which keeps track of dynamics to ensure that stats.counter is correct when items are removed (in case several item stack up and give bonuses)
 			counter: 0,
 			min: 0,
 			max: 5
 		},
 
 		mana: {
+			tracker: 0, 
 			counter: 0,
 			min: 0,
 			max: 10
 		},
 
-		attack: { //current value of attack weapon
+		attack: { //current attack value of a melee weapon
+			tracker: 0, 
 			counter: 0,
 			min: 0,
 			max: 10
 		},
 
 		armor: { //current value of defence: helmet + breastplate. Shield is not counterd, as it is used as a separate bonus.
+			tracker: 0, 
 			counter: 0,
 			min: 0,
 			max: 10

@@ -620,7 +620,7 @@ var gameConfig = {
 				console.log('Item clicked, player is in character mode');
 				console.log('ItemID is ' + item.id);
 
-					if(item.location === 'bagpack'){
+					if(item.location === 'bagpack'){ //will equip item
 						var activeLocationLength = gameConfig.inventory[item.activeLocation].array.length;
 						console.log('Active location for this item is ' +item.activeLocation+ '. Its length is ' +activeLocationLength);
 						console.log('ItemID is ' + item.id);
@@ -630,7 +630,7 @@ var gameConfig = {
 							item.location = item.activeLocation;
 							console.log('Item new location is now ' + item.location);
 							gameConfig.inventory.bagpack.array.splice(itemIndex, 1);
-						//-TO DO- adjust player stats
+							gameConfig.inventory.updateStats(item, 'equip'); //adjust stats - item equipped
 
 						} else {  //If target array is full, will swap selected item with last item in the array.
 							console.log('target array is full');
@@ -642,16 +642,18 @@ var gameConfig = {
 							console.log('Last element index: ' + lastActiveItemIndex);
 							
 							//manipulating last active item in the target array
-							gameConfig.inventory[item.activeLocation].array[lastActiveItemIndex].location = 'bagpack'; //update location of the item which will be moved to bagpack
+							gameConfig.inventory.updateStats(gameConfig.inventory[item.activeLocation].array[lastActiveItemIndex],'unequip'); //adjust stats - item unequipped
 							gameConfig.inventory.bagpack.array.push(gameConfig.inventory[item.activeLocation].array[lastActiveItemIndex]); //copy currently active item from activeArray to bagpack
-						//-TO DO- adjust player stats - active item is removed. Decrease affected stats - build separate function to which an object will be passed.
+							gameConfig.inventory[item.activeLocation].array[lastActiveItemIndex].location = 'bagpack'; //update location of the item which will be moved to bagpack
 							gameConfig.inventory[item.activeLocation].array.splice(lastActiveItemIndex, 1); //remove currently active item from activeArray
+
 							
 							//manipulate item which was clicked in bagpack
+							gameConfig.inventory.updateStats(item, 'equip'); //adjust stats - item equipped
+							gameConfig.inventory.bagpack.array.splice(itemIndex, 1);
 							gameConfig.inventory[item.activeLocation].array.push(item);
 							item.location = item.activeLocation;
-							gameConfig.inventory.bagpack.array.splice(itemIndex, 1);
-						//-TO DO- adjust player stats - active item is removed. Decrease affected stats - build separate function to which an object will be passed.
+
 						}
 					
 					characterProfile.drawPage();
@@ -662,9 +664,9 @@ var gameConfig = {
 						console.log('my index is ' + itemIndex);
 
 						gameConfig.inventory.bagpack.array.push(gameConfig.inventory[item.activeLocation].array[itemIndex]);
-						item.location = 'bagpack';
+						gameConfig.inventory.updateStats(gameConfig.inventory[item.activeLocation].array[itemIndex],'unequip');  //adjust stats - item unequipped
 						gameConfig.inventory[item.activeLocation].array.splice(itemIndex, 1);
-					//-TO DO- adjust player stats (unequip)
+						item.location = 'bagpack';
 						characterProfile.drawPage();
 					}
 
@@ -673,6 +675,49 @@ var gameConfig = {
 			}  //add else if on battle page and swap blocks of code...
 
 
+		},
+
+
+		updateStats: function(item, action){ //this will loop throuhg item's "bonuses" property and update relevant counters in player.stats. Arguments: item = object in inventory; action = 'equip'/'unequip'
+		    //console.log(item);
+		    console.log('item name is: ' +item.name);
+		    for(var key in item.bonuses){	//loop through properties of the "bonus" object within an item. Each property value will be added to or removed from player stats. It is important that bonuses and player stats have same name (e.g. attack = attack)    	
+		        //console.log(key + ': ' + item.bonuses[key]);
+	            if(action === 'equip'){ //item will be equipped
+	                console.log(item.name +' will be equipped');
+	                player.stats[key].tracker += item.bonuses[key];
+	                console.log('1: ' +key+ ' bonus of the '+item.name+' is added to tracker. tracker is now: ' + player.stats[key].tracker);
+
+	                if (player.stats[key].tracker > player.stats[key].max){
+	                    console.log('Player max '+key+' value exceeded');
+	                    player.stats[key].counter = player.stats[key].max;
+	                    console.log('Player '+key+' is now at its max: ' + player.stats[key].counter);
+	                    console.log('Running counter is: ' + player.stats[key].tracker);
+
+	                } else {
+	                    player.stats[key].counter += item.bonuses[key];
+	                    console.log('Player max '+key+' value not exceeded');
+	                    console.log('Player '+key+' counter is: ' + player.stats[key].counter);
+	                    console.log('Running counter is: ' + player.stats[key].tracker);
+
+	                }
+	   
+	            } else if (action === 'unequip') { //item will be unequiped
+	                console.log(item.name +' will be unequipped');
+	                player.stats[key].tracker -= item.bonuses[key];
+	                console.log('1: ' +key+ ' bonus of the '+item.name+' is removed from tracker. tracker is now: ' + player.stats[key].tracker);
+	     
+	                if(player.stats[key].tracker > player.stats[key].max){
+	                    console.log('Player '+key+' is stil at its max: ' + player.stats[key].counter);
+	                    player.stats[key].counter = player.stats[key].max;
+	                    console.log('Running counter is: ' + player.stats[key].tracker);
+	                } else {
+	                    console.log('Running counter falls below max and is now: ' + player.stats[key].tracker);
+	                    player.stats[key].counter = player.stats[key].tracker;
+	                    console.log(key +' counter is now: ' +player.stats[key].counter);        
+	                }
+	            }
+		    }
 		},
 
 	
