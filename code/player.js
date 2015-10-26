@@ -210,7 +210,7 @@ var player = {
 			max: 10
 		},
 
-		defence: { //current value of defence: helmet + breastplate. Shield is not counterd, as it is used as a separate bonus.
+		armor: { //current value of defence: helmet + breastplate. Shield is not counterd, as it is used as a separate bonus.
 			counter: 0,
 			min: 0,
 			max: 10

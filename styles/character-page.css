@@ -214,6 +214,7 @@
                 }
 
 
+
             #statsMana{
               position: absolute;
               left: 90px;  
@@ -236,6 +237,58 @@
                     text-align: center;
                 }
 
+
+            #statsAttack{
+              position: absolute;
+              left: 165px;
+              top: 10px;  
+              height: 60px;
+              width: 60px;
+              background-color: none;
+              border: 1px dotted grey;  
+
+            }
+
+                #statsAttackIcon{
+                  width: 35px;
+                  height: 30px;
+                  background-image: url("../img/dialogs/characterprofile/attack.png");
+                  margin-left: 15px;
+                  background-size: contain;
+                  background-repeat: no-repeat;
+                }
+
+               #statsAttackCounter{
+                    margin-top: 5px;
+                    text-align: center;
+                }
+
+
+
+            #statsArmor{
+              position: absolute;
+              left: 240px;
+              top: 10px;  
+              height: 60px;
+              width: 60px;
+              background-color: none;
+              border: 1px dotted grey;  
+
+            }
+
+                #statsArmorIcon{
+                  width: 35px;
+                  height: 30px;
+                  background-image: url("../img/dialogs/characterprofile/armor.png");
+                  margin-left: 15px;
+                  background-size: contain;
+                  background-repeat: no-repeat;
+                }
+
+               #statsArmorCounter{
+                    margin-top: 5px;
+                    text-align: center;
+                }
 
 
 

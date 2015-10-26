@@ -59,7 +59,7 @@
 
 
 
-	<div id ="version">version 0.4.25</div>
+	<div id ="version">version 0.4.26</div>
 
 <!-- Dialogues -->
 	  <div id="character-selector-Page" class="dialog"> 
@@ -225,7 +225,7 @@
  	<div id="characterDetails-background"> 
 	
 	<div class="itemInfoContainer"></div>
- 		<div id="characterDetails-equippedItems-container">
+ 		<div id="characterDetails-equippedItems-container"> <!-- Image of a warrior + equipped items -->
  			<div id="character-silhouette"></div>
  			<div id="weapon-slot-helmet" class="weapon-slot helmetSlot" title="click on a helmet in your bagpack to equip"></div>
  			<div id="weapon-slot-shield" class="weapon-slot shieldSlot" title="click on a shield in your bagpack to equip"></div>
@@ -236,7 +236,7 @@
  	 		<div id="characterDetails-arrows-container" class="arrows"></div> <!-- contains slots for arrows  -->
  			<div id="characterDetails-activeItems-container-description" title="Items equipped here will add to your stats and/or may be used in combat">5 x items</div>
  	 		<div id="characterDetails-activeItems-container" class="active"></div> <!-- contains slots for active auxilary  -->
-		</div> <!-- Image of a warrior + aquipped items -->
+		</div> 
  	 	
  	 	<div id="characterDetails-stats-container"> <!-- character stats & skills container  -->
 			<div id="statsLuck">
@@ -248,6 +248,17 @@
 				<div id="statsManaIcon" title="Mana is used to cast spells in battle"></div>
 				<div id="manaCounter"></div>	
 			</div>
+
+			<div id="statsAttack" title="This is how much damage you may inflict in melee">
+				<div id="statsAttackIcon"></div>
+				<div id="statsAttackCounter"></div>
+			</div>
+
+			<div id="statsArmor" title="Your armor (helmet and breastplate combined) absorb some damage in battle">
+				<div id="statsArmorIcon"></div>
+				<div id="statsArmorCounter"></div>
+			</div>			
+
 			
 			<div id="skillsArchery">
 				<div id="skillsArcheryIcon" title="Qualify for better range weapons, hit more precisely and at longer distances as well as inflict more critical hits."></div>

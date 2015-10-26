@@ -17,6 +17,9 @@ var characterProfile = {
 
        	$('#manaCounter').html(player.stats.mana.counter);
 	    $('#luckCounter').html(player.stats.luck.counter);
+	    $('#statsAttackCounter').html(player.stats.attack.counter);
+	    $('#statsArmorCounter').html(player.stats.armor.counter);
+
 	    $('#skillsArcheryCounter').html(player.skills.archery.counter);
 	    $('#skillsMeleeCounter').html(player.skills.melee.counter);
 	    $('#skillsMagicCounter').html(player.skills.magic.counter);
